@@ -1,0 +1,139 @@
+<bienvenida></bienvenida>
+
+<div class="wra_form_data ">
+
+    <!--<div class="head_form_data">
+        <div class="colum colums3" >
+            <input type="text">
+        </div>
+        <div class="colum colums4" >
+            <div class="btn-rounded"><p>Buscar</p></div>
+        </div>
+    </div>-->
+
+</div>
+
+
+<div class="wra_form_data ">
+
+    <div class="body_form_data">
+        <div class="colum colums4" >
+            <div class="btn-rounded" ng-click="setNow()"><p>Hoy</p></div>
+        </div>
+        <div class="colum colums2" >
+            <button ng-click="changeDay('prev')" style="position: absolute;left:25px;height: 37px;"><</button>
+            <input type="text" style="width: 60%;margin-left:45px;text-align: center;" class="capitalize" ng-model="datocita.calendarioCita.fechainicio">
+            <button ng-click="changeDay('next')" style="position: absolute;height: 37px;right:27px;">></button>
+        </div>
+        <div class="colum colums4" >
+            <button class="btn-blue" ng-click="popLateral('citas_agendar', 2, true)"> + Crear</button>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="contentInputs">
+    <h1 ng-show="lista_citas.length < 1"> No existen citas registradas para este d&iacute;a</h1>
+
+    <div class="wrapp_cita_table" ng-repeat="cita in lista_citas">
+        <table class="tableForm capitalize">
+            <tr>
+                <td style="width: 10%">
+                    <p>
+                        <b>{{cita.diaCita.dia}}</b>
+                    </p>
+                </td>
+                <td style="width: 5%">
+                    <p>
+                        <b>{{cita.diaCita.ndia}}</b>
+                    </p>
+
+                </td>
+                <td style="width: 10%">
+                    <p>
+                        <b>{{cita.diaCita.mes}}</b>    
+                    </p>
+
+                </td>
+                <td style="width: 15%">
+                    <p>{{cita.diaCita.hora}}</p>
+                </td>
+                <td style="width: 55%">
+                    <p class="txt_secundario_color">
+                        <b>{{cita.dsactividad}}</b>
+                    </p>
+                    <p>Creada por: {{cita.usragendo.dsnombre}} {{cita.usragendo.dspaterno}} {{cita.usragendo.paz}}</p>
+                    <hr>
+                    <p>
+                        <b class="link resaltar1" ng-click="cambiaStatus(cita.id,'F')">Finalizar</b> | <b class="link resaltar1" ng-click="editaCita(cita.id)" >Editar</b> | <b class="link cuidado" ng-click="cambiaStatus(cita.id,'C')">Cancelar</b>
+                    </p> 
+                </td>
+                <td>
+                    <span class="tbl_icon ico_eye" onclick="calendarAcordeon(this);" ng-click="ver_detalle(cita.id)"></span>
+                </td>
+            </tr>
+        </table>
+        <div class="cita_detalle" >
+            <h2>Detalle de la cita</h2>
+
+            <p>
+                <b>Descripci&oacute;n:</b> {{datoCita.calendarioCita.dsdescripcion}}
+            </p>
+            <p>
+                <b>Invitados:</b>
+            
+                <em ng-repeat="inv in datoCita.invitados | orderBy:'dsnombre'"> {{inv.dsnombre}} {{inv.dspaterno}} {{inv.dsmaterno}} &nbsp;<span>&bull;</span>&nbsp; </em>  
+            
+            
+            <p>
+                <b>Documentos:</b> 
+                <em ng-repeat="doc in datoCita.documentos "> {{doc.txtdoc}}  &nbsp;<span>&bull;</span>&nbsp;</em> 
+
+            </p>
+        </div>
+    </div>
+
+    <!--<div class="wrapp_cita_table">
+    <table class="tableForm">
+        <tr>
+            <td>
+                <p>
+                    <b>Viernes</b>
+                </p>
+            </td>
+                <td>
+                <p>
+                    <b>21</b>
+                </p>
+                
+            </td>
+            <td>
+                <p>
+                    <b>Marzo</b>    
+                </p>
+                
+            </td>
+            <td>
+                <p>00:00Hrs - 24:00 Hrs</p>
+            </td>
+            <td>
+                <p class="txt_secundario_color"><b>Entrega de documentos</b></p>
+                <p>Creado por Juan Carlos Pineda Ru&iacute;z</p>
+                <hr>
+                <p>
+                    <a href="#">Entrega de documentos</a> | <a href="#">Editar evento</a>
+                </p> 
+            </td>
+            <td>
+                <span class="tbl_icon ico_eye"></span>
+            </td>
+        </tr>
+    </table>
+    </div>-->
+
+</div>
+
+
+

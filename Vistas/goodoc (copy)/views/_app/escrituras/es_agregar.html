@@ -1,0 +1,90 @@
+<loadscript url=ctrl_escrituras.js></loadscript>
+
+<div ng-controller=ctrl_escrituras><navexpediente></navexpediente><bienvenida></bienvenida>
+    <br>
+
+    <form name="myForm" novalidate ng-submit="escritura_add()"> 
+
+        <div class="wra_form_data"> 
+
+            <div class="head_form_data"> 
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums2" > 
+
+                        <p>N° de Expediente: <b>{{expediente.numexpediente}}</b></p>
+                    </div>
+
+                    <div class="colum colums2" > 
+
+                        <div style="float:right;"> 
+
+                            <p>Fecha de creaci&oacute;n: <b>{{$root.parseFecha(expediente.fechainicial)}}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body_form_data"> 
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums2"> 
+                        <label>Notario
+                        </label> 
+
+                        <div class="wrap_select"> 
+                            <select ng-options="not as (not.dspaterno + ' ' + not.dsmaterno + ' ' + not.dsnombre ) for not in notarios" name="notario" ng-model="escritura.notario" required> 
+
+                                <option value="" disabled selected>--Seleccione un notario--</option> 
+                            </select> 
+
+                            <div class="tooltip" ng-show="myForm.submitted && myForm.notario.$pristine">Selecciona un notario
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="colum colums2" > 
+                        <label>Seleccione los Objetos de los actos que componen la escritura:
+                        </label> 
+                        <select name="actos" id="actos" ng-model="actos_seleccionados" data-placeholder="--Seleccione--" required multiple class="chosen-select"> 
+
+                            <option value="{{$index}}" ng-repeat="v in actos track by $index" >{{v.nombreActo}}{{v.descripcionActo}}</option> 
+                        </select> 
+
+                        <div class="tooltip" ng-show="myForm.submitted && myForm.actos.$pristine">Selecciona un elemento
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums4"> &nbsp; 
+                    </div>
+
+                    <div class="colum colums4"> &nbsp; 
+                    </div>
+
+                    <div class="colum colums4"> 
+
+                        <div class="btn-rounded" onclick="history.back()">
+
+                            <p>Regresar</p>
+                        </div>
+                    </div>
+
+                    <div class="colum colums4"> <button class="btn-blue" type="submit">Guardar</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+            setTimeout(function() {
+            $(".chosen-select").chosen();
+            }, 1500);
+</script>
+

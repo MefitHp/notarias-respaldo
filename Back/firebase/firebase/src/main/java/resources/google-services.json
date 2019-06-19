@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1046525438875",
+    "firebase_url": "https://notaria-6d7e7.firebaseio.com",
+    "project_id": "notaria-6d7e7",
+    "storage_bucket": "notaria-6d7e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046525438875:android:0124ad36028ef3f5",
+        "android_client_info": {
+          "package_name": "victor.utils.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046525438875-rtoeii7bqncr816dvnim3290lq4tp084.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAIJn2lQ-qWoOb4KmI38mMz75n9bCWdYE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

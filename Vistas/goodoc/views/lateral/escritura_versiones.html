@@ -1,0 +1,69 @@
+<loadscript url=ctrl_escritura_version.js></loadscript>
+<div class="allContentPanel" ng-controller="ctrl_escritura_version">
+    <div class='con_popUp_header con_popUp_wrapper'>
+        <div class='con_popUp_header_tit'>
+                    <h2>Historial del documento</h2>
+                    <p class="datoFecha mifecha">dd/mm/yyyy 12:00Hrs.</p>
+                </div>
+        <div class='con_popUp_header_cerrar' ng-click="popLateral('', 2,false)"></div>
+    </div>
+
+    <div class='con_popUp_title con_popUp_wrapper'>
+        <div>
+            <h2>Escritura n&uacute;mero: <b>212356</b></h2>
+        </div>
+    </div>
+
+
+    <div class='con_popUp_body con_popUp_wrapper'>
+       
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <table class="tableForm">
+                    <tr>
+
+                        <th>
+                            Fecha de actualizaci&oacute;n
+                        </th>
+                        <th style="width:5%">
+                            Versi&oacute;n
+                        </th>
+                        <th style="width:5%">
+
+                        </th>
+                    </tr>
+                    <tr ng-repeat="doc in doumentosParciales | orderBy:'version':true">
+                        <td>
+                            <span>{{parseFecha(doc.fecha)}}</span>
+                        </td>
+                        <td>
+                            <span>{{doc.version}}</span>
+                        </td>
+                        <td ng-click="setTexto(doc.txtdoc)">
+                            <i class="fa fa-check-circle"></i>
+
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+
+        </div>
+
+
+
+        <div class="contentInputs">
+            <div class="colum colums4">
+                &nbsp;
+            </div>
+            <div class="colum colums4">
+                <button class="btn-blue" ng-click="popLateral('', 2, false)">Regresar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script>
+      pon_fecha('.datoFecha');
+</script>

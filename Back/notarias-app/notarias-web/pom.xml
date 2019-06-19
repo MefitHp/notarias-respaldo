@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.palestra.notaria</groupId>
+		<artifactId>notarias-app</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>notarias-web</artifactId>
+	<packaging>war</packaging>
+	<name>notarias-web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<!-- <dependency> <groupId>axis</groupId> <artifactId>axis-jaxrpc</artifactId> 
+			<version>1.4</version> <scope>provided</scope> </dependency> -->
+
+		<!-- Dependencias jersey -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.13</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-multipart</artifactId>
+			<version>1.13</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.13</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+
+		<!-- Dependencias de notarias -->
+		<dependency>
+			<groupId>com.palestra.notaria</groupId>
+			<artifactId>notarias-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.palestra.notaria</groupId>
+			<artifactId>notarias-modelo</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.palestra.notaria</groupId>
+			<artifactId>notarias-generador-documento</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Dependecia para enviar correos -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox-app</artifactId>
+			<version>1.8.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.digitalpersona.onetouch</groupId>
+			<artifactId>dpotapi</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>notarias.bpm</groupId>
+			<artifactId>procesos</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.10-FINAL</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- <dependency> <groupId>com.wordnik</groupId> <artifactId>swagger-jersey-jaxrs_2.10</artifactId> 
+			<version>1.3.12</version> </dependency> -->
+	</dependencies>
+	<build>
+		<finalName>notarias-web</finalName>
+	</build>
+</project>

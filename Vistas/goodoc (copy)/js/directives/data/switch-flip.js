@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('switchflip',function(){return{restrict:'E',templateUrl:urlTemplates+'switch-flip.html',link:function(scope,element){}};});});

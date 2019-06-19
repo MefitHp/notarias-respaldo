@@ -1,0 +1,187 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+
+<abogado></abogado>
+
+<br>
+
+
+<form name="myForm" id="myForm" novalidate ng-submit="guardarTarjeta()">
+    <div class="wra_form_data" style="overflow: visible">
+
+        <div class="body_form_data" style="overflow: visible">
+
+            <div class="contentInputs">
+
+                <div class="colum colums4">
+                    <label>N° de Escritura</label>
+                    <input type="text" placeholder="N&uacute;mero de escritura" ng-model="tarjetaAmarilla.numesc" disabled name="nescritura"/>
+
+                </div>
+                <div class="colum colums4">
+                    <label>Fecha</label>
+                    <input type="text" placeholder="Inserte la fecha" ng-model="tarjetaAmarilla.fecha" class="datepicker"/>
+
+                </div>
+                <div class="colum colums2">
+                    <label>Operaci&oacute;n</label>
+                    <input type="text" disabled placeholder="Ingresar la informaci&oacute;n" ng-model="datoActoDeTarjeta.operacionNombre" name="operacion" />
+                </div>
+
+            </div>
+
+            <div class="contentInputs">
+                <div class="colum colums3">
+                    <label>Datos del cliente</label>
+                    <angucomplete 
+                        id="clientes"
+                        placeholder="Buscar una cliente"
+                        pause="400"
+                        url="http://localhost:8080/notarias-web/notaria/persona/busquedaPersonaPorNombreGet?s="
+                        datafield="clientes_rest"
+                        selectedobject="cli_select"
+                        titlefield="nombrecompleto"
+                        minlength="3"
+                        inputclass="form-control form-control-small" 
+                        />
+
+                </div>
+                <div class="colum colums4">
+                    <label>R.F.C</label>
+                    <!--<input type="text" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.dsrfc" ng-pattern="/^([A-Z|a-z|&amp;]{3}\d{2}((0[1-9]|1[012])(0[1-9]|1\d|2[0-8])|(0[13456789]|1[012])(29|30)|(0[13578]|1[02])31)|([02468][048]|[13579][26])0229)(\w{2})([A|a|0-9]{1})$|^([A-Z|a-z]{4}\d{2}((0[1-9]|1[012])(0[1-9]|1\d|2[0-8])|(0[13456789]|1[012])(29|30)|(0[13578]|1[02])31)|([02468][048]|[13579][26])0229)((\w{2})([A|a|0-9]{1})){0,3}$/" name="rfc" />-->
+                    <input type="text" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.dsrfc" name="rfc" />
+                    <!--<div class="tooltip"  ng-show="myForm.submitted && myForm.rfc.$error.pattern" >Este no es un RFC v&aacute;lido</div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="tit_H2">Desglose</h2>
+
+    <div class="wra_form_data">
+
+        <div class="body_form_data">
+
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <label>ISR</label>
+                    <input type="text" placeholder="Ingresa datos" ng-model="tarjetaAmarilla.isr" name="isr" ng-pattern="/([0-9])$/" />
+                    <div class="tooltip" ng-show="reg_inmueble.isr.$error.pattern">Campo no es un n&uacute;mero</div>
+                </div>
+                <div class="colum colums4 ero">
+                    <label>Erogaciones</label>
+                    <input type="text" disabled ng-pattern="/([0-9])$/" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.erogacion" name="erogacion" />
+                    <div class="tooltip" ng-show="reg_inmueble.numext.$error.pattern">Campo no es un n&uacute;mero</div>
+
+                </div>
+                <div class="colum colums4 iva">
+                    <label>IVA</label>
+                    <input type="text" disabled ng-pattern="/([0-9])$/" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.iva" name="iva" />
+                    <div class="tooltip" ng-show="reg_inmueble.numext.$error.pattern">Campo no es un n&uacute;mero</div>
+                </div>
+                <div class="colum colums4 iti">
+                    <label>TD</label>
+                    <input type="text" disabled ng-pattern="/([0-9])$/" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.trasdominio" name="trasdominio" />
+                    <div class="tooltip" ng-show="reg_inmueble.numext.$error.pattern">Campo no es un n&uacute;mero</div>
+
+                </div>
+            </div>
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <label>AL</label>
+                    <input type="text" ng-pattern="/([0-9])$/" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.adquisicionlocal" name="adquisicionlocal" />
+                    <div class="tooltip" ng-show="reg_inmueble.numext.$error.pattern">Campo no es un n&uacute;mero</div>
+
+                </div>
+                <div class="colum colums4 rpp">
+                    <label>RPP</label>
+                    <input disabled type="text" ng-pattern="/([0-9])$/" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.rpp"  name="rpp" />
+                    <div class="tooltip" ng-show="reg_inmueble.numext.$error.pattern">Campo no es un n&uacute;mero</div>
+
+                </div>
+
+                <div class="colum colums4">
+                    <label>IDE</label>
+                    <input type="text" ng-pattern="/([0-9])$/" placeholder="Ingresar la informaci&oacute;n" ng-blur="calculaHonorario()"  ng-model="tarjetaAmarilla.ide" name="ide" />
+                    <div class="tooltip" ng-show="reg_inmueble.numext.$error.pattern">Campo no es un n&uacute;mero</div>
+                </div>
+                <!--<div class="colum colums4 iti">
+                    <label>IMPUESTOS</label>
+                    <input type="text" disabled ng-pattern="/([0-9])$/" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.impuestos" name="impuestos" />
+                    <div class="tooltip" ng-show="reg_inmueble.numext.$error.pattern">Campo no es un n&uacute;mero</div>
+
+                </div>-->
+            </div>
+
+
+        </div>
+    </div>
+    <br>
+    <h2 class="tit_H2 hon">Desglose honorarios</h2>
+    <div class="wra_form_data hon">
+        <div class="body_form_data">
+
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <label>Honorarios</label>
+                    <input type="text" placeholder="Ingresar la informaci&oacute;n" ng-pattern="/([0-9])$/" ng-blur="calculaHonorario()" ng-model="tarjetaAmarilla.honorario" name="honorario" />
+                    <div class="tooltip" ng-show="reg_inmueble.numext.$error.pattern">Campo no es un n&uacute;mero</div>
+                </div>
+                <div class="colum colums4">
+                    <label>% - IVA</label>
+                    <input type="text" placeholder="Ingresar la informaci&oacute;n" disabled ng-model="tarjetaAmarilla.porcentajeIVA" name="porcentajeIVA" />
+
+                </div>
+                <div class="colum colums2">
+                    <label>Sub-honorarios e IVA</label>
+                    <input type="text" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.subhiva" disabled name="subhiva" />
+
+                </div>
+                <div class="colum colums4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wra_form_data">
+
+        <div class="body_form_data">
+
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    &nbsp;
+                </div>
+                <div class="colum colums4">
+                    &nbsp;
+                </div>
+                
+                <div class="colum colums2">
+                    <label>Total</label>
+                    <input type="text" placeholder="Ingresar la informaci&oacute;n" ng-model="tarjetaAmarilla.total" disabled name="total" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contentInputs">
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            <div class="btn-rounded" ng-click="regresarLista()"><p>Cancelar</p></div>
+        </div>
+        <div class="colum colums4">
+            <button class="btn-blue" type="submit">Guardar</button>
+        </div>
+    </div>
+</form>
+<script>
+            $('.datepicker').datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+</script>

@@ -1,0 +1,116 @@
+{
+    "funcion": null,
+    "funciones": [{
+        "descripcion": "Función Y",
+        "retorno": {
+            "dselemento": "Texto",
+            "idelemento": "a87ff679a2f3e71d9181a67b7542122c",
+            "catalogo": {
+                "idcatalogo": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+                "dsnombre": "tipo_dato",
+                "idsesion": "sesion",
+                "tmstmp": 1402629378000
+            },
+            "idsesion": "sesion",
+            "tmstmp": 1402629378000,
+            "dscodigo": "codigo",
+            "iseliminado": false
+        },
+        "forma": "funcionx(param1)",
+        "nombre": "funciony",
+        "detalleList": [{
+            "cdfuncion": 2,
+            "idfuncion": null,
+            "parametro": "valor1",
+            "idsesion": "7ABBE1DAEADF9E2CA02A10CBABC6D9AD",
+            "tmstmp": 1404931389000,
+            "isrequerido": true,
+            "tipo": {
+                "dselemento": "Texto",
+                "idelemento": "a87ff679a2f3e71d9181a67b7542122c",
+                "catalogo": {
+                    "idcatalogo": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+                    "dsnombre": "tipo_dato",
+                    "idsesion": "sesion",
+                    "tmstmp": 1402629378000
+                },
+                "idsesion": "sesion",
+                "tmstmp": 1402629378000,
+                "dscodigo": "codigo",
+                "iseliminado": false
+            }
+        }, {
+            "cdfuncion": 3,
+            "idfuncion": null,
+            "parametro": "valor2",
+            "idsesion": "7ABBE1DAEADF9E2CA02A10CBABC6D9AD",
+            "tmstmp": 1404931389000,
+            "isrequerido": false,
+            "tipo": {
+                "dselemento": "Texto",
+                "idelemento": "a87ff679a2f3e71d9181a67b7542122c",
+                "catalogo": {
+                    "idcatalogo": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+                    "dsnombre": "tipo_dato",
+                    "idsesion": "sesion",
+                    "tmstmp": 1402629378000
+                },
+                "idsesion": "sesion",
+                "tmstmp": 1402629378000,
+                "dscodigo": "codigo",
+                "iseliminado": false
+            }
+        }],
+        "identificador": "7a59b3277f4f6dfacc7d3b7f710f3221",
+        "idsesion": "7ABBE1DAEADF9E2CA02A10CBABC6D9AD",
+        "tmstmp": 1404931389000
+    }, {
+        "descripcion": "Función X",
+        "retorno": {
+            "dselemento": "Texto",
+            "idelemento": "a87ff679a2f3e71d9181a67b7542122c",
+            "catalogo": {
+                "idcatalogo": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+                "dsnombre": "tipo_dato",
+                "idsesion": "sesion",
+                "tmstmp": 1402629378000
+            },
+            "idsesion": "sesion",
+            "tmstmp": 1402629378000,
+            "dscodigo": "codigo",
+            "iseliminado": false
+        },
+        "forma": "funcionX(valor1)",
+        "nombre": "funcionX",
+        "detalleList": [{
+            "cdfuncion": 15,
+            "idfuncion": null,
+            "parametro": "valor1",
+            "idsesion": "7ABBE1DAEADF9E2CA02A10CBABC6D9AD",
+            "tmstmp": 1404934900000,
+            "isrequerido": true,
+            "tipo": {
+                "dselemento": "Texto",
+                "idelemento": "a87ff679a2f3e71d9181a67b7542122c",
+                "catalogo": {
+                    "idcatalogo": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+                    "dsnombre": "tipo_dato",
+                    "idsesion": "sesion",
+                    "tmstmp": 1402629378000
+                },
+                "idsesion": "sesion",
+                "tmstmp": 1402629378000,
+                "dscodigo": "codigo",
+                "iseliminado": false
+            }
+        }],
+        "identificador": "b5d5cd0ccc81510f990eb5e4c7146aa8",
+        "idsesion": "7ABBE1DAEADF9E2CA02A10CBABC6D9AD",
+        "tmstmp": 1404929836000
+    }],
+    "parametros": [],
+    "usuario": null,
+    "exito": true,
+    "estatus": "Registro correcto",
+    "errores": null
+}

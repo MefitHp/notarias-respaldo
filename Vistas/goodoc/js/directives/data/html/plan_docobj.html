@@ -1,0 +1,73 @@
+<div class="plan_for_wrap">
+         <table class="plan_for_table">
+             <tr>
+                 <td colspan="2">
+                     <p>
+                         <b>
+                             {{nombre}}
+                         </b>
+                     </p>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <p>Descripci&oacute;n:</p>
+                 </td>
+                 <td colspan="2">
+                     <p>
+                         <b>
+                             {{descripcion}}
+                         </b>
+                     </p>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                     <p>Versi&oacute;n:</p>
+                 </td>
+                 <td>
+                     <p>
+                         <a href="#">#{{version}}</a>
+                     </p>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <p>Usuario que cre&oacute; o modific&oacute;:</p>
+                 </td>
+                 <td>
+                     <p>
+                         {{usuariocreomodifico}}
+                     </p>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <p>Usuario que public&oacute;:</p>
+                 </td>
+                 <td>
+                     <p>
+                         <a href="#">{{usuariopublico}}</a>
+                     </p>
+                 </td>
+             </tr>             
+              <tr>
+                 <td>
+                     
+                     <p>Fecha de publicaci&oacute;n:</p>
+                 </td>
+                 <td>
+                     <p>{{fechapublicacion}}</p>
+                 </td>
+             </tr>
+              <tr>
+                  <td colspan="2">
+                      <p>
+                          <span class="link resaltar1" ng-click="actualizar(documento)">Actualizar</span>  
+                          <a href="#" ng-show="!ispublicado">/&nbsp; Desactivar</a> 
+                      </p>
+                  </td>
+                 
+             </tr>
+         </table>
+     </div>

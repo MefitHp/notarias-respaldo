@@ -1,0 +1,160 @@
+<loadscript url=ctrl_paso_alerta.js></loadscript>
+<div ng-controller=ctrl_paso_alerta>
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> 
+            <label>Etiqueta del paso
+            </label> 
+            <input type="text" ng-model="paso.etiqueta" placeholder="Etiqueta del paso" maxlength="255"/>
+        </div>
+        <div class="colum colums4"> 
+            <label>Estatus del paso
+            </label>
+             <div class="wrap_select">
+                <select ng-model="paso.estadoactual" name ="tipodato">
+                    <option value="OK" selected >OK</option>
+                    <option value="WARNING">CUIDADO</option>
+                    <option value="DEAD">CADUCADO</option>
+                </select>
+            </div>
+        </div>
+        <div class="colum colums4">
+            <label>Frecuencia de env&iacute;o
+            </label> 
+            <input type="number" ng-model="paso.frecuencia" placeholder="Frecuencia de envio" maxlength="11"/>
+        </div>
+    </div>
+
+    <div class="contentInputs">
+        <div class="colum colums2"> 
+            <label>Mensaje del paso
+            </label>
+            <input type="text" ng-model="paso.mensaje" placeholder="Mensaje al enviar" maxlength="255"/>
+
+        </div>
+        <div class="colum colums4"> 
+            <label>Posici&oacute;n del paso
+            </label>
+            <input type="number" ng-model="paso.posicion" placeholder="Mensaje al enviar" maxlength="255"/>
+
+        </div>
+    </div>
+
+    <div class="contentInputs"> 
+        <div class="colum colums4"> 
+            <label>Tiempo para caducar
+            </label>
+            <input type="number" ng-model="paso.tiempo" placeholder="Tiempo en dias para enviar" maxlength="5"/>
+        </div>
+        <div class="colum colums4"> 
+            <label>Tipo de alerta
+            </label>
+            <div class="wrap_select">
+                <select ng-model="paso.tipoalerta.id" ng-options="t.id as t.nombre for t in tipalerts" name ="tipodato">
+                    <option disabled selected="" value="">-- Selecione --</option>
+                </select>
+            </div>
+        </div>
+        <div class="colum colums4"> 
+            <label>Es final
+            </label>
+             <div class="wrap_select">
+                <select ng-model="paso.isfinal" name ="tipodato">
+                    <option value="false">No</option>
+                    <option value="true">S&iacute;</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> <span ng-hide="paso_editar">&nbsp;</span>
+            <div class="btn-rounded" ng-show="paso_editar" ng-click="cancel()"><p>Regresar</p></div>
+        </div>
+
+        <div class="colum colums4"> 
+            <button class="btn-blue" ng-click="guardar()" ng-show="paso_editar">Editar paso</button> 
+            <button class="btn-blue" ng-click="guardar()" ng-hide="paso_editar">Nuevo paso</button> 
+        </div>
+    </div>
+
+
+
+    <h2 class="tit_H2">Listado de Pasos</h2>
+
+    <div class="contentInputs"> 
+        <table class="tableForm"> 
+            <tr> 
+                <th width="5%"> 
+
+                    <span class="tbl_icon ico_house">
+                    </span> 
+                </th> 
+                <th width="10%">Etiqueta
+                </th> 
+                <th width="20%">Mensaje
+                </th>
+                <th width="10%">Tipo alerta
+                </th> 
+                <th width="5%">Paso
+                </th> 
+                <th width="5%">Tiempo
+                </th> 
+                <th width="5%">Posici&oacute;n
+                </th> 
+                <th width="5%">Es final
+                </th> 
+                <th width="5%">
+                </th> 
+                <th width="5%"> 
+                </th> 
+            </tr>
+            <tr ng-repeat="step in steps" ng-class-even="'lista_alternate'"> 
+                <td>{{$index + 1}}
+                </td>
+                <td class="altas_bajas">
+                    {{step.etiqueta}}
+                </td>
+                <td class="altas_bajas">
+                    {{step.mensaje}}
+                </td>
+                <td class="altas_bajas">
+                    {{step.tipoalerta.prefijo}}
+                </td>
+                <td class="altas_bajas">
+                    {{step.estadoactual}}
+                </td>
+                <td class="altas_bajas">
+                    {{step.tiempo}}
+                </td>
+                <td class="altas_bajas">
+                    {{step.posicion}}
+                </td>
+                <td class="altas_bajas">
+                    {{step.isfinal}}
+                </td>
+               
+                <td ng-click="carga_datos(step)"> 
+
+                    <span class="tbl_icon ico_edit">
+                    </span> 
+                </td>
+                <td ng-click="delete(step.id)"> 
+
+                    <span class="tbl_icon ico_delete">
+                    </span> 
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+

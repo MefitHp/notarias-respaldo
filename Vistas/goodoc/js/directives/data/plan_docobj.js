@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('planDocumentoObjeto',function(){return{restrict:'E',scope:{nombre:"@",descripcion:"@",usuariopublico:"@",usuariocreomodifico:"@",version:"@",fechapublicacion:"@",documento:"@",ispublicado:"="},templateUrl:urlTemplates+'plan_docobj.html',controller:"ctrl_docobj_dir",link:function(scope,element){}};});});

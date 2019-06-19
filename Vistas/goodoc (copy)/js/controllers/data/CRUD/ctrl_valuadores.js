@@ -1,0 +1,5 @@
+function ctrl_valuadores($scope,$route,conexion_app,conexion,catalogos){catalogos.get_valuadores($scope);$scope.guardar_valuador=function(){conexion.valuador_add({"usuario":$scope.usr_global,"valuador":$scope.valuador},function(data){if(data.exito){ejecutaAlerta(1,"Se guardó correctamente el valuador");$route.reload();}else{ejecutaAlerta(2,"Ocurrió un error: "+data.estatus);}},function(error){alert("Algo malo paso al guardar el valuador: "+error.status);});}
+$scope.editar_valuador=function(valuador){$scope.valuador=valuador;$scope.isedita=true;}
+$scope.elimina_valuador=function(valuador){$scope.valuador=valuador;if(confirm("¿Realmente desea eliminar de la lista este valuador?"))
+$scope.lanza_editar_valuador(false);}
+$scope.lanza_editar_valuador=function(status){$scope.valuador.inestatus=status;var msjOk=(status)?"actualizó":"borró";var msjError=(status)?"actualizar":"eliminar";conexion.valuador_edit({"usuario":$scope.usr_global,"valuador":$scope.valuador},function(data){ejecutaAlerta(1,"Se "+msjOk+" correctamente el valuador");$route.reload();},function(error){alert("Algo malo paso al "+msjError+" el valuador: "+error.status);});}}

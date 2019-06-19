@@ -1,0 +1,46 @@
+<loadscript url=ctrl_registro_escritura.js></loadscript>
+
+<div ng-controller=ctrl_fol_registro_escritura>
+
+    <div class="contentInputs"> <h2>N&Uacute;MERO DE FOLIOS DISPONIBLES:{{total_folios}}</h2> <h2>FOLIOS FINAL DISPONIBLE:{{foliosDisponibles.foliosDisponibles}}</h2> <h3 style="color:red" ng-show="alerta_folios">{{alerta_mensaje}}</h3> 
+        <hr>
+    </div>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> 
+            <label>Numero Escritura
+            </label> 
+            <input type="text" ng-model="escritura_ext.dsnumescritura"> 
+        </div>
+
+        <div class="colum colums4"> 
+            <label>Folio Inicial
+            </label> 
+            <input type="text" ng-model="escritura_ext.folioini" disabled> 
+        </div>
+
+        <div class="colum colums4"> 
+            <label>Folio Final
+            </label> 
+            <input type="text" ng-model="escritura_ext.foliofin" title="Folio final disponible:{{foliosDisponibles.foliosDisponibles}}" placeholder="Disponibles:{{foliosDisponibles.foliosDisponibles}}" disabled> 
+        </div>
+    </div>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> 
+
+            <div class="btn-rounded">
+
+                <p>Cancelar</p>
+            </div>
+        </div>
+
+        <div class="colum colums4"> <button class="btn-blue" ng-click="agrega_escritura_ext();">Agregar</button> 
+        </div>
+    </div>
+</div>

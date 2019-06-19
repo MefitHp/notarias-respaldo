@@ -1,0 +1,34 @@
+<loadscript url=CONE/ctrl_conectividad_detalle.js></loadscript><div ng-controller=ctrl_conectividad_detalle>
+<div class="frm_expediente">    
+    <div class="colum colums4">
+        <img src="img/assets/icons/others/paper_exp.png"/>
+    </div>
+    <div class="colum colums3">
+        <h1>Expediente:&nbsp;{{expediente.expediente}}</h1>
+        <p>Número de escritura:&nbsp;<b>{{expediente.escritura}}</b></p>
+        <p>Localidad:&nbsp;<b>{{expediente.fechaFirma}}</b></p>
+        <p>Iniciales de abogado:&nbsp;<b>{{expediente.iniciales}}</b></p>
+        <p>Operaci&oacute;n:&nbsp;<b>{{expediente.ope}}</b></p>
+        <hr>
+        <p class="link resaltar1" ng-repeat="archivo in expediente.archivos">Descargar archivo:&nbsp;<b ng-click="obtieneArchivo(archivo)">{{archivo}}</b></p>
+        
+    </div> 
+    <hr>
+    
+    <div class="frm_expediente">
+    <hr />
+    <div class="colum colums2">
+        <p>&nbsp;</p>
+  </div>
+        
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+  <div class="colum colums4" style="width: 217px">
+                 <div class="btn-rounded"  ng-click="goTo('conectividad/expedientes')"><p>Ver todos los expedientes</p></div>
+  </div>
+
+</div>
+    
+</div>
+</div>

@@ -1,0 +1,162 @@
+
+1) Cargar la plantilla del documento:
+
+Incluyo insert, pero lo ideal es que se capture este texto desde configuracion.
+
+insert into tbbsnm08 values (md5(1001),(select idsuboperacion from tbbsnm17 where dsnombre ='Compraventa'),'plantilla_compraventa',1,'sesion',1,'
+<p>LIBRO MIL CIEN.-------------------GOB/ALNQ/MGO.</p>
+
+<p>${var:escritura_libro(funcion=texto)}.</p>
+
+<p>- - - MEXICO, DISTRITO FEDERAL, a ${var:fecha_hoy(funcion=texto)}.</p>
+
+<p>${var:notaria_notario}, titular de la notar&iacute;a n&uacute;mero ${var:notaria_numero(funcion=texto)} del Distrito Federal, despu&eacute;s de haberme identificado plenamente como notario, hago constar LA ${var:tramite_operacion} que celebran de una parte ${var:compareciente_nombre(tipo=COMPRADOR)}, en lo sucesivo &ldquo;LA PARTE COMPRADORA&rdquo; y de otra ${var:compareciente_nombre(tipo=VENDEDOR)}, en lo sucesivo &ldquo;LA PARTE VENDEDORA&rdquo;, al tenor de los siguientes antecedentes y cl&aacute;usulas:</p>
+
+<p>&nbsp;</p>
+
+<p>--------------------- A N T E C E D E N T E S.</p>
+
+<p>&nbsp;</p>
+
+<p>I.- Por escritura n&uacute;mero ${var:numero_libro(funcion=texto)}, de fecha ${var:fecha_escritura(funcion=texto)}, ante el licenciado ${frm:antecedente_notaria[notario]}, titular de la notar&iacute;a n&uacute;mero ${frm:antecedente_notaria[numero(funcion=texto)]} del Distrito Federal, ${frm:antecedente_compraventa[gravamen_libre(contenido=se encuentra libre de grav&aacute;menes, lo que justifica con el certificado de libertad de grav&aacute;menes, presentado en el Registro P&uacute;blico de la Propiedad de esta capital)]}, ${var:compareciente_estado_civil_texto(tipo=VENDEDOR)}, adquirieron por compraventa &ndash;---------------------------------, en precio de ${frm:antecedente_compraventa[inmueble_precio]} ${frm:antecedente_compraventa[inmueble_precio_moneda]}, el inmueble ubicado en ${frm:antecedente_compraventa[inmueble_direccion]}, con la superficie y linderos que en el t&iacute;tulo que se relaciona se describieron como sigue:</p>
+
+<p>&ldquo;&hellip;<em>con una superficie de </em></p>
+
+<p><em>${frm:antecedente_compraventa[inmueble_superficie]}, </em></p>
+
+<p><em>con los siguientes linderos y dimensiones: </em></p>
+
+<p><em>${frm:antecedente_compraventa[inmueble_lindero_norte]}, ${frm:antecedente_compraventa[inmueble_lindero_sur]},</em></p>
+
+<p><em>${frm:antecedente_compraventa[inmueble_lindero_este]},</em></p>
+
+<p><em>${frm:antecedente_compraventa[inmueble_lindero_oeste]}&rdquo;. </em></p>
+
+<p>De lo anterior me impuse, a solicitud de los interesados, en t&eacute;rminos de lo dispuesto por la fracci&oacute;n s&eacute;ptima del art&iacute;culo ciento dos de la Ley del Notariado para el Distrito Federal.</p>
+
+<p>II.- Declara &ldquo;LA PARTE VENDEDORA&rdquo;, bajo protesta de decir verdad, que el inmueble objeto de esta escritura se encuentra ${frm:antecedente_compraventa[gravamen_libre(contenido=se encuentra libre de grav&aacute;menes, lo que justifica con el certificado de libertad de grav&aacute;menes, presentado en el Registro P&uacute;blico de la Propiedad de esta capital,)]} ${frm:antecedente_compraventa[gravemen_cancelado_inscrito(contenido=Es de advertir que la hipoteca que reporta dicho certificado no tiene raz&oacute;n de ser en virtud de haber sido cancelada )]} ${frm:antecedente_compraventa[gravamen_numero_escritura(funcion=texto)]} ${frm:antecedente_compraventa[gravamen_inscrito_folio_real(contenido=cuyo primer testimonio est&aacute; pendiente de ser inscrito en el Registro P&uacute;blico de la Propiedad de esta Capital | cuyo primer testimonio qued&oacute; inscrito en el Registro P&uacute;blico de la Propiedad de esta Capital en el folio real n&uacute;mero #VALOR)]} ${frm:antecedente_compraventa[gravemen_cancelado_mismoinstrumento(contenido=Es de advertir que la hipoteca que reporta dicho certificado fue cancelada y se encuentra libre de grav&aacute;menes, lo que justifica con el certificado de grav&aacute;menes, presentado en el Registro P&uacute;blico de la Propiedad de esta capital. Es de advertir que la hipoteca que reporta dicho certificado ser&aacute; cancelada m&aacute;s adelante, en este mismo instrumento)]} ${frm:antecedente_compraventa[gravamen_cancelado_separado(contenido=Es de advertir que la hipoteca que reporta dicho certificado ser&aacute; cancelada en instrumento por separado.)]} ${frm:antecedente_compraventa[gravamen_fecha_escritura(funcion=texto)]} <strong>&ldquo;</strong><strong>#LETRA</strong><strong>&rdquo;.</strong></p>
+
+<p>III.- Declaran &ldquo;LA PARTE VENDEDORA&rdquo; y &ldquo;LA PARTE COMPRADORA&rdquo; que el inmueble objeto de esta escritura paga sus contribuciones con los siguientes n&uacute;meros de cuenta:</p>
+
+<p>A.- Predial: &ldquo;${frm:antecedente_compravente[inmueble_predial]}&rdquo; (${frm:antecedente_compravente[inmueble_predial(funcion=texto)]}).</p>
+
+<p>B.- Agua: &ldquo;${frm:antecedente_compraventa[inmueble_agua]}&rdquo; (${frm:antecedente_compraventa[inmueble_agua(funcion=texto)]}).</p>
+
+<p>Asimismo, que &ldquo;LA PARTE VENDEDORA&rdquo; entrega en este acto a &ldquo;LA PARTE COMPRADORA&rdquo; la totalidad de las declaraciones y comprobantes de pago de las contribuciones del referido inmueble que obran en su poder, conforme a la relaci&oacute;n que agrego al ap&eacute;ndice de esta escritura con la letra <strong>&ldquo;</strong><strong>#LETRA</strong><strong>&rdquo;</strong>.</p>
+
+<p>IV.- El valor catastral del inmueble objeto de esta escritura es la cantidad de ${frm:antecedente_compraventa[inmueble_valor_catastral]}, ${frm:antecedente_compraventa[inmueble_valor_catastral_moneda]}.</p>
+
+<p>V.- El valor comercial del inmueble objeto de esta escritura es la cantidad de ${frm:antecedente_compraventa[inmueble_avaluo_valor]}, ${frm:antecedente_compraventa[inmueble_avaluo_moneda]}, seg&uacute;n el aval&uacute;o formulado por &ldquo;${frm:antecedente_compraventa[inmueble_avaluo_valuador]}, el d&iacute;a</p>
+
+<p>${frm:antecedente_compraventa[inmueble_avaluo_fecha]}, que agrego al ap&eacute;ndice de esta escritura con la letra <strong>&ldquo;</strong><strong>#LETRA</strong><strong>&rdquo;</strong>.</p>
+
+<p>---------------------- C L &Aacute; U S U L A S.</p>
+
+<p>PRIMERA.- ${var:compareciente_nombre(tipo=VENDEDOR)}, venden a ${var:compareciente_nombre(tipo=COMPRADOR)}, quien adquiere la casa ubicada en ${frm:antecedente_compraventa[inmueble_direccion]}, con la superficie y linderos descritos en el antecedente primero de esta escritura, que se tienen aqu&iacute; por reproducidos como si a la letra se insertasen, con las caracter&iacute;sticas, antig&uuml;edad, estado de conservaci&oacute;n y superficie de las construcciones especificadas en el aval&uacute;o de dicho inmueble.</p>
+
+<p>SEGUNDA.- La compraventa se rige por lo siguiente:</p>
+
+<p>I.- El precio importa la suma de ${frm:antecedente_compraventa[inmueble_avaluo_valor]}, ${frm:antecedente_compraventa[inmueble_avaluo_moneda]}.</p>
+
+<p>II. - La propiedad vendida pasa a poder de &ldquo;LA PARTE COMPRADORA&rdquo;:</p>
+
+<p>A.- Sin limitaci&oacute;n alguna en su dominio.</p>
+
+<p>B.- Sin gravamen de ninguna especie.</p>
+
+<p>C.- Sin ning&uacute;n adeudo, incluso de car&aacute;cter fiscal o laboral.</p>
+
+<p>Cualquier adeudo de la &iacute;ndole que fuere a la fecha de firma de esta escritura, ser&aacute; por cuenta exclusiva de &ldquo;LA PARTE VENDEDORA&rdquo;.</p>
+
+<p>TERCERA.- &ldquo;LA PARTE COMPRADORA&rdquo; se obliga a destinar el inmueble objeto de esta escritura, a un uso que no contravenga las disposiciones legales vigentes.</p>
+
+<p>CUARTA.- Todos los gastos, impuestos, derechos y honorarios que se causen con motivo de esta escritura, ser&aacute;n cubiertos por &ldquo;LA PARTE COMPRADORA&rdquo;, excepto el Impuesto Sobre la Renta, el cual ser&aacute; a cargo de &ldquo;LA PARTE VENDEDORA&rdquo;.</p>
+
+<p>QUINTA.- Para la interpretaci&oacute;n y cumplimiento de esta escritura, las partes se someten a las leyes y tribunales del Distrito Federal.</p>
+
+<p>YO EL NOTARIO CERTIFICO:</p>
+
+<p>I.- Que a mi juicio los comparecientes tienen capacidad legal para la celebraci&oacute;n de este acto, y que me asegur&eacute; de su identidad conforme a la relaci&oacute;n que agrego al ap&eacute;ndice de esta escritura con la letra <strong>&ldquo;</strong><strong>#LETRA</strong><strong>&rdquo;</strong>.</p>
+
+<p>II.- Que el inmueble objeto de esta escritura se encuentra inscrito en el Registro de Planes y Programas de Desarrollo Urbano, seg&uacute;n se desprende de la impresi&oacute;n de la consulta realizada que agrego al ap&eacute;ndice de esta escritura con la letra <strong>&ldquo;</strong><strong>#LETRA</strong><strong>&rdquo;</strong>.</p>
+
+<p>III.- Que advert&iacute; a la parte adquirente que ser&aacute; responsable solidaria en el pago de las contribuciones que pudiesen aparecer relacionadas con el inmueble objeto de esta escritura, anteriores a la fecha de firma de este instrumento.</p>
+
+<p>IV.- Que respecto al Impuesto al Valor Agregado, declara &ldquo;LA PARTE VENDEDORA&rdquo;, que este no se causa en virtud de que el inmueble objeto de esta escritura ha sido destinado a ${frm:antecedente_compraventa[uso_inmueble]}.</p>
+
+<p>V.- Que respecto al Impuesto Sobre la Renta, el ingreso percibido por &ldquo;LA PARTE VENDEDORA&rdquo; se encuentra exento, toda vez que esta:</p>
+
+<p>a)${frm:antecedente_compraventa[impuesto_excento(contenido=Demuestra ante el suscrito notario haber ocupado el inmueble objeto de esta escritura para su casa habitaci&oacute;n durante los cinco a&ntilde;os anteriores a la fecha de firma del presente instrumento, conforme a los documentos que agrego al ap&eacute;ndice de esta escritura con la letra)]} <strong>&ldquo;</strong><strong>#LETRA</strong><strong>&rdquo;</strong>.</p>
+
+<p>b)${frm:antecedente_compraventa[primera_enajenacion(contenido= falta texto cuando no es primera enajenacion |Declara que la presente, es la primera enajenaci&oacute;n de casa habitaci&oacute;n que efect&uacute;a en este a&ntilde;o calendario )]}.</p>
+
+<p>Asimismo, declara que la superficie del terreno enajenado no excede &ndash;---- veces al &aacute;rea de desplante de las construcciones del mismo.</p>
+
+<p>VI.-Que declaran &ldquo;LA PARTE VENDEDORA&rdquo; y &ldquo;LA PARTE COMPRADORA&rdquo;, que el inmueble objeto de esta escritura, ${frm:antecedente_compraventa[arrendamiento(contenido=no se encuentra sujeto a contrato de arrendamiento alguno | falta texto de cuando se encuentra en arrendamiento)]}.</p>
+
+<p>VII.- Que los comparecientes declaran por sus generales ser:</p>
+
+<p>${var:compareciente_nombre(tipo=COMPRADOR)}, ${var:compareciente_nacionalidad(tipo=COMPRADOR)}, originaria de ${var:compareciente_originario(tipo=COMPRADOR)}, lugar donde naci&oacute; el d&iacute;a ${var:compareciente_fecha_nacimiento(tipo=COMPRADOR)}, ${var:compareciente_estado_civil(tipo=COMPRADOR)}, con domicilio en ${var:compareciente_domicilio(tipo=COMPRADOR)}, ${var:compareciente_ocupacion(tipo=COMPRADOR)}, con Registro Federal de Contribuyentes n&uacute;mero: &ldquo;${var:compareciente_rfc(tipo=COMPRADOR)}&rdquo;, y con Clave &Uacute;nica de Registro de Poblaci&oacute;n n&uacute;mero: &ldquo;${var:compareciente_curp(tipo=COMPRADOR)}&rdquo;. Se identifica con ${var:compareciente_ri_tipodocumento(tipo=COMPRADOR)} n&uacute;mero ${var:compareciente_ri_valordocumento(tipo=COMPRADOR)}.</p>
+
+<p>${var:compareciente_nombre(tipo=VENDEDOR)}, ${var:compareciente_nacionalidad(tipo=VENDEDOR)}, originaria de ${var:compareciente_originario(tipo=VENDEDOR)}, lugar donde naci&oacute; el d&iacute;a ${var:compareciente_fecha_nacimiento(tipo=VENDEDOR)}, ${var:compareciente_estado_civil(tipo=VENDEDOR)}, con domicilio en ${var:compareciente_domicilio(tipo=VENDEDOR)}, ${var:compareciente_ocupacion(tipo=VENDEDOR)}, con Registro Federal de Contribuyentes n&uacute;mero: &ldquo;${var:compareciente_rfc(tipo=VENDEDOR)}&rdquo;, y con Clave &Uacute;nica de Registro de Poblaci&oacute;n n&uacute;mero: &ldquo;${var:compareciente_curp(tipo=VENDEDOR)}&rdquo;.. Se identifica con ${var:compareciente_ri_tipodocumento(tipo=VENDEDOR)} n&uacute;mero ${var:compareciente_ri_valordocumento(tipo=VENDEDOR)}.</p>
+
+<p>&nbsp;</p>
+
+<p>VIII.- Que &ldquo;LA PARTE VENDEDORA&rdquo; recibi&oacute; de &ldquo;LA PARTE COMPRADORA&rdquo;, el importe de la compraventa con anterioridad a la celebraci&oacute;n de este acto, seg&uacute;n declaran bajo protesta de decir verdad.</p>
+
+<p>IX.- Que advert&iacute; a los comparecientes de las penas en que incurren quienes declaran falsamente ante notario.</p>
+
+<p>X.- Que tuve a la vista los documentos citados en esta escritura.</p>
+
+<p>XI.- Que a solicitud de los comparecientes, a quienes atend&iacute; personalmente, le&iacute; y expliqu&eacute; esta escritura a los mismos, una vez que les hice saber el derecho que tienen de leerla personalmente, manifestando los otorgantes su conformidad y comprensi&oacute;n plena y la firmaron el d&iacute;a ${var:escritura_fecha_firma}</p>
+','sesion',current_timestamp);
+
+
+2) Crear dos formulario dinamicos:
+
+2.1) Crear  formulario:  antecedente_notaria:
+
+   1) ${frm:antecedente_notaria[notario]} = caja de texto, expresion regular: ^[a-zA-Z]*$ , 100
+   2) ${frm:antecedente_notaria[numero]}= caja de texto, expresion regular: ^[0-9]*$, 5
+
+2.2) Crear formulario: antecedente_compraventa
+
+1) ${frm:antecedente_compraventa[gravamen_libre]} = SiNo,  
+2) ${frm:antecedente_compraventa[inmueble_precio]} = caja de texto, expresion regular: ^[0-9]*$, 30
+3) ${frm:antecedente_compraventa[inmueble_precio_moneda]} = caja de texto, expresion regular: ^[a-zA-Z]*$, 50
+4) ${frm:antecedente_compraventa[inmueble_direccion]} = caja de texto, expresion regular: ^[a-zA-Z]*$, 500
+5) ${frm:antecedente_compraventa[inmueble_superficie]} = caja de texto, expresion regular: ^[0-9]*$, 100
+6) ${frm:antecedente_compraventa[inmueble_lindero_norte]} = caja de texto, expresion regular: ^[a-zA-Z]*$, 500
+7) ${frm:antecedente_compraventa[inmueble_lindero_sur]} = caja de texto, expresion regular: ^[a-zA-Z]*$, 500
+8) ${frm:antecedente_compraventa[inmueble_lindero_este]} = caja de texto, expresion regular: ^[a-zA-Z]*$, 500
+9) ${frm:antecedente_compraventa[inmueble_lindero_oeste]} = = caja de texto, expresion regular: ^[a-zA-Z]*$, 500
+10) ${frm:antecedente_compraventa[gravemen_cancelado_inscrito]}= SiNo,  
+11) ${frm:antecedente_compraventa[gravamen_numero_escritura]} = caja de texto, expresion regular: ^[0-9]*$, 100
+12) ${frm:antecedente_compraventa[gravamen_inscrito_folio_real]} = SiNo,  
+13) ${frm:antecedente_compraventa[gravemen_cancelado_mismoinstrumento]} = SiNo,  
+14) ${frm:antecedente_compraventa[gravamen_cancelado_separado]}  = SiNo,  
+15) ${frm:antecedente_compraventa[gravamen_fecha_escritura]} = Fecha
+16) ${frm:antecedente_compravente[inmueble_predial]} = caja de texto, expresion regular: ^[0-9]*$, 100
+17) ${frm:antecedente_compraventa[inmueble_agua]} = caja de texto, expresion regular: ^[0-9]*$, 100
+18) ${frm:antecedente_compraventa[inmueble_valor_catastral]} =  caja de texto, expresion regular: ^[0-9]*$, 100
+19) ${frm:antecedente_compraventa[inmueble_valor_catastral_moneda]} = caja de texto, expresion regular: ^[a-zA-Z]*$, 100
+20) ${frm:antecedente_compraventa[inmueble_avaluo_valor]} =  caja de texto, expresion regular: ^[0-9]*$, 100
+21) ${frm:antecedente_compraventa[inmueble_avaluo_moneda]} = caja de texto, expresion regular: ^[a-zA-Z]*$, 100
+22) ${frm:antecedente_compraventa[inmueble_avaluo_valuador]} = caja de texto, expresion regular: ^[a-zA-Z]*$
+23) ${frm:antecedente_compraventa[inmueble_avaluo_fecha]} = fecha
+24) ${frm:antecedente_compraventa[uso_inmueble]} = caja de texto, expresion regular: ^[a-zA-Z]*$, 500
+25) ${frm:antecedente_compraventa[impuesto_excento]} = SiNo,  
+26) ${frm:antecedente_compraventa[primera_enajenacion]} = SiNo,  
+27) ${frm:antecedente_compraventa[arrendamiento]} = SiNo
+
+
+
+
+
+
+
+
+
+
+
+

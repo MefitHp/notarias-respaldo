@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('seleccionformatoplantilla',function(){return{restrict:'E',templateUrl:urlTemplates+'selec_plan_docnot.html',link:function(scope,element){element.on("click",function(){$(this).css("border-color","blue");})}};});});

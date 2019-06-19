@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('bienvenida',function(){return{restrict:'EA',templateUrl:urlTemplates+'txt_bienvenida.html',link:function(scope,element){creaTarea(element);}};});});

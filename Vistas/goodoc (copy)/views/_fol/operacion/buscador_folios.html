@@ -1,0 +1,196 @@
+<loadscript url=FOL/ctrl_buscador_folios.js></loadscript>
+
+<div ng-controller=ctrl_buscador_folios><h1>Buscador de folios</h1>
+    <hr>
+
+    <div class="wra_form_data" style="overflow:visible"> 
+
+        <div class="head_form_data" style="padding:10px 0px;width:907px;"> 
+            <div class="contentInputs"> 
+
+                <div class="colum colums1"> 
+
+                    <div id="buscador" style="display: block"> 
+                        <label>Seleccione un tipo de busqueda:</label>
+                        <div class="wrap_select" style="margin-left: 10px">
+                            <select id="tipoBusqueda" ng-model="tipobusqueda" ng-init="tipobusqueda='search_usu'" ng-change="change_filter()">
+                                <option value="search_usu" selected="true">Buscar por usuario</option>
+                                <option value="search_fec">Buscar por rango de fecha</option>
+                                <option value="search_num">Buscar por n&uacute;mero de escritura</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentInputs hon" id="search_usu"> 
+
+                <div class="colum colums3"> 
+                        <div class="wrap_select" style="margin-left: 10px">
+                            <select id="tipoBusqueda" ng-model="usr_busqueda" ng-options="usr as (usr.rol.dsnombre+' :: '+usr.dsnombre+' '+usr.dspaterno+' '+usr.dsmaterno) for usr in user_lista">
+                                <option value selected>--Seleccione un usuario--</option>
+                               
+                            </select>
+                        </div>
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded" ng-click="buscar_x_usuario()">
+                        <p>Buscar por usuario</p>
+                    </div>
+                </div> 
+
+            </div>
+            <div class="contentInputs hon" id="search_fec" style="margin-left: 10px;"> 
+                <div class="colum colums4">&nbsp;</div>
+                <div class="colum colums4"> 
+                        <input type="text" placeholder="Ingrese la fecha inicial" style="background-color: white;" ng-model="fechaInicio"  class="datepicker" id="fechaInicio">
+                </div>
+                <div class="colum colums4"> 
+                    <input type="text" placeholder="Ingrese la fecha final" ng-model="fechaFin" style="background-color: white;" class="datepicker" id="finFecha" style="background:white;">
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded" ng-click="buscar_x_fecha()">
+                        <p>Buscar por fecha</p>
+                    </div>  
+                </div> 
+
+            </div>
+            <div class="contentInputs hon" id="search_num" > 
+
+                <div class="colum colums3" style="width: 655px;margin-left: 10px;"> 
+                    <input type="text" ng-model="numero_esc" placeholder="Ingrese el n&uacute;mero de escritura a buscar">
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded" ng-click="buscar_x_numero()">
+                        <p>Buscar por n&uacute;mero de escritura</p>
+                    </div>
+                </div> 
+
+            </div>
+        </div>
+    </div>
+    <div class="contentInputs"> <h2 ng-show="historialDocumento.length < 1">NO HAY RESULTADOS DE LA BUSQUEDA...</h2> 
+        <table class="tableForm" ng-show="historialDocumento.length > 0"> 
+            <thead> 
+                <tr> 
+                    <th width="17%">N&uacute;mero de escritura
+                    </th> 
+                    <th width="17%">Fecha de operación
+                    </th>
+                    <th> Comentarios</th>
+                    <th width="27%">Usuario Recibió
+                    </th>                     
+                    <th width="27%">Usuario Entregó
+                    </th> 
+                    <th width="5%">
+                    </th> 
+                </tr></thead> <tbody> 
+                <tr ng-repeat="Devueltos in historialDocumento | filter:filtro_folio" ng-class-even="'lista_alternate'"> 
+                    <td>{{Devueltos.numeroescritura}}</td>
+                    <td>{{parseFecha(Devueltos.fechaoperacion)}}
+                    </td>
+                    <td class="wrap-fa">
+                        <i class="fa fa-comment fa-2x icon_gray" ng-show="Devueltos.dscomentario" title="{{Devueltos.dscomentario}}"></i>
+                    </td>
+                    <td>{{Devueltos.usuarioRecibe.dsnombre}} {{Devueltos.usuarioRecibe.dspaterno}} {{Devueltos.usuarioRecibe.dsmaterno}}
+                    <td>{{Devueltos.usuarioEntrega.dsnombre}} {{Devueltos.usuarioEntrega.dspaterno}} {{Devueltos.usuarioEntrega.dsmaterno}}
+                    <td class="wrap-fa"> 
+                        <i class="fa fa-history fa-2x icon_gray" ng-click="lanza_detalle_folio(Devueltos)" title="Historia del archivo"></i>
+                    </td>
+                </tr></tbody> 
+        </table>
+    </div>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> <button class="btn-blue" ng-click="goTo('/folios/prestados')">Regresar</button> 
+        </div>
+    </div>
+
+    <div id="alerta_detalle_devueltos" style="display:none; width: 680px; left:43%;top:20%;overflow: auto;" class="avgrund-popup avgrund-popup-animate"> 
+
+        <div class="modal_header" style="margin-top:2px">HISTORIAL DE LA ESCRITURA N&Uacute;MERO:{{historico.numeroescritura}}
+        </div>
+
+        <div class="modal_body"> 
+            
+            <div class="wra_form_data" style="overflow:visible;width: 100%;"> 
+
+        <div class="head_form_data" style="padding:10px 0px;width:100%;"> 
+
+            <div class="contentInputs"> 
+
+                <div class="colum colums1"> 
+
+                    <div id="buscador" style="display: block"> 
+                        <label>Filtro folios:
+                        </label> 
+                        <input type="text" ng-model="filtro_historico" placeholder="Filtrar folio..." style="background-position: 595px;background-position: 97%;margin-left: 10px;width: 62%;" class="ng-pristine ng-valid"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+            <div class="contentInputs" style="border-top: 1px solid #ccc;padding-top:30px;">
+                <table class="tableForm" style="width:100%"> 
+                    <thead> 
+                        <tr> 
+                            <th width="17%">Fecha de operación
+                            </th>
+                            <th width="17%">Usuario Recibió
+                            </th>                     
+                            <th width="17%">Usuario Entregó
+                            </th> 
+                            <th width="5%">
+                            </th> 
+                            
+                            <th width="5%">
+                            </th> 
+                        </tr></thead> <tbody> 
+                        <tr ng-repeat="registro in historialDocumento | filter:filtro_historico"> 
+                            <td>{{parseFecha(registro.fechaoperacion)}}
+                            </td>
+                            <td>{{registro.usuarioRecibe.dsnombre}} {{registro.usuarioRecibe.dspaterno}} {{registro.usuarioRecibe.dsmaterno}}
+                            <td>{{registro.usuarioEntrega.dsnombre}} {{registro.usuarioEntrega.dspaterno}} {{registro.usuarioEntrega.dsmaterno}}
+                            <td class="wrap-fa">
+                                <i class="fa fa-comment fa-2x icon_gray" ng-show="registro.dscomentario" title="{{registro.dscomentario}}"></i>
+                            </td>
+                            <td class="wrap-fa">
+                                <i ng-class="{'fa fa-2x cuidado fa-upload':registro.tipooperacion!='DEVO','fa resaltar2 fa-2x fa-download':registro.tipooperacion=='DEVO'}" title="{{registro.tipooperacion}}"></i>
+                            </td>
+                            
+                        </tr></tbody> 
+                </table>
+
+
+            </div>
+
+            <div class="contentInputs"> 
+
+                <div class="colum" style="width:26%; float: right;"> 
+
+                    <div class="btn-rounded cerrarModal" ng-click="cerrar()">
+
+                        <p>Cerrar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+            $('.datepicker').datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+            
+            $("#search_usu").show("slow");
+</script>

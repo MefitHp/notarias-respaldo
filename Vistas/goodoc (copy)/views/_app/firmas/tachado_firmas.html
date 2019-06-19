@@ -1,0 +1,100 @@
+
+<bienvenida></bienvenida>
+
+<!--<abogado></abogado>-->
+
+<div class="wra_form_data ">
+<div class="body_form_data">
+            <div class="colum colums3" >
+                <p><b>Sello de Ditto</b></p>
+                <p><span>*</span> Indique Sí cuando se haya colocado el sello de Ditto</p>
+            </div>
+            <div class="colum colums4" >
+                <div style="float:right;">
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" ng-init="isfirmaditto = false" ng-model="isfirmaditto" checked="false" class="onoffswitch-checkbox" id="ditto">
+                                    <label class="onoffswitch-label" for="ditto">
+                                        <div class="onoffswitch-inner"></div>
+                                        <div class="onoffswitch-switch"></div>
+                                    </label>
+                            </div>
+                    
+                </div>
+
+
+            </div>
+
+
+    </div>
+</div>
+
+
+<div class="wra_form_data " style="overflow: visible;">
+    <div class="body_form_data" style="overflow: visible;">
+        <div class="wra_buscador ">
+            <label>Agregar firmantes:</label>
+            <div class="colum colums3" >
+                <angucomplete 
+                        id="comp"
+                        placeholder="Buscar compareciente"
+                        pause="400"
+                        localdata="comparecientes_filtrados"
+                        selectedobject="sel_comp"
+                        searchfields="nombrecompleto,alias"
+                        titlefield="nombrecompleto"
+                        minlength="2"
+                        inputclass="form-control form-control-small" 
+                        />
+            </div>
+            <div class="colum colums4" >
+                <div class="btn-rounded" ng-click="add_firmante()"><p><span>+</span>Agregar</p></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<br>
+<h2 class="tit_H2">Firmas registradas</h2>
+        <div class="contentInputs">
+        <table class="tableForm">
+            <tr>
+                <th width="5%">
+                    <span class="tbl_icon ico_person_one"></span>
+                </th>
+                <th>
+                    Firmante
+                </th>
+                <th width="5%">
+                </th>
+            </tr>
+            <tr ng-repeat="f in tmp_comparecientes">
+                <td>{{$index+1}}</td> 
+                <td>{{f.nombrecompleto}}</td> 
+                <td>
+                    <span class="tbl_icon ico_delete" ng-click="del_firmante(f)">
+                        
+                    </span>
+                </td> 
+            </tr>
+
+        </table>
+    </div>
+
+
+        
+ <div class="contentInputs">
+  <div class="colum colums4">
+      &nbsp;
+  </div>
+         <div class="colum colums4">
+        &nbsp;
+  </div>
+ <div class="colum colums4">
+        <div class="btn-rounded" ng-click="regresar()"><p>Cancelar</p></div>
+  </div>
+     <div class="colum colums4">
+         <button class="btn-blue" ng-click="guardarFirmas()">Aceptar</button>
+  </div>
+    
+</div>

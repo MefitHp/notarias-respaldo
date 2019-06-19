@@ -1,0 +1,74 @@
+{
+    "version": null,
+    "idsubformulario": null,
+    "listaFormularios": [{
+        "conFormulario": {
+            "id": {
+                "version": 1,
+                "idconFormulario": "2fcd0a59ec538dda4979893bfb501db5"
+            },
+            "fechapublicacion": "2014-04-03",
+            "dstitulo": "Fromulario especial 1",
+            "idsesion": "88A65D8397FB73EDECB3ECB2C05FDA07",
+            "tmstmp": 1396559630000,
+            "listaComponentes": null,
+            "listaSubFormularios": null,
+            "listaActoFormularios": null,
+            "listaPermisosRol": null,
+            "dsnombrecorto": "formu1",
+            "dsdescripcion": "Fromulario especial 1",
+            "ispublicado": true
+        },
+        "suboperacion": {
+            "idsuboperacion": "65b9eea6e1cc6bb9f0cd2a47751a186f",
+            "dsnombre": "Compra Venta",
+            "idsesion": "idsesion",
+            "tmstmp": 1393274031000,
+            "dsdescripcion": "Compra Venta des",
+            "operacion": null
+        },
+        "inestatus": "E",
+        "idsesion": "88A65D8397FB73EDECB3ECB2C05FDA07",
+        "tmstmp": 1396550446000,
+        "idactoformulario": "9ff33cf7d12d9a663b14680e39b70e56"
+    }, {
+        "conFormulario": {
+            "id": {
+                "version": 1,
+                "idconFormulario": "2fcd0a59ec538dda4979893bfb501db5"
+            },
+            "fechapublicacion": "2014-04-03",
+            "dstitulo": "Fromulario especial 1",
+            "idsesion": "88A65D8397FB73EDECB3ECB2C05FDA07",
+            "tmstmp": 1396559630000,
+            "listaComponentes": null,
+            "listaSubFormularios": null,
+            "listaActoFormularios": null,
+            "listaPermisosRol": null,
+            "dsnombrecorto": "formu1",
+            "dsdescripcion": "Fromulario especial 1",
+            "ispublicado": true
+        },
+        "suboperacion": {
+            "idsuboperacion": "6974ce5ac660610b44d9b9fed0ff9548",
+            "dsnombre": "Donación",
+            "idsesion": "idsesion",
+            "tmstmp": 1393274031000,
+            "dsdescripcion": "Donacion des",
+            "operacion": null
+        },
+        "inestatus":"F",
+        "idsesion": "88A65D8397FB73EDECB3ECB2C05FDA07",
+        "tmstmp": 1396550446000,
+        "idactoformulario": "e22db9c7a516ef17fda2c342e0d97ebd"
+    }],
+    "idsuboperacion": null,
+    "acto": null,
+    "expediente": null,
+    "conformulario": null,
+    "idConformulario": null,
+    "estatus": "Busqueda correcta",
+    "errores": null,
+    "usuario": null,
+    "exito": true
+}

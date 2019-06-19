@@ -1,0 +1,18 @@
+<p>Ejemplo de documento objeto:<p>
+
+<p>Padre: ${frm:familia[padre]}<p>
+
+<p>Conyugue: ${frm:familia[madre]}<p>
+
+<p>Hijas: $(tbl:hijas[${frm:familia[nombre]} ${frm:familia[apellidopaterno]} ${frm:familia[apellidomaterno]} obteniendo el ${frm:familia[porcentaje]} por ciento])<p>
+
+<p>Mascotas: </p>
+
+<p>$(tbl:mascotas[${frm:familia[nombre_mascota]} ${frm:familia[raza_mascota]} ])</p>
+
+<p>Viviendas</p>
+
+<p>Nombre del Propietario: ${frm:viviendas[nombre]}</p>
+
+<p>Viviendas $(tbl:domicilio_viviendas[en el estado de ${frm:viviendas[estado]} en la colonia ${frm:viviendas[colonia]}])</p>
+

@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('navexpediente',function(){return{restrict:'E',templateUrl:urlTemplates+'navExpediente.html',link:function(scope,element){creaTarea(element);}};});});

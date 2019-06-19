@@ -1,0 +1,149 @@
+<loadscript url=ctrl_formatopdf.js></loadscript><div ng-controller=ctrl_formatopdf>
+<h2 class="tit_H2">Definici&oacute;n del documento</h2>
+<div class="contentInputs">
+    <div class="colum colums4">
+        <label>Tipo</label>
+        <div class="wrap_select">
+            <select ng-model="formatoPdf.tipodoc" ng-options="td as td.dselemento for td in tipos_documento" name ="tipodato">
+                <option disabled selected="" value="">-- Selecione --</option>
+            </select>
+        </div>
+
+
+    </div>
+    <div class="colum colums4">
+        <label>T&iacute;tulo del documento</label>
+        <input type="text" placeholder="Ingresa la informaci&oacute;n" ng-model="formatoPdf.dstitulo" />
+
+    </div>
+    <div class="colum colums4">
+        <label>Es un documento online</label>
+        <div class="wrap_select">
+            <select ng-model="formatoPdf.isonline" name ="isonline" id="isonlineselect" ng-change="onlineUrl()">
+                <option value="false">No</option>
+                <option value="true">S&iacute;</option>
+            </select>
+        </div>
+
+    </div>
+
+</div>
+<div class="contentInputs" id="rutawrap">
+     <div class="colum colums1">
+        <label> URL: </label>
+        <input type="text" placeholder="url del documento" name="url" ng-model="formatoPdf.dsruta"/>
+    </div>
+</div>
+<div class="contentInputs">
+
+    <div class="colum colums4">
+        <label> Requiere pago en caja: </label>
+        <div class="wrap_select">
+            <select ng-model="formatoPdf.ispagorequire">
+                <option disabled selected="" value="">-- Selecione --</option>
+                <option   value="false">No</option>
+                <option   value="true">S&iacute;</option>
+            </select>
+        </div>
+    </div>
+    <div class="colum colums2">
+        <label> Descripci&oacute;n </label>
+        <input type="text" placeholder="Ingresa la informaci&oacute;n" name="descripcion" ng-model="formatoPdf.dsdescripcion"/>
+        
+    </div>
+</div>
+
+<h2 class="tit_H2"> Registra pares de campo </h2>
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        <label>Campo</label>
+        <input type="text" placeholder="Nombre del campo" ng-model="sel_campo" name="campo" />
+
+
+    </div>
+    <div class="colum colums2">
+        <label>Variable</label>
+        <div class="wrap_select">
+                <angucomplete id="variable" 
+                          placeholder="Introduzca la informaci&oacute;n" 
+                          pause="100" 
+                          localdata="variables_forms" 
+                          selectedobject="selected_var" 
+                          searchfields="desc" titlefield="desc" 
+                          minlength="1" inputclass="form-control form-control-small" 
+                          anchomaximo="500"/>
+            <!--<select ng-model="sel_variable" ng-options="variable.desc as variable.desc for variable in variables_forms | orderBy:'desc'" name ="tipodato">
+                <option disabled selected="" value=""> -- Selecione -- </option>
+            </select>-->
+        </div>
+    </div>
+        
+</div>
+<div class="contentInputs">
+    <div class="colum colums4">
+        <label>Suboperacion</label>
+        <div class="wrap_select">
+            <select ng-model="sel_sub_op" ng-change="aplica_todos_data(false)" ng-options="subop as subop.dsnombre for subop in suboperaciones | orderBy:'dsnombre'" name ="tipodato">
+                <option disabled selected="" value=""> -- Selecione --</option>
+            </select>
+        </div>
+    </div>
+    <div class="colum colums4">
+            <div class="checkWrapp" style="margin-top:20px;">
+                <input name="multi_select" type="checkbox" ng-change="aplica_todos_data(aplica_todos)" ng-init="aplica_todos=true" checked ng-model="aplica_todos">
+                <label class="labelcheck">Todas las suboperaciones</label>
+            </div>
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded btn-form" ng-click="add_detalle()">
+            <p><span>+</span> Agregar</p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="contentInputs" ng-show="formatoPdf.detalleList.length > 0">
+    <label >Listado de variables</label>
+    <table class="tableForm">
+        <tr>
+            <th width="5%"></th>
+            <th width="40%">Campo</th>
+            <th width="40%">Variable</th>
+            <th width="40%">Suboperaci&oacute;n</th>
+            
+            
+            <th width="5%">
+            </th>
+        </tr>
+        <tr ng-repeat="detalle in formatoPdf.detalleList">
+            <td>{{$index}}</td>
+            <td>{{detalle.dscampo}}</td>
+            <td>{{detalle.dsvariable}}</td>
+            <td>{{detalle.suboperacion.dsnombre}}</td>
+            
+            
+            <td>
+                <span class="tbl_icon ico_delete" ng-click="delete_detalle(detalle)"></span>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded" ng-click="goTo('/listar_formato_pdf')"><p>Regresar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-show="!isEditForm" ng-click="guarda_docPdf()">Guardar</button>    
+        <button class="btn-blue" ng-show="isEditForm" ng-click="actualiza_docPdf()">Editar</button>    
+        
+    </div>
+
+</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="contentInputs">
+    <div class="colum colums4">
+        <h3 >Seleccion predefinida</h3>
+        <div>
+            <div class="onoffswitch">
+                
+                <input type="checkbox" name="isdefault" class="onoffswitch-checkbox" id="isdefault" ng-model="isdefault">
+                <label class="onoffswitch-label" for="isdefault">
+                    <div class="onoffswitch-inner"></div>
+                    <div class="onoffswitch-switch"></div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="colum colums2">
+        <label>Valores de la lista</label>
+        <div class="wrap_select">
+            <select ng-show="isdefault">
+                <option>sdfdd</option>
+            </select>
+            <input id="valores_no_default" type="text" ng-model="com.dslistavalores" ng-show="!isdefault" placeholder="valor1, valor2, valor3,valor4,valor5">
+        </div>
+    </div>
+</div>

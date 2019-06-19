@@ -1,0 +1,57 @@
+<div class="wrap_contentList operacionesList expediente">
+    <div class="wrap_list" >
+        <div class="list_trigger btn">
+            <span class="ico_operacion"></span>
+        </div>
+        <div class="list_wrap_info">
+            <div class="list_info ">
+                <p class="altas_bajas">
+                    <b>{{nombre}}:</b>
+                </p>    
+            </div> 
+
+        </div>
+        <!--<div class="dd_expe_btn dd_expe_icon" title="Eliminar operaci&oacute;n" style="float:left; border-right:1px solid #cfcfcf;" ng-click="elimina_operacion(reference)">
+            <span class="tbl_icon ico_trash"></span>
+        </div>-->
+        
+        <div class="list_more" title="Ver detalle" onclick="listAcordeon(this)" ng-click="operacionSelect(idopt)">
+            <span></span>
+        </div>
+    </div>
+
+
+    <div class="wra_content_tarea">
+
+        <div class=" contentInputs body_form_data">
+            <div class="colum colums2" >
+            <label>Tipo:</label>
+                <div class="wrap_select">
+                    <select class="sel_suboperaciones" ng-model="sel_suboperacion" ng-options="s as s.dsnombre for s in select_subop_actual | orderBy:'dsnombre'" name="operaciones">
+                        <option value="" disabled selected>--Seleccione--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="colum colums4">
+            <label>Alias del objeto del acto:</label>
+            <input type="text" ng-model="sel_objNombre"  placeholder="Ingrese la informaci&oacute;n">
+            </div>
+            <div class="colum colums4" >
+                <div class="btn-rounded btn-form btn_add_subOperacion" style="margin-top:35px;">
+                <p><span>+</span> Agregar</p>
+                </div>
+            </div>
+        </div>
+        <div class='wrap_subOperaciones' id="so{{reference}}">
+            
+        </div>
+
+        <div class="colum colums4" style="float:right;margin: 10px;">
+            <div class="btn-rounded btn-blue" ng-click="guarda_operacion(idopt)">
+                <p>Guardar operaci&oacute;n</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

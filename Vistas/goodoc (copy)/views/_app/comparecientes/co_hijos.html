@@ -1,0 +1,49 @@
+<loadscript url="ctrl_hijo.js"></loadscript>
+<div ng-controller="ctrl_hijo">
+    <navexpediente></navexpediente>
+    <bienvenida></bienvenida>
+    <abogado></abogado>
+    <h2 class="tit_H2">Ingresar los datos del hijo(a)</h2> 
+    <div class="wra_form_data" style="overflow:visible">
+       
+        
+        <div class="body_form_data" style="border-top:1px solid #cfcfcf;">
+                        
+            <div class="contentInputs">
+                <div class="colum colums2">
+                    <label>Nombre(s)</label>
+                    <input type="text" class="ispersonadata" placeholder="Introduzca la informaci&oacute;n" ng-model="contwo.persona.dsnombre" ng-keyup="actualiza_nombre_completo1()" name="dsnombre" id="dsnombre" required="true" />
+                </div>
+                <div class="colum colums4">
+                    <label>Apellido paterno</label>
+                    <input type="text" class="ispersonadata" ng-keyup="actualiza_nombre_completo1()" placeholder="Introduzca la informaci&oacute;n" ng-model="contwo.persona.dsapellidopat" name="apepat" id="apepat" required/>
+                </div>
+                <div class="colum colums4">
+                    <label>Apellido materno</label>
+                    <input type="text" class="ispersonadata" ng-keyup="actualiza_nombre_completo1()" placeholder="Introduzca la informaci&oacute;n" ng-model="contwo.persona.dsapellidomat" name="apemat" id="apemat" />
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="contentInputs">
+       <div class="colum colums4"> 
+           &nbsp;
+       </div>
+       <div class="colum colums4">
+           &nbsp;
+       </div>
+        <div class="colum colums4">
+            <div class="btn-rounded" ng-click="goTo('/comparecientes')">
+                <p>Regresar</p>
+            </div>
+        </div>
+        <div class="colum colums4">
+            <button class="btn-blue" ng-click="guarda_hijo()">Guardar</button>
+        </div>
+    </div>
+</div>

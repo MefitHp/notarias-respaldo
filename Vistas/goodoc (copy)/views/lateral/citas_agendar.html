@@ -1,0 +1,170 @@
+<div class="allContentPanel" ng-controller="ctrl_citas_agendar">
+    <div class='con_popUp_header con_popUp_wrapper'>
+        <div class='con_popUp_header_tit'>
+            <h2>Calendario de citas</h2>
+            <p class="mifecha"></p>
+        </div>
+        <div class='con_popUp_header_cerrar' ng-click="popLateral('', 2, false, false)"></div>
+    </div>
+
+    <div class='con_popUp_title con_popUp_wrapper'>
+        <div>
+            <h2>Nueva cita</h2>
+        </div>
+    </div>
+
+
+    <div class='con_popUp_body con_popUp_wrapper'>
+
+        <div class="contentInputs">
+            <div class="colum colums4">
+                <label>Fecha y hora de inicio</label>
+                <input type="text" id="initFecha" ng-model="fecha_inicio">
+            </div>
+            <div class="colum colums4">
+                <label>Fecha y hora de termino</label>
+                <input type="text"  id="finFecha" ng-model="fecha_termino">
+            </div>
+        </div>
+
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <label>Actividad</label>
+                <input type="text" ng-model="datocita.calendarioCita.dsactividad">
+            </div>
+
+        </div>
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <label>Descripci&oacute;n</label>
+                <textarea ng-model="datocita.calendarioCita.dsdescripcion"></textarea>
+            </div>
+
+        </div>
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <label>Invitados</label>
+                <div class="wrap_select">
+                    <select ng-model="sel_inv" id="sel_inv" ng-options="inv as (inv.dsnombre + ' '+inv.dspaterno+' '+inv.dsmaterno) for inv in invitados">
+                        <option value="" disabled selected>--Seleccione un invitado--</option>
+
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="contentInputs">
+            <div class="colum colums4">
+                &nbsp;
+            </div>
+            <div class="colum colums4">
+                <button class="btn-blue" ng-click="add_invitado()">+ Agregar</button>
+            </div>
+
+        </div>
+
+
+        <div class="contentInputs" ng-show="datocita.invitados.length > 0">
+            <div class="colum colums2">
+                <label>Lista de invitados</label>
+                <table class="tableForm" >
+                    <tr>
+                        <th style="width:5%">
+
+                        </th>
+                        <th >
+                            Nombre(s)
+                        </th>
+                        <th style="width:5%">
+                        </th>
+                    </tr>
+                    <tr ng-repeat="inv in datocita.invitados">
+                        <td>{{$index + 1}}</td>
+                        <td>{{inv.dsnombre + ' ' + inv.dspaterno + ' ' + inv.dsmaterno}}</td>
+                        <td>
+                            <span class="tbl_icon ico_delete" ng-click="del_invitado($index, inv)"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <label>Anexar documento</label>
+                <div class="wrap_select" >
+                    <select ng-model="sel_doc" id="sel_doc" ng-options="doc as doc.txtdoc  for doc in documentos">
+                        <option value="" disabled selected>--Seleccione un documento--</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="contentInputs">
+            <div class="colum colums4">
+                &nbsp;
+            </div>
+            <div class="colum colums4">
+                <button class="btn-blue" ng-click="add_documento()">+ Agregar</button>
+            </div>
+
+        </div>
+
+        <div class="contentInputs" ng-show="datocita.documentos.length > 0">
+            <div class="colum colums2" >
+                <label>Lista de documentos  </label>
+                <table class="tableForm" >
+                    <tr>
+                        <th style="width:5%">
+
+                        </th>
+                        <th >
+                            Documento(s)
+                        </th>
+                        <th style="width:5%">
+
+                        </th>
+                    </tr>
+                    <tr ng-repeat="doc in datocita.documentos">
+                        <td>{{$index + 1}}</td>
+                        <td>{{doc.txtdoc}}</td>
+                        <td>
+                            <span class="tbl_icon ico_delete" ng-click="del_documento($index, doc)">
+
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="contentInputs">
+            <div class="colum colums4">
+                <div class="btn-rounded" ng-click="popLateral('', 2, false, false)"><p>Cancelar</p></div>
+            </div>
+            <div class="colum colums4">
+                <button class="btn-blue" ng-click="guardar_cita()">Guardar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script>
+    var configdp = {
+        lang: 'es',
+        format: 'd-m-Y / H:i',
+        validateOnBlur: true,
+        step: 30,
+        minDate:0,
+
+    }
+    $("#initFecha").datetimepicker(configdp);
+    $("#finFecha").datetimepicker(configdp);
+    
+    pon_fecha('.mifecha');
+</script>

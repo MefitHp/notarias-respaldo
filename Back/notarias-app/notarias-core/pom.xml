@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>notarias-app</artifactId>
+		<groupId>com.palestra.notaria</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>notarias-core</artifactId>
+
+	<dependencies>
+		<!-- Dependencias de modulos notarias -->
+		<dependency>
+			<groupId>com.palestra.notaria</groupId>
+			<artifactId>notarias-dao</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.palestra.notaria</groupId>
+			<artifactId>notarias-modelo</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!--  <dependency>
+			<groupId>com.notaria.dtos</groupId>
+			<artifactId>alertas</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>-->
+		<dependency>
+			<groupId>com.victor.utils</groupId>
+			<artifactId>restconexion</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>notarias.bpm</groupId>
+			<artifactId>procesos</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.dropbox.core/dropbox-core-sdk -->
+		<dependency>
+		    <groupId>com.dropbox.core</groupId>
+		    <artifactId>dropbox-core-sdk</artifactId>
+		    <version>3.0.7</version>
+		    <scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- <plugins>
+			Ejecutar si se desea crea un jar con la dependencias necesarias Desde 
+				una terminal ejecutar: mvn celan package
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<finalName>api-${artifactId}-${version}</finalName>
+				</configuration>
+			</plugin>
+		</plugins> -->
+	</build>
+</project>

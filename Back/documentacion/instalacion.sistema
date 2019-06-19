@@ -1,0 +1,9 @@
+---------
+WINDOWS
+c:\windows\system32\drivers\etc\hosts
+---------
+MAC O LIUX
+/etc/hosts
+----------
+192.168.15.20   gonotarias gonotarias.com
+

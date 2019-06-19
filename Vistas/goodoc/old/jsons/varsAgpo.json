@@ -1,0 +1,21 @@
+{ "gpos":
+        [
+            {"nombre": "primer grupo del charlin","desc":"descripcion del primer grupo","data":"grupo 1"},
+            {"nombre": "segundo grupo","desc":"descripcion del segundo grupo","data":"grupo 2"},
+            {"nombre": "tercero grupo","desc":"descripcion del tercer grupo","data":"grupo 3"},
+            {"nombre": "cuarto grupo","desc":"descripcion del cuarto grupo","data":"grupo 4"},
+            {"nombre": "quinto grupo","desc":"descripcion del quinto grupo","data":"grupo 5"}
+            
+            ],
+  "vars":
+        [
+            {"nombre": "primera variable del charlin","desc":"primera variable","data":"variable 1"},
+            {"nombre": "primera variable del miji","desc":"descripcion de la primera variable","data":"variable 1"},
+            {"nombre": "segunda variable","desc":"descripcion de la segunda variable","data":"variable 2"},
+            {"nombre": "tercera variable","desc":"descripcion de la tercera variable","data":"variable 3"},
+            {"nombre": "cuarta variable","desc":"descripcion de la cuarta variable","data":"variable 4"},
+            {"nombre": "quinta variable","desc":"descripcion de la quinta variable","data":"variable 5"},
+            {"nombre": "sexta variable","desc":"descripcion de la sexta variable","data":"variable 6"}
+
+            ]
+}

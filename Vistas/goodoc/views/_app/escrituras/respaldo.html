@@ -1,0 +1,180 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+
+<br>
+
+<form name="myForm" novalidate ng-submit="escritura_add()">
+    <div class="wra_form_data">
+        <div class="head_form_data">
+            <div class="contentInputs">
+
+
+
+                <div class="colum colums2" >
+                    <p>N° de Expediente: <b>{{expediente.numexpediente}}</b></p>
+                </div>
+                <div class="colum colums2" >
+                    <div style="float:right;">
+                        <p>Fecha de creaci&oacute;n: <b>{{$root.parseFecha(expediente.fechainicial)}}</b></p>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="body_form_data">
+            <div class="contentInputs">
+
+                <div class="colum colums2">
+                    <label>Notario</label>
+                    <div class="wrap_select">
+                        <select ng-options="not as (not.dspaterno + ' ' + not.dsmaterno + ' ' + not.dsnombre  ) for not in notarios" name="notario" ng-model="escritura.notario" required>
+                            <option value="" disabled selected>--Seleccione un notario--</option>
+                        </select>
+                        <div class="tooltip" ng-show="myForm.submitted && myForm.notario.$pristine">Selecciona un notario</div>
+
+                    </div>
+
+                </div>
+                <div class="colum colums2" >
+                    <label>Actos</label>
+                    <select name="actos" id="actos" ng-model="actos_seleccionados" data-placeholder="--Seleccione un acto--" required multiple class="chosen-select">
+                        <option value="{{$index}}" ng-repeat="v in actos track by $index" >{{v.nombreActo}} {{v.descripcionActo}}</option>
+                    </select>
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.actos.$pristine">Selecciona un acto</div>
+                </div>
+
+
+            </div>
+
+            <div class="contentInputs">
+
+                <div class="colum colums4">
+                    <label>Libro</label>
+                    <input type="text" name="libro" ng-model="escritura.libro.innumlibro" disabled>
+
+                </div>
+                <div class="colum colums4">
+                    <label>F&oacute;lio inicial</label>
+                    <input type="text" name="libro" ng-model="escritura.folioini" >
+
+                </div>
+                <div class="colum colums4">
+                    <label>F&oacute;lio final</label>
+                    <input type="text" name="libro" ng-model="escritura.foliofin" >
+
+                </div>
+                <div class="colum colums4">
+                    <label>N&uacute;mero de escritura</label>
+                    <input type="text" placeholder="Coloque el numero de escritura" ng-model="escritura.dsnumescritura" name="escritura"/>
+
+
+                </div>
+
+
+            </div>
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <label>Fecha de creaci&oacute;n</label>
+                    <input type="text" placeholder="Inserte la fecha" class="datepicker" ng-model="escritura.fechacreacion" id="fechacreacion"/>
+
+                </div>
+                <div class="colum colums4">
+                    <label>Fecha de firma</label>
+                    <input type="text" placeholder="Inserte la fecha" class="datepicker" ng-model="escritura.fechafirma" id="fechafirma"/>
+
+                </div>
+                <div class="colum colums4">
+                    <label>Fecha de impresi&oacute;n</label>
+                    <input type="text" placeholder="Inserte la fecha" class="datepicker" ng-model="escritura.fechaimpresion" id="fechaimpresion"/>
+                </div>
+                <div class="colum colums4">
+                    <label>Fecha de encuadernado</label>
+                    <input type="text" placeholder="Inserte la fecha" class="datepicker" ng-model="escritura.fechaencuadernado" id="fechaencuadernado"/>
+                </div>
+
+
+            </div>
+
+
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    &nbsp;
+                </div>
+                <div class="colum colums4">
+                    &nbsp;
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded" onclick="history.back()"><p>Cancelar</p></div>
+                </div>
+                <div class="colum colums4">
+                    <button class="btn-blue" type="submit">Guardar</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="contentInputs">
+        <table class="tableForm">
+            <tr>
+                <th width="5%">
+                    <span class="tbl_icon ico_documento"></span>
+                </th>
+                <th width="15%">N° de Escritura</th>
+                <th width="25%">Acto(s)</th>
+                <th width="15%">Fecha creaci&oacute;n</th>
+                <th width="15%">Fecha firma</th>
+                <th width="15%">Notario</th>
+                <th width="5%">
+                    <span class="tbl_icon ico_edit"></span>
+                </th>
+                <th width="5%">
+                    <span class="tbl_icon ico_delete"></span>
+                </th>
+            </tr>
+            <tr  ng-repeat="esc in listaEscrituras">
+                <td>{{$index +1}}</td> 
+                <td>{{esc.escritura.dsnumescritura}}</td> 
+                <td>
+                    <ol>
+                        <li ng-repeat="acto in esc.actos">{{ acto.nombreActo }}</li>
+                    </ol>
+                </td> 
+                <td>{{esc.escritura.fechacreacion}}</td> 
+                <td>{{esc.escritura.fechafirma}}</td> 
+                <td>{{esc.escritura.notario.dsiniciales}}</td> 
+                <td  ng-click="btn_seleccionar_escritura(esc)"><span class="tbl_icon ico_edit"></span></td>
+                <td ng-click="btn_borrar_escritura(esc.escritura.idescritura)"><span class="tbl_icon ico_delete"></span></td>
+
+
+            </tr>
+
+        </table>
+    </div>
+</form>
+
+
+
+
+<script>
+            setTimeout(function() {
+                $(".chosen-select").chosen();
+            }, 1500);
+
+           
+            
+            $('.datepicker').datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+</script>
+

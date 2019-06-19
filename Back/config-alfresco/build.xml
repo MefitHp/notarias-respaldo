@@ -1,0 +1,11 @@
+<project>
+    <loadproperties srcFile="alfrescoHome.properties"/>
+    <!--Si se desea agregar alfresco-global.properties que contiene configuracion adicional, descomentar-->
+    <!--<copy file="${basedir}/classes/alfresco-global.properties" tofile="${alfrescoHome}/tomcat/shared/classes/alfresco-global.properties" overwrite="true" />-->
+    <copy todir="${alfrescoHome}/tomcat/shared/classes/alfresco">
+        <fileset dir="${basedir}/classes/alfresco">
+            <include name="**/*.xml"/>
+            <include name="**/*.properties"/>
+        </fileset>
+    </copy>
+</project>

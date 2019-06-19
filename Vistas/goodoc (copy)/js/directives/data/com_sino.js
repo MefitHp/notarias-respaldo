@@ -1,0 +1,3 @@
+define(['../module'],function(directives){'use strict';directives.directive('comSino',function(){return{restrict:'AE',scope:{titulo:"@",ayuda:"@",name:"@",anchoselect:"@",idcomponente:"@",expresion:"@",posicion:"@",totalcmp:"@"},templateUrl:urlTemplates+'componente_sino.html',link:function(scope,element){setTimeout(function(){$("#"+scope.name).change(function(){eval(scope.expresion);})},500);var tiempo=obtieneTiempo(scope.posicion,scope.totalcmp,100);setTimeout(function(){if($("#"+scope.name).val()!=null){$("#"+scope.name).prop("value",$("#"+scope.name).val());}
+else{$("#"+scope.name).prop("value",null);}
+eval(scope.expresion);console.info("TIEMPO:"+tiempo+" :: Posicion::"+scope.posicion)},tiempo);}};});});

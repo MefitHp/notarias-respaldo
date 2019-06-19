@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Notaria 98 y 24</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet/less" type="text/css" href="css/login.less">-->
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+    </head>
+    <body ng-controller="ctrl_restore">
+
+        <div id="alertaContainer" style="">
+            <h2 style="color:white !important"></h2>
+        </div>
+
+        <section id="wrap_prin">
+            <div id="wra_login" style="overflow: hidden;">
+                <div id="login">
+                    <!--<img src="theme/9824/img/logo.png"/>-->
+
+                    <h1 style="margin-top:60px">Bienvenid@</h1>
+                    <h2>Sistema generador <br>de documentos notariales</h2>
+
+                    <div class="loginForm  grad_gray">
+                        <div class="login_avatar">
+                            <img src="img/assets/login/gonot.png" style="width: 200px">
+
+                        </div>
+
+                        <form name="myForm" id="myForm" novalidate ng-submit="restauraPass()">
+                            <div class="login_form" id="frm_login" >
+                                <div class="campoLogin" >
+                                    <label class="labelLogin"><b>Contrase&ntilde;a</b></label>
+                                    <input type="password" id="pw1" name="pw1" ng-model="usuario.dsvalenc" required placeholder="Contrase&ntilde;a" />
+                                    <div class="tooltip" ng-show="myForm.submitted && myForm.pw1.$error.required" >Campo requerido</div>                            
+                                </div>
+                                <div class="campoLogin">  
+                                    <label class="labelLogin"><b>Confirmar contrase&ntilde;a</b></label>
+                                    <input type="password" id="pw2" name="pw2" ng-model="pw2" ng-required="" pw-check="pw1" placeholder="Confirmar contrase&ntilde;a"/>
+                                    <div class="tooltip" ng-show="myForm.pw2.$error.pwmatch" >El password es distinto</div>                                
+                                </div>
+
+                                <div class="campoLogin">
+                                    <button class="btn-blue"  type="submit">Confirmar contrase&ntilde;a</button>                                   
+                                    
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <div id="wrap_footer">
+
+                <div class="colums2">
+                    <p>
+                        <b>98 y 24 &reg; Derechos reservados</b>  
+                    </p>
+                    <p>
+                        Altavista 83, Col. San Ángel, Del. Alvaro Obregón, C.P.01049
+                    </p>
+                </div>
+                <div class="colums2">
+                    <p>
+                        Lic. Ortiz Blanco Gonzalo Manuel
+                    <p>
+                    <p>
+                        Lic. Duarte Guerra Luis Ricardo
+                    </p>
+                </div>
+
+            </div>
+        </footer>
+
+        <script src="lib/requirejs/require.js" data-main="js/main.js"></script>
+        <script>var shim = "_log";</script>
+
+        <script src="lib/jquery/jquery.js"></script>
+        <script src="js/utilesNotJs.js"></script>
+
+    </body>
+</html>

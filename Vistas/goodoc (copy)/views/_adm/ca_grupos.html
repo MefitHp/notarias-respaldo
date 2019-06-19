@@ -1,0 +1,55 @@
+
+<div class="contentInputs">
+
+
+
+    <form name="myForm" id="myForm" novalidate ng-submit="gpo_guardar()">
+        <div class="contentInputs">
+            <div class="colum colums4" >
+                <label>Nombre del grupo:</label>
+                <input type="text" placeholder="Ingresar nombre del grupo" ng-model="grupo.dsgrupo"/>
+            </div>
+            <div class="colum colums2" >
+                <label>Descripci&oacute;n:</label>
+                <input type="text" placeholder="Ingresar descripci&oacute;n del grupo" ng-model="grupo.idsdescripcion"  />
+            </div>
+
+        </div>
+    </form>
+    <div class="contentInputs">
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            <span ng-hide="isedit">&nbsp;</span>
+            <div class="btn-rounded" ng-show="isedit" ng-click="cancel_edit()"><p>Cancelar</p></div>
+        </div>
+        <div class="colum colums4">
+            <button class="btn-blue" ng-show="isedit" id="btn_actualizar" style="display:none;" ng-click="gpo_actualizar()">Actualizar grupo</button>
+            <button class="btn-blue" ng-hide="isedit" ng-click="gpo_guardar()">Agregar grupo</button>
+        </div>
+
+    </div>
+
+
+    <div class="contentInputs">
+        <table class="tableForm">
+            <tr>
+                <th width="40%">Nombre del grupo</th>
+                <th width="50%">Descripci&oacute;n del grupo</th>
+                <th width="5%"></th>
+                <th width="5%"></th>
+                <th width="5%"></th>
+            </tr>
+            <tr ng-repeat="gpo in grupos| orderBy:'dsgrupo'">
+                <td><p>{{gpo.dsgrupo}}</p></td>
+                <td><p>{{gpo.idsdescripcion}}</p></td>
+                <td ng-click="definir_grupo(gpo)"><span class="tbl_icon ico_clip"></span></td>
+                <td ng-click="gpo_obtiene(gpo.idgrupo)"><span class="tbl_icon ico_edit"></span></td>
+                <td ng-click="del_grupo(gpo)"><span class="tbl_icon ico_suspender"></span></td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>

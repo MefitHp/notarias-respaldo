@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>Pizarron</title>
+    <meta name="description" content="">
+    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="components/materialize/bin/materialize.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  </head>
+
+  <body>
+    <fountain-root>
+        <div class="progress">
+          <div class="indeterminate"></div>
+        </div>
+    </fountain-root>
+
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="components/materialize/bin/materialize.js"></script>
+    <script src="components/materialize/js/date_picker/es_ES.js"></script>
+
+    <script>
+      $(function(){
+        /*$('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          format:"yyyy-mm-dd",
+          today: 'Hoy',
+          clear: "--",
+          close: 'Cerrar',
+          onSet: function(context) {
+            console.log('Just set stuff:', context.select);
+            console.info($(this)[0].$node);
+          }
+        });
+
+        $(".datepicker").each(function(item){
+          var item = $(this);
+          item.val(item.attr("ng-reflect-value"));
+
+        })*/
+
+
+        $('.collapsible').collapsible({
+          accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+
+      })
+
+      setTimeout(function () {
+        //jQuery('.modal-trigger').leanModal();
+      }, 4000)
+
+    </script>
+  <script type="text/javascript" src="vendor-ef19fa5581e262074831.js"></script><script type="text/javascript" src="main-ef19fa5581e262074831.js"></script></body>
+</html>

@@ -1,0 +1,40 @@
+<loadscript url="ctrl_asignacion_operaciones.js"></loadscript>
+<div ng-controller="ctrl_asignacion_operaciones">
+   <navexpediente></navexpediente>
+   <bienvenida></bienvenida>
+   <abogado></abogado>
+   <div class="wra_form_data " id="localidad_wrap" style="display: none">
+      <div class=" contentInputs body_form_data">
+         <div class="wra_buscador ">
+            <div class="colum colums1">
+               <label>Localidad:</label> 
+               <div class="wrap_select">
+                  <select id="sel_localidad" ng-model="$root.sel_localidad" class="altas_bajas" ng-options="loc as loc.dselemento for loc in locacion | orderBy:'dselemento'" name="localidad">
+                     <option value="" disabled selected>--Seleccione--</option>
+                  </select>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="wra_form_data ">
+      <div class=" contentInputs body_form_data">
+         <div class="wra_buscador ">
+            <label>Selecci&oacute;n del acto:</label> 
+            <div class="colum colums3" >
+               <div class="wrap_select">
+                  <select id="sel_operaciones" ng-model="sel_operacion" class="altas_bajas" ng-options="op as op.operacion.dsnombre for op in sel_operaciones | orderBy:'operacion.dsnombre'" name="operaciones">
+                     <option value="" disabled selected>--Seleccione--</option>
+                  </select>
+               </div>
+            </div>
+            <div class="colum colums4" >
+               <div class="btn-rounded" ng-click="btn_operacion()">
+                  <p><span>+</span>Agregar</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="wrapp_operaciones" style="float:left;"> </div>
+</div>

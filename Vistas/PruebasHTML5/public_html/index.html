@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.js"></script>
+
+    </head>
+    <body>
+        <h1 id="calle">MI CALLE</h1>
+        <input type="text" id="micomponente" placeholder="mi componente">
+    </body>
+    <script>
+        var expresionSaca = 'f:si(>500, f:activa(${cmp:elemento[elemento_x]}, ${cmp:elemento[elemento_x]}),f:visible(f:si(${cmp:elemento[elemento_y]}>1,TRUE,f:asignaValor(${cmp:elemento[invisible]},"valor,Z"))))f:activa(${cmp:elemto[elemento_z]},TRUE)f:si(${cmp:elemento[elemento_y]}>1,TRUE,f:asignaValor(${cmp:elemento[invisible]},${cmp:elemento[invisible]} != "valor,Z"))'
+        // DEFINICION DEL OBJETO FUNCION
+
+        var funciones = [];
+
+        var Funcion = function(nombre, id) {
+            this.nombre = nombre;
+            this.id = id;
+            this.padre = nombre;
+            this.index = false;
+            this.parametros = [];
+            this.actualizaPadre = [];
+
+            this.getNombre = function() {
+                return this.nombre;
+            }
+
+            this.setNombre = function(nombre) {
+                this.nombre = nombre;
+            }
+
+            this.getParametros = function() {
+                return this.parametros;
+            }
+
+            this.setParametros = function(parametros) {
+                this.parametros = parametros;
+            }
+
+            this.agregaParametro = function(parametro) {
+                this.parametros.push(parametro);
+            }
+
+            this.setPadre = function(padre) {
+                this.padre = padre;
+            }
+
+            this.getPadre = function() {
+                return this.padre;
+            }
+
+            this.setIndex = function(index) {
+                if (this.padre != "ispadre") {
+                    //console.info("EL FELIZ PAPA",this.padre);
+                } else {
+                    //console.info("ES HUERFANOOOO!!");
+                }
+                this.index = index;
+            }
+
+            this.getIndex = function() {
+                return this.index;
+            }
+
+
+
+        }
+        
+        
+        //////////////////////////////////////////////////////////////////////////////////////
+        //                    FUNCIONES UTILES
+        //                    
+        /////////////////////////////////////////////////////////////////////////////////////
+        
+        /**
+         * 
+         * @param {type} string: ESCAPA TODOS LOS CARACTERES ESPECIALES PARA EVITAR ERRORES
+         * @returns REGRESA LOS VALORES ESCAPADOS
+         */
+        function escapeRegExp(string) {
+            return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+        }
+
+
+        /*
+         * 
+         * @param {type} str CADENA EN LA CUAL BUSCARA LAS OCURRENCIAS
+         * @param {type} find PALABRA A BUSCAR
+         * 
+         * @returns {unresolved}
+         */
+        function busca_ocurrencias(str, find) {
+            return str.split(find).length - 1;
+        }
+
+
+        /*
+         * 
+         * @param {type} string CADENA DE ENTRADA A REMPLAZAR
+         * @param {type} find VALOR A ENCONTRAR
+         * @param {type} replace VALOR A REMPLAZAR
+         * @returns {string} REGRESA LA CADENA CON LOS VALORES REMPLAZADOS
+         */
+        function replaceAll(string, find, replace) {
+            return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+        }
+
+        /*
+         * 
+         * @param {type} cadena CADENA EN LA QUE BUSCARA LAS FUNCIONES
+         * @returns REMPLAZA TODAS LAS FUNCIONES QUE ENCUENTRE DENTRO DE LA CADENA
+         */
+
+        /**
+         * 
+         * @param {type} str CADENA EN LA QUE BUSCARA EL PATRON
+         * @param {type} charini CARACTER A PARTIR DEL QUE BUSCARÁ EL VALOR
+         * @param {type} charfin EL CARACTER DE CIERRE DEL VALOR
+         * @returns {string} REGRESA LA CADENA LIMPIA CON BASE A LOS PARAMETROS QUE SE ENVIARON
+         */
+
+
+        function obtieneValor(str, charini, charfin) {
+            var ini_pos = str.indexOf(charini) + 1;
+            var fin_pos = str.indexOf(charfin, ini_pos);
+            return str.substring(ini_pos, fin_pos);
+        }
+
+        /**
+         * 
+         * @param {type} str CADENA EN LA QUE BUSCARA LA POSICION DEL DATO
+         * @param {type} ref LA REFERENCIA DEL TIPO DE VARIABLE QUE ES
+         * @returns {string} REGRESA EL PATRON EN EL CUAL SE BUSCARA EL VALOR
+         */
+        function encuentraPosDato(str, ref) {
+            var ini_pos = str.indexOf(ref);
+            if (ini_pos > -1) {
+                var fin_pos = str.indexOf("}", ini_pos) + 1;
+                var str_ref = str.substring(ini_pos, fin_pos);
+            } else {
+                str_ref = "notfound"
+            }
+            return str_ref;
+        }
+
+
+
+        
+        //////////////////////////////////////////////////////////////////////////////////////
+        //                    FIN FUNCIONES UTILES
+        //                    
+        /////////////////////////////////////////////////////////////////////////////////////
+        
+
+
+        /**
+         * /////////////////////////////////////////////////////////////////////////////////////
+         * FUNCION EN LA QUE SE DEFINE EL COMPORTAMIENTO DE LOS PARAMETROS DENTRO DE LA FUNCIÓN
+         * ////////////////////////////////////////////////////////////////////////////////////
+         * 
+         * @param {Funcion} funcion que remplazara sus parametros
+         * @param {type} tipo TIPO DE VALOR QUE SE BUSCARA EXISTEN 
+         * "c" PARA COMPONENTE
+         * "v" para VARIABLE
+         * @returns {string} REGRESA EL PATRON EN EL CUAL SE BUSCARA EL VALOR
+         */
+        function encuentraDato(funcion, tipo) {
+
+            var str = funcion.parametros;
+            var str_replace;
+            var str_ref;
+            var tipo_dato_ini = "'";
+            var tipo_dato_fin = "'";
+
+            var strreturn = ""
+            var paramSplit = str.split(",");
+
+            /*console.info("*************PARAMETROS***" + funcion.nombre + "*****************");
+            console.info(str.split(","));
+            console.info("*****-*_*_*_*_*_*_*_*_*_*_*_**_**_*_*_****");*/
+
+            if (funcion.nombre == "si" || funcion.nombre == "function(){si") {
+
+                switch (tipo) {
+                    case "c":
+                        str_ref = encuentraPosDato(paramSplit[0], "${cmp:");
+                        if (str_ref != "notfound") {
+                            str_replace = obtieneValor(str_ref, "[", "]");
+                            tipo_dato_ini = "$('#"
+                            tipo_dato_fin = "').val()";
+
+                            //console.info("REMPLAZO",tipo_dato_ini+str_replace+tipo_dato_fin);
+                            //console.info("STRING",paramSplit[0]);
+                            paramSplit[0] = replaceAll(paramSplit[0], str_ref, tipo_dato_ini + str_replace + tipo_dato_fin);
+
+                        }
+                        for (var i = 0; i < paramSplit.length; i++) {
+                            strreturn += paramSplit[i];
+                            if (typeof paramSplit[i + 1] != "undefined")
+                                strreturn += ",";
+                        }
+
+                        //console.info("FIN STRING",strreturn);
+                        return strreturn;
+
+                        break;
+
+                    default:
+
+
+                        break;
+                }
+
+
+            } else if (funcion.nombre == "asignaValor" || funcion.nombre == "function(){asignaValor" || funcion.nombre == "visible" || funcion.nombre == "function(){visible" || funcion.nombre == "activa" || funcion.nombre == "function(){activa") {
+
+                switch (tipo) {
+                    case "c":
+                        var armaParam = "";
+                        for (var h = 1; h < paramSplit.length; h++) {
+                            armaParam += paramSplit[h] + " , ";
+                        }
+
+                        str_ref = encuentraPosDato(armaParam, "${cmp:");
+                        
+                        if (str_ref != "notfound") {
+
+                            str_replace = obtieneValor(str_ref, "[", "]");
+                            tipo_dato_ini = "$('#"
+                            tipo_dato_fin = "').val()";
+
+                            console.info("REMPLAZO", tipo_dato_ini + str_replace + tipo_dato_fin);
+                            console.info("STRING", armaParam);
+                            armaParam = replaceAll(armaParam, str_ref, tipo_dato_ini + str_replace + tipo_dato_fin);
+
+                        }
+
+
+                        str_ref = encuentraPosDato(paramSplit[0], "${cmp:");
+                        if (str_ref != "notfound") {
+                            str_replace = obtieneValor(str_ref, "[", "]");
+                            tipo_dato_ini = "'";
+                            tipo_dato_fin = "'";
+
+                            //console.info("REMPLAZO",tipo_dato_ini+str_replace+tipo_dato_fin);
+                            //console.info("STRING",paramSplit[0]);
+                            paramSplit[0] = replaceAll(paramSplit[0], str_ref, tipo_dato_ini + str_replace + tipo_dato_fin);
+
+                        }
+
+                        strreturn = paramSplit[0] + "," + armaParam;
+                        return strreturn;
+
+                        break;
+
+                    default:
+
+                        break;
+                }
+
+                for (var i = 0; i < paramSplit.length; i++) {
+                    strreturn += paramSplit[i];
+                    if (typeof paramSplit[i + 1] != "undefined")
+                        strreturn += ",";
+                }
+
+                //console.info("FIN STRING", strreturn);
+                return strreturn;
+
+            }
+            else {
+
+
+                switch (tipo) {
+                    case "c":
+                        str_ref = encuentraPosDato(str, "${cmp:");
+                        str_replace = obtieneValor(str_ref, "[", "]");
+                        tipo_dato_ini = "'"
+                        tipo_dato_fin = "'"
+                        break;
+                    case "f":
+                        str_ref = encuentraPosDato(str, "${frm:");
+                        str_replace = obtieneValor(str_ref, "[", "]");
+
+                        break;
+                    case "g":
+                        str_ref = encuentraPosDato(str, "${gpo:");
+                        str_replace = obtieneValor(str_ref, ":", "}");
+                        break;
+                    case "v":
+                        str_ref = encuentraPosDato(str, "${var:");
+                        str_replace = obtieneValor(str_ref, ":", "}");
+                        break;
+
+
+                    default:
+
+                }
+
+
+
+            }
+
+            return replaceAll(str, str_ref, tipo_dato_ini + str_replace + tipo_dato_fin);
+
+        }
+
+
+
+
+
+
+        /// DESCOMPONE EL STRING EN OBJETOS DE TIPO FUNCION PARA SER TRATADOS
+        
+        function ordenaFunciones(exp) {
+
+            var posicion_funciones = [];
+            var nombres_funciones = [];
+            var ids_funciones = [];
+
+            for (var i = 0; i < exp.length; i++) {
+                //console.info("Posicion en::",exp[i]);
+                switch (exp[i]) {
+                    case "f":
+                        if (exp[i + 1] == ":") {
+                            var posini = exp.indexOf("(", i);
+                            if (posini > -1)
+                            {
+                                //console.info("NOMBRE DE LA FUNCION:",exp.substring(i+2,posini))
+                                //console.info("Posicion en::",i);
+                                nombres_funciones.push(exp.substring(i + 2, posini));
+                                ids_funciones.push(exp.substring(i + 2, posini) + posini);
+
+                                posicion_funciones.push(posini);
+
+                            }
+                        }
+
+                        break;
+                    case ")":
+                        var inicio_funcion = posicion_funciones.pop();
+                        var nombre_funcion = nombres_funciones[nombres_funciones.length - 1];
+                        var cadena_remplazo = [];
+                        var remplazo = "";
+                        var idfuncion = ids_funciones.pop();
+                        //console.info("*****LA FUNCION COMPLETA DE ***"+nombre_funcion+"*****");
+                        //console.info("A REMPLAZAR::");
+                        //console.info("**********************************************");
+                        //console.info(exp.substring((inicio_funcion - (nombre_funcion.length +2)),i+1));
+                        remplazo = exp.substring((inicio_funcion - (nombre_funcion.length) - 2), i + 1);
+                        //console.info("**********************************************");
+
+                        cadena_remplazo.push(remplazo);
+                        cadena_remplazo.push("@" + idfuncion + "@");
+
+                        funcion = new Funcion(nombres_funciones.pop(), "@" + idfuncion + "@");
+                        if (typeof ids_funciones[ids_funciones.length - 1] != "undefined") {
+                            funcion.setPadre("@" + ids_funciones[ids_funciones.length - 1] + "@");
+                        } else {
+                            funcion.setPadre("ispadre");
+                        }
+                        funcion.actualizaPadre = cadena_remplazo;
+                        /*if(posicion_funciones.length==1){
+                         console.info("NOMBRE:",funcion.nombre);
+                         console.info("AQUI VA",exp.substring(inicio_funcion,i+1));
+                         }*/
+                        funcion.setParametros(exp.substring(inicio_funcion, i + 1));
+                        funcion.setIndex(posicion_funciones.length);
+                        funciones.push(funcion);
+
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+            /*console.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+             console.info(funciones);
+             console.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+             console.info("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+             console.info(exp);
+             console.info("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+             *///console.info(funciones)
+        }
+
+        function buscarPadrePos(id_buscar, arreglo) {
+            for (var i = 0; i < arreglo.length; i++) {
+                if (id_buscar == arreglo[i].id)
+                {
+                    return i;
+                }
+
+            }
+        }
+
+        function parserFuncionesAparametro(funciones, exp) {
+
+            for (var i = 0; i < funciones.length; i++) {
+                var fun = funciones[i];
+                if (fun.getIndex() > 0) {
+                    fun.setNombre("function(){" + fun.nombre);
+                    fun.setParametros(fun.getParametros() + "}");
+                    var miPadrePos = buscarPadrePos(fun.getPadre(), funciones);
+
+                    /*console.info("PAPA",funciones[miPadrePos]);
+                     console.info("HIJO",fun);
+                     
+                     
+                     console.info("**********"+fun.nombre+"****MI PAPA ESTA::**"+miPadrePos+"*************") 
+                     console.info("ANTES::",funciones[miPadrePos].parametros);
+                     console.info("*********°°°°°°°°°°°°°°°°°°°°°°°°°******************")*/
+                    funciones[miPadrePos].parametros = funciones[miPadrePos].parametros.replace(fun.actualizaPadre[0], fun.actualizaPadre[1]);
+                    /*console.info("DESPUES::",funciones[miPadrePos].parametros);
+                     console.info("***********************************************************************")*/
+                } else {
+                    exp = exp.replace(fun.actualizaPadre[0], fun.actualizaPadre[1]);
+                }
+
+            }
+            return exp;
+        }
+
+
+
+        function paserComponentesAparametro(funciones) {
+            for (var i = 0; i < funciones.length; i++) {
+                var fun = funciones[i];
+                var ocurr_componentes = busca_ocurrencias(fun.parametros, "${cmp:");
+                var ocurr_variables = busca_ocurrencias(fun.parametros, "${var:");
+                var ocurr_grupos = busca_ocurrencias(fun.parametros, "${gpo:");
+                var ocurr_funciones = busca_ocurrencias(fun.parametros, "${frm:");
+
+                for (var j = 0; j < ocurr_componentes; j++) {
+                    fun.parametros = encuentraDato(fun, 'c');
+                }
+
+                for (var j = 0; j < ocurr_variables; j++) {
+                    fun.parametros = encuentraDato(fun, 'v');
+                }
+
+                for (var j = 0; j < ocurr_grupos; j++) {
+                    fun.parametros = encuentraDato(fun, 'g');
+                }
+
+                for (var j = 0; j < ocurr_funciones; j++) {
+                    fun.parametros = encuentraDato(fun, 'f');
+                }
+
+                if (funcion.nombre == "si" || funcion.nombre == "function(){si")
+                    console.info("VA CRECIENDO", fun.parametros);
+                //console.info("LA FUNCION: "+fun.nombre+" tiene: "+ocurrencias+" COMPONENTES",fun.parametros);
+            }
+            //console.info(funciones);
+
+        }
+
+
+        function creaStringDeFunciones(funciones, expresion) {
+
+            var finder = 0;
+            while (finder < funciones.length) {
+                for (var i = 0; i < funciones.length; i++) {
+                    var encuentroExp = expresion.indexOf(funciones[i].id);
+                    //console.info("busco:",funciones[i].id);
+                    if (encuentroExp > -1) {
+                        expresion = expresion.replace(funciones[i].id, funciones[i].getNombre() + funciones[i].getParametros());
+                        //console.info("encontre::",funciones[i].id);
+                        //console.info("**********REINICIO*****************");
+                        finder++;
+                    }
+                }
+
+            }
+            //console.info("****SALGO***");
+            return expresion;
+        }
+
+
+
+         
+        //////////////////////////////////////////////////////////////////////////////////////
+        //                    IMPLEMENTACIÓN
+        //                    
+        /////////////////////////////////////////////////////////////////////////////////////
+        
+
+        ordenaFunciones(expresionSaca);
+        //console.info("ANTES::",expresionSaca);
+        var exp = parserFuncionesAparametro(funciones, expresionSaca);
+        paserComponentesAparametro(funciones);
+        //console.info("DESPUES",exp);
+
+        exp = creaStringDeFunciones(funciones, exp);
+        console.info("°°°°°°°°°°°°°°°°°°°°°°°FUNCION PARSEADA°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
+        console.info(exp);
+        console.info("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        //                    FIN DE IMPLEMENTACIÓN
+        //                    
+        /////////////////////////////////////////////////////////////////////////////////////
+        
+
+
+
+
+        //////////////////////////////////////
+        ////// FUNCIONES /////////////////////
+        /////////////////////////////////////
+
+        
+        function si(expresion, verdadero, falso) {
+            
+            var verisfuncion = (typeof verdadero !="undefined" && typeof verdadero =="function")?true:false;
+            var falisfuncion = (typeof falso !="undefined" && typeof falso =="function")?true:false;
+            
+             if(expresion){
+                 if(verisfuncion){
+                     verdadero();
+                     return true;
+                 } 
+                 
+             }else{
+                 if(falisfuncion){
+                   falso();  
+                   return false;
+                 } 
+             }
+                          
+        }
+        
+        
+        function asignaValor(componente,valor){
+            $("#"+componente).val(valor);
+        }
+        function activa(componente,estado){
+            var estado=(estado)?false:true;
+            $("#"+componente).prop("disabled",estado);
+        }
+        function visible(componente,estado){
+            if(estado) $("#"+componente).fadeIn("slow");
+            else $("#"+componente).slideUp("slow");
+        }
+
+
+
+
+
+
+
+
+    </script>
+</html>

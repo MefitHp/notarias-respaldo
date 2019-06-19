@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--To change this license header, choose License Headers in Project Properties.To change this template file, choose Tools | Templatesand open the template in the editor.-->
+<html lang="es"> 
+
+    <head> 
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <title>Notaria 98 y 24
+        </title> 
+        <meta name="description" content=""> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link rel="stylesheet" type="text/css" href="css/login.css"> 
+    </head> 
+
+
+    <body ng-controller="ctrl_login" ng-cloak> 
+
+        <div id="conpag">
+        <div id="alertaContainer" style=""> <h2 style="color:white !important"></h2> 
+        </div>
+            <section id="wrap_prin"> 
+
+                <div id="wra_login" style="overflow: hidden;" > 
+
+                <div id="login"> 
+                    <h1 style="margin-top:60px">Bienvenid@</h1> <h2>Sistema generador 
+                        <br>de documentos notariales</h2> 
+
+                    <div class="loginForm grad_gray"> 
+
+                        <div class="login_avatar">
+                            <!--
+                            
+                            <div class="pulso_login pulseAnimation">
+                            </div><img src="img/assets/login/log_avatar.png" width="82" height="82" alt="log_avatar"/> --> <img src="img/assets/login/gonot.png" style="width: 200px"> 
+                        </div>
+                        <!-- 
+                        
+                        <form name="frm_login" id="frm_login" method="POST"> 
+                        <input type="hidden" name="val" id="val"> 
+                        </form>--> 
+
+                        <form name="myForm" id="myForm" novalidate ng-submit="submit()"> 
+
+                            <div class="login_form" id="frm_login" > 
+                                <div ng-hide="ischrome" style="text-align: center;">
+                                    <p>El navegador recomendado para esta aplicación es Chrome</p>
+                                    <h6><a href="https://www.google.com/chrome/browser/desktop/index.html">Descargar aqu&iacute;</a></h6>
+                                </div>
+                                
+                                <div class="campoLogin" ng-show="ischrome"> 
+                                    <label class="labelLogin"><b>Usuario</b>
+                                    </label> 
+                                    <input type="text" name="usuario" id="usuario" placeholder="Nombre del usuario" maxlength="16" required/> 
+
+                                    <div class="tooltip" ng-show="myForm.submitted && myForm.usuario.$error.required" >Campo requerido
+                                    </div>
+                                </div>
+
+                                <div class="campoLogin" ng-show="ischrome"> 
+                                    <label class="labelLogin"><b>Contrase&ntilde;a</b>
+                                    </label> 
+                                    <input type="password" name="password" id="password" placeholder="************" maxlength="32" required/> 
+
+                                    <div class="tooltip" ng-show="myForm.submitted && myForm.password.$error.required" >Campo requerido
+                                    </div>
+                                </div>
+
+                                <div class="campoLogin" ng-show="ischrome"> 
+                                    <button class="btn-blue" type="submit">Acceder</button> 
+
+                                   <!-- <p> <a href="#" onclick="switchElemento('#frm_login', '#frm_remember')">&iquest;Olvidaste tu contrase&ntilde;a?</a> </p>-->
+                                </div>
+                            </div>
+                        </form> 
+
+                        <!--Víctor: Se quito, pues no van a poder recordar la contraseña en el portal, se tiene que pedir a sistemas
+                        Así lo acordamos con el Lic. Ortíz
+                        <div class="login_form" id="frm_remember" > 
+
+                            <div class="campoLogin"> 
+                                <label class="labelLogin"> <b>Correo electr&oacute;nico</b>
+                                </label> 
+                                <input type="text" placeholder="Escribe t&uacute; correo o usuario" ng-model="restaurapass.dscorreo" maxlength="40"/> 
+                            </div>
+                            <br>
+
+                            <div class="campoLogin"> <button class="btn-blue" ng-click="recuperaPass()">Recuperar contrase&ntilde;a</button> 
+
+                                <div class="btn-rounded" style="width: 99%;" onclick="switchElemento('#frm_remember', '#frm_login');">
+
+                                    <p>Regresar</p>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+
+                    <div class="campoLogin"> 
+
+                        <p> </p>
+                    </div>
+                </div>
+                    
+            </div>
+                
+            
+            </section> <footer> 
+
+            <div id="wrap_footer"> 
+
+                <div class="colums2"> 
+
+                    <p> <b>98 y 24 &reg; Derechos reservados</b> </p>
+
+                    <p> Altavista 83, Col. San Ángel, Del. Alvaro Obregón, C.P.01049 </p>
+                </div>
+
+                <div class="colums2"> 
+
+                    <p> Lic. Ortiz Blanco Gonzalo Manuel 
+
+                    <p> 
+
+                    <p> Lic. Duarte Guerra Luis Ricardo </p>
+                </div>
+            </div></footer>
+            </div>
+        <script>var shim = "_log";
+        </script> 
+        <script src="lib/requirejs/require.js" data-main="js/main.js">
+        </script> 
+        <script src="lib/jquery/jquery.js">
+        </script> 
+        <script src="lib/plugins/jquery.hotkeys.min.js">
+        </script> 
+        <script src="js/utilesNotJs.js">
+        </script> 
+        <script src="js/modal.js">
+        </script> 
+        <script>var modal = new Modal_Componente();
+                            modal.create();
+                            modal.show();
+        </script> 
+    </body>
+</html>

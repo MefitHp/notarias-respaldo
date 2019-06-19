@@ -1,0 +1,22 @@
+<loadscript url=ctrl_logs.js></loadscript>
+<div ng-controller=ctrl_logs>
+<div class="contentInputs"> 
+
+        <div class="colum colums1">
+            <textarea style="width:89%; height:800px; color:red; font-size: 14px;" id="logdata"></textarea>
+        </div>
+       <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+          <div class="colum colums4"> 
+              <input type="text" ng-model="lines" ng-init="lines=0">
+          </div>
+
+        <div class="colum colums4"> 
+            <button class="btn-blue" ng-click="refresh()">Refrescar</button> 
+        </div>
+    </div>               
+   </div>
+</div>

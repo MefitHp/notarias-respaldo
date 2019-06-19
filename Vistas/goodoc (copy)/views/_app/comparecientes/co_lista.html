@@ -1,0 +1,304 @@
+<loadscript url="ctrl_list_comparecientes.js"></loadscript>
+
+<div ng-controller="ctrl_list_comparecientes">
+    <navexpediente></navexpediente>
+    <bienvenida></bienvenida>
+    <abogado></abogado>
+    <div class="contentInputs" ng-show="nopaso"> 
+        <h2 style="color:red">La escritura de este acto se encuentra como "NO PASO" y no es posible actualizar ni crear nuevos comparecientes </h2>
+    </div>
+    <div class="contentInputs" ng-hide="nopaso"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> 
+            <button ng-show="idtarea != null" class="btn-blue" ng-click="ejecutaTachadoDeFirmas(false)">Todas las firmas estan tachadas</button> 
+            <span ng-hide="idtarea != null">&nbsp; </span>
+        </div>
+
+        <div class="colum colums4">
+
+            <button ng-hide="escritura.dsnumescritura != null && comparecientes_conyuge.length < 1" class="btn-blue" ng-click="validaPosteriores()">Solicitar documentos posteriores</button> 
+            <span ng-show="escritura.dsnumescritura != null && comparecientes_conyuge.length > 0" >&nbsp; </span>
+
+        </div>
+
+        <div class="colum colums4"> 
+            <button class="btn-blue" ng-show="escritura.dsnumescritura == null" ng-click="goTo('/comparecientes_registrar')">Nuevo otorgante</button> 
+            <span ng-show="escritura.dsnumescritura != null" >&nbsp; </span>
+        </div>
+    </div>
+
+    <div class="contentInputs"> 
+        <table class="tableForm"> 
+            <tr> 
+                <th width="5%" > 
+
+                    <span class="tbl_icon ico_person_two">
+                    </span> 
+                </th> 
+                <th width="30%">Nombre
+                </th> 
+                <th width="5%"> 
+                </th>
+                <!--
+                <th width="5%"> 
+                </th>--> 
+                <th width="5%"> 
+                </th> 
+                <th width="15%">Tipo de Otorgante
+                </th> 
+                <th width="20%">Acto
+                </th> 
+                <th width="5%" >
+                </th> 
+                <!--<th width="5%">-
+                </th> -->
+                <th width="5%" ng-show="escritura.dsnumescritura != null">
+                </th> 
+                <th width="5%">
+                </th> 
+            </tr>
+            <tr style='vertical-align: top' ng-repeat="com in comparecientes" ng-class-even="'lista_alternate'" ng-show="com.compareciente.tipoCompareciente.dsnombre != 'Autorizante'"> 
+                <td>{{$index + 1}}
+                </td>
+                <td> 
+
+                    <span ng-class="{'active':com.compareciente.isrepresentante}">{{com.compareciente.persona.dsnombrecompleto}}
+                    </span> 
+
+                    <!--<div style="margin-top:5px;display: none;" id="select_add_comp{{$index}}" class="tbl_representante tit_representante select_comp_more"> <b style="font-size:10px;margin:10px 0;display:block">Es representado por:</b> 
+
+                        <div class="wrap_select" style="width: 70%;margin-right: 10px;height: 25px;"> 
+                            <select style="font-size: 10px;height:25px" id="select{{$index}}" ng-model="select_representante" ng-options="rep as rep.persona.dsnombrecompleto for rep in representantes"> 
+
+                                <option selected disabled value="">--Seleccione--</option> 
+                            </select> 
+                        </div>
+
+                        <div> <button class="btn-blue" style="width:10%;height: 25px;" ng-click="add_com_lista(com, $index)">&checkmark;</button> <button class="btn-blue" style="width:10%;height: 25px;" ng-click="add_to_com_new(com.compareciente, 'r')">+</button> 
+                        </div>
+                    </div>-->
+
+                    <div class="tbl_representante tit_representante" ng-show="com.conyuge.conyugeCompra">Conyuge compra:{{com.conyuge.conyugeCompra.regimen.dselemento}}
+                    </div>
+
+                    <div class="tbl_representante wrap_representados" ng-show="com.conyuge.conyugeCompra"> 
+
+                        <span class="nom_representado">{{com.conyuge.conyugeCompra.persona.dsnombrecompleto}}
+                        </span> 
+
+                        <span class="tbl_icon fa fa-remove fa-2x icon_gray" title="Eliminar conyuge" ng-click="del_compareciente(com.conyuge.conyugeCompra, 'C')">
+                        </span> 
+
+                        <span class="tbl_icon fa fa-pencil fa-2x icon_gray" title="Editar conyuge"  ng-click="edit_conyuge(com)">
+                        </span>
+                        <span class='tbl_icon fa fa-check-square-o fa-2x ' ng-show="escritura.dsnumescritura != null" title="Tachar Firma" ng-click="tachaFirma(com.conyuge.conyugeCompra, (com.conyuge.conyugeCompra.firma != null))" ng-class="{ 'resaltar1': com.conyuge.conyugeCompra.firma != null,'icon_gray':com.conyuge.conyugeCompra.firma == null }"></span>              
+
+                    </div>
+                    <div class="tbl_representante tit_representante" ng-show="com.conyuge.conyugeActual">Conyuge actual:{{com.conyuge.conyugeActual.regimen.dselemento}}
+                    </div>
+                    <div class="tbl_representante wrap_representados" ng-show="com.conyuge.conyugeActual"> 
+
+                        <span class="nom_representado">{{com.conyuge.conyugeActual.persona.dsnombrecompleto}}
+                        </span> 
+
+                        <span class="tbl_icon fa fa-remove fa-2x icon_gray" title="Eliminar conyuge" ng-click="del_compareciente(com.conyuge.conyugeActual, 'A')">
+                        </span> 
+
+                        <span class="tbl_icon fa fa-pencil fa-2x icon_gray" title="Editar conyuge"  ng-click="edit_conyuge(com)">
+                        </span> 
+                        <span class='tbl_icon fa fa-check-square-o fa-2x ' ng-show="escritura.dsnumescritura != null" title="Tachar Firma" ng-click="tachaFirma(com.conyuge.conyugeActual, (com.conyuge.conyugeActual.firma != null))" ng-class="{ 'resaltar1': com.conyuge.conyugeActual.firma != null,'icon_gray':com.conyuge.conyugeActual.firma == null }">
+
+                        </span> 
+
+
+                    </div>
+
+
+                    <div class="tbl_representante tit_representante" ng-show="com.representantes.length > 0">Es representado por:
+                    </div>
+
+                    <div class="tbl_representante wrap_representados" ng-repeat="rep in com.representantes" > 
+
+                        <span class="nom_representado">&bullet;&nbsp;{{rep.persona.dsnombrecompleto}}
+                        </span> 
+
+                        <span class="tbl_icon fa fa-remove fa-2x icon_gray" title="Eliminar representante" ng-click="delete_com_lista(com, $index)">
+                        </span> 
+
+                        <span class="tbl_icon fa fa-pencil fa-2x icon_gray" title="Editar representante"  ng-click="edit_representante(rep)">
+                        </span> 
+                        <span class='tbl_icon fa fa-check-square-o fa-2x ' ng-show="escritura.dsnumescritura != null" title="Tachar Firma" ng-click="tachaFirma(rep, (rep.firma != null))" ng-class="{ 'resaltar1': rep.firma != null,'icon_gray':rep.firma == null }">
+
+                        </span> 
+
+
+                    </div>
+                    <div class="tbl_representante tit_representante" ng-show="com.hijos.length > 0">Hijos:
+                    </div>
+                    <div class="tbl_representante wrap_representados" ng-repeat="hijo in com.hijos" > 
+
+                        <span class="nom_representado">&bullet;&nbsp;{{hijo.persona.dsnombrecompleto}}
+                        </span> 
+
+
+                        <span class="tbl_icon fa fa-remove fa-2x icon_gray" title="Eliminar representante" ng-click="delete_hijo(com, hijo)">
+                        </span> 
+
+                        <span class="tbl_icon fa fa-pencil fa-2x icon_gray" title="Editar representante"  ng-click="edit_hijo(com, hijo)">
+                        </span> 
+                        <span class='tbl_icon fa fa-check-square-o fa-2x ' ng-show="escritura.dsnumescritura != null" title="Tachar Firma" ng-click="tachaFirma(hijo, (hijo.firma != null))" ng-class="{ 'resaltar1': hijo.firma != null,'icon_gray':hijo.firma == null }">
+
+                        </span>
+
+
+                    </div>
+
+
+                    <div class="tbl_representante tit_representante" ng-show="com.autorizantes.length > 0">Es autorizado por:
+                    </div>
+
+                    <div class="tbl_representante wrap_representados" ng-repeat="aut in com.autorizantes" > 
+
+                        <span class="nom_representado">&bullet;&nbsp;{{aut.persona.dsnombrecompleto}}
+                        </span> 
+
+                        <span class="tbl_icon ico_delete" ng-click="eliminar_autorizante(com, aut)"
+                              </td>
+                            <td ng-click="add_to_com_new(com.compareciente, 'r')" title="Agregar representante"> 
+                                <i class="fa fa-users icon_gray fa-2x" ng-show="com.compareciente.acto.dsnombre != 'Testamento'"></i> 
+                            </td>
+                            <td title="Agregar c&oacute;nyuge" ng-show="com.compareciente.acto.dsnombre != 'Testamento'"> 
+                                <!-- 
+                                
+                                <span class='tbl_icon ico_house' >
+                                </span>-->
+                                <i class="fa fa-home fa-2x icon_gray" ng-hide="com.conyuge!=null || (com.compareciente.persona.tipopersona!=null && com.compareciente.persona.tipopersona.dscodigo=='PM')" ng-click="add_to_com_new(com.compareciente, 'c')" ></i> 
+                            </td>
+                            <td title="Agregar hijo" ng-show="com.compareciente.tipoCompareciente.dsnombre == 'Esposo(a)'"> 
+                                <i class="fa fa-child fa-2x icon_gray" ng-click="add_to_com_new(com.compareciente, 'h')"></i> 
+                            </td>
+
+                            <td>{{com.compareciente.tipoCompareciente.dsnombre}}
+                            </td>
+                            <td>{{com.compareciente.acto.suboperacion.operacion.dsnombre}}
+                            </td>
+                            <td  width="5%" ng-click="actualiza_compareciente(com.compareciente.idcompareciente)" title="Editar"> 
+                                <span class="tbl_icon ico_edit">
+                                </span> 
+                            </td>
+                            <td ng-click="tachaFirma(com.compareciente, (com.compareciente.firma != null))" ng-show="escritura.dsnumescritura != null" title="Tachar firma compareciente"> 
+                                <span class='fa fa-check-square-o fa-2x' ng-class="{ 'resaltar1': com.compareciente.firma != null,'icon_gray':com.compareciente.firma == null }">
+                                </span> 
+                            </td>
+                            <td ng-click="del_compareciente(com)" title="Elimnar compareciente"> 
+
+                                <span class='tbl_icon ico_delete'>
+                                </span> 
+                            </td>
+
+                            </tr>
+                            </table>
+                    </div>
+
+                    <div id="validaPosteriores" style="display:none; width: 500px;" class="avgrund-popup avgrund-popup-animate" > 
+
+                        <div class="modal_header">Notarias 98 y 24
+                        </div>
+
+                        <div class="modal_body"> 
+
+                            <div class="contentInputs"> 
+
+                                <div class="colum"> 
+                                    <p ng-show="msj_posteriores">¿Deseas solicitar los documentos posteriores en este momento?</p>                    
+                                    <p ng-show="!msj_posteriores">Selecciona los documentos posteriores a solicitar</p>
+
+                                </div>
+
+                                <label ng-repeat="post in listaPosteriores" ng-show="!msj_posteriores">
+                                    <input
+                                        type="checkbox"
+                                        name="selectedPost[]"
+                                        id="post{{post.formatopdf.identificador}}"
+                                        value="{{post.formatopdf}}"
+                                        ng-model="bool"
+                                        ng-change ="addPost(bool, post.formatopdf)"
+                                        ng-checked="isChecked(post.formatopdf.identificador)"
+                                        > {{post.formatopdf.dstitulo}}
+                                </label>
+                            </div>
+
+
+
+
+                            <div class="contentInputs" ng-show="msj_posteriores"> 
+
+                                <div class="colum colums4">
+                                    <div class="btn-rounded cerrarModal" ng-click="cerrarModal()">
+
+                                        <p>No</p>
+                                    </div>
+                                </div>
+                                <div class="colum colums4">
+                                    <div class="btn-rounded btn-blue" ng-click="choosePosteriores()">
+
+                                        <p>S&iacute;</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="contentInputs" ng-show="!msj_posteriores"> 
+
+                                <div class="colum colums4">
+                                    <div class="btn-rounded cerrarModal" ng-click="cerrarModal()">
+
+                                        <p>No</p>
+                                    </div>
+                                </div>
+                                <div class="colum colums4">
+                                    <div class="btn-rounded btn-blue" ng-click="setPosteriores()" >
+                                        <p>Solicitar Posteriores</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div id="validaPreventivo" style="display:none; width: 500px;" class="avgrund-popup avgrund-popup-animate" > 
+                        <div class="modal_header">Notarias 98 y 24</div>
+                        <div class="modal_body"> 
+                            <div class="contentInputs"> 
+
+                                <div class="colum"> 
+                                    <p>¿Deseas solicitar el Documento Preventivo en este momento?</p>                    
+
+                                </div>                
+                            </div>
+
+                            <div class="contentInputs"> 
+
+                                <div class="colum colums4">
+                                    <div class="btn-rounded cerrarModal" ng-click="lanzaServicioFirma(false)">
+                                        <p>No</p>
+                                    </div>
+                                </div>
+                                <div class="colum colums4">
+                                    <div class="btn-rounded btn-blue" ng-click="lanzaServicioFirma(true)">
+                                        <p>S&iacute;</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    </div>

@@ -1,0 +1,75 @@
+{
+  "listaExpedientes": [{
+    "expediente":{
+      "idexpediente":"",
+      "credito":"",
+      "dsdescripcion":"",
+      "dsreferencia":"",
+      "dsstatus":"",
+      "fechafinal":"",
+      "fechainicial":"",
+      "iscotejo":"",
+      "numexpediente":"",
+      "tramite":{
+	"idtramite":"",
+	"txtproposito":"",
+	"locacion":{
+	    "idelemento":"",
+	    "dselemento":"",
+	},
+	"cliente":{
+	    "idpersona":"",
+	    "dsnombrecompleto":"",
+	    "dstelefono":"",
+	    "dscorreoelectronico":""
+	},	
+      "abogado":{
+	"dsiniciales":"",
+	"dsnombre":"",
+	"dspaterno":"",
+	"dsmaterno":""
+	},
+      "estatus":"",
+      "dsmotivocierre":""
+    },
+    "expediente":{
+      "idexpediente":"",
+      "credito":"",
+      "dsdescripcion":"",
+      "dsreferencia":"",
+      "dsstatus":"",
+      "fechafinal":"",
+      "fechainicial":"",
+      "iscotejo":"",
+      "numexpediente":"",
+      "tramite":{
+	"idtramite":"",
+	"txtproposito":"",
+	"locacion":{
+	    "idelemento":"",
+	    "dselemento":"",
+	  },
+	"cliente":{
+	    "idpersona":"",
+	    "dsnombrecompleto":"",
+	    "dstelefono":"",
+	    "dscorreoelectronico":""
+	},	
+      "abogado":{
+	"dsiniciales":"",
+	"dsnombre":"",
+	"dspaterno":"",
+	"dsmaterno":""
+	},
+      "estatus":"",
+      "dsmotivocierre":""
+    }
+  }
+  ],
+  "errores": null,
+  "usuario": {
+        "idusuario": "97d5a1144f881bd7fa545ec6e3c084a7",
+        "idsesionactual": "84ead0039f82caa73bb65fd661ac1330"
+    },
+  "exito": true
+}

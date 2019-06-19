@@ -1,0 +1,95 @@
+<loadscript url=FOL/ctrl_solicitud_folio_abogado.js></loadscript><div ng-controller=ctrl_fol_solicitud_folio>
+    <h1>Solicitar folios:</h1><hr>
+    <div class="contentInputs"> 
+        <div class="colum colums2">
+          <label>N&uacute;mero de escritura:</label> 
+          <input type="text" placeholder="--Ingrese Datos--" ng-model="solicitudPrestamo.numeroEscritura"> 
+        </div>
+        <div class="colum colums4" style="margin-top: 17px">
+            <div class="btn-rounded" ng-click="goTo('/')"><p>Regresar</p>
+            </div>
+          </div>
+        <div class="colum colums4">
+            <label>&nbsp;</label> 
+            <button class="btn-blue" ng-click="guarda_folio()">Solicitar</button> </div>
+            
+        
+        
+        
+
+    </div>
+    
+       <div class="contentInputs"> 
+        <h2 ng-show="solicitados.length < 1">NO HAY FOLIOS SOLICITADOS</h2>
+        <h1 ng-show="solicitados.length > 0">FOLIOS SOLICITADOS</h1> 
+        <table class="tableForm" ng-show="solicitados.length > 0"> 
+            <thead> 
+                <tr> 
+                    <th width="5%">
+                    </th> 
+                    <th width="17%">
+                        N&uacute;mero de escritura
+                    </th> 
+                    <th width="20%">Fecha de solicitud
+                    </th> 
+                    <th width="5%">
+                    </th> 
+                </tr></thead> <tbody> 
+                <tr ng-repeat="sol in solicitados" ng-class-even="'lista_alternate'"> 
+
+                    <td> 
+                        {{$index+1}}
+                    </td>
+                    <td>{{sol.numeroEscritura}}
+                    </td>
+                    <td>{{parseFecha(sol.tmstmp)}}
+                    </td>
+                   
+                    <td class="wrap-fa" ng-click="eliminar_solicitud(sol)" title="Eliminar solicitud">
+                        <i class="fa fa-2x fa-trash-o icon_gray"></i>
+                    </td>
+                    
+                </tr></tbody> 
+        </table>
+    </div>
+    
+    <div class="contentInputs"> 
+        <h2 ng-show="prestados.length < 1">NO HAY FOLIOS EN POSESIÓN</h2>
+        <h1 ng-show="prestados.length > 0">FOLIOS EN POSESIÓN</h1> 
+        <table class="tableForm" ng-show="prestados.length > 0"> 
+            <thead> 
+                <tr> 
+                    <th width="5%">
+                    </th> 
+                    <th width="17%">
+                        N&uacute;mero de escritura
+                    </th> 
+                    <th width="20%">Fecha de prestamo
+                    </th>
+                    <th width="20%">Fecha de entrega
+                    </th>
+                 
+                    <th width="5%">
+                    </th> 
+                </tr></thead> <tbody> 
+                <tr ng-repeat="pres in prestados" ng-class-even="'lista_alternate'"> 
+                    <td> 
+                        {{$index+1}}
+                    </td>
+                    <td>{{pres.numeroEscritura}}
+                    </td>
+                    <td>
+                        {{parseFecha(pres.fechaEntrega)}}
+                    </td>
+                    <td>
+                        {{parseFecha(pres.fechaDevolucion)}}
+                    </td>
+                   
+                    <td class="wrap-fa">
+                        <i ng-class="{'fa fa-2x resaltar2 fa-check-square-o':pres.status!='E','fa cuidado fa-2x fa-clock-o':pres.status=='E'}" title="{{pres.status}}"></i>
+                    </td>
+                    
+                </tr></tbody> 
+        </table>
+    </div>
+    

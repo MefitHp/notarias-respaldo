@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('comTableSubForm',function(){return{restrict:'AE',templateUrl:urlTemplates+'componente_table_subform.html',scope:{titulo:"@",idsubform:"@",componentes:"@",idcomponente:"@",},link:function(scope,element){var componentes=JSON.parse(scope.componentes);}};});});

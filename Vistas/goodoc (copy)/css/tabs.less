@@ -1,0 +1,32 @@
+@import url(variables.less);
+.tab-container{margin-left: 10px;}
+.etabs { margin: 0; padding: 0; }
+.tab { display: inline-block; zoom:1; *display:inline; background: @co_principal; border: @borde_Lista; border-bottom: none;}
+.tab a { transition: all 1s; font-size: 11px;font-weight:normal; line-height: 2em; display: block; padding:  3px 50px; outline: none; text-decoration: none; color:@co_principal_dark }
+.tab a:hover { text-decoration: underline; }
+.tab.active { background: #fff; position: relative; top: 1px;border: @borde_Lista; border-bottom:none; border-top: 3px @co_secundario solid; }
+.tab a.active { font-weight: bold; }
+.tab-container .panel-container { background: #fff; border: @borde_Lista; padding: 10px;width: 94%;}
+
+.panel-container {
+    overflow:hidden;
+    .colums1{
+        width: 100%;
+    } 
+    
+    .colums4{
+        width: 203px;
+    }
+    
+
+    .colums2{
+        width: 415px;
+        input[type="text"]{
+            width: 80%;
+        }
+    }
+    
+   
+    
+    
+}

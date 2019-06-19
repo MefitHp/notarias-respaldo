@@ -1,0 +1,58 @@
+.onoffswitch {
+    position: relative; width: 80px;
+    -webkit-user-select:none; 
+    -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: @borde_Lista; border-radius: 24px;
+    width: auto !important;
+    float:none !important;
+}
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 34px; padding: 0; line-height: 34px;
+    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "Sí";
+    padding-left: 11px;
+    background-color: @co_secundario; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "No";
+    padding-right: 11px;
+    background-color: @co_principal_dark; 
+    color: #FFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    width: 32px; 
+    height: 32px;
+    margin: 1px;
+    background: #FFFFFF;
+    border: @borde_Lista; border-radius: 24px;
+    position: absolute; top: 0; bottom: 0; 
+    right: 44px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+    box-shadow: -2px 1px 3px @co_principal_dark;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+.wrap_switch{
+    float: right !important;
+}

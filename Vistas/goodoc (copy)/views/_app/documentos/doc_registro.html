@@ -1,0 +1,68 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+
+
+<div class="wra_form_data">
+    <div class="head_form_data">
+        <div class="contentInputs">
+
+            <div class="colum colums2" >
+                <input type="text" placeholder="Nombre del cliente" ng-model="evidencia.dsnombrecliente" name="evidencia" />
+            </div>
+            <div class="colum colums2" >
+                <div style="display:inline-block">
+
+                    <p><b>El cliente entrego los documentos:</b></p>
+                    <p><span>*</span>Un compareciente entrego los documentos</p>
+                </div>
+                <div style="float:right;display: inline-block">
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="iscliente" ng-model="evidencia.iscliente" ng-init="evidencia.iscliente = false" checked="false">
+                                    <label class="onoffswitch-label" for="iscliente">
+                                        <div class="onoffswitch-inner"></div>
+                                        <div class="onoffswitch-switch"></div>
+                                    </label>
+                            </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+    <div class="body_form_data">
+        <div class="contentInputs">
+
+
+
+            <div class="colum colums1">
+                <label>Documento:</label>
+                <textarea ng-model = "evidencia.txdescripcion"></textarea>
+            </div>
+
+
+
+        </div>
+        
+    </div>
+
+
+</div>
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded" ng-click="goTo('/documentos')"><p>Cancelar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="guardar_evidencia()">Guardar documento</button>
+    </div>
+
+</div>

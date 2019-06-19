@@ -1,0 +1,62 @@
+${var:notaria_notario}
+${var:notaria_numero(funcion=texto)}"
+${var:notaria_notario},
+${var:notaria_numero(funcion=texto)},
+${var:notaria_asociada_numero(funcion=texto)},
+${var:notaria_asociada_notario}"
+${var:escritura_folio(funcion=texto)}
+${var:compareciente_nombre(tipo=VENDEDOR)}
+${var:compareciente_estado_civil_texto(TIPO=VENDEDOR)}
+${var:compareciente_nombre(tipo=COMPRADOR)}
+${var:compareciente_nacionalidad(tipo=COMPRADOR)}
+${var:compareciente_originario(tipo=COMPRADOR)} 
+${var:compareciente_fecha_nacimiento(tipo=COMPRADOR)}
+${var:compareciente_estado_civil(tipo=COMPRADOR)} 
+${var:compareciente_domicilio(tipo=COMPRADOR)} 
+${var:compareciente_ocupacion(tipo=COMPRADOR)}
+${var:compareciente_rfc(tipo=COMPRADOR)} 
+${var:compareciente_curp(tipo=COMPRADOR)}
+
+${frm:antecedente_compraventa[vendedor_conyugue]}
+${frm:antecedente_compraventa[originales_no(contenido=De lo anterior me impuse, a solicitud de los interesados, en términos de lo dispuesto por la fracción séptima del artículo ciento dos de la Ley del Notariado para el Distrito Federal)]}
+
+${frm:antecedente_compraventa[gravamen_libre(contenido=se encuentra libre de  gravámenes, lo que justifica con el certificado de libertad de gravámenes, presentado en el Registro Público de la Propiedad de esta capital,)]}
+
+el día ${frm:atencedente_compraventa[gravamen_fecha]}, que agrego al apéndice de esta escritura con la letra #LETRA
+
+${frm:antecedente_compraventa[gravemen_cancelado_inscrito(contenido=Es de advertir que la hipoteca que reporta dicho certificado no tiene razón de ser en virtud de haber sido cancelada )]} 
+
+
+${frm:antecedente_compraventa[gravamen_numero_escritura(funcion=texto)]}, ${frm:antecedente_compraventa[gravamen_fecha_escritura(funcion=texto)]}, ${frm:antecedente_compraventa[gravamen_notario}, ${frm:antecedente_compraventa[gravamen_notaria_numero(funcion=texto)]}
+
+
+${frm:antecedente_compraventa[gravamen_inscrito_folio_real(contenido=cuyo primer testimonio está pendiente de ser inscrito en el Registro Público de la Propiedad de esta Capital | cuyo primer testimonio quedó inscrito en el Registro Público de la Propiedad de esta Capital en el folio real número #VALOR)]}
+
+ 
+
+${frm:antecedente_compraventa[gravemen_cancelado_mismoinstrumento(contenido=Es de advertir que la hipoteca que reporta dicho certificado fue cancelada y se encuentra libre de gravámenes, lo que justifica con el certificado de gravámenes, presentado en el Registro Público de la Propiedad de esta capital. Es de advertir que la hipoteca que reporta dicho certificado será cancelada más adelante, en este mismo instrumento]} 
+
+${frm:antecedente_compraventa[gravamen_cancelado_separado(contenido=Es de advertir que la hipoteca que reporta dicho certificado será cancelada en instrumento por separado.)]}
+
+
+${frm:antecedente_compraventa[antecedente_inmueble_preventivo(contenido=Es de advertir que las partes están de acuerdo en firmar la presente escritura, no obstante estar vencido el correspondiente aviso preventivo, por lo que toman a su cargo cualquier consecuencia que esto origine y liberan al suscrito notario de toda responsabilidad que pudiera suscitarse por este concepto.)]}
+
+${frm:antecedente_compraventa[antecedente_inmueble_inscriben(contenido=“LA PARTE COMPRADORA” y “LA PARTE VENDEDORA” están de acuerdo en firmar la presente escritura sin contar con el certificado de existencia o inexistencia de gravámenes y sin el correspondiente aviso preventivo, liberando al suscrito notario de cualquier responsabilidad que pudiere suscitarse por este concepto, y en consecuencia liberan al suscrito notario de la obligación de presentar el segundo aviso preventivo y de inscribir el primer testimonio que de la presente escritura se expida, así como de cualquier responsabilidad que pudiere suscitarse por estos conceptos.)]}
+
+${frm:antecedente_compraventa[antecedente_inmueble_reglamento_si(contenido=Declara “LA PARTE COMPRADORA”, bajo protesta de decir verdad que obra en su poder el Reglamento de Condominio y Administración del inmueble objeto de esta escritura, mismo que se compromete a cumplir.)]}
+
+${frm:antecedente_compraventa[antecedente_inmueble_reglamento_no(contenido=Con la letra “#LETRA”, agrego al apéndice de esta escritura el Reglamento de Condominio y Administración del inmueble objeto de esta escritura, que “LA PARTE COMPRADORA”, declara conocer en todas y cada una de sus partes.)]}
+
+${frm:antecedente_compraventa[antecedente_inmueble_mantenimiento_adeudo_no(contenido=Declaran “LA PARTE COMPRADORA” y “LA PARTE VENDEDORA”, de manera expresa y bajo protesta de decir verdad, que no existen adeudos por concepto de cuotas de los fondos de administración y mantenimiento, de reserva y extraordinarias del régimen de propiedad en condominio al cual pertenece el inmueble objeto de esta escritura; en caso de existir, “LA PARTE COMPRADORA” será responsable solidaria respecto de cualquiera de los mencionados adeudos, anteriores a la fecha de firma de este instrumento.)]}
+
+${frm:antecedente_compraventa[antecedente_inmueble_mantenimiento_adeudo_carta(contenido=Declaran “LA PARTE COMPRADORA” y “LA PARTE VENDEDORA”, que no existen adeudos por concepto de cuotas de los fondos de administración y mantenimiento, de reserva ni extraordinarias del régimen de propiedad en condominio al cual pertenece el inmueble objeto de esta escritura, lo que acreditan con el documento que agrego al apéndice de esta escritura con la letra “#LETRA”.)]}
+
+#ROMANO.- Que el inmueble objeto de esta escritura se encuentra inscrito en el Registro de Planes y Programas de Desarrollo Urbano, según se desprende de la impresión de la consulta realizada que agrego al apéndice de esta escritura con la letra “#LETRA”. 
+#ROMANO.- Que advertí a la parte adquirente que será responsable solidaria en el pago de las contribuciones que pudiesen aparecer relacionadas con el inmueble objeto de esta escritura, anteriores a la fecha de firma de este instrumento.   
+#ROMANO.- Que declaran “LA PARTE VENDEDORA” y “LA PARTE COMPRADORA”, que el inmueble objeto de esta escritura, no se encuentra sujeto a contrato de arrendamiento alguno. 
+#ROMANO.- Que los comparecientes declaran por sus generales ser: 
+${var:compareciente_nombre(tipo=VENDEDOR)}. 
+#ROMANO.- Que “LA PARTE VENDEDORA” recibió de “LA PARTE COMPRADORA”, el importe de la compraventa con anterioridad a la celebración de este acto, según declaran bajo protesta de decir verdad. 
+#ROMANO.- Que advertí a las comparecientes de las penas en que incurren quienes declaran falsamente ante notario. 
+#ROMANO.- Que tuve a la vista los documentos citados en esta escritura. 
+#ROMANO.- Que a solicitud de las comparecientes a quienes atendí personalmente, leí y expliqué esta escritura a las mismas, una vez que les hice saber el derecho que tienen de leerla personalmente, manifestando las otorgantes su conformidad y comprensión plena y la firmaron el día ${var:fecha_firma_escritura(funcion=texto)}

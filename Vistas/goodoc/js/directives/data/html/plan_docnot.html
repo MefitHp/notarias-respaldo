@@ -1,0 +1,73 @@
+<div class="plan_for_wrap">
+         <table class="plan_for_table">
+             <tr>
+                 <td colspan="2">
+                     <p>
+                         <b>
+                             {{nombre}}
+                         </b>
+                     </p>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                     <p>Versi&oacute;n:</p>
+                 </td>
+                 <td>
+                     <p ng-click="verDoc(documento)">
+                         <b class="link resaltar1">#{{version}}</b>
+                     </p>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                     <p>Fecha de publicaci&oacute;n:</p>
+                 </td>
+                 
+                 <td>
+                     <p>{{fecha}}</p>
+                 </td>
+             </tr>
+              <tr>
+                 <td>
+                     <p>SubOperacion</p>
+                 </td>
+                 
+                 <td>
+                     <ol>
+                         <li ng-repeat="sb in subop" style="font-weight: normal;margin-left: 16px;color:gray"><p>{{sb.suboperacion.dsnombre}}</p></li>
+                     </ol>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <p>Localidad:</p>
+                 </td>
+                 
+                 <td>
+                     <p>{{locacion}}</p>
+                 </td>
+             </tr>
+<!--              <tr>
+                  <td>
+                      <p>
+                          Creada por:
+                      </p>
+                  </td>
+                  <td>
+                      <p>
+                          {{creador}}
+                      </p>
+                  </td>
+             </tr>-->
+              <tr>
+                  <td colspan="2">
+                      <p>
+                          <span class="link resaltar1" ng-click="actualizar(documento)">Actualizar</span>
+                          <span class="link resaltar1" ng-click="eliminar(documento)">Eliminar</span>
+                      </p>
+                  </td>
+                 
+             </tr>
+         </table>
+     </div>

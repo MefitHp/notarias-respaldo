@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="dropzone.js"></script>
+        <link href="dropzone.css" type="text/css" rel="stylesheet"/>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    </head>
+    <body>
+           <!--<form action="http://www.torrentplease.com/dropzone.php" class="dropzone dz-clickable" id="demo-upload">
+<div class="dz-default dz-message"><span>Drop files here to upload</span></div></form>-->
+
+
+ <hr>
+
+        
+        <div id="demoChingon" style="width: 300px;height: 500px;background: red;">
+            <div class="dz-default dz-message">
+                <span>Drop files here to upload</span>
+            </div>
+        </div>
+        
+        
+        <script>
+                    var myDropzone = new Dropzone("div#demoChingon", { url: "http://www.torrentplease.com/dropzone.php"});
+            $(function(){
+                     /*Dropzone.options.myDropzone = {
+                        url: dzArr[1],
+                        paramName: dzArr[5],
+                        maxFilesize: dzArr[4],
+                        parallelUploads: dzArr[3],
+                        enqueueForUpload: dzArr[8],
+
+
+                        accept: function (file, done) {
+                            thisDropzone.filesQueue.push(file);
+                        }*/
+            })
+        </script>
+
+    </body>
+</html>

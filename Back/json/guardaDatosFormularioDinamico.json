@@ -1,0 +1,89 @@
+{
+  "listaValoresFormularios": [
+    {
+      "conFormulario": {"id":{"idconFormulario":"2fcd0a59ec538dda4979893bfb501db5", "version":1}},
+      "acto": {"idacto":"1ef4d106884634b5525cfadcaf4c3870"},        
+      "listaValFormulario": [
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "74c21491b3bb1ad72293cdce1a214609"},
+	"idvalorform": "comp1",
+	"valorcadena": "cadena Texto",
+      }, 
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "768b324e4043141e327dbad501b603c8"},
+	"idvalorform": "comp2",
+	"valorcadena": "cadena Autocompletar",
+      }, 
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "8e9171dad9572fe0e1c73135b7ff3245"},
+	"idvalorform": "comp3",
+	"valorcadena": "cadena Autocompletar",
+      }
+      ],
+      "listaValSubFormulario": [
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "91d73b87aa5f6195c7a8c51a8de9a812"},
+	"registro": 1,
+	"valorcadena": "cadena texto sb1 r1",
+	"idvalorsubform": "valsubform1"
+      }, 
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "b2613efbfe883c9a4fd80dd918c114d0"},
+	"registro": 1,
+	"valorcadena": "cadena2 texto sb1 r1",
+	"idvalorsubform": "valsubform2",
+      }, 
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "91d73b87aa5f6195c7a8c51a8de9a812"},
+	"registro": 2,
+	"valorcadena": "cadena texto sb1 r2",
+	"idvalorsubform": "valsubform3",
+      }, 
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "b2613efbfe883c9a4fd80dd918c114d0"},
+	"registro": 2,
+	"valorcadena": "cadena2 texto sb1 r2",
+	"idvalorsubform": "valsubform4",
+      },
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "2d641b0c8124f423ebc7d8f65ece838e"},
+	"registro": 1,
+	"valorcadena": "cadena fecha sb2 r1",
+	"idvalorsubform": "valsubform5",
+      }, 
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "68b7eba8a9292fa6ee1b626dab64dd38"},
+	"registro": 1,
+	"valorcadena": "cadena texto sb2 r1",
+	"idvalorsubform": "valsubform6",
+      }, 
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "2d641b0c8124f423ebc7d8f65ece838e"},
+	"registro": 2,
+	"valorcadena": "cadena fecha sb2 r2",
+	"idvalorsubform": "valsubform7",
+      }, 
+      {
+	"formulario": null,
+	"componente": {"idcomponente": "68b7eba8a9292fa6ee1b626dab64dd38"},
+	"registro": 2,
+	"valorcadena": "cadena texto sb2 r2",
+	"idvalorsubform": "valsubform8",
+      }
+      ]
+    }
+    ],
+  "usuario":{"idusuario":"eccbc87e4b5ce2fe28308fd9f2a7baf3", 
+  "idsesionactual":"88A65D8397FB73EDECB3ECB2C05FDA07"},
+  "expediente":{"idexpediente":"0b764f987d9dfacc921b5a3d3d1037d6"}
+}

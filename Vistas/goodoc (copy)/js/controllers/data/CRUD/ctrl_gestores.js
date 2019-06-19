@@ -1,0 +1,5 @@
+function ctrl_gestores($scope,$route,conexion_app,conexion,catalogos){catalogos.get_locacion($scope);catalogos.get_gestores($scope);$scope.guardar_gestor=function(){conexion.gestor_add({"usuario":$scope.usr_global,"gestor":$scope.gestor},function(data){if(data.exito){ejecutaAlerta(1,"Se guardó correctamente el gestor");$route.reload();}else{ejecutaAlerta(2,"Ocurrió un error: "+data.estatus);}},function(error){alert("Algo malo paso al guardar el gestor: "+error.status);});}
+$scope.editar_gestor=function(gestor){$scope.gestor=gestor;$scope.isedita=true;}
+$scope.elimina_gestor=function(gestor){$scope.gestor=gestor;if(confirm("¿Realmente desea eliminar de la lista este gestor?"))
+$scope.lanza_editar_gestor(false);}
+$scope.lanza_editar_gestor=function(status){$scope.gestor.inestatus=status;var msjOk=(status)?"actualizó":"borró";var msjError=(status)?"actualizar":"eliminar";conexion.gestor_edit({"usuario":$scope.usr_global,"gestor":$scope.gestor},function(data){ejecutaAlerta(1,"Se "+msjOk+" correctamente el gestor");$route.reload();},function(error){alert("Algo malo paso al "+msjError+" el gestor: "+error.status)});}}

@@ -1,0 +1,75 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<div class="wra_form_data">
+    <div class="head_form_data">
+        <div class="colum colums3" >
+            <p>
+                <b>Esto es un anticipo</b>
+            </p>
+            <p><span>*</span> Desde esta aplicación se pueden indicar solicitudes de pago para caja</p>
+        </div>
+        <div class="colum colums4" >
+            <div style="float:right;">
+                <div class="onoffswitch">
+                    <input type="checkbox" name="anticipo" class="onoffswitch-checkbox" id="anticipo" ng-init="solicitudPago.isanticipo = true" ng-model="solicitudPago.isanticipo" checked>
+                    <label class="onoffswitch-label" for="anticipo">
+                        <div class="onoffswitch-inner"></div>
+                        <div class="onoffswitch-switch"></div>
+                    </label>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="body_form_data">
+        <div class="contentInputs">
+
+            <div class="colum colums2">
+                <label>N° de expediente</label>
+                <input type='text' ng-model="expediente.numexpediente" disabled>
+
+            </div>
+
+            <div class="colum colums2">
+                <label>Importe</label>
+                <input type='text' ng-model="solicitudPago.valor" ng-blur="formatoValor(true)" ng-focus="formatoValor(false)" placeholder="Inserte los datos solicitados">
+            </div>
+
+        </div>
+
+
+        <div class="contentInputs">
+
+            <div class="colum colums1">
+                <label>Concepto</label>
+                <textarea style='height:300px;' ng-model="solicitudPago.concepto"></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded"><p>Cancelar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="guardar_solicitud_pago( )">Guardar</button>
+    </div>
+
+</div>

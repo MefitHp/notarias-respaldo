@@ -1,0 +1,134 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+
+<div class="status_tarea" >
+    <div style="display: inline-block;">
+        <div class="fase fase_ok grad_gray">
+            <p class="">Fase 1 <br>
+                <span>Datos del pago</span>
+            </p>
+        </div>
+        <div class="fase fase_ok grad_gray">
+            <p >Fase 2 <br>
+                <span>Datos del pagador</span>
+            </p>
+        </div>
+
+        <div class="fase grad_gray">
+            <p class="active">Fase 3 <br>
+                <span>Evidencia del pago</span>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+<br>
+<h2 class="tit_H2">Evidencia del pago</h2>
+<div class="wra_form_data">
+    <div class="body_form_data">
+        
+        <div class="colum colums4" >
+            <label>N° de serie</label>
+            <input type='text' ng-model="datoPago.facturaserie">
+        </div>
+        <div class="colum colums4" >
+            <label>N° de folio</label>
+            <input type='text' ng-model="datoPago.facturafolio">
+        </div>
+        <div class="colum colums4" >
+            <label>Importe</label>
+            <input type='text' ng-model="datoPago.importepago"  ng-blur="formatoValor(true)" ng-focus="formatoValor(false)">
+        </div>
+        <div class="colum colums4" >
+            <label>Elaborada por</label>
+            <div class="wrap_select" >
+                <select ng-model="datoPago.usuarioelaboro"  ng-options="cajero as (cajero.dsnombre + ' '+cajero.dspaterno+ ' '+cajero.dsmaterno) for cajero in usuarioscaja | orderBy:'dsnombre' ">
+                    <option value="" disabled selected>--Seleccione una opci&oacute;n--</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="wra_form_data">
+
+    <div class="body_form_data">
+        <div class="colum colums3" >
+            <p><b>Se envi&oacute; la factura por correo electr&oacute;nico</b></p>
+            <p><span>*</span> Se envi&oacute; la factura por correo electr&oacute;nico al cliente</p>
+        </div>
+        <div class="colum colums4" >
+            <div style="float:right;">
+                <switchflip></switchflip>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<div class="wra_form_data">
+
+    <div class="body_form_data">
+        <div class="contentInputs">
+
+            <div class="colum colums1">
+                <label>Nota</label>
+                <textarea style='height:300px;' ng-model="datoPago.txtnota"></textarea>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="wra_form_data">
+    <div class="body_form_data">
+        <div class="colum colums2" >
+            <label>Correo electr&oacute;nico</label>
+            <input type='email' name="email" id="email" ng-model="datosPagador.dscorreoelectronico">
+            <div class="tooltip" ng-show="myForm.submitted && myForm.email.$error.email" >Correo electr&oacute;nico no v&aacute;lido</div>
+        </div>
+        <div class="colum colums4" >
+            <label>Medio de pago</label>
+            <div class="wrap_select">
+                <select ng-model="datoPago.mediopago"  ng-options="medio as medio.dselemento for medio in mediosPago ">
+                    <option value="" disabled selected>--Seleccione una opci&oacute;n--</option>
+                </select>
+            </div>
+        </div>
+        <div class="colum colums4" >
+            <label>Fecha de aplicaci&oacute;n</label>
+            <div class="wrap_select">
+                <input class="datepicker" type="text" ng-model="datoPago.fechapago"/>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded"><p>Cancelar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="guardarDatosPago()">Guardar</button>
+    </div>
+
+</div>
+
+<script>
+            $(".datepicker").datepicker({dateFormat: "dd-mm-yy"});
+</script> 
+

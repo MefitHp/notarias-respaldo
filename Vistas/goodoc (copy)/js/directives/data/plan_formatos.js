@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('planformatos',function(){return{restrict:'E',scope:{nombre:"@",version:"@",fecha:"@",creador:"@",documento:"@",ispublicado:"="},templateUrl:urlTemplates+'plan_for.html',controller:"ctrl_formatos_dir",link:function(scope,element){}};});});

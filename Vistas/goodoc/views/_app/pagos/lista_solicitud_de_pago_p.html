@@ -1,0 +1,42 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+
+<div class="contentInputs">
+    <table class="tableForm">
+        <tr>
+            <th width="5%">
+                Id
+            </th>
+            <th width="25%">Saldo</th>
+            <th width="40%">Concepto</th>
+            <th width="10%">Es anticipo</th>
+            <th width="15%">No. Expediente</th>
+            <th width="5%"></th>
+        </tr>
+       <tr style='vertical-align: top' ng-repeat="sol in solicitudes" ng-class-even="'lista_alternate'">
+       
+            <td>{{$index + 1}}</td>
+            
+            
+            <td >
+               $ {{formateaValor(sol.importesaldo)}}
+            </td>
+            <td>{{sol.concepto}}</td>
+            <td>
+                <span ng-show="{{sol.isanticipo}}">S&iacute;</span>
+                <span ng-show="{{!sol.isanticipo}}">No</span>
+            
+            </td>
+            <td>{{sol.expediente.numexpediente}}
+             
+            </td>
+
+            <td width="5%" ng-click="pagar_solicitud(sol.idsolpago)">
+                <span class="tbl_icon ico_house" ></span>
+            </td>
+
+        </tr>
+    </table>
+
+</div>

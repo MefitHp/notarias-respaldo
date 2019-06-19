@@ -1,0 +1,5 @@
+define(['../module'],function(directives){'use strict';directives.directive('comCombo',function(){return{restrict:'AE',templateUrl:urlTemplates+'componente_lista_cm_o.html',scope:{titulo:"@",valores:"@",name:"@",anchoselect:"@",idcomponente:"@",expresion:"@",posicion:"@",totalcmp:"@"},link:function(scope,element){scope.valores=scope.valores.split(";;");var lval=scope.valores[scope.valores.length-1];if(lval==""||!lval.trim()){scope.valores.pop();}
+$.each(scope.valores,function(i){var valor=scope.valores[i].split("::");element.find(".wrap_lista_ordenada select").append("<option value='"+valor[0]+"'> "+valor[1]+"</option>")})
+setTimeout(function(){$("#"+scope.name).change(function(){eval(scope.expresion);console.info($("#"+scope.name).val());})},500);var tiempo=obtieneTiempo(scope.posicion,scope.totalcmp,100);setTimeout(function(){if($("#"+scope.name).val()!=null){$("#"+scope.name).prop("value",$("#"+scope.name).val());}
+else{$("#"+scope.name).prop("value",null);}
+eval(scope.expresion);},tiempo);}};});});

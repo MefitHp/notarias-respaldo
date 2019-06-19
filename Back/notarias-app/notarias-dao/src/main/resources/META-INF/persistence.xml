@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="persistenceUnit">
+		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+		<!-- PRUEBA JTA -->
+		<!-- <jta-data-source>java:/notarias</jta-data-source> -->
+		<!-- <non-jta-data-source>java:comp/env/jdbc/notarias</non-jta-data-source> -->
+		<!-- Mapeo de tablas -->
+
+		<class>com.palestra.notaria.modelo.Comentario</class>
+		<class>com.palestra.notaria.modelo.TareaPendiente</class>
+		<class>com.palestra.notaria.modelo.BitacoraFirma</class>
+		<class>com.palestra.notaria.modelo.DocumentosOriginales</class>
+		<class>com.palestra.notaria.modelo.DocumentoEscaneado</class>
+		<class>com.palestra.notaria.modelo.TareaAtendida</class>
+		<class>com.palestra.notaria.modelo.BitacoraVersionesEscritura</class>
+		<class>com.palestra.notaria.modelo.PlantillaDocumentoNotarial</class>
+		<class>com.palestra.notaria.modelo.PlantillaDocumentoNotarialSubOperacion</class>
+		<class>com.palestra.notaria.modelo.Inmueble</class>
+		<class>com.palestra.notaria.modelo.TarjetaAmarilla</class>
+		<class>com.palestra.notaria.modelo.Localidad</class>
+		<class>com.palestra.notaria.modelo.Domicilio</class>
+		<class>com.palestra.notaria.modelo.Estado</class>
+		<class>com.palestra.notaria.modelo.Municipio</class>
+		<class>com.palestra.notaria.modelo.Colonia</class>
+		<class>com.palestra.notaria.modelo.Notaria</class>
+		<class>com.palestra.notaria.modelo.Suboperacion</class>
+		<class>com.palestra.notaria.modelo.Acto</class>
+		<class>com.palestra.notaria.modelo.BitacoraDocumento</class>
+		<class>com.palestra.notaria.modelo.BitacoraExpediente</class>
+		<class>com.palestra.notaria.modelo.Compareciente</class>
+		<class>com.palestra.notaria.modelo.Documento</class>
+		<class>com.palestra.notaria.modelo.DocumentoExpediente</class>
+		<class>com.palestra.notaria.modelo.Escritura</class>
+		<class>com.palestra.notaria.modelo.Guardia</class>
+		<class>com.palestra.notaria.modelo.Libro</class>
+		<class>com.palestra.notaria.modelo.Operacion</class>
+		<class>com.palestra.notaria.modelo.Persona</class>
+		<class>com.palestra.notaria.modelo.Presupuesto</class>
+		<class>com.palestra.notaria.modelo.Testimonio</class>
+		<class>com.palestra.notaria.modelo.TipoCompareciente</class>
+		<class>com.palestra.notaria.modelo.Expediente</class>
+		<class>com.palestra.notaria.modelo.DocumentoNotarialParcial</class>
+		<class>com.palestra.notaria.modelo.Ciudad</class>
+		<class>com.palestra.notaria.modelo.DocumentoNotarialMaster</class>
+		<class>com.palestra.notaria.modelo.EscrituraActo</class>
+		<class>com.palestra.notaria.modelo.ActoDocumento</class>
+		<class>com.palestra.notaria.modelo.EtapaTestimonio</class>
+		<class>com.palestra.notaria.modelo.ComparecienteRepresentante</class>
+		<class>com.palestra.notaria.modelo.Tramite</class>
+		<class>com.palestra.notaria.modelo.EtapaTramite</class>
+		<class>com.palestra.notaria.modelo.Usuario</class>
+		<class>com.palestra.notaria.modelo.Rol</class>
+		<class>com.palestra.notaria.modelo.Variable</class>
+		<class>com.palestra.notaria.modelo.Validacion</class>
+		<class>com.palestra.notaria.modelo.Grupo</class>
+		<class>com.palestra.notaria.modelo.VariableGrupo</class>
+		<class>com.palestra.notaria.modelo.UbicacionVarEstatica</class>
+		<class>com.palestra.notaria.modelo.Catalogo</class>
+		<class>com.palestra.notaria.modelo.ElementoCatalogo</class>
+		<class>com.palestra.notaria.modelo.ManejoSesion</class>
+		<class>com.palestra.notaria.modelo.ProcesoRol</class>
+		<class>com.palestra.notaria.modelo.BitacoraGeneral</class>
+		<class>com.palestra.notaria.modelo.Impuesto</class>
+		<class>com.palestra.notaria.modelo.RegistroRi</class>
+		<class>com.palestra.notaria.modelo.DocumentoObjeto</class>
+		<class>com.palestra.notaria.modelo.RelEtapaTestimonio</class>
+		<class>com.palestra.notaria.modelo.Componente</class>
+		<class>com.palestra.notaria.modelo.ConFormulario</class>
+		<class>com.palestra.notaria.modelo.ConSubFormulario</class>
+		<class>com.palestra.notaria.modelo.ActoFormulario</class>
+		<class>com.palestra.notaria.modelo.Formulario</class>
+		<class>com.palestra.notaria.modelo.PermisoRol</class>
+		<class>com.palestra.notaria.modelo.ValorFormulario</class>
+		<class>com.palestra.notaria.modelo.ValorSubFormulario</class>
+		<class>com.palestra.notaria.modelo.DocumentoVersiones</class>
+		<class>com.palestra.notaria.modelo.SolicitudPago</class>
+		<class>com.palestra.notaria.modelo.DatoFiscalPago</class>
+		<class>com.palestra.notaria.modelo.DatoPago</class>
+		<class>com.palestra.notaria.modelo.CalendarioCita</class>
+		<class>com.palestra.notaria.modelo.InvitadoCalendarioCita</class>
+		<class>com.palestra.notaria.modelo.DocumentoAnexo</class>
+		<class>com.palestra.notaria.modelo.AcuseReciboEscritura</class>
+		<class>com.palestra.notaria.modelo.AcuseReciboPersonas</class>
+		<class>com.palestra.notaria.modelo.DocumentoNotarialParcialBackup</class>
+		<class>com.palestra.notaria.modelo.ComparecienteConyuge</class>
+		<class>com.palestra.notaria.modelo.CamposTarjetaAmarilla</class>
+		<class>com.palestra.notaria.modelo.Gestor</class>
+		<class>com.palestra.notaria.modelo.DocumentoSuboperacion</class>
+		<class>com.palestra.notaria.modelo.FormatoPDF</class>
+		<class>com.palestra.notaria.modelo.FormatoPDFDetalle</class>
+		<class>com.palestra.notaria.modelo.Valuador</class>
+		<class>com.palestra.notaria.modelo.ComparecienteAutorizante</class>
+		<class>com.palestra.notaria.modelo.Expresion</class>
+		<class>com.palestra.notaria.modelo.Funcion</class>
+		<class>com.palestra.notaria.modelo.FuncionParametro</class>
+		<class>com.palestra.notaria.modelo.VariablesTipo</class>
+		<class>com.palestra.notaria.modelo.UsuarioRestaurar</class>
+		<class>com.palestra.notaria.modelo.Contacto</class>
+		<class>com.palestra.notaria.modelo.ControlFolios</class>
+		<class>com.palestra.notaria.modelo.BitacoraFolios</class>
+		<class>com.palestra.notaria.modelo.DevolucionRechazadaFolio</class>
+		<class>com.palestra.notaria.modelo.SolicitudPrestamoFolios</class>
+		<class>com.palestra.notaria.modelo.EscrituraExterna</class>
+		<class>com.palestra.notaria.modelo.RolGestionCompetencia</class>
+		<class>com.palestra.notaria.modelo.TramiteUsuario</class>
+		<class>com.palestra.notaria.modelo.PDNBloqueTexto</class>
+		<class>com.palestra.notaria.modelo.GrupoTrabajo</class>
+		<class>com.palestra.notaria.modelo.UsuarioGrupoTrabajo</class>
+		<class>com.palestra.notaria.modelo.FiltroActoCompareciente</class>
+		<class>com.palestra.notaria.modelo.ComparecienteHijo</class>
+		<class>com.palestra.notaria.modelo.Firma</class>
+		<class>com.palestra.notaria.modelo.MesaCtrl</class>
+		<class>com.palestra.notaria.modelo.Pago</class>
+		<class>com.palestra.notaria.modelo.AlertaObjeto</class>
+		<class>com.palestra.notaria.modelo.BitacoraUsuario</class>
+		<class>com.palestra.notaria.modelo.PizarronElemento</class>
+		<class>com.palestra.notaria.modelo.AvisoDecena</class>
+		<class>com.palestra.notaria.modelo.Incidencia</class>
+		<class>com.palestra.notaria.modelo.BitacoraEscritura</class>
+		<class>com.palestra.notaria.modelo.ProcessActo</class>
+		<class>com.palestra.notaria.modelo.TareaProcessActo</class>
+		<class>com.palestra.notaria.modelo.FechasBPM</class>
+														
+		<properties>
+			<!-- <property name="hibernate.connection.datasource" value="java:comp/env/jdbc/notarias" 
+				/> -->
+			<property name="javax.persistence.validation.mode" value="none"/>	
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+
+		
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://localhost/notaria?autoReconnect=true" />
+
+			<property name="hibernate.connection.username" value="cfgnotaria" />
+			<property name="hibernate.connection.password" value="nPQ14Ri3SAD" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+
+		</properties>
+
+	</persistence-unit>
+</persistence>

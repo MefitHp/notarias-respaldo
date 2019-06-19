@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="version-notifier" class="com.palestra.notarias.action.executer.VersionNotifierActionExecuter" parent="action-executer">
+    <property name="publicAction" value="true" />
+    <property name="nodeService" ref="nodeService" />
+    <property name="dataService" ref="notariaCustomActionDataService" />
+    <property name="versionService" ref="versionService" />
+    <property name="authenticationService" ref="authenticationService" />
+  </bean>
+
+  <bean id="extension.actionResourceBundles" parent="actionResourceBundles">
+    <property name="resourceBundles">
+      <list>
+        <value>alfresco.extension.messages.notaria-custom-actions</value>
+      </list>
+    </property>
+  </bean>
+
+  <bean id="notariaCustomActionDataService" class="com.palestra.notarias.action.service.DataService">
+    <property name="dataSource" ref="notariaDataSource" />
+  </bean>
+
+</beans>

@@ -1,0 +1,43 @@
+<loadscript url=ctrl_tareasbo.js></loadscript>
+
+<div ng-controller=ctrl_tareasbo>
+    <navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+
+<br>
+<div class="wra_form_data">
+    <div class="head_form_data">
+        <div class="contentInputs">
+
+            <div class="colum colums2" >
+                &nbsp;
+            </div>
+  
+        </div>
+
+
+    </div>
+    <div class="body_form_data">
+                <div class="contentInputs">
+            <div class="colum colums1">
+                <tarea ng-repeat="t in tareas_asignadas" tarea="t"></tarea>
+            </div>
+            </div>
+    </div>
+
+
+</div>
+
+
+<div class="contentInputs">
+    <div class="colum colums3">
+        &nbsp;
+    </div>
+    <div class="colum colums4" ng-click="goTo('/')">
+        <div class="btn-rounded"><p>Regresar</p></div>
+    </div>
+
+</div>
+</div>
+

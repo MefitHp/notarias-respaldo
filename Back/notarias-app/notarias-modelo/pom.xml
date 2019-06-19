@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.palestra.notaria</groupId>
+		<artifactId>notarias-app</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>notarias-modelo</artifactId>
+
+ 	<dependencies>
+<!-- 		Anotaciones de mapeos
+ -->		 <dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency> 
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate.javax.persistence</groupId> -->
+<!-- 			<artifactId>hibernate-jpa-2.1-api</artifactId> -->
+<!-- 			<version>1.0.0.Final</version> -->
+<!-- 		</dependency> -->
+       	<!--  <dependency>
+			<groupId>com.digitalpersona.onetouch</groupId>
+			<artifactId>dpotapi</artifactId>
+			<scope>provided</scope>
+		</dependency>-->
+	</dependencies>
+
+</project>

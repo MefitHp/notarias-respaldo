@@ -1,0 +1,778 @@
+<!DOCTYPE html lang="es">
+<!--[if lt IE 7]>
+<html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="es">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="es">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie10 lt-ie9" lang="es">
+<![endif]-->
+<!--[if IE 9]>
+<html class="no-js lt-ie10" lang="es">
+<![endif]-->
+<!--[if gt IE 9]>
+<html manifest="cache.manifest" class="no-js" lang="es">
+<![endif]-->
+<html lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>
+     :: PALESTRA ::
+    </title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <link rel="stylesheet" href="css/mouseSwipe.css">
+    <link rel="stylesheet" href="css/stylePalestra.css">
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=es"></script>
+    <script>
+var map;
+function initialize() {
+
+var myLatlng = new google.maps.LatLng(19.376539,-99.174777);
+var mapOptions = {
+  zoom: 15,
+  center: myLatlng
+}
+var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+var image = 'img/assets/pin_palestra.png';
+var marker = new google.maps.Marker({
+    position: myLatlng,
+    title:"Hello World!",
+    icon: image
+});
+
+marker.setMap(map);
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+  </head>
+  <body>
+
+
+  <header>
+    <div id="header-menu">
+      <div id="header-bg">
+        &nbsp;
+      </div>
+      <div class="wrapper">
+        <ul>
+          <li>
+            <a href="home" class="router-link btn_nav normal " reference="home-slide1">
+              HOME
+            </a>
+          </li>
+          <li>
+            <a href="clientes" class="router-link btn_nav normal" reference="home-slide4">
+              CLIENTES
+            </a>
+          </li>
+          <li>
+            <a href="contact" class="router-link normal">
+              CONTACTO
+            </a>
+          </li>
+
+          <li>
+            <a href="contact" class="router-link normal">
+              UBICACI&Oacute;N
+            </a>
+          </li>
+
+
+        </ul>
+        <a href="#" id="menu-close-link">
+          x
+        </a>
+      </div>
+    </div>
+    <div class="wrapper">
+      <a href="home" id="logo-link" class="logo-color">
+        &nbsp;
+      </a>
+      <a href="#" id="menu-link">
+        <span>
+          MENU
+        </span>
+        <i>
+          &#9776;
+        </i>
+      </a>
+    </div>	
+  </header>
+  <div id="sections">
+    <section id="home">
+
+      <ul class="bxslider">
+        <li id="home-video" class="home-section">
+          <div id="home-bg">
+            <video id="video-home" width="1280" height="720" autoplay="autoplay" preload="auto" loop="loop" muted="">
+              <source src="media/palestra.mp4" type="video/mp4">
+              <source src="media/palestra.webm" type="video/webm">
+                       
+            </video>
+          </div>
+          <audio id="audio-home" loop="loop" preload="auto">
+            <source src="media/palestra_sound.mp3" type="audio/mpeg">
+            <source src="media/palestra_sound.ogg" type="audio/ogg">
+          </audio>
+          <div class="wrapper">
+            <div id="slide1-middle">
+              <h2 class="normal resetMargin">VIVIR UNA NUEVA</h2>
+              <h2 class="bold resetMargin">EXPERIENCIA INTELIGENTE</h2>
+              <h2 class="normal resetMargin">E IMPLEMENTACI&Oacute;N DE</h2>
+              <h2 class="bold resetMargin lastTit">TECNOLOG&Iacute;AS DE VOZ</h2>
+             
+              <a href="#" class="button btnFullW">
+                <span style="margin:0 118px">VOZ</span>
+                <!--<i>&#59228;</i>-->
+              </a>
+            </div>
+            
+
+            <div id="sound-button" class="sound-on">
+              <span class="sound-on-span">
+                Silenciar
+              </span>
+              <span class="sound-off-span">
+                Iniciar sonido
+              </span>
+              <div>
+                &nbsp;
+              </div>
+            </div>
+          </div>
+        </li>
+        <li id="home-advertising" class="home-section">
+          <!--<div id="gradient-advertising" class="gradient">
+          </div>
+          <div class="noise">
+          </div>-->
+          <div class="wrapper">
+            <div id="slide2-middle" >
+              <h2 class="bold intlet">
+                VOZ <br>
+                <span class="normal">
+                  ES UNA DICIPLINA Y A LA VEZ ES UN ARTE
+                </span>
+              </h2>
+              <p class="upper">
+                ac&uacute;stica, fon&eacute;tica, fonol&oacute;gica, l&eacute;xica, sint&aacute;ctica, sem&aacute;ntica y pragm&aacute;tica
+              </p>
+              <div id="beyond-journey">
+                <div class="journey-item journey-item-1">
+                  <span>
+                    IDENTIDAD
+                  </span>
+                  <div>
+                   <img src="img/assets/bullet.png">
+                  </div>
+                  </div>
+                <div class="journey-item journey-item-2">
+                  <span>
+                    AC&Uacute;STICA
+                  </span>
+                  <div>
+                   <img src="img/assets/bullet.png">
+                  </div>
+                   
+                </div>
+                <div class="journey-item journey-item-3">
+                  <div>
+                   <img src="img/assets/bullet.png">
+                  </div>
+                  <span>
+                    PROGRAMACI&Oacute;N
+                  </span>
+                </div>
+                <div class="journey-item journey-item-4">
+                  <span>
+                    PROCESAMIENTO DE SE&Ntilde;ALES
+                  </span>
+                 <div>
+                   <img src="img/assets/bullet.png">
+                  </div>
+                </div>
+                <div class="journey-item journey-item-5">
+                  <div>
+                   <img src="img/assets/bullet.png">
+                  </div>
+                  <span>
+                    FISIOLOG&Iacute;A
+                  </span>
+                </div>
+              
+
+              </div>
+              <a href="#" class="button">
+                  SEM&Aacute;NTICA
+                  <!--<i>
+                    &#59228;
+                  </i>-->
+                </a>
+            </div>
+          </div>
+        </li>
+        <li id="home-business" class="home-section">
+          <div id="rethink-bg">
+            <video id="video-business" width="1280" height="720" autoplay="autoplay" preload="auto" muted="">
+              <source src="media/semantica.mp4" type="video/mp4">
+              <source src="media/semantica.webm" type="video/webm">
+            </video>
+          </div>
+          <div class="wrapper">
+            <div id="slide3-middle" class="slideOneImg">
+             <h2 class="bold intlet">
+                SEM&Aacute;NTICA 
+                <br>
+                <span class="normal">
+                  INTERPRETACI&Oacute;N DE SIGNOS LING&Uuml;&Iacute;STICOS
+                </span>
+              </h2>
+              <p class="upper">
+                s&Iacute;mbolos, palabras, expresiones o representaciones formales
+
+              </p>
+              <a href="#" class="button">
+                AN&Aacute;LISIS
+                <!--<i>
+                  &#59228;
+                </i>-->
+              </a>
+            </div>
+
+          </div>
+        </li>
+        <li id="home-magic" class="home-section">
+          <div id="magic">
+           
+          <div class="wrapper">
+            <div id="slide4-middle" class="slideOneImg">
+             <h2 class="bold intlet">
+                AN&Aacute;LISIS
+                <br>
+                <span class="normal upper" >
+                  generaci&Oacute;n de una percepci&Oacute;n positiva
+                </span>
+              </h2>
+              <p class="upper">
+                hardware, software, usabilidad, dise&ntilde;o de interacci&oacute;n, accesibilidad, dise&ntilde;o gr&aacute;fico y visual
+              </p>
+              <a href="#" class="button">
+                INTELIGENCIA
+                <!--<i>
+                  &#59228;
+                </i>-->
+              </a>
+            </div>
+          </div>
+        </li>
+        <li id="home-roll" class="home-section">
+          <div id="roll-bg">
+            <video id="video-roll" width="1280" height="720" autoplay="autoplay" preload="auto" muted="">
+              <source src="media/inteligencia.mp4" type="video/mp4">
+              <source src="media/inteligencia.webm" type="video/webm">
+            </video>
+          </div>
+          <div class="wrapper">
+            
+            <div id="slide5-middle" class="slideOneImg">
+             <h2 class="bold intlet">
+                INTELIGENCIA
+                <br>
+                <span class="normal upper" >
+                  identificar necesidades de informaci&oacute;n del usuario
+                </span>
+              </h2>
+              <p class="upper">
+                Identificación, planeación, investigación y análisis
+              </p>
+              <a href="#" class="button">
+                CLIENTES
+                <!--<i>
+                  &#59228;
+                </i>-->
+              </a>
+          
+            
+          </div>
+        </li>
+        <li id="home-blog" class="home-section">
+          <!--<div id="gradient-blog" class="gradient">
+          </div>
+          <div class="noise">
+          </div>-->
+          <div class="wrapper">
+            <div id="slide6-middle">
+              <h2 class="bold intlet">
+                CLIENTES
+                <br>
+                <span class="normal upper" >
+                  Creemos en las marcas, en su poder y en su valor.
+                </span>
+              </h2>
+              <p class="upper">
+                Creemos que el primer paso para construir marcas es el lenguaje sencillo
+              </p>
+              
+              <div class="wra_logos">
+                <div class="wra_clientes">
+                  <div>
+                    <img src="img/assets/logos/corte.png" alt="">
+                  </div>
+                  <div>
+                    <img src="img/assets/logos/ericsson.png" alt="">
+                  </div>
+                  <div>
+                    <img src="img/assets/logos/burger.png" alt="">
+                  </div>
+                </div>
+                
+                <div class="wra_clientes">
+                  <div>
+                    <img src="img/assets/logos/union.png" alt="">
+                  </div>
+                  <div>
+                    <img src="img/assets/logos/caja.png" alt="">
+                  </div>
+                  <div>
+                    <img src="img/assets/logos/gillette.png" alt="">
+                  </div>
+                </div>
+
+
+              </div>
+               <a href="#" class="button">
+                  CONTACTO
+                  <!--<i>
+                    &#59228;
+                  </i>-->
+                </a>
+            </div>
+            
+          </div>
+        </li>
+        <li id="home-touch" class="home-section">
+          <div id="contact-bg">
+            <video id="video-contact" width="1280" height="720" autoplay="autoplay" preload="auto" muted="">
+              <source src="media/contact.mp4" type="video/mp4">
+              <source src="media/contact.webm" type="video/webm">
+            </video>
+            
+            <div class="wrapper">
+              <div id="slide7-middle">
+                <h2 class="bold">
+                  ENVIANOS UN MENSAJE
+                </h2>
+                <div id="contact-form">
+                  <p>
+                    Me gustar&iacute;a 
+                    <span data-input="input-subject" id="span-subject">
+                      tomar un caf&eacute;
+                    </span>
+                    con ustedes, as&iacute; que por favor 
+                    <span data-input="input-kind" id="span-kind">
+                      envienme un correo electr&oacute;nico
+                    </span>
+                    
+                    <i id="to">
+                      a
+                    </i>
+                    
+                    <span data-input="input-contact" id="span-contact">
+                      micorreo@ejemplo.com
+                    </span>
+                    preguntando por 
+                    <span data-input="input-name" id="span-name">
+                      m&iacute;
+                    </span>
+                    para afinar algunos detalles. Ya que me gustar&iacute;a platicar acerca de 
+                    <span data-input="input-comment" id="span-comment">
+                     una asombrosa estrategia digital
+                    </span>
+                  </p>
+                  <a href="#" class="button" id="send-message">
+                    ENVIAR MENSAJE
+                  </a>
+                </div>
+                <div id="success-message">
+                  <p>
+                  </p>
+                  <a href="#" class="button" id="show-form">
+                    MOSTRARME EL EL FORMULARIO DE NUEVO
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div id="social-icons">
+              <span>
+                SIGUENOS EN
+              </span>
+              <a href="https://www.facebook.com/ktcagency" target="_blank" title="find us on facebook">
+                <i>
+                  &#62222;
+                </i>
+              </a>
+              <a href="https://twitter.com/ktcmex/" target="_blank" title="follow us on twitter">
+                <i>
+                  &#62217;
+                </i>
+              </a>
+              <a href="http://instagram.com/ktcmex" target="_blank" title="find us on instagram">
+                <i>
+                  &#62253;
+                </i>
+              </a>
+              <i id="top-link">
+                &#59239;
+              </i>
+            </div>
+            <p id="country-ktc">
+              Mexico - 2014
+            </p>
+          </div>
+          <div id="touch-overlay">
+          </div>
+          <div class="select input-touch" id="input-subject">
+            <div>
+              hablar de negocios
+              <i>
+                &#10003;
+              </i>
+            </div>
+            <div>
+              trabajar con ustedes
+              <i>
+                &#10003;
+              </i>
+            </div>
+            <div class="selected">
+              tomar un caf&eacute;
+              <i>
+                &#10003;
+              </i>
+            </div>
+          </div>
+          <div class="select input-touch" id="input-kind">
+            <div>
+              llamenme
+              <i>
+                &#10003;
+              </i>
+            </div>
+            <div class="selected">
+              envienme un mail
+              <i>
+                &#10003;
+              </i>
+            </div>
+          </div>
+          <div class="input input-touch input-mail" id="input-contact">
+            <div>
+              <input type="text" value="" id="user-email">
+              <span>
+                @
+              </span>
+              <input type="text" value="" id="domain-email">
+              <span>
+                .
+              </span>
+              <input type="text" value="" id="extension-email">
+              <p>
+                escribe tu correo electr&oacute;nico
+              </p>
+            </div>
+            <i class="input-enter">
+              &#59238;
+            </i>
+          </div>
+          <div class="input input-touch input-phone" id="input-contact2">
+            <div>
+              <i>
+                &#128222;
+              </i>
+              <input type="number" value="">
+              <p>
+                n&uacute;mero telef&oacute;nico
+              </p>
+            </div>
+            <i class="input-enter">
+              &#59238;
+            </i>
+          </div>
+          <div class="input input-touch" id="input-name">
+            <div>
+              <input type="text" value="">
+              <p>
+               quisieramos saber por qui&eacute;n preguntar
+              </p>
+            </div>
+            <i class="input-enter">
+              &#59238;
+            </i>
+          </div>
+          <div class="input input-touch input-textarea" id="input-comment">
+            <div>
+              <input type="text" value="">
+              <p>
+                escribenos tus necesidades o comentarios
+              </p>
+            </div>
+            <i class="input-enter">
+              &#59238;
+            </i>
+          </div>
+        </li>
+        <li id="home-map" class="home-section">
+         
+          <div class="wrapper">
+            <div id="slide8-middle">
+              <h2 class="bold intlet">
+                UBICACI&Oacute;N
+                <br>
+                <span class="normal upper" >
+                  Creemos en las marcas, en su poder y en su valor.
+                </span>
+              </h2>
+              
+              <div class="wra_logos">
+                  <div id="map-canvas"></div>
+              </div>
+              <p class="upper">
+                Creemos que el primer paso para construir marcas es el lenguaje sencillo
+              </p>
+
+            </div>
+            
+          </div>
+
+
+
+        </li>
+
+
+      </ul>
+      <div id="slider-navigation">
+        <div class="slider-navigation-item item-active" id="home-slide1">
+          <span>
+            Home
+          </span>
+          <i>
+            &#9679;
+          </i>
+        </div>
+        <div class="slider-navigation-item" id="home-slide2">
+          <span>
+            Voz
+          </span>
+          <i>
+            &#9679;
+          </i>
+        </div>
+        <div class="slider-navigation-item" id="home-slide3">
+          <span>
+            Sem&aacute;ntica
+          </span>
+          <i>
+            &#9679;
+          </i>
+        </div>
+        <div class="slider-navigation-item" id="home-slide4">
+          <span>
+            An&aacute;lisis
+          </span>
+          <i>
+            &#9679;
+          </i>
+        </div>
+        <div class="slider-navigation-item" id="home-slide5">
+          <span>
+            Inteligencia
+          </span>
+          <i>
+          </i>
+          <i>
+            &#9679;
+          </i>
+        </div>
+        <div class="slider-navigation-item" id="home-slide6">
+          <span>
+            Clientes
+          </span>
+          <i>
+          </i>
+          <i>
+            &#9679;
+          </i>
+        </div>
+        <div class="slider-navigation-item" id="home-slide7">
+          <span>
+            Contacto
+          </span>
+          <i>
+          </i>
+          <i>
+            &#9679;
+          </i>
+        </div>
+        <div class="slider-navigation-item" id="home-slide8">
+          <span>
+            Ubicaci&oacute;n
+          </span>
+          <i>
+          </i>
+          <i>
+            &#9679;
+          </i>
+        </div>
+
+      </div>
+    </section>
+    <section id="clients">
+      <p>
+        Clients
+      </p>
+    </section>
+    <section id="team">
+      <div class="noise">
+      </div>
+      <div id="team-title">
+        <div class="wrapper">
+          <h1 class="thin-header">
+            DIGITALLY CRAFTED
+          </h1>
+        </div>
+        <div id="team-border">
+          &nbsp;
+        </div>
+      </div>
+      <div id="team-menu">
+        <div class="wrapper">
+          <ul id="team-swipe-menu">
+            <script type="text/template" id="team-menu-tmpl">
+              <li>
+                <a href="#" class="swipe-link">
+                  <%= name %>
+            </a>
+                  <div>&nbsp;
+            </div>
+            </li>
+            </script>
+          </ul>
+        </div>
+      </div>
+      <div id="viewport">
+        <div id="mouseSwipe" class="swipe-container">
+          <script type="text/template" id="team-swipe-tmpl">
+            <div class="panel">
+              <div class="wrapper">
+                <div class="team-middle">
+                  <div class="team-left">
+                    <h2 class="area-title"><%= name %></h2>
+                      <p class="team-lead">Lead: <span><%= lead %></span></p>
+                        <p><%= text %></p>
+                        <a href="<%= url_playlist %>" target="_blank" class="area-link area-link-playlist">
+                          <i>&#9834;
+          </i>
+            <span><%= name_playlist %></span>
+          </a>
+            <a href="<%= url_blog %>" target="_blank" class="area-link area-link-blog">
+              <i>&#59214;
+          </i>
+            <span>Favorite blog - <%= blog %></span>
+          </a>
+              <a class="area-link area-link area-link-quote">
+                <i>&hearts;
+          </i>
+            <span>"<%= quote %>"</span>
+          </a>
+          </div>
+            <div class="team-right">
+              <% _.each(members, function (member) {
+                %>
+                  <div class="team-member">
+                    <img src="<%= member.image %>" alt="Member">
+                      <span class="team-member-name"><%= member.name %></span>
+                        <span class="team-member-work"><%= member.work %></span>
+          </div>
+                          <% }
+                          );
+                %>
+          </div>
+          </div>
+          </div>
+          </div>
+          </script>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="preloader">
+    <div>
+      <img src="img/loader.gif" alt="Loading">
+      <p>
+        Cargando...
+      </p>
+    </div>
+  </div>
+  <div id="ie">
+    <div class="wrapper">
+      <div>
+        <img src="img/ktc-logo-white.png" alt="KTC logo">
+        <p>
+          The browser you are using is out of date. It has known security flaws and disadvantages and a limited feature set. You will not see all the features of some websites.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="noVisible" style="display: none;">
+                  <script type="text/template" id="post-tmpl">
+                    <%= text %>
+                  </script>
+              
+  </div>
+
+
+
+  <script src="js/jquery.min.js">
+  </script>
+  <script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+  </script>
+  <script src="js/underscore-min.js">
+  </script>
+  <script src="js/backbone-min.js">
+  </script>
+  <script src="js/mouse-wheel.js">
+  </script>
+  <script src="js/jquery.easing.1.3.js">
+  </script>
+  <script src="js/jquery.bxslider.min.js">
+  </script>
+  <script src="js/jquery.tipsy.js">
+  </script>
+  <script src="js/jquery.mouseSwipe.js">
+  </script>
+  <script src="js/device.min.js">
+  </script>
+  <script src="js/html5Preloader.js">
+  </script>
+  <script src="js/pal_nav.js"></script>
+  <script src="js/ugly.main.js">
+  </script>
+
+
+
+</body>
+</html>

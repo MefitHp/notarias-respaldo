@@ -1,0 +1,226 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<abogado></abogado>
+
+<div class="status_tarea" >
+    <div style="display: inline-block;">
+        <div class="fase grad_gray">
+            <p class="active">Fase 1 <br>
+                <span>Captura de Inmueble</span>
+            </p>
+        </div>
+        <div class="fase grad_gray">
+            <p class="">Fase 2 <br>
+                <span>Captura de Domicilio</span>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+<br>
+
+
+<h2 class="tit_H2">Datos del inmueble</h2>
+<div class="wra_form_data">
+
+    <div class="body_form_data" style="float:left;overflow: visible;">
+        <div class="contentInputs">
+
+            <div class="colum colums2">
+                <label>Descripci&oacute;n del inmueble</label>
+                <input type="text" placeholder="Descripci&oacute;n del inmueble" ng-model="inmueble.dsdescripcion" name="descripcion" maxlength="60" required="true" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido</div>
+            </div>
+            <div class="colum colums4">
+                <label>Fecha de inscripci&oacute;n</label>
+                <input type="text" class="datepicker" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.fchinscripcion" maxlength="10"/>
+            </div>
+            <div class="colum colums4">
+                <label>Vocaci&oacute;n del inmueble</label>
+
+                <select name="vocterreno" id="vocterreno"  data-placeholder="--Seleccione--" required multiple class="chosen-select">
+                    <option value="{{$index}}" ng-repeat="v in vocaciones" >{{v.dselemento}}</option>
+                </select>
+
+
+            </div>               
+            <div class="tooltip" ng-show="myForm.submitted && myForm.vocterreno.$pristine">Selecciona una vocaci&oacute;n</div>
+
+
+        </div>
+
+    </div>
+    <div class="body_form_data">
+        <div class="contentInputs">
+            <div class="colum colums4">
+                <label>Clave catastral</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.cdcatastral" maxlength="60" name="cdcatastral" required="true" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.cdcatastral.$error.required" >Campo requerido</div>
+
+
+            </div>
+            <div class="colum colums4">
+                <label>Valor catastral</label>
+                <input type="text"  placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.valcatastral" name="valcatastral" required="true" maxlength="16" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.valcatastral.$error.required" >Campo requerido</div>
+
+            </div>
+            <div class="colum colums4">
+                <label>Superficie</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.dssuperficie" name="dssuperficie" required="true" maxlength="30" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.dssuperficie.$error.required" >Campo requerido</div>
+
+            </div>
+            <div class="colum colums4">
+                <label>Precio</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.precio" name="precio" required="true" maxlength="16" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.valcatastral.$error.required" >Campo requerido</div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="body_form_data">
+        <div class="contentInputs">
+
+            <div class="colum colums4">
+                <label>N° de inscripci&oacute;n</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.ininscripcion" name="ininscripcion" required="true" maxlength="6" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.ininscripcion.$error.required" >Campo requerido</div>
+
+            </div>
+            <div class="colum colums4">
+                <label>Tomo</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.dstomo" name="dstomo" required="true" maxlength="10" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.dstomo.$error.required" >Campo requerido</div>
+
+            </div>
+            <div class="colum colums4">
+                <label>Foja</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.dsfoja" name="dsfoja" required="true" maxlength="10" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.dsfoja.$error.required" >Campo requerido</div>
+
+            </div>
+            <div class="colum colums4">
+                <label>Volumen</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.dsvolumen" name="dsvolumen" required="true" maxlength="10" />
+                <div class="tooltip" ng-show="myForm.submitted && myForm.dsvolumen.$error.required" >Campo requerido</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="body_form_data">
+
+        <div class="contentInputs">
+
+            <div class="colum colums1">
+                <label>Colindancias</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.dscolindancias" name="dscolindancias"  />
+
+            </div>
+            
+
+        </div>
+    </div>
+    <div class="body_form_data">
+
+        <div class="contentInputs">
+            <div class="colum colums4">
+                <label>Libro</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.dslibro" name="dslibro" maxlength="10"/>
+
+            </div>
+            <div class="colum colums4">
+                <label>Predio</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.dspredio" name="dspredio" maxlength="60" />
+            </div>
+
+            <div class="colum colums4">
+                <label>Gravamen</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.dsseccion" name="dsseccion" maxlength="10"/>
+
+            </div>
+            <div class="colum colums4">
+                <label>Avaluos</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="inmueble.avaluos" name="avaluos" maxlength="16" />
+
+            </div>
+
+        </div>
+    </div>
+    <div class="body_form_data">
+
+        <div class="contentInputs">
+            
+            <div class="colum colums3">
+                <label>Otros avaluos</label>
+                <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="tmp_avaluos" name="tmp_avaluos" />
+            </div>
+
+            <div class="colum colums4">
+                <div class="colum colums4">
+                    &nbsp;
+                    <div class="btn-rounded" ng-click="add_avaluo()"><p><span>+</span>Agregar avaluo</p></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="body_form_data">
+
+        <div class="contentInputs">
+            <table class="tableForm" ng-show="inmueble.otrosavaluos.length > 0">
+                <tr>
+                    <th width="5%"></th>
+                    <th width="90%">Avaluo</th>
+                    <th width="5%">
+                    </th>
+                </tr>
+                <tr ng-repeat="av in inmueble.otrosavaluos track by $index"  >
+                    <td>{{$index}}</td>
+                    <td>{{av}}</td>
+                    <td ng-click="del_avaluo($index)">
+                        <span class="tbl_icon ico_delete"></span>
+                    </td>
+
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded" onclick="force_redirect('index.html#/inmuebles')"><p>Cancelar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="asigna_domicilio()">Siguiente</button>
+    </div>
+
+</div>
+
+
+<script>
+            setTimeout(function() {
+                $(".chosen-select").chosen();
+            }, 500)
+
+            $('.datepicker').datepicker({
+                changeYear: true,
+                dateFormat: "dd-mm-yy",
+                yearRange: '1900:2050'
+            });
+</script>

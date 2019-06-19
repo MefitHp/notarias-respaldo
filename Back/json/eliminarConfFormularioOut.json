@@ -1,0 +1,17 @@
+{
+    "version": null,
+    "idsubformulario": null,
+    "listaFormularios": null,
+    "idExpediente": null,
+    "idConformulario": null,
+    "idsuboperacion": null,
+    "conformulario": null,
+    "acto": null,    
+    "exito": true,
+    "estatus": "Eliminacion correcta",
+    "errores": null,
+    "usuario":{
+      "idusuario":"eccbc87e4b5ce2fe28308fd9f2a7baf3", 
+      "idsesionactual":"88A65D8397FB73EDECB3ECB2C05FDA07"
+    }
+}

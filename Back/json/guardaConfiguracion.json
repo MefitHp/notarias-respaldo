@@ -1,0 +1,198 @@
+{   
+    "conformulario": {                
+        "dsnombrecorto":"formu1",
+        "dstitulo": "Fromulario especial 1",
+        "dsdescripcion": "Fromulario especial 1",
+        "tipoform":"E",
+        "listaActoFormularios": [{              
+            "suboperacion": {
+                "idsuboperacion": "65b9eea6e1cc6bb9f0cd2a47751a186f",
+                "inposicion": 0
+            }
+        }, {           
+           "suboperacion": {
+                "idsuboperacion": "6974ce5ac660610b44d9b9fed0ff9548",
+                "inposicion": 0
+            }
+        }],
+        "listaPermisosRol": [{            
+	    "inpermiso": 7,
+            "rol": {
+                "idrol": "c9f0f895fb98ab9159f51fd0297e236d",
+		
+            }
+        }, {          
+	    "inpermiso": 4,
+            "rol": {
+                "idrol": "d3d9446802a44259755d38e6d163e820",                
+            }
+        }],
+        "listaComponentes": [{
+            "idcomponente": "1compform",
+            "dsayuda": null,
+            "dscatalogo": null,
+            "dsetiqueta": "Autocompletar",           
+            "dsexpresionvalidacion": null,
+            "dslistavalores": null,
+            "dstablabusqueda": null,
+            "conFormulario": null,
+            "subformulario": null,
+            "isparasubform": false,
+            "longitudmaxima": 10,
+            "longitudminima": 3,
+	    "inposicion": 4, 
+	    "inorden": 1,
+            "dsnombrevariable": "varTexto1",
+            "isrequerido": true,
+            "tipocomponente": {
+                "idelemento": "6c8349cc7260ae62e3b1396831a8398f"
+            }
+        }, 
+        {
+            "idcomponente": "2compform",
+            "dsayuda": null,
+            "dscatalogo": null,
+            "dsetiqueta": "Texto",
+            "dsexpresionvalidacion": null,
+            "dslistavalores": null,
+            "dstablabusqueda": null,
+            "conFormulario": null,
+            "subformulario": null,
+            "isparasubform": false,
+            "longitudmaxima": 5,
+            "longitudminima": 1,           
+	    "inposicion": 4, 
+            "inorden": 1,
+            "dsnombrevariable": "varTexto",
+            "isrequerido": true,
+            "tipocomponente": {              
+                "idelemento": "a5771bce93e200c36f7cd9dfd0e5deaa"
+            },
+        }, 
+        {
+            "idcomponente": "3compform",
+            "dsayuda": null,
+            "dscatalogo": null,
+            "dsetiqueta": "Lista desplegable",
+            "dsexpresionvalidacion": null,
+            "dslistavalores": null,
+            "dstablabusqueda": null,
+            "conFormulario": null,
+            "subformulario": null,
+            "isparasubform": false,
+            "longitudmaxima": null,
+            "longitudminima": null,         
+	    "inposicion": 4, 
+            "inorden": 1,
+            "dsnombrevariable": "varListDesple",
+            "isrequerido": null,
+            "tipocomponente": {           
+                "idelemento": "d67d8ab4f4c10bf22aa353e27879133c"
+            }
+        }],
+        "listaSubFormularios": [{
+            "dsnombrecorto":"fmr1",
+            "idconsubform": "1subform",
+            "nombre": "",
+            "inposicion":1,
+            "listaComponentes": [
+            {
+                "idcomponente": "4compsubform",
+                "dsayuda": null,
+                "dscatalogo": null,
+                "dsetiqueta": "Texto",
+                "dsexpresionvalidacion": null,
+                "dslistavalores": null,
+                "dstablabusqueda": null,
+                "conFormulario": null,
+                "subformulario": null,
+                "isparasubform": true,
+                "longitudmaxima": 5,
+                "longitudminima": 1,
+		"inposicion": 4, 
+                "inorden": 1,
+                "dsnombrevariable": "varTexto",
+                "isrequerido": true,
+                "tipocomponente": {                   
+                    "idelemento": "a5771bce93e200c36f7cd9dfd0e5deaa"
+                }
+            }, 
+            {
+                "idcomponente": "5compsubform",
+                "dsayuda": null,
+                "dscatalogo": null,
+                "dsetiqueta": "Fecha",
+                "dsexpresionvalidacion": null,
+                "dslistavalores": null,
+                "dstablabusqueda": null,
+                "conFormulario": null,
+                "subformulario": null,
+                "isparasubform": true,
+                "longitudmaxima": null,
+                "longitudminima": null,
+		"inposicion": 4, 
+                "inorden": 1,
+                "dsnombrevariable": "varFecha",
+                "isrequerido": true,
+                "tipocomponente": {                    
+                    "idelemento": "d645920e395fedad7bbbed0eca3fe2e0"
+                }
+            }
+            ],
+        }, 
+        {
+            "dsnombrecorto":"fmr2",
+            "idconsubform": "2subform",
+            "nombre": "SubFormulario 2",
+            "inposicion":2,
+            "listaComponentes": [{
+                "idcomponente": "6compsubform",
+                "dsayuda": null,
+                "dscatalogo": null,
+                "dsetiqueta": "Texto1",
+                "dsexpresionvalidacion": null,
+                "dslistavalores": null,
+                "dstablabusqueda": null,
+                "conFormulario": null,
+                "subformulario": null,
+                "isparasubform": true,
+                "longitudmaxima": 4,
+                "longitudminima": 1,
+                "inposicion":0,
+                "inorden": 1,
+                "dsnombrevariable": "varTexto1",
+                "isrequerido": true,
+                "tipocomponente": {                  
+                    "idelemento": "a5771bce93e200c36f7cd9dfd0e5deaa"
+                }
+	    }, 
+	    {
+                "idcomponente": "7compsubform",
+                "dsayuda": null,
+                "dscatalogo": null,
+                "dsetiqueta": "Texto2",
+                "dsexpresionvalidacion": null,
+                "dslistavalores": null,
+                "dstablabusqueda": null,
+                "conFormulario": null,
+                "subformulario": null,
+                "isparasubform": true,
+                "longitudmaxima": 4,
+                "longitudminima": 1,
+                "inposicion":0,
+                "inorden": 1,
+                "dsnombrevariable": "varTexto2",
+                "isrequerido": true,
+                "tipocomponente": {                    
+                    "idelemento": "a5771bce93e200c36f7cd9dfd0e5deaa"
+                }
+            }
+	  ]          
+        }
+       ]
+    },
+    "usuario": {
+      "idusuario":"eccbc87e4b5ce2fe28308fd9f2a7baf3", 
+      "idsesionactual":"88A65D8397FB73EDECB3ECB2C05FDA07"
+    }
+}

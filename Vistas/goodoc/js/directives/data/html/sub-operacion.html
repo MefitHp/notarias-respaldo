@@ -1,0 +1,113 @@
+<div class=" contentInputs body_form_data">
+    <div class="dd_expe">
+        <div class="dd_expe_number dd_expe_btn">
+            {{idsubopt}}
+        </div>
+        <div class="dd_expe_text">
+
+            <p>
+                {{nombre}}
+            </p>
+
+        </div>
+        <!--<div class="dd_expe_btn dd_expe_icon">
+        <!--<div class="dd_expe_btn dd_expe_icon" onclick="actoAcordeon(this);" ng-click="suboperacionSelect(idsubopt)">-->
+            <!--<span class="tbl_icon triggerActo"></span>-->
+        <!--</div>-->
+        <div class="dd_expe_btn dd_expe_icon" title="Eliminar" ng-click="delete_subOp(idopt, idsubopt,idacto)">
+            <span class="tbl_icon ico_trash"></span>
+        </div>
+        <div class="dd_expe_btn dd_expe_icon" title="Activar expediente" ng-click="activa_expediente(idacto, nombre,nombreope)">
+            <span class="tbl_icon ico_expediente"></span>
+        </div>
+        <div class="dd_expe_btn dd_expe_icon" title="Activar escritura" ng-click="activa_escritura()">
+            <span class="tbl_icon ico_escritura"></span>
+        </div>
+
+    </div>
+    <div class="dd_expe_wrap">
+<!--
+        <div class="dd_expe gray">
+            <div class="dd_expe_number dd_expe_btn">
+                <span class="tbl_icon ico_documento"></span>
+            </div>
+            <div class="dd_expe_text">
+
+                <p>
+                    <b>Documentos previos</b> 
+                </p>
+
+            </div>
+            <div class="dd_expe_btn dd_expe_icon" ng-click="popLateral('doc_previos', 2, true)">
+                <span class="tbl_icon ico_moreData"></span>
+
+            </div>
+
+        </div>
+        <div class="dd_expe_docpost_wrapp">
+            <div class="dd_expe" ng-repeat="dp in $root.operaciones[idopt].listaActos[idsubopt].previos track by $index" ng-show="dp.status != 'E'">
+                <div class="dd_expe_number dd_expe_btn">
+                    <p>{{$index}}</p>
+                </div>
+                <div class="dd_expe_text">
+
+                    <p ng-show="dp.documento">
+                        {{dp.documento.dstitulo}}
+                    </p>
+                    <p ng-show="dp.formatopdf">
+                        {{dp.formatopdf.dstitulo}}
+                    </p>
+
+                </div>
+                <div class="dd_expe_btn dd_expe_icon " ng-click="delete_documento(dp)">
+                    <span class="tbl_icon ico_trash"></span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="dd_expe gray">
+            <div class="dd_expe_number dd_expe_btn">
+                <span class="tbl_icon ico_documento"></span>
+            </div>
+            <div class="dd_expe_text">
+
+                <p>
+                    <b>Documentos posteriores</b> 
+                </p>
+
+            </div>
+            <div class="dd_expe_btn dd_expe_icon" ng-click="popLateral('doc_posteriores', 2, true)" >
+                <span class="tbl_icon ico_moreData"></span>
+            </div>
+
+        </div>
+        <div class="dd_expe_docpost_wrapp">
+            <div class="dd_expe" ng-repeat="dp in $root.operaciones[idopt].listaActos[idsubopt].posteriores track by $index" ng-show="dp.status != 'E'">
+                <div class="dd_expe_number dd_expe_btn">
+                    <p>{{$index}}</p>
+                </div>
+                <div class="dd_expe_text">
+
+                    <p ng-show="dp.documento">
+                        {{dp.documento.dstitulo}}
+                    </p>
+                    <p ng-show="dp.formatopdf">
+                        {{dp.formatopdf.dstitulo}}
+                    </p>
+
+                </div>
+                <div class="dd_expe_btn dd_expe_icon " ng-click="delete_documento(dp)">
+                    <span class="tbl_icon ico_trash"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+        -->
+    </div>
+
+
+</div>

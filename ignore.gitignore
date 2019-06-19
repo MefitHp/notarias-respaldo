@@ -1,0 +1,22 @@
+target
+target/*
+bin
+bin/*
+.classpath
+.project
+.settings
+Vistas/goodoc/nbproject
+# Created by http://www.gitignore.io
+
+### NetBeans ###
+Vistas/goodoc/nbproject/private/
+Vistas/goodoc/build/
+Vistas/goodoc/nbbuild/
+Vistas/goodoc/dist/
+Vistas/goodoc/nbdist/
+Vistas/goodoc/nbactions.xml
+<<<<<<< HEAD
+Vistas/goodoc/nb-configuration.xml
+=======
+Vistas/goodoc/nb-configuration.xml
+>>>>>>> 1ac42b73edd3eaa8f02e30e7c64e0f05aaa41422

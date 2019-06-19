@@ -1,0 +1,7 @@
+Para poder acceder a los documentos de Racoo se necesitan seguir los siguientes pasos:
+
+1.- Crear una carpeta en root llamada Z:
+2.- Asigrle permisos a la carpeta
+3.- instalar cifs-tools
+4.- montar la carpeta con el siguiente comando
+mount -t cifs -o username=user,password=pass//ip/racoo/expedientes /Z\:/

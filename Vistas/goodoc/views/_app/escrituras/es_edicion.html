@@ -1,0 +1,249 @@
+<loadscript url=ctrl_escrituras_edit.js></loadscript>
+
+<div ng-controller=ctrl_escrituras_edit><navexpediente></navexpediente><bienvenida></bienvenida>
+    <br>
+
+    <form name="myForm" novalidate ng-submit="escritura_add_cf()"> 
+
+        <div class="wra_form_data" style="overflow: visible"> 
+
+            <div class="head_form_data"> 
+
+                <div class="contentInputs"> 
+                    <div class="colum colums2" > 
+
+                        <p>N° de Expediente: <b>{{expediente.numexpediente}}</b></p>
+                    </div>
+                    <div class="colum colums2" > 
+                        <div style="float:right;"> 
+                            <p>Fecha de creaci&oacute;n: <b>{{$root.parseFecha(expediente.fechainicial)}}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body_form_data" style="overflow: visible"> 
+
+                <div class="contentInputs" >
+                    <div class="contentInputs">
+
+                        <div class="colum colums4">
+                            <img src="img/assets/icons/others/paper_exp.png"/>
+                        </div>
+                        <div class="colum colums3">
+                            <h1>Archivo: {{archivo}}</h1>
+                            <p>N&uacute;mero de páginas:&nbsp;<b>{{paginas}}</b></p>
+                            <p>N&uacute;mero de folios:&nbsp;<b>{{(paginas / 2)}}</b></p>
+                            <p>Total de porcentaje usado &uacute;ltima p&aacute;gina:&nbsp;<b>{{porcentaje}}%</b></p>
+                            <hr>
+                            <h1>Certificado de libertad de Grav&aacute;menes:</h1>
+
+                            <div ng-show="fechacertificadovalido">
+                                <p>Fecha de certificado: <b>{{fechacertificado}}</b></p>
+                                <p>Fecha de vencimiento: <b>{{fechaterminocertificado}}</b></p>
+                                <p>D&iacute;as restantes: <b class="icon_red">{{restodias}}</b> d&iacute;as</p>
+                            </div>
+                            <div ng-show="!fechacertificadovalido">
+                                <p><b class="icon_red">La fecha del certificado no es v&aacute;lida  y no es posible iniciar el proceso</b></p>
+                            </div>
+                            
+                            <hr>                            
+                            
+                            <h1>Archivos posteriores solicitados:</h1>
+
+                            <div class="chip" ng-repeat="post in posterioresacto | orderBy:'nombre'" ng-click="del_documento(post.idactodoc)"> 
+                                 <i class="fa fa-close"> </i> {{post.nombre}}
+                             </div>
+                            <hr>  
+                            <div ng-show="istraslativa && !hascertificado">
+                                <p class="icon_red">
+                                    <b>El expediente no tiene registrado la fecha de Certificado, y no es posible colocar el número.</b>
+                                </p>
+                                <p>
+                                    Asignarlo en los antecedentes de Registro
+                                </p>
+                                <hr>
+                            </div>
+                        </div> 
+
+                    </div>
+                </div>
+
+
+                <div class="contentInputs" style="margin-bottom:70px;"> 
+
+                    <div class="colum colums4"> 
+                        <label>Libro
+                        </label> 
+                        <input type="text" name="libro" ng-model="escritura.libro.innumlibro" disabled> 
+                    </div>
+
+                    
+                    <div class="colum colums4" > 
+                        <label>Numero de escritura:
+                        </label> 
+                        <select name="numeroescritura" id="numeroescritura" ng-model="numeroescritura" ng-change="asignanumero()" data-placeholder="--Seleccione--" required class="chosen-select"> 
+                            <option value="{{$index}}" ng-repeat="numero in numeros track by $index" >{{numero.numeroescritura}} ({{numero.cantidadfolios}} folios)</option> 
+                        </select> 
+
+                        <div class="tooltip" ng-show="myForm.submitted && myForm.actos.$pristine">Selecciona un elemento
+                        </div>
+                    </div>
+                    <div class="colum colums2" > 
+                        <label>&nbsp;</label>
+                        <button type="button" ng-click="listaposteriores()" class="btn-blue"> Solicitar documentos posteriores </button>     
+                    </div>
+                </div>
+
+                <!--<div class="contentInputs"> 
+
+                    <div class="colum colums4"> 
+                        <label>Fecha de pase
+                        </label> 
+                        <input type="text" placeholder="Inserte la fecha" class="datepicker" ng-model="escritura.fechafirma" id="fechacreacion"/> 
+                    </div>
+                </div>-->
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums4"> &nbsp; 
+                    </div>
+
+                    <div class="colum colums4"> &nbsp; 
+                    </div>
+
+                    <div class="colum colums4"> 
+
+                        <div class="btn-rounded" onclick="history.back()">
+
+                            <p>Regresar</p>
+                        </div>
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <button class="btn-blue" type="submit" ng-disabled="(istraslativa && !hascertificado) || tmphasnumescritura || !fechacertificadovalido">Guardar</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div id="validaPosteriores" style="display:none; width: 500px;" class="avgrund-popup avgrund-popup-animate" > 
+        <div class="modal_header">Notarias 98 y 24
+        </div>
+        <div class="modal_body"> 
+            <div class="contentInputs"> 
+                <div class="colum"> 
+                    <p>Selecciona los documentos posteriores a solicitar</p>
+
+                </div>
+
+                <label ng-repeat="post in listaPosteriores">
+                    <input
+                        type="checkbox"
+                        name="selectedPost[]"
+                        id="post{{post.formatopdf.identificador}}"
+                        value="{{post.formatopdf}}"
+                        ng-model="bool"
+                        ng-change ="addPost(bool, post.formatopdf)"
+                        ng-checked="isChecked(post.formatopdf.identificador)"
+                        > {{post.formatopdf.dstitulo}}
+                </label>
+            </div>
+            <div class="contentInputs"> 
+
+                <div class="colum colums4">
+                    <div class="btn-rounded cerrarModal" ng-click="cerrarModal()">
+
+                        <p>No</p>
+                    </div>
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded btn-blue" ng-click="setPosteriores()">
+
+                        <p>Solicitar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="confirmpost" style="display:none; width: 500px;" class="avgrund-popup avgrund-popup-animate" > 
+        <div class="modal_header">Notarias 98 y 24
+        </div>
+        <div class="modal_body" ng-show="!cf_sinposteriores || sinpreventivo"> 
+            <div class="contentInputs"> 
+                <div class="colum"> 
+                    <p>Se iniciar&aacute; el la gesti&oacute;n de la escritura</p>
+                    <ul>
+                        <li ng-show="!cf_sinposteriores" style="color: red !important; margin-left:40px;">
+                            
+                            <p>
+                                <span style="color: red !important;">Sin solicitar documentos posteriores</span>
+                            </p>
+                        </li>
+                        <li ng-show="sinpreventivo" style="color: red !important; margin-left:40px;">
+                            <p>
+                                <span style="color: red !important;">Sin solicitar aviso de otorgamiento</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <p>¿Deseas continuar?</p>
+                </div>
+            </div>
+            <div class="contentInputs"> 
+                <div class="colum colums4">
+                    <div class="btn-rounded cerrarModal" ng-click="cerrarModal()">
+                        <p>No</p>
+                    </div>
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded btn-blue" ng-click="confirm_sinimpuestos()">
+                        <p>Aceptar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal_body" ng-show="cf_sinposteriores && !sinpreventivo"> 
+            <div class="contentInputs"> 
+                <div class="colum"> 
+                    <p>Al asignar n&uacute;mero de escritura, se iniciar&aacute; el conteo de d&iacute;as para la gesti&oacute;n de la misma. ¿Deseas continuar?</p>
+                </div>
+            </div>
+            <div class="contentInputs"> 
+                <div class="colum colums4">
+                    <div class="btn-rounded cerrarModal" ng-click="cancelar_inicio()">
+                        <p>No</p>
+                    </div>
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded btn-blue" ng-click="escritura_add()">
+                        <p>Aceptar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+            /*setTimeout(function () {
+            $(".chosen-select").chosen({
+            allow_single_deselect: true
+            });
+            }, 1500);
+            $('.datepicker').datepicker({
+    changeYear: true,
+            dateFormat: "yy-mm-dd",
+            yearRange: '1900:2050'
+    });*/
+    
+    
+      
+</script>
+

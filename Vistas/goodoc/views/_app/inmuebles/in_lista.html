@@ -1,0 +1,48 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+    <div class="contentInputs">
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            <div class="wrap_select">
+        <button class="btn-blue" ng-click="goTo('inmuebles_captura_inmueble')">Nuevo inmueble</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="contentInputs">
+        <table class="tableForm">
+            <tr>
+                <th width="5%">
+                     <span class="tbl_icon ico_house"></span>
+                </th>
+                <th width="30%">Inmueble</th>
+                <th width="20%">Precio</th>
+                <th width="40%">Acto</th>
+                <th width="5%">
+                </th>
+            </tr>
+            <tr ng-repeat="inm in inmuebles | orderBy:'valvatastral'" ng-class-even="'lista_alternate'">
+               
+                <td>{{$index +1}}</td> 
+                <td>{{inm.dsdescripcion}}</td> 
+                <td>$ {{formatoValor(inm.valcatastral)}}</td> 
+                <td>{{inm.actoNombre}}</td> 
+                <td ng-click="act_inmueble(inm.idinmueble)">
+                    <span class="tbl_icon ico_edit"></span>
+                </td> 
+
+
+            </tr>
+
+        </table>
+    </div>

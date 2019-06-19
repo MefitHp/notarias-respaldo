@@ -1,0 +1,37 @@
+<loadscript url=ctrl_nopaso.js></loadscript>
+
+<div ng-controller=ctrl_nopaso>
+
+    <div class="wrap_contentList abogadoList expediente"> 
+        <div class="wra_content_tarea" style="display:block; border: none;"> 
+            <div class=" contentInput">
+                <div class="colum colums4">
+                    <img src="img/assets/icons/others/paper_exp.png"/>
+                </div>
+                <div class="colum colums3" style="margin-top: 110px">
+                    <h2>La escritura número: {{escNumero}}, ser&aacute; marcada como no paso, &iquest; esto es correcto?</h2>
+                </div>
+                    <div class="colum colums4">
+                        <label>&nbsp;</label> 
+                        <button class="btn-blue" ng-click="paso_data('paso',true)">Paso</button> 
+                    </div>
+                    <div class="colum colums4" style="padding-top:20px"> 
+                          <label>&nbsp;</label> 
+                        <div class="btn-rounded" ng-click="nopaso()">
+                            <p>No paso</p>
+                        </div>
+                    </div>
+                     <div class="colum colums4" style="padding-top:20px"> 
+                          <label>&nbsp;</label> 
+                        <div ng-hide="isprorroga" class="btn-rounded" ng-click="paso_data('prorroga',true)">
+                            <p><i class="fa fa-clock-o"></i>&nbsp;Pr&oacute;rroga 5 d&iacute;as</p>
+                        </div>
+                    </div>
+                
+            </div>
+            
+
+        </div>
+        </div>
+    </div>
+    

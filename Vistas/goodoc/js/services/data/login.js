@@ -1,0 +1,1 @@
+define(['../module'],function(service){'use strict';service.factory("con_login",function($resource){return $resource(urlConsumir,{tipo:"@tipo"},{checkLogin:{method:'POST',params:{tipo:'login'},isArray:false},logout:{method:'POST',params:{tipo:'logout'},isArray:false},});});});

@@ -1,0 +1,61 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="goTo('/solicitud_de_pago')">Nuevo solicitud de pago</button>
+    </div>
+
+</div>
+
+
+<div class="contentInputs">
+    <table class="tableForm">
+        <tr>
+            <th width="5%">
+                Id
+            </th>
+            <th width="25%">Pagador</th>
+            <th width="40%">Concepto</th>
+            <th width="15%">Importe</th>
+            <th width="10%">Estatus</th>
+            <th width="5%"></th>
+        </tr>
+       <tr style='vertical-align: top' ng-repeat="sol in solicitudes" ng-class-even="'lista_alternate'">
+       
+            <td>{{$index + 1}}</td>
+            
+            
+            <td >
+                {{sol.listaDatosFiscalPago[0].dsnombrepagador}}
+               <!--
+                <ol>
+                    <li ng-repeat="dp in sol.listaDatosFiscalPago"> {{dp.listaDatosFiscalPago[0].dsnombrepagador}}</li>
+                </ol>-->
+            </td>
+            <td>{{sol.concepto}}</td>
+            <td>$ {{formateaValor(sol.valor)}}</td>
+            <td>
+                        <span ng-show="sol.listaDatosFiscalPago.length < 1">Pendiente</span>
+                        <span ng-show="sol.listaDatosFiscalPago.length > 0">Pagado</span>
+                        <!--<span ng-show="sol.listaDatosFiscalPago.length > 0">{{dp.status}}</span>-->
+                
+            </td>
+
+            <td width="5%" ng-click="elimina_pago(sol.idsolpago)">
+                <span class="tbl_icon ico_delete" ></span>
+            </td>
+
+        </tr>
+    </table>
+
+</div>

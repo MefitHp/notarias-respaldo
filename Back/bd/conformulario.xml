@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<formulario nombre = "" identificador = "">
+	<descripcion></descripcion>
+	<suboperaciones>
+		<suboperacion nombre = "" />
+		<suboperacion nombre = "" />
+		...
+	</suboperaciones>
+	<roles>
+		<rol nombre = "" />
+		<rol nombre = "" />
+		...
+	</roles>
+	<componentes>
+		<componente nombre = "">
+			<etiqueta></etiqueta>
+			<propiedades>
+				<posicion></posicion>
+				<orden></orden>
+				<descripcion></descripcion>
+				<ayuda></ayuda>
+				<tipo></tipo>
+				<longitud>
+					<maxima></maxima>
+					<minima></minima>
+				</longitud>
+				<lista>
+					<valor></valor>
+					<valor></valor>
+					...
+				</lista>
+				<tabla>
+					<identificador></identificador>
+				</tabla>
+				<subformulario
+					<posicion></posicion>
+				</subformulario>
+			</propiedades>
+		</componente>
+		<componente nombre = "">
+			<etiqueta></etiqueta>
+			<propiedades>
+				<posicion></posicion>
+				<orden></orden>
+				<descripcion></descripcion>
+				<ayuda></ayuda>
+				<tipo></tipo>
+				<longitud>
+					<maxima></maxima>
+					<minima></minima>
+				</longitud>
+				<lista>
+					<valor></valor>
+					<valor></valor>
+					...
+				</lista>
+				<tabla>
+					<identificador></identificador>
+				</tabla>
+				<subformulario
+					<posicion></posicion>
+				</subformulario>
+			</propiedades>
+		</componente>
+		...
+	</componentes>
+	<subformularios>
+		<subformulario posicion = "">
+			<nombre></nombre>
+			<descripcion></descripcion>
+		</subformulario>
+		<subformulario posicion = "">
+			<nombre></nombre>
+			<descripcion></descripcion>
+		</subformulario>
+		...
+	</subformularios>
+</formulario>

@@ -1,0 +1,153 @@
+<loadscript url=ctrl_prev_post_config.js></loadscript><div ng-controller=ctrl_prev_post_config>
+<div class="contentInputs">
+    <div class="colum colums1">
+        <label>Selecciona una sub-operaci&oacute;n</label>
+        <div class="wrap_select">
+            <select ng-model="sel_suboperacion" ng-change="get_documentos()" ng-options="sub as sub.dsnombre for sub in suboperaciones | orderBy:'dsnombre'"  name="suboperaciones">
+                <option value="" disabled selected>--Seleccione--</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="contentInputs">
+
+    <div class="colum colums1">
+        <label>Selecciona una localidad</label>
+        <div class="wrap_select">
+            <select ng-model="sel_locacion" ng-change="get_documentos()" ng-options="loc as loc.dselemento for loc in locacion | orderBy:'dselemento'" ng-change="detalleRol();"  name="localidades">
+                <option value="" disabled selected>--Seleccione--</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+
+<div class="contentInputs" style="border-top:1px solid #ccc; padding-top: 25px; margin-top:25px">
+
+    <div class="colum colums2">
+        <label>Documentos previos</label>
+        <div class="wrap_select">
+            <select ng-model="sel_previo" ng-options="prev as (prev.dstitulo + ' | ' + prev.dsdescripcion ) for prev in previosListar | orderBy:'dstitulo'"  name="previos">
+                <option value="" disabled selected>--Seleccione--</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="colum colums4">
+        <div class="btn-rounded btn-form" ng-click="add_documento(sel_previo, lista_previos)">
+            <p><span>+</span> Agregar</p>
+        </div>
+    </div>
+</div>
+
+<div class="contentInputs">
+    <div class="colum colums2">
+        <label>Manejo del documento</label>
+        <div class="wrap_select">
+            <select ng-model="sel_previo.isgestionado" name="previos">
+                <option value="">Ninguno</option>
+                <option value="g">Es gestionado</option>
+                <option value="v">Es valuado</option>
+            </select>
+        </div>
+    </div>
+    <div class="colum colums4">
+        <label>Posici&oacute;n del documento</label>
+        <input type="number" ng-model="sel_previo.inorden" />
+    </div>
+</div>
+
+
+<div class="contentInputs" ng-show="lista_previos.length > 0">
+    <label >Listado de documentos previos</label>
+    <table class="tableForm">
+        <tr>
+            <th width="5%"></th>
+            <th>Documento</th>
+            <th width="5%">
+            </th>
+
+        </tr>
+        <tr ng-repeat="doc in lista_previos| orderBy:'dstitulo' track by $index" >
+            <td>{{$index}}</td>
+            <td class="altas_bajas" title="{{doc.dsdescripcion}}">{{doc.dstitulo}}</td>
+            <td ng-click="elimina_documento(doc, lista_previos)" title="Eliminar documento"> <span class="tbl_icon ico_delete"></span></td>
+
+
+
+        </tr>
+
+    </table>
+</div>
+
+<div class="contentInputs">
+
+    <div class="colum colums2">
+        <label>Documentos posteriores</label>
+        <div class="wrap_select">
+            <select ng-model="sel_posterior" ng-options="post as (post.dstitulo + ' | ' + post.dsdescripcion ) for post in posterioresListar | orderBy:'dstitulo'"  name="posteriores">
+                <option value="" disabled selected>--Seleccione--</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="colum colums4">
+        <div class="btn-rounded btn-form" ng-click="add_documento(sel_posterior, lista_posteriores)">
+            <p><span>+</span> Agregar</p>
+        </div>
+    </div>
+</div>
+<div class="contentInputs">
+    <div class="colum colums2">
+        <label>Manejo del documento</label>
+        <div class="wrap_select">
+            <select ng-model="sel_posterior.isgestionado" name="previos">
+                <option value="">Ninguno</option>
+                <option value="g">Es gestionado</option>
+                <option value="v">Es valuado</option>
+            </select>
+        </div>
+    </div>
+    <div class="colum colums4">
+        <label>Posici&oacute;n del documento</label>
+        <input type="number" ng-model="sel_posterior.inorden" />
+    </div>
+</div>
+
+<div class="contentInputs" ng-show="lista_posteriores.length > 0">
+    <label >Listado de documentos posteriores</label>
+    <table class="tableForm">
+        <tr>
+            <th width="5%"></th>
+            <th>Documento</th>
+            <th width="5%">
+            </th>
+
+        </tr>
+        <tr ng-repeat="doc in lista_posteriores| orderBy:'dstitulo' track by $index" >
+            <td>{{$index}}</td>
+            <td class="altas_bajas" title="{{doc.dsdescripcion}}">{{doc.dstitulo}}</td>
+            <td ng-click="elimina_documento(doc, lista_posteriores)" title="Eliminar documento"> <span class="tbl_icon ico_delete"></span></td>
+
+
+
+        </tr>
+
+    </table>
+</div>
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="guardar_datos()" id="btn_guardar_previos">Guardar</button>
+    </div>
+
+</div>
+</div>
+

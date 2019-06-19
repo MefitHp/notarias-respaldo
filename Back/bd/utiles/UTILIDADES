@@ -1,0 +1,27 @@
+
+/**
+* VICTOR ESPINOSA:
+* BORRADO DE FORMULARIOS:
+*9389a42080b355c70f8c8651a7aeab76
+**/
+
+DELETE FROM tbbsnm47 WHERE idconformulario = '9389a42080b355c70f8c8651a7aeab76';
+DELETE FROM tbbsnm48 WHERE idconformulario = '9389a42080b355c70f8c8651a7aeab76';
+DELETE FROM tbbsnm52 where idcomponente IN (SELECT idcomponente from tbbsnm50 where idconformulario = '9389a42080b355c70f8c8651a7aeab76');
+
+DELETE FROM tbbsnm53 where idcomponente IN (SELECT idcomponente from tbbsnm50 where idconformulario = '9389a42080b355c70f8c8651a7aeab76');
+
+DELETE FROM tbbsnm53 where idformulario IN (SELECT idformulario from tbbsnm51 where idconformulario = '9389a42080b355c70f8c8651a7aeab76');
+
+DELETE FROM tbbsnm50 where idsubformulario IN (SELECT idconsubform from tbbsnm49 where idconformulario='9389a42080b355c70f8c8651a7aeab76');
+
+DELETE FROM tbcfgm22 where idvariable IN (SELECT idvarstipo FROM tbcfgm32 where idcomponente IN (SELECT idcomponente FROM tbbsnm50 WHERE idconformulario='9389a42080b355c70f8c8651a7aeab76'));
+
+DELETE FROM tbcfgm32 WHERE idcomponente IN (SELECT idcomponente FROM tbbsnm50 WHERE idconformulario='9389a42080b355c70f8c8651a7aeab76');
+
+
+DELETE FROM tbbsnm49 WHERE idconformulario = '9389a42080b355c70f8c8651a7aeab76';
+DELETE FROM tbbsnm50 WHERE idconformulario = '9389a42080b355c70f8c8651a7aeab76';
+DELETE FROM tbbsnm51 WHERE idconformulario = '9389a42080b355c70f8c8651a7aeab76';
+DELETE FROM tbbsnm46 WHERE idconFormulario = '9389a42080b355c70f8c8651a7aeab76';
+

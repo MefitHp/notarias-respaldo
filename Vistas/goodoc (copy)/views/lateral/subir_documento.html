@@ -1,0 +1,54 @@
+<loadscript url=ctrl_subir_doc.js></loadscript>
+<div class="allContentPanel" id="panel_lateral_content" ng-controller="ctrl_subir_doc">
+    <div class='con_popUp_header con_popUp_wrapper'>
+        <div class='con_popUp_header_tit'>
+            <h2>Subir nuevo documento</h2>
+            <p class="mifecha"></p>
+        </div>
+        <div class='con_popUp_header_cerrar' ng-click="popLateral('', 2, false)"></div>
+    </div>
+
+    <div class='con_popUp_title con_popUp_wrapper'>
+        <div>
+            <h2>Seleccionar el documento a subir</h2>
+        </div>
+    </div>
+
+
+    <form id="archivo" action="" method="post" enctype="multipart/form-data">
+        <div class='con_popUp_body con_popUp_wrapper'>
+            <div class="contentInputs">
+                <div class="colum colums2">
+                    <input type="file" name="file" size="45" />
+                    <input type="hidden" id="idactodoc" value="">
+                    <input type="hidden" id="desde" value="">
+                    <input type="hidden" id="idtarea" value="">
+                    <input type="hidden" name="idsesionactual" id="idsesionactual" value="">
+                    <input type="hidden" name="idusuario" id="idusuario" value="">
+                </div>
+
+            </div>
+
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <div class="btn-rounded" ng-click="popLateral('', 2, false)">
+                        <p>Cancelar</p>
+                    </div>
+                </div>
+                <div class="colum colums4">
+                    <button class="btn-blue" type="submit">Subir Archivo</button>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+<script>
+    $('#archivo').ajaxForm(function() {
+        ejecutaAlerta(1,"El archivo se subió correctamente");
+        subioArchivo()
+    });
+        pon_fecha('.mifecha');
+
+</script>

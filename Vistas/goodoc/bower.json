@@ -1,0 +1,24 @@
+{
+  "name": "notarias98y24",
+  "version": "0.1",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "libs"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-resource": "latest",
+    "ng-grid": "latest",
+    "requirejs": "latest",
+    "requirejs-domready": "latest",
+    "jquery": "latest",
+    "jquery-ui": "latest",
+    "ckeditor": "latest",
+    "underscore": "latest",
+    "less": "latest",
+    "normalize": "latest",
+    "momentjs": "latest"
+  }
+}

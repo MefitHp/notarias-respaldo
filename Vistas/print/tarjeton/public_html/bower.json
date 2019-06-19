@@ -1,0 +1,14 @@
+{
+  "name": "Victor Espinosa",
+  "authors": [
+    "Victor Espinosa <im.vicoy@gmail.com>"
+  ],
+  "description": "Proyecto de impresion de tarjeton",
+  "main": "tarjeton.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "handlebars": "~4.0.5"
+  }
+}

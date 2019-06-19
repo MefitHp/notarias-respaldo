@@ -1,0 +1,24 @@
+        { 
+            
+             "idusuario":"idusuario",
+             "dsnombre":"pedro",
+             "dspaterno":"pica",
+             "dsmaterno":"piedra",
+             "idrol":{
+                  "idrol":"143r5fewr43",
+                  "dsnombre":"abogado",
+                  "dsdescripcion":"descripcion",
+                  "tmstmp":"2013-4-3 12:12",
+                  "idsesion":"ajsdfjcjvmwe"
+                    },
+             "cdusuario":"abogado",
+             "dsvalenc":"pass",
+             "dscorreo":"pedro@flintstones.mx",
+             "dsrfc":"tfc",
+             "dsreferencia":"ref",
+             "isactualizapwd":"false",
+             "inestatus":1,
+             "dsultimoacceso":"2014-4-5 15:34",
+             "tmstmp":"2014-5-6 23:21",
+             "idsesion":"asdfsadfsa"
+        }

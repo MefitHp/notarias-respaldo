@@ -1,0 +1,93 @@
+<loadscript url=ctrl_mesactrl.js></loadscript>
+
+<div ng-controller=ctrl_mesactrl>
+
+
+    <br><h2 class="tit_H2">Mesa de control</h2>
+    
+    <div class=contentInputs>
+
+        <div class="colum colums3">
+            <input type="text" ng-model="documentos_filtro" class="search-field" placeholder="Filtrar documentos..." style="width: 83%; background-position: 590px;">
+        </div>
+
+        <div class="colum colums4">
+
+             <div class="wrap_select"> 
+                        <select class="ispersonadata"> 
+                            <option value="" disabled selected>--Filtrar por estatus--</option> 
+                            <option value="?">EN TIEMPO</option>
+                            <option value="?">POR VENCER</option>
+                            <option value="?">VENCIDOS</option>
+                        </select> 
+                    </div>
+        </div>
+
+    </div>
+    
+    <div class="wrap_contentList abogadoList expediente" ng-repeat="tabla in mesas_filter |filter:documentos_filtro"> 
+
+        <div class="wra_content_tarea" style="display:block; border: none;" > 
+
+            <div class=" contentInput" > 
+                <h2> Solicitudes del d&iacute;a: {{tabla.fecha}} </h2>
+                <table class="tableForm"> 
+                    <tr> 
+                        <th width="5%"> 
+
+                            <span class="tbl_icon ico_documento">
+                            </span> 
+                        </th> 
+                        <th >No. Escritura</th> 
+                        <th width="10%">Tipo</th> 
+                        <th width="15%">Estatus Proceso</th> 
+                        <th width="10%">Actualizaci&oacute;n</th> 
+                        <th width="10%">Solicitud</th> 
+                        <th width="10%">Vencimiento</th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                         
+                    </tr>
+                    <tr ng-repeat="mesa in tabla.mesas | orderBy:['tmstmp']:true " ng-class="{disabled_row:mesa.pago.statuspago!='PAGADO',estatus_warning:mesa.estatusdoc=='CANCELA_NO_PASO'}">
+                            <td ng-class="{'estatus_ok':mesa.alerta.statusalerta=='OK','estatus_warning':mesa.alerta.statusalerta=='WARNING','estatus_dead':mesa.alerta.statusalerta=='DEAD','estatus_finished':mesa.alerta.statusalerta=='FINISHED'}">{{$index}}</td>
+                        <td>{{mesa.escritura.dsnumescritura}}</td>
+                        <td>
+                            <span ng-show="mesa.actodocumento.formatoPdf.dstitulo">{{mesa.actodocumento.formatoPdf.dstitulo}}</span>
+                            <span ng-show="!mesa.actodocumento.formatoPdf.dstitulo">NO PASO</span>
+                        </td>
+                        <td>
+                            <span ng-show="mesa.pago.statuspago=='PAGADO'">{{mesa.estatusdoc}}</span>
+                            <span ng-show="mesa.pago.statuspago!='PAGADO'">PAGO {{mesa.pago.statuspago}}</span>
+                        </td>
+                        <td title="{{mesa.update | date:'dd/MM/yy - hh:mm'}}hrs.">{{mesa.update | date:'dd/MM/yy'}}</td>
+                        <td title="{{mesa.tmstmp | date:'dd/MM/yy - hh:mm'}}hrs.">{{mesa.tmstmp | date:'dd/MM/yy'}}</td>
+                        <td ng-show="mesa.actodocumento.formatoPdf.dstitulo" title="{{mesa.vencimiento | date:'dd/MM/yy - hh:mm'}}hrs.">{{mesa.vencimiento | date:'dd/MM/yy'}}</td>
+                        <td ng-show="!mesa.actodocumento.formatoPdf.dstitulo"  title="{{mesa.tmstmp | date:'dd/MM/yy - hh:mm'}}hrs.">{{mesa.tmstmp | date:'dd/MM/yy'}}</td>
+                        <td>
+                            <i class="fa fa-2x fa-eye icon_gray" ng-click="detalleDocumento(mesa)" ng-show="mesa.estatusdoc!='CANCELA_NO_PASO'" title="Rechar cancelaci&oacute;n de NO PASO"></i>
+                            <i class="fa fa-2x fa-remove icon_gray" ng-click="cancela_nopaso(mesa.escritura,false)" ng-show="mesa.estatusdoc=='CANCELA_NO_PASO'"  title="Aceptar cancelaci&oacute;n de NO PASO"></i>
+                        </td>
+                        <td>
+                            <i class="fa fa-2x fa-comments-o icon_gray" ng-class="{'btn_list_animate_text':mesa.actodocumento.tienecomments}" ng-show="mesa.estatusdoc!='CANCELA_NO_PASO'" ng-click="lanza_comentarios('d',mesa.actodocumento.idactodoc,mesa.actodocumento.formatoPdf.dstitulo,mesa.actodocumento.tienecomments,mesa.pago.expediente)"></i>
+                            <i class="fa fa-2x fa-check icon_gray" ng-click="cancela_nopaso(mesa.escritura,true)" ng-show="mesa.estatusdoc=='CANCELA_NO_PASO'"></i>
+
+                        </td>
+                       
+                    </tr>
+                </table> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".cerrarModal").click(function () {
+        Avgrund.hide(function(){
+            $("#comments_wrapp").fadeOut("slow");  
+        });
+    })
+</script>
+
+

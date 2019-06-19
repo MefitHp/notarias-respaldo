@@ -1,0 +1,146 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<form name="myForm" novalidate ng-submit="presupuesto_add()">
+    <div class="wra_form_data">
+
+        <div class="body_form_data">
+
+            <div class="contentInputs">
+                <div class="colum colums3">
+                    <label>Concepto de pago</label>
+                    <div class="wrap_select">
+                        <select ng-options="cp as cp.dselemento for cp in conceptoPagos" name="conceptoPago" id="conceptoPago" ng-model="presupuesto.conceptoPago" required>
+                            <option class="tmp_opt" value="" disabled selected>--Concepto de pago--</option>
+                        </select>
+                        <div class="tooltip" ng-show="myForm.submitted && myForm.notario.$pristine">Selecciona un notario</div>
+
+                    </div>
+
+                </div>
+                <div class="colum colums4">
+                    <label>Importe</label>
+                    <input type="text" placeholder="Inserte la informaci&oacute;n" ng-model="presupuesto.importe" name="importe" required="true" />
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.importe.$error.required" >Campo requerido</div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="wra_form_data">
+        <div class="head_form_data">
+            <div class="colum colums3" >
+                <p><b>Aplicar IVA</b></p>
+                <p>
+                    <span>*</span> 
+                    Seleccionando esta opci&oacute;n se incrementa con la tasa de IVA vigente el importe marcado.
+                </p>
+            </div>
+            <div class="colum colums4" >
+                <div style="float:right;">
+                <div class="onoffswitch">
+                <input ng-model="presupuesto.isaplicaiva" ng-init="presupuesto.isaplicaiva = true" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                <label class="onoffswitch-label" for="myonoffswitch">
+                        <div class="onoffswitch-inner"></div>
+                        <div class="onoffswitch-switch"></div>
+                </label>
+                {{isaplicaiva}}
+            </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="body_form_data">
+            <div class="contentInputs">
+                <div class="colum colums1">
+                    <label>Comentarios:</label>
+                    <textarea ng-model="presupuesto.comentario"></textarea>
+                </div>
+            </div>
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    &nbsp;
+                </div>
+                <div class="colum colums4">
+                    &nbsp;
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded" ng-click="goTo('/presupuesto')"><p>Regresar</p></div>
+                </div>
+                <div class="colum colums4">
+                    <button class="btn-blue" type="submit">Guardar</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contentInputs">
+        <table class="tableForm" ng-show = "envio.listaPorActo.length>0">
+            <tr>
+                <th width="5%">
+                    <span class="tbl_icon ico_presupuesto"></span>
+                </th>
+                <th width="20%">Concepto de pago</th>
+                <th width="20%">Importe</th>
+                <th width="20%">IVA</th>
+                <th width="25%">Comentarios</th>
+                <th width="5%">
+                    <span class="tbl_icon ico_edit"></span>
+                </th>
+                <th width="5%">
+                    <span class="tbl_icon ico_delete"></span>
+                </th>
+            </tr>
+            <tr ng-repeat="pre in envio.listaPorActo" >
+                <td>{{$index+1}}</td>
+                <td>{{pre.conceptoPago.dselemento}}</td>
+                <td>{{formatoValor(pre.importe)}}</td>
+                <td>{{formatoValor(pre.iva)}}</td>
+                <td>{{pre.comentario}}</td>
+                
+                <td  ng-click="btn_seleccionar_presupuesto(pre)"><span class="tbl_icon ico_edit"></span></td>
+                <td ng-click="btn_borrar_presupuesto(pre)"><span class="tbl_icon ico_delete"></span></td>
+                
+            </tr>
+        </table>
+    </div>
+    
+</form>
+<div class="wra_form_data2">
+
+        <div class="contentInputs">
+            <div class="colum colums4">
+                <label>&nbsp;</label>
+
+            </div>
+             
+            <div class="colum colums4">
+                <label>Importe</label>
+                <input type="text" disabled ng-model="envio.sumaImporte" name="importe" />
+
+            </div>
+           <div class="colum colums4">
+                <label>IVA</label>
+                <input type="text" disabled ng-model="envio.sumaIva" name="iva"  />
+
+            </div>
+           <div class="colum colums4">
+                <label>Total</label>
+                <input type="text" disabled ng-model="envio.sumaTotal" name="sumatotal" />
+
+            </div>
+           
+
+    </div>
+</div>
+
+

@@ -1,0 +1,128 @@
+<loadscript url=FOL/ctrl_autorizar_prestamo.js></loadscript>
+
+<div ng-controller=ctrl_fol_autorizar_prestamo>
+    
+    <div class="contentInputs" style="margin-bottom: 40px;border-bottom:1px solid #efefef;padding-bottom: 40px;"> 
+        <div class="colum colums3"> 
+            <label>N&uacute;mero de escritura:</label> 
+          <input type="text" placeholder="--Ingrese Datos--" ng-model="neo.numeroEscritura"> 
+        </div>
+        
+        
+        <div class="colum colums4"> 
+            <label>&nbsp;</label> 
+            <button class="btn-blue" ng-click="lanzar_autorizacion(neo)">
+                Prestar</button> 
+        </div>
+    
+    </div>
+    <hr>
+    
+    <h1>Folios Solicitados</h1>
+
+    <div class="contentInputs"> <h2 ng-show="folios_Noatendidos.length < 1">NO HAY FOLIOS PARA AUTORIZAR</h2> 
+        <table class="tableForm" ng-show="folios_Noatendidos.length > 0"> 
+            <thead> 
+                <tr> 
+                    <th width="5%">
+                    </th> 
+                    <th>N&uacute;mero de Escritura
+                    </th> 
+                    <th width="20%">Fecha
+                    </th> 
+                    <th width="30%">Solicitante
+                    </th> 
+                    <th width="5%">
+                    </th> 
+                </tr></thead> <tbody> 
+                <tr ng-repeat="NoAtendidos in folios_Noatendidos" ng-class-even="'lista_alternate'"> 
+                    <td>{{$index + 1}}
+                    </td>
+                    <td>{{NoAtendidos.numeroEscritura}}
+                    </td>
+                    <td>{{parseFecha(NoAtendidos.tmstmp)}}
+                    </td>
+                    <td>{{NoAtendidos.usuarioRecibe.dsnombre}}{{NoAtendidos.usuarioRecibe.dspaterno}}{{NoAtendidos.usuarioRecibe.dsmaterno}}
+                    </td>
+                    <td ng-click="lanzar_autorizacion(NoAtendidos)" title="Autorizar prestamo" class="wrap-fa"> 
+                        <i class="fa fa-2x fa-check-square-o icon_gray"></i>
+                    </td>
+                </tr></tbody> 
+        </table>
+    </div>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> <button class="btn-blue" ng-click="goTo('/folios/prestados')">Regresar</button> 
+        </div>
+    </div>
+
+    <div id="alerta_autorizar_folios" style="display:none;" class="avgrund-popup avgrund-popup-animate"> 
+
+        <div class="modal_header">Solicitud de huella
+        </div>
+
+        <div class="modal_body"> 
+
+            <div class="contentInputs" style="border-top: 1px solid #ccc;padding-top:30px "> 
+
+                <div class="colum" style="width: 96%"> 
+                    <label>Solicitante:
+                    </label> 
+
+                    <div class="colum" style="width: 91%"> 
+
+                        <div class="wrap_select"> 
+                            <select ng-options="abg as (abg.dsnombre +' '+ abg.dspaterno + ' ' + abg.dsmaterno ) for abg in abogados" name="abogados" ng-model="usuarioSolicitante" class="altas_bajas" required> 
+
+                                <option value="" disabled selected>--Seleccione un abogado--</option> 
+                            </select> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="colum "> 
+                    <label>Prestador:
+                    </label> 
+
+                    <div class="colum"> 
+                        <input type="text" style="width: 82%" ng-model="usuarioPrestador"> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentInputs" id="cerrar_devolucion"> 
+
+                <div class="colum" style="width:45%"> 
+
+                    <div class="btn-rounded cerrarModal">
+
+                        <p>Calcelar</p>
+                    </div>
+                </div>
+
+                <div class="colum" style="width:45%"> <button class="btn-blue cerrarModal" ng-click="lanza_autorizacion_folio(usuarioSolicitante, usuarioPrestador)">Autorizar</button> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(".cerrarModal").click(function () {
+        Avgrund.hide();
+        $("#alerta_recibir_folios").fadeOut("slow");
+        $("#changeKey").fadeOut("slow");
+    });
+
+</script>

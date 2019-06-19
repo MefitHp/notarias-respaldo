@@ -1,0 +1,39 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+<servlet>
+      <servlet-name>serviceservelet</servlet-name>
+  	   <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+  <init-param>
+  	<param-name>com.sun.jersey.config.property.packages</param-name>
+	<param-value>com.palestra.notaria.uif.rest</param-value>
+  </init-param>
+	<init-param>
+		<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+		<param-value>true</param-value>
+	</init-param>
+	<init-param>
+			<param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+			<param-value>com.palestra.notaria.cors.ResponseCorsFilter</param-value>
+	</init-param>
+		
+		<load-on-startup>1</load-on-startup>
+</servlet>
+
+	<servlet-mapping>
+     	<servlet-name>serviceservelet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/notaria_uif</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	
+	
+</web-app>

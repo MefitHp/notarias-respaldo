@@ -1,0 +1,6 @@
+<loadscript url=ctrl_roles.js></loadscript><div ng-controller=ctrl_roles><div class="contentInputs"> <div class="colum colums1"> <label>Selecciona un rol </label> <div class="wrap_select"> <select ng-model="rolSelect" ng-options="rol as rol.dsnombre for rol in roles | orderBy:'dsnombre'" ng-change="detalleRol();" name="roles"> <option value="" disabled selected>--Seleccione un Rol--</option> </select> </div></div></div><div class="contentInputs"> <div class="colum colums1"> <label>Descripci&oacute;n</label> <textarea class="border_gray">{{rolSelect.dsdescripcion}}</textarea> </div></div><div class="contentInputs"> <div id="tab-container" class="tab-container"> <ul class='etabs'> <li class='tab'><a href="#tb_usuarios">Usuarios</a></li><li class='tab'><a href="#tb_procesos">Procesos</a></li></ul> <div class="panel-container"> <div id="tb_usuarios"> <table class="tableForm"> <tr> <th width="30%">Cuenta</th> <th width="70%">Nombre</th> </tr><tr ng-repeat="user in users_X_rol"> <td><p>{{user.cdusuario}}</p></td><td><p>{{user.dsnombre}}{{user.dspaterno}}{{user.dsmaterno}}</p></td></tr></table> </div><div id="tb_procesos"> <table class="tableForm"> <tr> <th>Proceso</th> </tr><tr ng-repeat="p in users_procesos_X_rol"> <td>{{p.proceso.dselemento}}</td></tr></table> </div></div></div></div></div>
+
+<script>
+     $('.tab-container').easytabs();
+</script>
+

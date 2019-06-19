@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('comSubForm',function(){return{restrict:'AE',templateUrl:urlTemplates+'componente_subform.html',scope:{titulo:"@",idsubform:"@",idcomponente:"@",},link:function(scope,element){}};});});

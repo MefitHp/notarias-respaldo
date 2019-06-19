@@ -1,0 +1,10 @@
+<loadscript url=ctrl_agregar_folios.js></loadscript><div ng-controller=ctrl_fol_agregar_folios><div class="contentInputs"> <div class="colum colums4"> <p><b>Libro actual:</b></p></div><div class="colum colums2"> <h2>{{libro.innumlibro}}</h2> </div></div><div class="contentInputs"><hr> <div class="colum colums4"> <p><b>Folio Actual:</b></p></div><div class="colum colums2"> <h2>{{foliosDisponibles.folioActual}}</h2> </div></div><div class="contentInputs"><hr> <div class="colum colums4"> <p><b>Folios disponibles:</b></p></div><div class="colum colums2"> <h2>{{foliosDisponibles.foliosDisponibles}}</h2> </div></div><div class="contentInputs"> <div class="colum colums4"> &nbsp; </div><div class="colum colums4"> &nbsp; </div><div class="colum colums4" ng-click="agregarFolios()"> <button class="btn-blue">Agregar Folios</button> </div></div><div id="alerta_agregarFolios" style="display:none;" class="avgrund-popup avgrund-popup-animate"> <div class="modal_header">Agregar Folios</div><div class="modal_body"> <div class="contentInputs" style="border-top: 1px solid #ccc;padding-top:30px "> <div class="colum "> <label>Número de folios:</label> <div class="colum" style="margin-left: 13%"> <input type="text" placeholder="--Ingrese Datos--" ng-model="agregar_folio"> </div></div></div><div class="contentInputs"> <div class="colum" style="width:45%"> <div class="btn-rounded cerrarModal"><p>Cancelar</p></div></div><div class="colum" style="width:45%"> <button class="btn-blue cerrarModal" ng-click="lanza_agrega_folio()">Agregar</button> </div></div></div></div></div>
+<script>
+
+            $(".cerrarModal").click(function() {
+                Avgrund.hide();
+                $("#alerta_agregarFolios").fadeOut("slow");
+                $("#changeKey").fadeOut("slow");
+            });
+            
+</script>

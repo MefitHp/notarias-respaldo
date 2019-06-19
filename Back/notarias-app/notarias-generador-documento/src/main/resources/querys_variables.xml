@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<queries>
+	<query id="compareciente_nombre">
+        <hql>SELECT com.persona.dsnombrecompleto FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+        <!-- 
+        <campos>
+        	<dsnombrecompleto>${dsnombrecompleto}</dsnombrecompleto>        	
+        </campos>
+        -->
+    </query>
+	<query id="hay_representados">
+	    <hql>SELECT CASE COUNT(comrep.representado) WHEN 0 THEN 'false' ELSE 'true' END FROM ComparecienteRepresentante comrep WHERE comrep.representado.idcompareciente IN (SELECT com.idcompareciente FROM Compareciente com WHERE com.acto.idacto = '${idacto}')</hql>
+	    <resultado>simple</resultado>
+	    <filtro>idacto</filtro>
+	</query>
+	
+	<query id="compareciente_nombre_con_alias">
+        <hql>SELECT CONCAT(com.persona.dsnombrecompleto, ', quien también acostumbra usar el nombre de ', com.alias, ', ') AS nombrecompleto FROM Compareciente com WHERE com.acto.idacto = '${idacto}' 
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>	
+	
+    <query id="compareciente_regimen">
+    	<hql>SELECT com.persona.regimenfiscal.dselemento FROM Compareciente com WHERE com.acto.idacto = '${idacto}' </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    	    
+    <query id="compareciente_hay_representante">
+    	<hql>SELECT CASE COUNT(comrep.representado.idcompareciente) WHEN 0 THEN ' ' ELSE 'el representante de ' END FROM ComparecienteRepresentante comrep WHERE comrep.representado.idcompareciente IN (SELECT com.idcompareciente FROM Compareciente com WHERE  com.acto.idacto = '${idacto}' </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}')</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    	        
+    <query id="compareciente_es_representada">
+    	<hql>SELECT CASE COUNT(comrep.representado.idcompareciente) WHEN 0 THEN ' ' ELSE 'su representada ' END FROM ComparecienteRepresentante comrep WHERE comrep.representado.idcompareciente IN (SELECT com.idcompareciente FROM Compareciente com WHERE  com.acto.idacto = '${idacto}' </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}')</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    	    
+    <!-- cafaray 260614: Calcular el nombre del compareciente de forma separada -->
+	<query id="compareciente_nombre_nombre">
+        <hql>SELECT com.persona.dsnombre FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    
+    <query id="compareciente_nombre_paterno">
+        <hql>SELECT com.persona.dspaterno FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    
+    <query id="compareciente_nombre_materno">
+        <hql>SELECT com.persona.dsmaterno FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    	
+	<!-- cafaray 110714 Agregar la variable de proindiviso -->
+	<query id="compareciente_compro_proindiviso">
+	    <hql>SELECT (CASE com.amboscompran WHEN TRUE THEN ' y pro-indiviso por partes iguales,' ELSE ',' END) FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+	    <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+	    <resultado>simple</resultado>
+	    <filtro>idacto</filtro>
+    </query>
+	<!-- cafaray 110714 -->
+
+	<!-- cafaray 140714 Agregar la variable de proindiviso -->
+	<query id="notaria_esasociada">
+	    <!--  <hql>SELECT (CASE escact.escritura.notario.isasociada WHEN TRUE THEN 'actuando como asociado en el protocolo de la notaría número VEINTICUATRO, de la que es titular el licenciado LUIS RICARDO DUARTE GUERRA,' ELSE ' ' END) FROM EscrituraActo escact WHERE escact.acto.idacto = '${idacto}'</hql> -->
+	    <hql>SELECT (CASE n.asociada WHEN TRUE THEN 'actuando como asociado en el protocolo de la notaría número noventa y ocho, de la que es titular el licenciado GONZALO M. ORTÍZ BLANCO,' ELSE ' ' END) FROM Notaria n  WHERE n.usuario = (SELECT e.escritura.notario FROM EscrituraActo e WHERE e.acto.idacto = '${idacto}')</hql>	    
+	    <resultado>simple</resultado>
+	    <filtro>idacto</filtro>
+    </query>
+	<!-- cafaray 140714 -->	
+	
+	<!-- cafaray 260614: Calcular datos generales del compareciente -->
+	<query id="compareciente_nacimiento_estado">
+        <!--  <hql>SELECT com.dsestado FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql> -->
+        <hql>SELECT com.persona.dsestadonacimiento FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    	
+
+	<query id="compareciente_telefono">
+        <hql>SELECT com.persona.dstelefono FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    	
+    <query id="compareciente_mail">
+        <hql>SELECT com.persona.dscorreoelectronico FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>   
+	<!-- cafaray 260614 -->	
+	
+		
+    <query id="compareciente_nombre_representante">
+	    <hql>
+	        SELECT comrep.representante.persona.dsnombrecompleto FROM ComparecienteRepresentante comrep WHERE comrep.representado.acto.idacto = '${idacto}'   			   
+        </hql>
+        <tipo>AND comrep.representado.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_conyugue">
+	    <hql>
+	        SELECT comcon.conyuge.persona.dsnombrecompleto FROM ComparecienteConyuge comcon WHERE comcon.sujeto.acto.idacto = '${idacto}'   			   
+        </hql>
+        <tipo>AND comcon.sujeto.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_compraciente_cantidad">
+	    <hql>
+	        SELECT com.idcompareciente FROM Compareciente com WHERE com.acto.idacto = '${idacto}'   			   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_nacionalidad">
+	    <hql>
+	        SELECT com.persona.nacionalidad.dselemento FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    
+	<query id="compareciente_tratamiento">
+	    <hql>SELECT com.tratamiento.dselemento FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    
+    
+    <query id="compareciente_originario">
+	    <!-- <hql>SELECT com.dsmunicipio FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql> -->
+	    <hql>SELECT com.persona.dsmunicipionacimiento FROM Compareciente com WHERE com.acto.idacto = '${idacto}'</hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_fecha_nacimiento">
+	    <hql>
+	        SELECT com.persona.fechanacimiento FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_estado_civil">
+	    <hql>
+	        SELECT com.estadoCivil.dselemento FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_domicilio">
+	    <hql>
+	        SELECT com.domicilio.dsdircompleta FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_ocupacion">
+	    <hql>
+	        SELECT com.persona.ocupacion.dselemento FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_rfc">
+	    <hql>
+	        SELECT com.persona.dsrfc FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_curp">
+	    <hql>
+	        SELECT com.persona.dscurp FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_ri_tipodocumento">
+	    <hql>
+	        SELECT com.registroRi.tipo.dselemento FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="compareciente_ri_valordocumento">
+	    <hql>
+	        SELECT com.registroRi.numclave FROM Compareciente com WHERE com.acto.idacto = '${idacto}'		   
+        </hql>
+        <tipo>AND com.tipoCompareciente.dsnombre = '${tipo}'</tipo>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    <query id="notaria_notario">
+        <hql>SELECT CONCAT(escact.escritura.notario.dsnombre, ' ', escact.escritura.notario.dspaterno,' ', escact.escritura.notario.dsmaterno) FROM EscrituraActo escact WHERE escact.acto.idacto = '${idacto}'
+        </hql>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+    
+    <!-- cafaray 260614: Calcular datos del notario-rfc -->
+	<query id="notaria_notario_rfc">
+        <hql>SELECT escact.escritura.notario.dsrfc FROM EscrituraActo escact WHERE escact.acto.idacto = '${idacto}'
+        </hql>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>
+	<query id="notaria_notario_iniciales">
+        <hql>SELECT escact.escritura.notario.dsiniciales FROM EscrituraActo escact WHERE escact.acto.idacto = '${idacto}'</hql>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    
+	<query id="abogado_iniciales">
+        <hql>SELECT escact.escritura.expediente.abogado.dsiniciales FROM EscrituraActo escact WHERE escact.acto.idacto = '${idacto}'</hql>
+        <resultado>simple</resultado>
+        <filtro>idacto</filtro>
+    </query>    	
+    <!-- cafaray 260614 -->
+	
+	
+    <query id="notaria_asociada_numero">
+        <hql>SELECT asoc.innumnot FROM Notaria asoc WHERE asoc.usuario NOT IN (SELECT esc.notario.idusuario FROM Escritura esc WHERE esc.idescritura = '${idescritura}')       
+        </hql>
+        <resultado>simple</resultado>
+        <filtro>idescritura</filtro>
+    </query>
+    <query id="notaria_asociada_notario">
+        <hql>SELECT CONCAT(na.usuario.dsnombre, ' ', na.usuario.dspaterno, ' ', na.usuario.dsmaterno) FROM Notaria na WHERE na.usuario.idusuario NOT IN ( SELECT esc.notario.idusuario FROM Escritura esc WHERE esc.idescritura = '${idescritura}')      
+        </hql>
+        <resultado>simple</resultado>
+        <filtro>idescritura</filtro>
+    </query>
+    <query id="notaria_numero">
+        <hql>SELECT asoc.innumnot FROM Notaria asoc WHERE asoc.usuario IN (SELECT esc.notario.idusuario FROM Escritura esc WHERE esc.idescritura = '${idescritura}')      
+        </hql>
+        <resultado>simple</resultado>
+        <filtro>idescritura</filtro>
+    </query>
+    <query id="notaria_estado">
+        <hql>SELECT n.domicilio.dsestado FROM Notaria n WHERE n.usuario IN (SELECT esc.notario.idusuario FROM Escritura esc WHERE esc.idescritura = '${idescritura}')      
+        </hql>
+        <resultado>simple</resultado>
+        <filtro>idescritura</filtro>
+    </query>
+    
+    <query id="documento_gestor">
+        <hql>SELECT CONCAT(ad.gestor.dsnombre, ' ', ad.gestor.dspaterno, ' ', ad.gestor.dsmaterno) FROM ActoDocumento ad WHERE ad.idactodoc = '${idactodocumento}'</hql>
+        <resultado>simple</resultado>
+        <filtro>idactodocumento</filtro>
+    </query>
+    
+</queries>
+

@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('buscadorporletras',function(){return{restrict:'E',templateUrl:urlTemplates+'bus_X_letras.html',link:function(scope,element){}};});});

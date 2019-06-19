@@ -1,0 +1,3 @@
+define(['../module'],function(directives){'use strict';directives.directive('comComboMulti',function(){return{restrict:'AE',templateUrl:urlTemplates+'componente_lista_cm_mul.html',scope:{titulo:"@",valores:"@",name:"@",anchoselect:"@",idcomponente:"@",},link:function(scope,element,timeout){scope.valores=scope.valores.split(",");var lval=scope.valores[scope.valores.length-1];if(lval==""||!lval.trim()){scope.valores.pop();}
+$.each(scope.valores,function(i){var valor=scope.valores[i];element.find(".wrap_lista_ordenada select").append("<option value="+valor+"'> "+valor+"</option>")})
+setTimeout(function(){$(".chosen-select").chosen({width:scope.anchoselect+"px"});},500)}};});});

@@ -1,0 +1,4 @@
+function ctrl_fol_agregar_folios($scope,conexion_app,conexion,catalogos){$scope.agregar_folio=0;$scope.agregarFolios=function(){Avgrund.show("#alerta_agregarFolios");$("#alerta_agregarFolios").fadeIn("slow");};function actualiza_datos(){catalogos.get_folios_disponibles($scope);}
+$scope.lanza_agrega_folio=function(){console.info("Folios agregar: ",$scope.agregar_folio);if($scope.agregar_folio<0){ejecutaAlerta(2,"Ups! No puedes agregar un número negativo")
+return;}
+conexion_app.fol_agregar_folios({"usuario":$scope.usr_global,"controlFolios":{"foliosDisponibles":$scope.agregar_folio}},function(data){catalogos.get_folios_disponibles($scope);if(data.exito){ejecutaAlerta(1,data.estatus);actualiza_datos();}else{ejecutaAlerta(2,"Ocurrió un error: "+data.estatus);}},function(error){console.info("ERROR DATA",error);});};actualiza_datos();}

@@ -1,0 +1,174 @@
+<loadscript url=FOL/ctrl_listar_prestados.js></loadscript>
+
+<div ng-controller=ctrl_fol_listar_prestados><h1>Folios Prestados</h1>
+    <hr>
+
+
+
+    <div class="wra_form_data" style="overflow:visible"> 
+
+        <div class="head_form_data" style="padding:10px 0px;width:907px;"> 
+
+            <div class="contentInputs"> 
+
+                <div class="colum colums1"> 
+
+                    <div id="buscador" style="display: block"> 
+                        <label>Filtro folios:
+                        </label> 
+                        <input type="text" ng-model="filtro_folio" placeholder="Filtrar folio..." style="background-position: 595px;background-position: 97%;margin-left: 10px;width: 91%;" class="ng-pristine ng-valid"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contentInputs"> <h2 ng-show="lista_prestados.length < 1">NO HAY FOLIOS PRESTADOS</h2> 
+        <table class="tableForm" ng-show="lista_prestados.length > 0"> 
+            <thead> 
+                <tr> 
+                    <th width="5%">
+                    </th> 
+                    <th width="17%">
+                        N&uacute;mero de escritura
+                    </th> 
+                    <th width="20%">Fecha en la que expira el prestamo
+                    </th> 
+                    <th width="32%">Solicitante
+                    </th> 
+                    <th width="5%">
+                        Status
+                    </th> 
+                    <th width="5%">
+                    </th> 
+                </tr></thead> <tbody> 
+                <tr ng-repeat="Listado in lista_prestados | filter:filtro_folio" ng-class-even="'lista_alternate'"> 
+                    <td> 
+
+                        <span class="tbl_icon ico_gestor">
+                        </span> 
+                    </td>
+                    <td>{{Listado.numeroEscritura}}
+                    </td>
+                    <td>{{parseFecha(Listado.fechaDevolucion)}}
+                    </td>
+                   
+                    <td>{{Listado.usuarioRecibe.dsnombre}} {{Listado.usuarioRecibe.dspaterno}} {{Listado.usuarioRecibe.dsmaterno}}
+                    </td>
+                    <td class="wrap-fa">
+                        <i ng-class="{'fa fa-2x resaltar2 fa-check-square-o':Listado.status!='E','fa cuidado fa-2x fa-clock-o':Listado.status=='E'}" title="{{Listado.status}}"></i>
+     
+                    </td>
+                    <td ng-click="lanza_recibir_folios(Listado)" title="Regresar folio" class="wrap-fa"> 
+                                                <i class="fa fa-2x  fa-download icon_gray"></i>
+
+                       
+                    </td>
+                </tr></tbody> 
+        </table>
+    </div>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4" style="width: 200px;"> 
+
+            &nbsp;
+        </div>
+        <div class="colum colums4"> 
+
+            <div class="btn-rounded" ng-click="goTo('/folios/buscador')">
+
+                <p>Buscador avanzado folios</p>
+            </div>
+        </div>
+             <div class="colum colums4"> 
+
+            <div class="btn-rounded" ng-click="goTo('/folios/devueltos')">
+
+                <p>Bit&aacute;cora de folios</p>
+            </div>
+        </div>
+
+        <div class="colum colums4"> 
+
+            <div class="btn-rounded" ng-click="goTo('/folios/solicitados')">
+
+                <p>Folios solicitados</p>
+            </div>
+        </div>
+
+        <!--<div class="colum colums4"> <button class="btn-blue" ng-click="goTo('/folios/solicitud_folios')">Nueva solicitud</button> 
+        </div>-->
+    </div>
+
+    <div id="alerta_recibir_folios" style="display:none;" class="avgrund-popup avgrund-popup-animate"> 
+
+        <div class="modal_header">Solicitud de huella
+        </div>
+
+        <div class="modal_body"> 
+
+            <div class="contentInputs" style="border-top: 1px solid #ccc;padding-top:30px "> 
+
+                <div class="colum" style="width: 96%"> 
+                    <label>Solicitante:
+                    </label> 
+
+                    <div class="colum" style="width: 91%"> 
+
+                        <div class="wrap_select"> 
+                            <select ng-options="abg as (abg.dsnombre +' '+ abg.dspaterno + ' ' + abg.dsmaterno ) for abg in abogados" name="abogados" ng-model="usuarioRecibe" class="altas_bajas" required> 
+
+                                <option value="" disabled selected>--Seleccione un abogado--</option> 
+                            </select> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="colum "> 
+                    <label>Prestador:
+                    </label> 
+
+                    <div class="colum"> 
+                        <input type="text" style="width: 82%" ng-model="Prestador"> 
+                    </div>
+                </div>
+
+                <div class="colum"> 
+
+                    <p> 
+                        <input type="checkbox" ng-click="activa_comentario()"> <b>Con Observaciones</b> </p>
+                </div>
+            </div>
+
+            <div class="contentInputs" id="Comentario_rechazo" style="display: none;"> 
+
+                <div class="colum" style="width: 96%"> 
+
+                    <p> 
+                        <input type="text" ng-model="comentario_folio" style="width: 70%"> </p>
+                </div>
+
+                <div class="colum" style="width:45%"> &nbsp; 
+                </div>
+
+                <!--<div class="colum" style="width:45%"> 
+                    <button class="btn-blue cerrarModal" ng-click="lanza_Rechazar(usuarioRecibe,Prestador,Comentario_rechazar)">Rechazar</button> 
+                </div>-->
+            </div>
+
+            <div class="contentInputs" id="cerrar_devolucion"> 
+
+                <div class="colum" style="width:45%"> 
+
+                    <div class="btn-rounded cerrarModal" ng-click="cerrar();">
+
+                        <p>Regresar</p>
+                    </div>
+                </div>
+
+                <div class="colum" style="width:45%"> <button class="btn-blue cerrarModal" ng-click="lanza_Devolucion(usuarioRecibe, Prestador)">Aceptar</button> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

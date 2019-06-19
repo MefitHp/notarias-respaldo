@@ -1,0 +1,48 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+    
+<h1>Listado de Expedientes</h1>
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded" ng-click="goTo('/')"><p>Regresar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="goTo('/nuevo_proceso')">Nuevo expediente</button>
+    </div>
+
+</div>
+
+
+    <div class="contentInputs">
+        <table class="tableForm">
+           <tr>
+            <th width="15%">Expediente</th>
+            <th width="30%">Cliente</th>
+            <th width="20%">Referencia</th>
+            <th width="20%">Locaci&oacute;n</th>
+            <th width="10%">Estatus</th>
+            <th width="5%"></th>
+
+        </tr>
+        <tr ng-repeat ="exp in expedientes" ng-class-even="'lista_alternate'">
+            <td>{{exp.numexpediente}}</td>
+            <td>{{exp.tramite.cliente.dsnombre}} {{exp.tramite.cliente.dsapellidopat}} {{exp.tramite.cliente.dsapellidomat}}</td>
+            <td>{{exp.dsreferencia}}</td>
+            <td>{{exp.tramite.locacion.dselemento}}</td>
+            <td>{{exp.estatus}}</td>
+            <td ng-click="asignaTramite(exp)" title="Ver expediente">
+                <span class="tbl_icon ico_eye">
+            </td>
+        </tr>
+
+        </table>
+    </div>
+

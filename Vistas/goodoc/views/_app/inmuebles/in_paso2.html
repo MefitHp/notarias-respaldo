@@ -1,0 +1,210 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<abogado></abogado>
+
+<div class="status_tarea" >
+    <div style="display: inline-block;">
+        <div class="fase fase_ok grad_gray">
+            <p>Fase 1 <br>
+                <span>Captura de Inmueble</span>
+            </p>
+        </div>
+        <div class="fase grad_gray">
+            <p class="active">Fase 2 <br>
+                <span>Captura de Domicilio</span>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+<br>
+
+
+<h2 class="tit_H2">Datos del domicilio</h2>
+
+
+<div class="wra_form_data" style='overflow: visible;'>
+    <div class="head_form_data">
+        <div class="contentInputs">
+
+            <div class="colum colums3" >
+                <p><b>Captura asistida de datos</b></p>
+                <p><span>*</span> La captura asistida de datos te permite hacer busquedas r&aacute;pidas en algunos campos.</p>
+            </div>
+            <div class="colum colums4" >
+                <div style="float:right;">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" ng-init="tmp_inmueble.isasistido=true" ng-model="tmp_inmueble.isasistido" onclick="is_asist(this.checked)" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                        <label class="onoffswitch-label" for="myonoffswitch">
+                            <div class="onoffswitch-inner"></div>
+                            <div class="onoffswitch-switch"></div>
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <form name="reg_inmueble" novalidate >
+
+        <div class="body_form_data" id="content_asist" style="overflow: visible">
+            <div class="contentInputs">
+
+                <div class="colum colums2">
+                    <label>Calle</label>
+                    <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-keyup="actualiza_completo()" ng-model="domicilio.dscalle" name="calle" maxlength="60" required="true"  />
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido</div>
+
+                </div>
+                <div class="colum colums4">
+                    <label>N° Exterior</label>
+                    <input type="text" name="numext" placeholder="Introduzca la informaci&oacute;n" ng-keyup="actualiza_completo()"  ng-pattern="/([0-9])$/" ng-model="domicilio.dsnumext" maxlength="6"/>
+                    <div class="tooltip"  ng-show="reg_inmueble.numext.$error.pattern" >No es un n&uacute;mero</div>
+                </div>
+                <div class="colum colums4">
+                    <label>N° Interior</label>
+                    <input type="text" name="numint" placeholder="Introduzca la informaci&oacute;n" ng-keyup="actualiza_completo()" ng-pattern="/([0-9])$/" ng-model="domicilio.dsnumint" maxlength="30"/>
+                    <div class="tooltip"  ng-show="reg_inmueble.numint.$error.pattern" >No es un n&uacute;mero</div>
+                </div>
+
+            </div>
+            <div class="contentInputs">
+                 <div class="colum colums4">
+                    <label>Manzana</label>
+                    <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-keyup="actualiza_completo()" ng-model="domicilio.dsmanzana" maxlength="255"/>
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido</div>
+
+                </div>
+                <div class="colum colums4">
+                    <label>Lote</label>
+                    <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-keyup="actualiza_completo()" ng-model="domicilio.dslote" maxlength="255"/>
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.padre.$error.required" >Campo requerido</div>
+
+
+                </div>
+               
+                <div class="colum colums2">
+                    <label>Colonia</label>
+                    <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-keyup="actualiza_completo()" ng-model="domicilio.dscolonia" maxlength="60"/>
+                </div>
+
+
+            </div>
+
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <label>Estado</label>
+                         <angucomplete 
+                        id="estado"
+                        placeholder="Introduzca la informaci&oacute;n"
+                        pause="100"
+                        localdata="estados"
+                        selectedobject="selected_estado"
+                        searchfields="dsnombre"
+                        titlefield="dsnombre"
+                        minlength="1"
+                        inputclass="form-control form-control-small"
+                        anchomaximo="60"
+                        />
+
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido</div>
+
+                </div>
+                <div class="colum colums4">
+                    <label>Ciudad / Localidad</label>
+                    <angucomplete 
+                        id="localidad"
+                        placeholder="Introduzca la informaci&oacute;n"
+                        pause="100"
+                        localdata="localidades"
+                        selectedobject="selected_localidad"
+                        searchfields="dsnombre"
+                        titlefield="dsnombre"
+                        minlength="2"
+                        inputclass="form-control form-control-small"
+                        anchomaximo="60"
+                        />
+
+
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido</div>
+
+                </div>
+                <div class="colum colums4">
+                    
+                    <label>Delegaci&oacute;n / Municipio</label>
+                    <angucomplete 
+                        id="municipio"
+                        placeholder="Introduzca la informaci&oacute;n"
+                        pause="100"
+                        localdata="municipios"
+                        selectedobject="selected_municipio"
+                        searchfields="dsnombre"
+                        titlefield="dsnombre"
+                        minlength="2"
+                        inputclass="form-control form-control-small"
+                        anchomaximo="60"
+                        />
+
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido</div>
+
+                </div>
+                
+
+                
+                <div class="colum colums4">
+                    <label>C.P</label>
+                    <input type="text" name="codpos" placeholder="Introduzca la informaci&oacute;n" ng-model="domicilio.dscodpos"  ng-pattern="/([0-9])$/" ng-keyup="actualiza_completo()" maxlength="5"/>
+                    <div class="tooltip"  ng-show="reg_inmueble.codpos.$error.pattern" >No es un n&uacute;mero</div>
+                </div>
+            </div>
+
+            <div class="contentInputs">
+                <div class="colum colums1">
+
+                    <label>Referencia</label>
+                    <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="domicilio.dsreferencia" />
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido</div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="body_form_data" >
+        <div class="contentInputs">
+            <div class="colum colums1">
+
+                <label>Domicilio Completo</label>
+
+                <input type="text" ng-keyup="actualiza_completo()" placeholder="Introduzca la informaci&oacute;n" id="d_completo" ng-model="tmp_inmueble.dsdomcompleto" disabled/>
+                <div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido</div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded" onclick="force_redirect('index.html#/inmuebles')"><p>Regresar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="guarda_inmueble()">Guardar</button>
+    </div>
+
+</div>

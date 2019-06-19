@@ -1,0 +1,106 @@
+<loadscript url=../../../../lib/plugins/grid-a-licious.js></loadscript>
+<loadscript url=ctrl_ayuda.js></loadscript>
+<style>
+    .item {
+    float: left;
+    margin: 0 8px 24px;
+    padding: 8px;
+    width: 420px;
+    height: 420px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: .05s all;
+    
+    }
+    
+    .item:hover{
+        box-shadow: 0 10px 20px  rgba(0,0,0,0.30), 0 6px 6px  rgba(0,0,0,0.40);
+    }
+   
+    .desc_video{
+        border-top: 1px solid #efefef;
+        padding:10px;
+    }   
+    
+    .img_video{
+        height: 170px;
+        background: #05a742;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        padding-top: 120px;
+    }
+    .desc_video p{
+        margin-top: 10px;
+    }
+    
+    #video_popup{
+        overflow: visible;
+        width: 80%;
+        left: 20%;
+        top: 20%;
+        padding: 10px;
+        z-index:1000;
+    }
+    #close{
+           width: 25px;
+            height: 19px;
+            border: 1px solid white;
+            border-radius: 100px;
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 7px 5px;
+            position: absolute;
+            top: -13px;
+            right: -15px;
+            cursor: pointer;
+            z-index: 100;
+        
+    }    
+    #container_videos{
+        display: none;
+    }
+    
+</style>
+
+<h1>Bienvenido</h1>
+<h2>Sistema integral de administración de notaria y generación de documentos notariales.</h2>   
+<p>
+       Este es el primer sistema en la nube que a través de un flujo de trabajo definido realiza el proceso de generación de documentos notariales.       
+       <br>
+       Mantiene un histórico de los expedientes y las evidencias generadas así como el documento notarial para consultas posteriores en linea.             
+
+    </p>     
+
+<div class="head_form_data" style="margin-bottom:30px;"> 
+    <div class="contentInputs"> 
+        <div class="colum colums1">
+            <label>BUSCAR VIDEO:</label>
+            <input type="text" ng-model="filtroVideos">
+        </div>
+        
+    </div>
+        
+</div>
+<div ng-controller=ctrl_ayuda>
+    
+    <div id="container_videos" class="gridalicious">
+        <div class="item" ng-repeat="video in videos | filter:filtroVideos" ng-click="showVideo(video)">
+            <div class="img_video">
+                <i class="fa {{video.icon}} fa-5x"></i> 
+            </div>
+            <div class="desc_video">
+                <h4>{{video.titulo}}</h4>
+                <p>{{video.descripcion}}</p>
+            </div>
+        </div>
+</div>
+    
+    <div id="video_popup" class="avgrund-popup avgrund-popup-animate"> 
+    </div>
+        
+        </div>
+    
+    
+    

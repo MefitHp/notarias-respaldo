@@ -1,0 +1,141 @@
+<loadscript url=FOL/ctrl_listar_devueltos.js></loadscript>
+
+<div ng-controller=ctrl_fol_listar_devueltos><h1>Folios Devueltos</h1>
+    <hr>
+
+           <div class="wra_form_data" style="overflow:visible"> 
+
+        <div class="head_form_data" style="padding:10px 0px;width:907px;"> 
+
+            <div class="contentInputs"> 
+
+                <div class="colum colums1"> 
+
+                    <div id="buscador" style="display: block"> 
+                        <label>Filtro folios:
+                        </label> 
+                        <input type="text" ng-model="filtro_folio" placeholder="Filtrar folio..." style="background-position: 595px;background-position: 97%;margin-left: 10px;width: 91%;" class="ng-pristine ng-valid"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contentInputs"> <h2 ng-show="listaDevueltos.length < 1">NO HAY FOLIOS DEVUELTOS</h2> 
+        <table class="tableForm" ng-show="listaDevueltos.length > 0"> 
+            <thead> 
+                <tr> 
+                    <th width="17%">N&uacute;mero de escritura
+                    </th> 
+                    <th width="17%">Fecha de operación
+                    </th>
+                    <th> Comentarios</th>
+                    <th width="27%">Usuario Recibió
+                    </th>                     
+                    <th width="27%">Usuario Entregó
+                    </th> 
+                    <th width="5%">
+                    </th> 
+                </tr></thead> <tbody> 
+                <tr ng-repeat="Devueltos in listaDevueltos | filter:filtro_folio" ng-class-even="'lista_alternate'"> 
+                    <td>{{Devueltos.numeroescritura}}</td>
+                    <td>{{parseFecha(Devueltos.fechaoperacion)}}
+                    </td>
+                    <td class="wrap-fa">
+                        <i class="fa fa-comment fa-2x icon_gray" ng-show="Devueltos.dscomentario" title="{{Devueltos.dscomentario}}"></i>
+                    </td>
+                    <td>{{Devueltos.usuarioRecibe.dsnombre}} {{Devueltos.usuarioRecibe.dspaterno}} {{Devueltos.usuarioRecibe.dsmaterno}}
+                    <td>{{Devueltos.usuarioEntrega.dsnombre}} {{Devueltos.usuarioEntrega.dspaterno}} {{Devueltos.usuarioEntrega.dsmaterno}}
+                    <td class="wrap-fa"> 
+                        <i class="fa fa-history fa-2x icon_gray" ng-click="lanza_detalle_folio(Devueltos)" title="Historia del archivo"></i>
+                    </td>
+                </tr></tbody> 
+        </table>
+    </div>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> <button class="btn-blue" ng-click="goTo('/folios/prestados')">Regresar</button> 
+        </div>
+    </div>
+
+    <div id="alerta_detalle_devueltos" style="display:none; width: 680px; left:43%;top:20%;overflow: auto;" class="avgrund-popup avgrund-popup-animate"> 
+
+        <div class="modal_header" style="margin-top:2px">HISTORIAL DE LA ESCRITURA N&Uacute;MERO:{{historico.numeroescritura}}
+        </div>
+
+        <div class="modal_body"> 
+            
+            <div class="wra_form_data" style="overflow:visible;width: 100%;"> 
+
+        <div class="head_form_data" style="padding:10px 0px;width:100%;"> 
+
+            <div class="contentInputs"> 
+
+                <div class="colum colums1"> 
+
+                    <div id="buscador" style="display: block"> 
+                        <label>Filtro folios:
+                        </label> 
+                        <input type="text" ng-model="filtro_historico" placeholder="Filtrar folio..." style="background-position: 595px;background-position: 97%;margin-left: 10px;width: 62%;" class="ng-pristine ng-valid"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+            <div class="contentInputs" style="border-top: 1px solid #ccc;padding-top:30px;">
+                <table class="tableForm" style="width:100%"> 
+                    <thead> 
+                        <tr> 
+                            <th width="17%">Fecha de operación
+                            </th>
+                            <th width="17%">Usuario Recibió
+                            </th>                     
+                            <th width="17%">Usuario Entregó
+                            </th> 
+                            <th width="5%">
+                            </th> 
+                            
+                            <th width="5%">
+                            </th> 
+                        </tr></thead> <tbody> 
+                        <tr ng-repeat="registro in historialDocumento | filter:filtro_historico"> 
+                            <td>{{parseFecha(registro.fechaoperacion)}}
+                            </td>
+                            <td>{{registro.usuarioRecibe.dsnombre}} {{registro.usuarioRecibe.dspaterno}} {{registro.usuarioRecibe.dsmaterno}}
+                            <td>{{registro.usuarioEntrega.dsnombre}} {{registro.usuarioEntrega.dspaterno}} {{registro.usuarioEntrega.dsmaterno}}
+                            <td class="wrap-fa">
+                                <i class="fa fa-comment fa-2x icon_gray" ng-show="registro.dscomentario" title="{{registro.dscomentario}}"></i>
+                            </td>
+                            <td class="wrap-fa">
+                                <i ng-class="{'fa fa-2x cuidado fa-upload':registro.tipooperacion!='DEVO','fa resaltar2 fa-2x fa-download':registro.tipooperacion=='DEVO'}" title="{{registro.tipooperacion}}"></i>
+                            </td>
+                            
+                        </tr></tbody> 
+                </table>
+
+
+            </div>
+
+            <div class="contentInputs"> 
+
+                <div class="colum" style="width:26%; float: right;"> 
+
+                    <div class="btn-rounded cerrarModal" ng-click="cerrar()">
+
+                        <p>Cerrar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

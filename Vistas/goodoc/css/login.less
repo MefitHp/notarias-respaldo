@@ -1,0 +1,99 @@
+@import url(style.less);
+
+.login_form input[type="text"],input[type="password"]{
+    width: 65%;
+    background-repeat: no-repeat;
+    background-position:10px;
+    text-align: center;
+
+    &:focus{
+        border: 1px solid @co_secundario;
+        box-shadow: 0 0 3px @co_secundario_semi_dark;
+    }
+}
+
+.login_form input[type="text"]{
+    background-image: url("../img/assets/icons/others/ico_user.png") ;
+}
+
+.login_form input[type="password"]{
+    background-image: url("../img/assets/icons/others/ico_key.png") ;
+}
+
+
+
+.labelLogin{
+    font-size: 12px;
+    color:@co_principal_dark;
+}
+.campoLogin{
+    margin-bottom: 10px;
+    position:relative;
+
+    .btn-blue{
+        width: 100%;margin-bottom:5px;
+    }
+
+}
+
+#login{
+    width: 270px; 
+    margin: auto;text-align: center;
+
+    h1,h2{
+        color:@co_principal_dark;
+    }
+    h1{
+        font-size: 30px; 
+    }
+    h2{
+        margin-bottom: 20px;
+    }
+
+    >img{
+        margin-top:25px;
+    }
+}
+
+#wra_login{
+    min-height:567px;
+}
+
+.loginForm{
+    box-shadow:1px 2px 5px #999 ;
+    height:335px; 
+    padding:10px;
+    border-radius: 8px; 
+    border:1px solid #ccc;
+    text-align: left;
+    margin-bottom:10px;
+}
+
+.login_avatar{
+    height:100px;
+    //width:100px; 
+    margin: auto;margin-top: 15px;position:relative;text-align: center;
+}
+
+.pulso_login{
+    width: 80px;height: 80px;border-radius:100px; ;border:1px solid @co_secundario;position: absolute;left: 9px;top: -1px;
+}
+
+.login_form{
+    margin: auto; overflow: hidden;
+}
+
+.campoLogin{
+
+}
+
+
+#frm_remember{
+    margin-top:20px;
+    display:none;
+    .campoLogin:first-of-type{
+        margin-bottom: 10px;
+        
+    }
+    
+}

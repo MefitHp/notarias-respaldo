@@ -1,0 +1,503 @@
+<loadscript url=ctrl_documentos.js></loadscript>
+
+<div ng-controller=ctrl_documentos>
+
+    <navexpediente></navexpediente><bienvenida></bienvenida><abogado></abogado>
+
+    <br><h2 class="tit_H2">Lista de Documentos</h2>
+    <div class="contentInputs"> 
+
+        <div class="colum colums3"> <input type="text" placeholder="Nombre del nuevo documento" ng-model="docOr_new_name"> 
+        </div>
+
+
+        <div class="colum colums4"> <button class="btn-blue" ng-click="docOr_add()">Agregar Documento</button> 
+        </div>
+    </div>
+    <div class="wrap_contentList abogadoList expediente"> 
+
+        <div class="wra_content_tarea" style="display:block; border: none;" ng-hide="originales.length < 1"> 
+
+            <div class=" contentInput"> 
+                <table class="tableForm"> 
+                    <tr> 
+                        <th width="5%"> 
+
+                            <span class="tbl_icon ico_documento">
+                            </span> 
+                        </th> 
+                        <th width="65%">Documento
+                        </th> 
+                        <!--
+                        <th width="5%"> 
+                        
+                        <span class="tbl_icon ico_edit">
+                        </span> 
+                        </th>--> 
+                        <th width="5%">
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th>
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+
+                    </tr>
+                    <tr ng-repeat="ori in originales"> 
+                        <td>{{$index + 1}}
+                        </td>
+                        <td class="ellipsis-table" style="max-width: 100%; height: 25px;">
+                            <input type="text" maxlength="250" value="{{ori.dsnombre}}" style="border:none;padding: 0;width: 100%; " ng-model="originales[$index].dsnombre">
+                            <!--<input type="text" maxlength="250" value="nuevo nombre" />-->
+                        </td>
+
+                        <td> 
+                            <span class="tbl_icon ico_delete" title="Borra documento" ng-click="docOr_delete(ori)">
+                            </span>  
+                        </td>
+                        <td> 
+                            <span class="tbl_icon ico_edit" title="Edita documento" ng-click="docOr_edit(ori)">
+                            </span>
+                        </td>
+                        <td> 
+                            <span class="tbl_icon ico_nube" title="Subir evidencia" ng-click="subir_doc(ori.id, 2, ori.dsnombre)">
+                            </span> 
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon ico_nube_down" title="Visualizar evidencia" ng-show="ori.dsruta" ng-click="verArchivo(ori.id, 'original')" >
+                            </span> 
+                        </td>
+                        <td> 
+                            <i class="fa fa-comments-o icon_gray fa-2x" ng-class="{'btn_list_animate_text':pre.tienecomments}" ng-click="lanza_comentarios('d', ori.id, ori.dsnombre)"></i>
+
+                        </td>
+
+                        <td> 
+
+                            <span class="tbl_icon" ng-class="{ico_tache_ok:ori.isentregado,ico_tache:!ori.isentregado}" title="Validaci&oacute;n entrega" ng-click="docOr_isEntregado(ori)">
+                            </span> 
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon" ng-class="{ico_star_ok:ori.isvalidado,ico_star:!ori.isvalidado}" title="Verificaci&oacute;n" ng-click="docOr_isValidado(ori)">
+                            </span> 
+                        </td>
+                        <!--
+                        <td> 
+                        
+                        <span class="tbl_icon ico_delete" title="Eliminar documento" ng-click="del_documento(pre.idactodoc)">
+                        </span> 
+                        </td>--> 
+                    </tr>
+                </table> 
+            </div>
+        </div>
+    </div>
+
+
+    <br><h2 class="tit_H2" ng-show="previos.length > 0">Lista de Formatos previos</h2>
+
+    <div class="wrap_contentList abogadoList expediente" ng-show="previos.length > 0"> 
+
+        <div class="wra_content_tarea" style="display:block; border: none;"> 
+
+            <div class=" contentInput"> 
+                <table class="tableForm"> 
+                    <tr> 
+                        <th width="5%"> 
+
+                            <span class="tbl_icon ico_documento">
+                            </span> 
+                        </th> 
+                        <th width="25%">Documento
+                        </th> 
+                        <th width="15%">Notario
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="15%">Acto
+                        </th>
+                        <!--
+                        <th width="5%"> 
+                        
+                        <span class="tbl_icon ico_edit">
+                        </span> 
+                        </th>--> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th>
+                    </tr>
+                    <tr ng-repeat="pre in previos| orderBy:'nombre'"> 
+                        <td>{{$index + 1}}
+                        </td>
+                        <td class="ellipsis-table">{{pre.nombre}}
+                        </td>
+                        <td>
+                            <span>{{pre.notario}}
+                            </span> 
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon ico_person_more" title="Cambiar de notario" ng-click="set_notario(pre, previos)">
+                            </span> 
+                        </td>
+                        <td>{{pre.operacion}}
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon ico_gestor" title="Asignar gestor" ng-show="pre.isgestionado == 'g'" ng-click="lanza_detalle(pre)">
+                            </span> 
+
+                            <span class="tbl_icon ico_valuador" title="Asignar valuador" ng-show="pre.isgestionado == 'v'" ng-click="lanza_detalle_valuador(pre)">
+                            </span> 
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon ico_nube" title="Subir evidencia" ng-click="subir_doc(pre.idactodoc, 1, pre.nombre)">
+                            </span> 
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon ico_nube_down" title="Visualizar evidencia" ng-show="pre.rutaEvidencia" ng-click="verArchivo(pre.idactodoc, 'evidencia')" >
+                            </span> 
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon ico_refresh" title="Generar documento con variables" ng-show="pre.isgestionado == 'v' || pre.isgestionado == 'g'" ng-click="ejecuta_proceso(pre.idactodoc)">
+                            </span> 
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon ico_eye" title="Visualizar documento con variables" ng-show="pre.rutaArchivo && (pre.isgestionado == 'g' || pre.isgestionado == 'v')" ng-click="verArchivo(pre.idactodoc, 'doc')">
+                            </span> 
+                        </td>
+
+                        <td> 
+                            <i class="fa fa-comments-o icon_gray fa-2x" ng-class="{'btn_list_animate_text':pre.tienecomments}" ng-click="lanza_comentarios('d', pre.idactodoc, pre.nombre)"></i>
+
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon" ng-class="{ico_tache_ok:pre.isentregado,ico_tache:!pre.isentregado}" title="Validaci&oacute;n entrega" ng-click="is_entregado(pre.idactodoc)">
+                            </span> 
+                        </td>
+                        <td> 
+
+                            <span class="tbl_icon" ng-class="{ico_star_ok:pre.isaprobado,ico_star:!pre.isaprobado}" title="Verificaci&oacute;n" ng-click="is_aprobado(pre.idactodoc)">
+                            </span> 
+                        </td>
+
+                    </tr>
+                </table> 
+            </div>
+        </div>
+    </div>
+    <br><h2 class="tit_H2" ng-show="posteriores.length > 0">Lista de Formatos posteriores</h2>
+
+    <div class="wrap_contentList abogadoList expediente" ng-show="posteriores.length > 0"> 
+
+        <div class="wra_content_tarea" style="display:block;border:none;"> 
+            <div class=" contentInput" style='margin-bottom: 15px; overflow: hidden;'>
+                <div class="colum colums4" ng-hide="acto.hasdim == true"> 
+                    <label>No DIM</label> 
+                    <div class="wrap_select ispersonadata"> 
+                        <select ng-model="acto.hasdim">
+                            <option  value='null' selected>-Seleccione-</option>
+                            <option value='false' >No DIM</option>
+                            <option value='false' >DIM Persona Moral</option>
+                        </select> 
+                    </div>
+                </div>
+                <div class="colum colums4"ng-hide="acto.hasanexo5 == true"> 
+
+
+                    <label>No Anexo 5</label> 
+                    <div class="wrap_select ispersonadata"> 
+                        <select ng-model="acto.hasanexo5">
+
+                            <option  value='null' selected>-Seleccione-</option>
+                            <option value='false' >No Anexo5</option>
+                        </select> 
+                    </div>
+                </div>
+                <div class="colum colums4"ng-hide="acto.hasanexo5 == true && acto.hasdim == true"> 
+                    <label>&nbsp;</label> 
+                    <button class="btn-blue" ng-click="actualizaDimAnexo5()">Actualiza Datos</button> 
+                </div>
+            </div>
+
+            <div class="wra_content_tarea" style="display:block;border:none;"> 
+
+
+                <div class=" contentInput"> 
+                    <table class="tableForm"> 
+                        <tr> 
+                            <th width="5%"> 
+
+                                <span class="tbl_icon ico_documento">
+                                </span> 
+                            </th> 
+                            <th width="20%">Documento
+                            </th> 
+                            <th width="5%">Notario
+                            </th> 
+                            <th width="5%"> 
+                            </th> 
+                            <th width="15%">Acto
+                            </th>
+                            <th width="10%">Solicitud
+                            </th>
+                            <th width="10%">Regreso
+                            </th>
+                            <th>Estatus
+                            </th>
+
+                            <!--
+                            <th width="5%"> 
+                            
+                            <span class="tbl_icon ico_edit">
+                            </span> 
+                            </th>--> 
+
+                            <th width="5%"> 
+                            </th> 
+                            <th width="5%"> 
+                            </th> 
+
+                            <th width="5%"> 
+                            </th> 
+                            <th width="5%"> 
+                            </th> 
+                            <th width="5%"> 
+                            </th> 
+                            <th width="5%"> 
+                            </th> 
+                            <th width="5%"> 
+                            </th> 
+                        </tr>
+                        <tr ng-repeat="pre in posteriores| orderBy:'nombre'"> 
+                            <td ng-class="{'estatus_ok':pre.mesacontrol.alerta.statusalerta == 'OK','estatus_warning':pre.mesacontrol.alerta.statusalerta == 'WARNING','estatus_dead':pre.mesacontrol.alerta.statusalerta == 'DEAD','estatus_finished':pre.mesacontrol.alerta.statusalerta == 'FINISHED'}"> 
+                                {{$index + 1}}
+                            </td>
+                            <td class="ellipsis-table">{{pre.nombre}}
+                            </td>
+                            <td>
+                                <!--
+                                
+                                <div class="wrap_select" ng-show="pre.isgestionado=='g'"> 
+                                <select ng-change="set_notario_val(this)" ng-options="not as not.dsiniciales for not in notarios" ng-model="sel_notario" > 
+                                
+                                <option disabled selected value=''>-Seleccione-</option> 
+                                </select> 
+                                </div>--> 
+
+                                <span>{{pre.notario}}
+                                </span> 
+                            </td>
+                            <td> 
+
+                                <span class="tbl_icon ico_person_more" title="Cambiar de notario" ng-click="set_notario(pre, posteriores)">
+                                </span> 
+                            </td>
+                            <td>{{pre.operacion}}
+                            </td>
+                            <td>{{pre.mesacontrol.tmstmp| date:'dd/MM/yyyy'}}
+                            </td>
+                            <td>{{pre.mesacontrol.termino| date:'dd/MM/yyyy'}}
+                            </td>
+                            <td>{{pre.mesacontrol.estatusdoc| date}}
+                            </td>
+                            <td> 
+
+                                <span class="tbl_icon ico_nube" title="Subir evidencia" ng-click="subir_doc(pre.idactodoc, 1)">
+                                </span> 
+                            </td>
+                            <td> 
+
+                                <span class="tbl_icon ico_nube_down" title="Visualizar evidencia" ng-show="pre.rutaEvidencia" ng-click="verArchivo(pre.idactodoc, 'evidencia')" >
+                                </span> 
+                            </td>
+                            <td> 
+
+                                <span class="tbl_icon ico_refresh" title="Generar documento con variables" ng-show="(pre.isgestionado == 'v' || pre.isgestionado == 'g') && !pre.isonline" ng-click="ejecuta_proceso(pre.idactodoc)">
+                                </span> 
+                                <span class="fa fa-2x fa-globe icon_gray" title="Visualizar documento en internet" ng-show="pre.rutaArchivo && (pre.isgestionado == 'g' || pre.isgestionado == 'v') && pre.isonline" ng-click="verOnline(pre)">
+                                </span>
+                            </td>
+                            <td> 
+
+                                <span class="tbl_icon ico_eye" title="Visualizar documento con variables" ng-show="pre.rutaArchivo && (pre.isgestionado == 'g' || pre.isgestionado == 'v') && !pre.isonline" ng-click="verArchivo(pre.idactodoc, 'doc')">
+                                </span> 
+                            </td>
+                            <td> 
+                                <i class="fa fa-comments-o icon_gray fa-2x" ng-class="{'btn_list_animate_text':pre.tienecomments}" ng-click="lanza_comentarios('d', pre.idactodoc, pre.nombre)"></i>
+
+                            </td>
+
+                            <td> 
+                                <span class="tbl_icon" ng-class="{ico_star_ok:pre.isaprobado,ico_star:!pre.isaprobado}" title="Verificaci&oacute;n" ng-click="is_aprobado(pre.idactodoc)">
+                                </span> 
+                            </td>
+                            <!--<td ng-class="{'estatus_ok':pre.mesacontrol.alerta.statusalerta == 'OK','estatus_warning':pre.mesacontrol.alerta.statusalerta == 'WARNING','estatus_dead':pre.mesacontrol.alerta.statusalerta == 'DEAD','estatus_finished':pre.mesacontrol.alerta.statusalerta == 'FINISHED'}"> 
+ 
+                                 <span class="fa fa-tag fa-2x" ng-class="{icon_gray:!pre.issolicitado,resaltar1:pre.issolicitado}" title="Solicita a mesa de control" ng-click="solicita_control(pre)">
+                                 <span class="fa fa-tag fa-2x" ng-class="{icon_gray:!pre.issolicitado,resaltar1:pre.issolicitado}" title="Solicita a mesa de control" ng-click="solicita_control(pre)">
+                                 </span> 
+                             </td>-->
+                            <td> 
+
+                                <span class="tbl_icon ico_delete" title="Eliminar documento" ng-click="del_documento(pre.idactodoc)">
+                                </span> 
+                            </td> 
+                        </tr>
+                    </table> 
+                </div>
+            </div>
+        </div>
+
+        <div id="changeKey" style="display:none;" class="avgrund-popup avgrund-popup-animate"> 
+
+            <div class="modal_header">Detalle del documento
+            </div>
+
+            <div class="modal_body"> 
+
+                <div class="contentInputs"> 
+
+                    <div class="colum" > 
+                        <label>Gestor Asignado:
+                        </label> 
+
+                        <p ng-show="!tmpDoc.gestor">Sin gestor asignado</p>
+
+                        <p ng-show="tmpDoc.gestor">{{tmpDoc.gestor.dsnombre}}{{tmpDoc.gestor.dspaterno}}{{tmpDoc.gestor.dsmaterno}}</p>
+                    </div>
+                </div>
+
+                <div class="contentInputs" style="border-top: 1px solid #ccc;padding-top:30px "> 
+
+                    <div class="colum "> 
+                        <label>
+
+                            <span>Asignar
+                            </span> gestor al documento
+                        </label> 
+
+                        <div class="wrap_select" style="width: 80%"> 
+                            <select ng-options="ges as (ges.dsnombre+' '+' '+ges.dspaterno+' '+ges.dsmaterno) for ges in gestores" ng-model="sel_gestor"> 
+
+                                <option disabled selected value="">-- Select --</option> 
+                            </select> 
+                        </div><button class="btn-blue" style="width:30px;margin-left:20px;" ng-click="asignarGestor()">+</button> 
+                    </div>
+                </div>
+
+                <div class="contentInputs"> 
+
+                    <div class="colum" style="width:40%"> &nbsp; 
+                    </div>
+
+                    <div class="colum" style="width:40%"> 
+
+                        <div class="btn-rounded cerrarModal"style="width: 128%">
+
+                            <p>Cerrar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="valuador_content" style="display:none;" class="avgrund-popup avgrund-popup-animate"> 
+
+            <div class="modal_header">Detalle del documento
+            </div>
+
+            <div class="modal_body"> 
+
+                <div class="contentInputs"> 
+
+                    <div class="colum" > 
+                        <label>Valuador Asignado:
+                        </label> 
+
+                        <p ng-show="!tmpDoc.valuador">Sin valuador asignado</p>
+
+                        <p ng-show="tmpDoc.valuador">{{tmpDoc.valuador.dsnombre}}{{tmpDoc.valuador.dspaterno}}{{tmpDoc.valuador.dsmaterno}}</p>
+                    </div>
+                </div>
+
+                <div class="contentInputs" style="border-top: 1px solid #ccc;padding-top:30px "> 
+
+                    <div class="colum "> 
+                        <label>
+
+                            <span>Asignar
+                            </span> gestor al documento
+                        </label> 
+
+                        <div class="wrap_select" style="width: 80%"> 
+                            <select ng-options="val as (val.dsnombre+' '+' '+val.dspaterno+' '+val.dsmaterno) for val in valuadores" ng-model="sel_valuador"> 
+
+                                <option disabled selected value="">-- Select --</option> 
+                            </select> 
+                        </div><button class="btn-blue" style="width:30px;margin-left:20px;" ng-click="lanza_set_valuador()">+</button> 
+                    </div>
+                </div>
+
+                <div class="contentInputs"> 
+
+                    <div class="colum" style="width:40%"> &nbsp; 
+                    </div>
+
+                    <div class="colum" style="width:40%"> 
+
+                        <div class="btn-rounded cerrarModal"style="width: 128%">
+
+                            <p>Cerrar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+
+                $('#archivo').ajaxForm(function () {
+        alert("Form is submitted");
+        });
+                $(".cerrarModal").click(function () {
+        Avgrund.hide();
+                $("#valuador_content").fadeOut("slow");
+                $("#changeKey").fadeOut("slow");
+                $("#comments_wrapp").fadeOut("slow");
+        })
+
+    </script>
+

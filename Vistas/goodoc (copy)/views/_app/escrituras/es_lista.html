@@ -1,0 +1,129 @@
+<loadscript url=ctrl_escrituras.js></loadscript>
+
+<div ng-controller=ctrl_escrituras><navexpediente></navexpediente><bienvenida></bienvenida>
+    <abogado></abogado>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+        <div class="colum colums4"> <button class="btn-blue" ng-click="goTo('/escrituras_agregar')">Nueva escritura</button> 
+        </div>
+    </div>
+    
+    <div class="contentInputs"><h2 ng-show = "listaEscrituras.length == 0 || !listaEscrituras">Aún no hay Escrituras registradas</h2> 
+        <table class="tableForm" ng-show = "listaEscrituras.length > 0"> 
+            <tr> 
+                <th width="5%" > 
+
+                    <span class="tbl_icon ico_documento">
+                    </span> 
+                </th> 
+                <th width="40%">Notario
+                </th> 
+                <th width="5%"> 
+                </th> 
+                <th width="25%">Objeto del acto
+                </th> 
+                <th width="10%">N&uacute;mero
+                </th>
+                <th title="Marcar no paso" > 
+                    <span class="fa fa-2x fa-unlink icon_gray" >
+                    </span> 
+                </th>
+                <th title="Descargar escritura"> 
+
+                    <span class="tbl_icon ico_nube_down">
+                    </span> 
+                </th>
+                <!--
+                <th width="5%"> 
+                
+                <span class="tbl_icon ico_person_more">
+                </span> 
+                </th>-->  
+                <th width="5%"> 
+
+                    <span class="tbl_icon ico_refresh">
+                    </span> 
+                </th> 
+                <th width="5%"> 
+
+                    <span class="tbl_icon ico_documento">
+                    </span> 
+                </th> 
+                <th width="5%"> 
+
+                    <span class="tbl_icon ico_edit">
+                    </span> 
+                </th> 
+                <th width="5%"> 
+
+                    <span class="tbl_icon ico_delete">
+                    </span> 
+                </th> 
+            </tr>
+            <tr ng-repeat="esc in listaEscrituras"> 
+                <td>{{$index + 1}}
+                </td>
+                <td>{{esc.escritura.notario.dsnombre + " " + esc.escritura.notario.dspaterno + " " + esc.escritura.notario.dsmaterno}}
+                </td>
+                <td title="Cambiar al notario"> 
+
+                    <span class="tbl_icon ico_person_one" ng-click="cambia_notario(esc.escritura)">
+                    </span> 
+                </td>
+                <td> 
+                    <ol> 
+                        <li ng-repeat="acto in esc.actos">{{acto.nombreActo}}</li>
+                    </ol> 
+                </td>
+                <td>{{esc.escritura.dsnumescritura}}
+                </td>
+                
+                <td title="Marcar como no paso" > 
+                    <span class="fa fa-2x fa-unlink" ng-show="esc.escritura.dsnumescritura!=null" ng-class="{'icon_gray':!esc.escritura.nopaso,'icon_red':esc.escritura.nopaso}" ng-click="nopaso(esc)">
+                    </span> 
+                </td>
+                <td title="Descargar escritura"> 
+                    <span class="tbl_icon ico_nube_down" ng-click="escritura_download(esc)">
+                    </span> 
+                </td>
+                <td title="Regenerar escritura"> 
+                    <span class="tbl_icon ico_refresh" ng-hide="esc.escritura.nopaso" ng-click="escritura_actualizar(esc)">
+                    </span> 
+                </td>
+                <td title="Datos de escritura"> 
+
+                    <span class="tbl_icon ico_documento" ng-hide="esc.escritura.nopaso" ng-click="escritura_edit(esc.escritura.idescritura, 0)">
+                    </span> 
+                </td>
+                <td title="Editar escritura"> 
+
+                    <span class="tbl_icon ico_edit" ng-click="escritura_edit(esc.escritura.idescritura, 1)">
+                    </span> 
+                </td>
+                <td title="Eliminar escritura"> 
+
+                    <span class="tbl_icon ico_delete" ng-hide="esc.escritura.nopaso" ng-click="del_escritura(esc.escritura.idescritura)">
+                    </span> 
+                </td>
+            </tr>
+        </table> 
+    </div>
+    <div class="contentInputs" ng-show="mensajes_mesactrl.length>0">
+        <hr>
+        <h4 class="icon_red"  ng-repeat="mc in mensajes_mesactrl" ng-show="!mc.terminado">
+            <b>{{mc.bitacora}}</b>
+        </h4>
+    </div>
+    
+    
+</div>

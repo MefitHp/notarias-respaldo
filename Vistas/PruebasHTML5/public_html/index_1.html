@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write(unescape('%3Cscript src="//jquery.org/jquery-wp-content/themes/jquery/js/jquery-1.9.1.min.js"%3E%3C/script%3E'))</script>
+
+    </head>
+    <body>
+        <h1 id="calle">MI CALLE</h1>
+    </body>
+    <script>
+    
+    
+    var Funcion = function (nombre) {
+        this.nombre = nombre;
+        this.padre = nombre;
+        this.isparam = false;
+        this.parametros = [];
+        
+        this.getNombre = function(){
+            return this.nombre;
+	}
+	
+	this.setNombre=function(String nombre){
+            this.nombre = nombre;
+	}
+	
+	this.getParametros = function(){
+            return this.parametros;
+	}
+	
+	this.setParametros = function(parametros){
+            this.parametros = parametros;
+	}
+	
+	this agregaParametro = function (parametro){
+            this.parametros.push(parametro);
+	}
+    }
+    
+    
+    functiones =[];
+    posicion_funciones=[]
+    
+    var expresionSaca = 'f:si(>500, f:activa(${cmp:elemento[elemento_x]}, TRUE),f:visible(f:si(${cmp:elemento[elemento_y]}>1,TRUE,f:asignaValor(${cmp:elemento[invisible]},"valor,Z"))))f:activa(${cmp:elemto[elemento_z]},TRUE)'
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+       
+        
+        
+        
+        
+        //f:si(>500, f:activa(${cmp:elemento[elemento_x]}, TRUE),f:visible(f:si(${cmp:elemento[elemento_y]}>1,TRUE,f:asignaValor(${cmp:elemento[invisible]},"valor,Z"))))
+        //f:activa(${cmp:elemto[elemento_z]},TRUE)
+        
+        
+        var cadenaPrueba="si(pasaesto,entonces(pasa esto otro, despues esto tambien))"
+        var otracadenaCF = 'f:si(>500, f:activa(${cmp:elemento[elemento_x]}, TRUE),f:visible(f:si(${cmp:elemento[elemento_y]}>1,TRUE,f:asignaValor(${cmp:elemento[invisible]},"valor,Z"))))f:activa(${cmp:elemto[elemento_z]},TRUE)'
+        var otracadena = 'f:si(100>500, f:activa(${cmp:elemento[elemento_x]}, TRUE),f:visible(f:si(${cmp:elemento[elemento_y]}>1,TRUE,f:asignaValor(${cmp:elemento[invisible]},"valor,Z"))))';
+        /*function buscaParametros(cadena,charAbre,charCierre){
+            var paramAbre = cadena.indexOf(charAbre);
+            var paramCierra;
+            var tmppos = paramAbre;
+            do{
+                console.log("Busco el abre apartir de::"+tmppos);
+                tmppos = cadena.indexOf(charAbre,tmppos+1);
+                console.log("*Encuentro que abre en::"+tmppos);
+                if(tmppos!=-1){
+                console.log("Busco el cierre apartir de::"+tmppos);
+                tmppos = cadena.indexOf(charCierre,tmppos);
+                paramCierra = tmppos;
+                console.log("-Encuentro que cierra en::"+tmppos);
+                    continue;
+                }
+                console.log("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                console.log("°°°°°°° YA NO HAY EN "+paramCierra+" °°°°°°°°°");
+                console.log("°°°°°°° STRING: "+cadena.substring(paramCierra-10,paramCierra) +" °°°°°°°°°");
+                console.log("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                paramCierra = (cadena.indexOf(charCierre,paramCierra)+1);
+            }while(tmppos>-1);
+            console.info("***************************************************************************");
+            console.info(otracadena);
+            console.info("El que abre esta en::",paramAbre);
+            console.info("El que cierra esta en::",paramCierra);
+            console.info("El string mide ",cadena.length);
+            console.info("parametros::",cadena.substring(paramAbre,paramCierra));
+            
+        }*/
+        function buscaParametros(cadena,charAbre,charCierre){
+            var paramAbre = cadena.indexOf(charAbre);
+            var paramCierra;
+            var tmppos = paramAbre;
+            do{
+                tmppos = cadena.indexOf(charCierre,tmppos+1);
+                if(tmppos!=-1){
+                console.log("Busco el cierre apartir de::"+tmppos);
+                tmppos = cadena.indexOf(charCierre,tmppos);
+                paramCierra = tmppos;
+                console.log("******************************************************");
+                console.log("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                console.log(cadena.substring(paramAbre,tmppos));
+                console.log("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                console.log("******************************************************");
+                
+                console.log("-Encuentro que cierra en::"+tmppos);
+                continue;
+                }
+                console.log("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                console.log("°°°°°°° YA NO HAY EN "+paramCierra+" °°°°°°°°°");
+                console.log("°°°°°°° STRING: "+cadena.substring(paramCierra-10,paramCierra) +" °°°°°°°°°");
+                console.log("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                paramCierra = (cadena.indexOf(charCierre,paramCierra)+1);
+            }while(tmppos>-1);
+            console.info("***************************************************************************");
+            console.info(cadena);
+            console.info("El que cierra esta en::",paramCierra);
+            console.info("El string mide ",cadena.length);
+            console.info("parametros::",cadena.substring(paramAbre,paramCierra));
+            
+        }
+      
+    
+      function buscarFuncion(cadena){
+            var paramAbre = cadena.indexOf("f:");
+            var paramCierra = cadena.indexOf(")");        
+      }
+        
+    
+    /*
+     * f:si(>500,f:activa(${cmp:elemento[elemento_x]}, TRUE),f:visible(f:si(${cmp:elemento[elemento_y]}>1,TRUE,f:asignaValor(${cmp:elemento[invisible]},"valor,Z")))) 
+     * 
+     */
+        
+        buscaParametros(otracadena,'(',')');
+        
+        function obtieneValor(str,charini,charfin){
+            var ini_pos = str.indexOf(charini) + 1;
+            var fin_pos = str.indexOf(charfin,ini_pos);
+            return str.substring(ini_pos,fin_pos);        
+        }
+        
+        
+        /******************  FIN DE LA CREACION DE FUNCIONES  *******************************/
+        
+        var expresionprueba1 = "f:si(0<100,f:activar(${cmp:inm[calle]},true),f:activar(${cmp:inm[numero]},false))";
+        //var expresionprueba1 = "alert('entro')";
+        
+        
+        
+        
+        
+        /**
+         * 
+         * @param {type} string: ESCAPA TODOS LOS CARACTERES ESPECIALES PARA EVITAR ERRORES
+         * @returns REGRESA LOS VALORES ESCAPADOS
+         */
+        function escapeRegExp(string) {
+        return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+        }
+        
+        
+        /*
+         * 
+         * @param {type} str CADENA EN LA CUAL BUSCARA LAS OCURRENCIAS
+         * @param {type} find PALABRA A BUSCAR
+         * 
+         * @returns {unresolved}
+         */
+        function busca_ocurrencias(str,find){
+            return str.split(find).length - 1;
+        }
+
+        
+        /*
+         * 
+         * @param {type} string CADENA DE ENTRADA A REMPLAZAR
+         * @param {type} find VALOR A ENCONTRAR
+         * @param {type} replace VALOR A REMPLAZAR
+         * @returns {string} REGRESA LA CADENA CON LOS VALORES REMPLAZADOS
+         */
+        function replaceAll(string, find, replace) {
+            return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+        }
+        
+        /*
+         * 
+         * @param {type} cadena CADENA EN LA QUE BUSCARA LAS FUNCIONES
+         * @returns REMPLAZA TODAS LAS FUNCIONES QUE ENCUENTRE DENTRO DE LA CADENA
+         */
+        
+        /**
+         * 
+         * @param {type} str CADENA EN LA QUE BUSCARA EL PATRON
+         * @param {type} charini CARACTER A PARTIR DEL QUE BUSCARÁ EL VALOR
+         * @param {type} charfin EL CARACTER DE CIERRE DEL VALOR
+         * @returns {string} REGRESA LA CADENA LIMPIA CON BASE A LOS PARAMETROS QUE SE ENVIARON
+         */
+        
+        
+        function obtieneValor(str,charini,charfin){
+            var ini_pos = str.indexOf(charini) + 1;
+            var fin_pos = str.indexOf(charfin,ini_pos);
+            return str.substring(ini_pos,fin_pos);        
+        }
+        
+        /**
+         * 
+         * @param {type} str CADENA EN LA QUE BUSCARA LA POSICION DEL DATO
+         * @param {type} ref LA REFERENCIA DEL TIPO DE VARIABLE QUE ES
+         * @returns {string} REGRESA EL PATRON EN EL CUAL SE BUSCARA EL VALOR
+         */
+        function encuentraPosDato(str,ref){
+            var ini_pos = str.indexOf(ref);
+            var fin_pos = str.indexOf("}",ini_pos)+1;
+            var str_ref = str.substring(ini_pos,fin_pos);
+            return str_ref;
+        }
+        
+        
+        /**
+         * 
+         * @param {type} str CADENA EN LA QUE REMPLAZARA EL DATO
+         * @param {type} tipo TIPO DE VALOR QUE SE BUSCARA EXISTEN 
+         * "c" PARA COMPONENTE
+         * "v" para VARIABLE
+         * @returns {string} REGRESA EL PATRON EN EL CUAL SE BUSCARA EL VALOR
+         */
+        function encuentraDato(str,tipo){
+            var str_replace;
+            var str_ref;
+            var tipo_dato_ini ="'";
+            var tipo_dato_fin ="'";
+
+            switch(tipo){
+                case "c":
+                      str_ref = encuentraPosDato(str,"${cmp:");
+                      str_replace= obtieneValor(str_ref,"[","]");
+                      tipo_dato_ini = "'"
+                      tipo_dato_fin = "'" 
+                break;
+                case "f":
+                      str_ref = encuentraPosDato(str,"${frm:");
+                      str_replace= obtieneValor(str_ref,"[","]");
+                      
+                break;
+                case "g":
+                      str_ref = encuentraPosDato(str,"${gpo:");
+                      str_replace= obtieneValor(str_ref,":","}");
+                break;
+                case "v":
+                      str_ref = encuentraPosDato(str,"${var:");
+                      str_replace= obtieneValor(str_ref,":","}");
+                break;
+                
+                
+                default:
+                    
+            }
+            return replaceAll(str,str_ref,tipo_dato_ini+str_replace+tipo_dato_fin);
+            
+        }
+        
+        
+        
+        
+        
+        var cleanStrComp = expresionprueba1;
+        var cleanStrVar = expresionprueba1;
+        
+        
+        
+        
+        
+        
+        
+        //// IMPLEMENTACIÓN
+        
+        var valores_funciones = [
+                                {valor:"f:si",remplazar:"si"},
+                                {valor:"f:activar",remplazar:"activa"},
+                                {valor:"f:asignar",remplazar:"asigna"},
+                                {valor:"f:visible",remplazar:"muestra"},
+                                ];
+        
+        
+       
+        var remplazar_config = {
+                                funciones:valores_funciones,
+                                componentes:busca_ocurrencias(expresionprueba1,"${cmp:"),
+                                variables:busca_ocurrencias(expresionprueba1,"${var:"),
+                                grupos:busca_ocurrencias(expresionprueba1,"${gpo:"),
+                                formularios:busca_ocurrencias(expresionprueba1,"${frm:")
+                            };
+                            
+                            
+                            
+        // REMPLAZA FUNCIONES DEL STRING
+        function remplazaFunciones(cadena){
+            var i =0;
+            var remp = remplazar_config.funciones;
+            for(i;i<remp.length;i++){
+                //cadena = replaceAll(cadena,remp[i].valor,'[[VIC:FUNCION '+remp[i].remplazar+'::]]');
+                cadena = replaceAll(cadena,remp[i].valor,remp[i].remplazar);                 
+            }
+            //console.info("ENTRO A REMPLAZA FUNCIONES::"+cadena);
+            return cadena;
+        }
+        
+        // REMPLAZA DATOS (COMPONENTES, VARIABLES, GRUPOS) DEL STRING 
+        function remplazaDatos(cadena,cantidad,tipo){
+            var i =0;
+            for(i;i<cantidad;i++){
+                cadena = encuentraDato(cadena,tipo);
+            }
+            
+            return cadena;
+        }
+        
+        
+        
+        
+        
+        /*
+         * 
+         * @param {type} cadena CADENA DE ENTRADA PARA REMPLAZAR COMPONETES,VARIABLES, GRUPOS Y FORMULARIOS
+         * @returns CADENA INTERPRETADA
+         */
+        function parserExpresion (cadena){
+            // REMPLAZO FUNCIONES
+            cadena = remplazaFunciones(cadena);
+           // REMPLAZO COMPONENTES
+            cadena = remplazaDatos(cadena,remplazar_config.componentes,'c');
+            // REMPLAZO FORMULARIOS
+            cadena = remplazaDatos(cadena,remplazar_config.formularios,'f');
+            // REMPLAZO GRUPOS
+            cadena = remplazaDatos(cadena,remplazar_config.grupos,'c');
+            // REMPLAZO VARIABLES
+            cadena = remplazaDatos(cadena,remplazar_config.variables,'v');
+            
+            return cadena;
+            
+        }
+        
+        
+        var expresionprueba2 = remplazaFunciones(expresionprueba1);
+        
+        document.write("<h2>ORIGINAL</h2>");
+        document.write(expresionprueba1);
+        document.write("<hr>");
+        document.write("<h2>OCURRENCIAS</h2>");
+        document.write("<hr>");
+        document.write("<h3>FUNCIONES:"+busca_ocurrencias(expresionprueba1,"f:")+"</h3>");
+        document.write("<hr>");
+        document.write("<h3>VARIABLES"+busca_ocurrencias(expresionprueba1,"${var:")+"</h3>");
+        document.write("<hr>");
+        document.write("<h3>COMPONENTES"+busca_ocurrencias(expresionprueba1,"${cmp:")+"</h3>");
+        document.write("<hr>");
+        
+        
+        document.write("<h2>REMPLAZO FUNCIONES</h2>");
+        document.write(expresionprueba2);
+        document.write("<hr>");
+        document.write("<h2>COMPONENTE</h2>");        
+        for (i=0;i<remplazar_config.componentes;i++){
+        var cleanStrComp = encuentraDato(cleanStrComp,"c");
+        document.write(cleanStrComp);
+        document.write("<hr>");
+        }
+        
+        document.write("<hr>");
+        document.write("<h2>VARIABLE</h2>");   
+        for (i=0;i<remplazar_config.variables;i++){
+        var cleanStrVar = encuentraDato(cleanStrVar,"v");
+        document.write(cleanStrVar);
+        document.write("<hr>");
+        }
+        
+        document.write("<hr>");
+        document.write("<hr>");
+        document.write("<h1>::::::::::::::::PARSER FINAL::::::::::::</h1>");
+        document.write(parserExpresion(expresionprueba1));
+        
+        //var mifuncion_args = ['si_if','verdadero','falso'];
+        //var mifuncion_body = "if(si_if){verdadero()}else{falso()};";
+        //var mifuncion = new Function(mifuncion_args,mifuncion_body);
+        
+        
+        //mifuncion(eval(),function(){alert("si es")},function(){alert("no es")});
+        
+        /*function si(condicion,verdadero,falso){
+            if(condicion){
+                verdadero();
+            }else{
+                falso();
+            }
+        }*/
+        
+        //function si(p1,p2,p3){
+        
+        function activa(componente,validacion){
+            alert("entro a activar"+validacion)
+            if(validacion){
+            alert("entro a activar + validacion")
+                setTimeout(function(){
+                    $("#"+componente).fadeOut("slow");
+                },1000);
+            }
+            else{
+            alert("entro a activar + falso")
+                setTimeout(function(){
+                    $("#"+componente).fadeIn("slow");
+                },1000);
+            }
+        }
+        
+        
+        function si(validacion,verdadero,falso){
+            alert("entro a si: " +validacion)
+            if(validacion){
+                alert("entro a si validacion")
+                verdadero();
+            }else{
+                alert("entro a si validacion no")
+                falso();
+            }
+        }
+        
+        
+        
+       
+        
+        //console.info(parserExpresion(expresionprueba1));
+                alert("si(0<100,function(){activa('calle',true)},function(){activa('numero',false)})");
+
+        eval(parserExpresion(si(0<100,function(){activa('calle',true)},function(){activa('numero',false)})));
+        
+        
+        
+        
+        
+        //var si_condicion = "1==0";
+        //var si_verdadero = "alert('es verdadero')";
+        //var si_falso = "alert('es falsooo')";
+        //crea_funcion_si(si_condicion,si_verdadero,si_falso);                
+        
+        </script>
+</html>

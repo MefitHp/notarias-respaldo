@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name=“formulario”>
+		<xs:element name=“descripcion” type="xs:string" />
+		<xs:element name=“suboperaciones” maxOccurs=“10” minOccurs=“1”>
+			<xs:complexType>
+				<xs:element name = “suboperacion”>
+					<xs:complexType>
+						<xs:element name = “nombre” type=“xs:string” />
+					</xs:complexType>
+				</xs:element>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name=“roles” maxOccurs=“10” minOccurs=“1”>
+			<xs:complexType>
+				<xs:element name = “rol”>
+					<xs:complexType>
+						<xs:element name = “nombre” type=“xs:string” />
+					</xs:complexType>
+				</xs:element>
+			</xs:complexType>
+		</xs:element>	
+		<xs:element name=“componentes” maxOccurs=“unbounded” minOccurs=“1”>
+			<xs:complexType>
+				<xs:element name = “componente”>
+					<xs:sequence>
+						<xs:element name=“posicion”>
+							<xs:simpleType>
+								<xs:restriction base=“xs:integer”>
+									<xs:minInclusive value = “0” />
+									<xs:maxInclusive value = “99” />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name=“orden”>
+							<xs:simpleType>
+								<xs:restriction base=“xs:integer”>
+									<xs:minInclusive value = “0” />
+									<xs:maxInclusive value = “99” />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name=“descripcion” type=“xs:string” />
+						<xs:element name=“ayuda” type=“xs:string” />
+						<xs:element name=“tipo”>
+							<xs:simpleType>
+								<xs:restriction base=“xs:string”>
+									<xs:enumeration value = “titulo” />
+									<xs:enumeration value = “texto” />
+									<xs:enumeration value = “fecha” />
+									<xs:enumeration value = “select_combo” />
+									<xs:enumeration value = “select_radio” />
+									<xs:enumeration value = “multiselect_combo” />
+									<xs:enumeration value = “multiselect_check” />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name=“longitudMaxima”>
+							<xs:simpleType>
+								<xs:restriction base=“xs:integer”>
+									<xs:minInclusive value = “1” />
+									<xs:maxInclusive value = “2000” />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name=“longitidMinima”>
+							<xs:simpleType>
+								<xs:restriction base=“xs:integer”>
+									<xs:minInclusive value = “0” />
+									<xs:maxInclusive value = “2000” />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name = “listaValores” maxOccurs = “20”>
+							<xs:complexType>
+								<xs:element name = “valor” type = “xs:string” />
+							</xs:complexType>
+						</xs:element>
+						<xs:element name = “tabla” type = “xs:string” />
+					</xs:sequence>
+					<xs:attribute name = “nombre” type=“xs:string” use=“required” />
+					<xs:attribute name = “subformulario” type=“xs:integer” />
+				</xs:element>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name=“subformulario”>
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name = “nombre” type=“xs:string” use=“required” />
+					<xs:element name = “descripcion” type:”xs:string” />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:attribute name = “identificacdor” type=“xs:integer” use=“required” />
+		</xs:element>
+		<xs:attribute name=“nombre” type="xs:string" use="required"/>
+		<xs:attribute name=“identificador” type="xs:string" use="required"/>
+	</xs:element>
+</xs:schema>

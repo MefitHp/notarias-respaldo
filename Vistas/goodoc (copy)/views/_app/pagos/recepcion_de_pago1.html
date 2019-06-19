@@ -1,0 +1,131 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<div class="status_tarea" >
+    <div style="display: inline-block;">
+        <div class="fase grad_gray">
+            <p class="active">Fase 1 <br>
+                <span>Datos del pago</span>
+            </p>
+        </div>
+        <div class="fase grad_gray">
+            <p class="">Fase 2 <br>
+                <span>Datos del pagador</span>
+            </p>
+        </div>
+
+        <div class="fase grad_gray">
+            <p class="">Fase 3 <br>
+                <span>Evidencia del pago</span>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+<br>
+
+
+<h2 class="tit_H2">Datos del pago</h2>
+<div class="wra_form_data">
+    <div class="head_form_data">
+        <div class="colum colums3" >
+            <p>
+                <b>Este pago <span ng-show="!solicitudPago.isanticipo">no</span> es un anticipo</b>
+            </p>
+
+            <p><span>*</span> Lorem upsum dolorem engfisfdj</p>
+        </div>
+        <div class="colum colums4" >
+            <div style="float:right;">
+               <!-- <switchflip></switchflip>-->
+            </div>
+        </div>
+
+    </div>
+    <div class="body_form_data">
+        <div class="contentInputs">
+
+            <div class="colum colums2">
+                <label>Solicitante</label>
+                <input type='text' class="altas_bajas" ng-model="solicitante" disabled>
+
+            </div>
+            <div class="colum colums4">
+                <label>N° de expediente</label>
+                <input type='text' disabled ng-model="solicitudPago.expediente.numexpediente">
+            </div>
+            <div class="colum colums4">
+                <label>Importe</label>
+                <input type='text' ng-model="solicitudPago.valor" disabled>
+            </div>
+
+        </div>
+
+        <div class="contentInputs">
+
+            <div class="colum colums1">
+                <label>Concepto</label>
+                <p style="margin-left: 10px;">{{solicitudPago.concepto}}</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<div class="contentInputs">
+    <h2 class='tit_H2'>Pagos realizados</h2>
+
+    <table class="tableForm">
+        <tr>
+            <th width="5%">
+                <span class="tbl_icon ico_presupuesto"></span>
+            </th>
+            <th width="15%">Fecha</th>
+            <th width="35%">Pagador</th>
+            <th width="20%">Importe</th>
+            <th width="35%">Solicitante</th>
+        </tr>
+        <tr ng-repeat="sol in pagos_realizados">
+
+            <td>{{$index +1}}</td> 
+            <td>
+                <ol>
+                    <li ng-repeat="p in sol.listaDatoPago">{{p.fechapago}}</li>
+                </ol>
+            </td> 
+            <td class="altas_bajas">{{sol.pagador}}</td> 
+            <td>
+                <ol>
+                    <li ng-repeat="p in sol.listaDatoPago">$ {{p.importepago}}</li>
+                </ol>
+            </td> 
+            <td class="altas_bajas">{{solicitante}}</td> 
+
+
+        </tr>
+
+    </table>
+</div>
+
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded" ng-click="goTo('/')"><p>Cancelar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="siguientePag()">Siguiente</button>
+    </div>
+
+</div>

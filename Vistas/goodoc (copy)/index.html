@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es"> 
+
+    <head> 
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <title>Notaria 98 y 24
+        </title> 
+        <meta name="description" content=""> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link rel="stylesheet" type="text/css" href="css/style.css"> 
+        <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+              <link rel="stylesheet" href="lib/jquery-ui/themes/smoothness/jquery-ui.min.css"> 
+    
+  <!-- Start of Async Drift Code -->
+<script>
+!function() {
+  var t;
+  if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0, 
+  t.methods = [ "identify", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+  t.factory = function(e) {
+    return function() {
+      var n;
+      return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+    };
+  }, t.methods.forEach(function(e) {
+    t[e] = t.factory(e);
+  }), t.load = function(t) {
+    var e, n, o, r;
+    e = 3e5, r = Math.ceil(new Date() / e) * e, o = document.createElement("script"), 
+    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + r + "/" + t + ".js", 
+    n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+  });
+}();
+drift.SNIPPET_VERSION = '0.2.0'
+drift.load('r8vyird4mwsf')
+
+
+</script>
+<!-- End of Async Drift Code -->
+    </head> 
+
+
+    <body ng-controller="ctrl_index" ng-cloak> 
+
+
+        <div class="avgrund-cover">
+        </div>
+
+
+        <div id="alertaContainer" style=""> <h2 style="color:white !important"></h2> 
+        </div>
+
+
+        <div id="contenedor_popUp" class="cont_popUp panelLateral2" ng-include="template"> 
+        </div>
+
+
+        <div id="contenedor_general" style="position: relative"> 
+
+            <div id="menuLat"> 
+
+                <div class="latbtn"> <img src="img/assets/icons/thumb/menLatIcon.png" alt=""> 
+                </div>
+
+                <div class="latbtn active" ng-click="goTo('/folios/prestados')" title="Folios"> <img src="img/assets/icons/thumb/1.png" alt=""> 
+                </div>
+
+                <div class="latbtn" ng-click="goTo('/expedientes_listar')" title="Expedientes"> <img src="img/assets/icons/thumb/2.png" alt=""> 
+                </div>
+
+                <div class="latbtn" ng-click="goTo('/search_avanzado')" title="Buscar expediente"> <img src="img/assets/icons/thumb/3.png" alt=""> 
+                </div>
+
+                <div class="latbtn" title="Expedientes racoo"> <img src="img/assets/icons/thumb/4.png" alt=""> 
+                </div>
+
+                <div class="latbtn" ng-click="goTo('/tareasbo')" title="Tareas pendientes"> <img src="img/assets/icons/thumb/5.png" alt=""> 
+                </div>
+
+                <div class="latbtn" title="Mesa de control" ng-click="goTo('/mesa_control')"> <img src="img/assets/icons/thumb/6.png" alt=""> 
+                </div>
+
+                <div class="latbtn" title="Caja" ng-click="goTo('/pagos')"> <img src="img/assets/icons/thumb/7.png" alt=""> 
+                </div>
+
+                <div class="latbtn" title="Ayuda"  ng-click="goTo('/ayuda')"> <img src="img/assets/icons/thumb/8.png" alt=""> 
+                </div>
+            </div>
+
+            <header id="header" > 
+
+                <div class="wrap_FullCenter"> 
+
+                    <div id="h_top"> 
+
+                        <div class="logo" ng-click="goTo('/')">
+                        </div>
+
+                        <div class="h_content"> 
+
+                            <div class="h_btn" ng-controller="ctrl_login" ng-click="logout()">
+                            </div>
+
+                            <div class="h_btn" id="btn_bitacora" onclick="viewBitacora()">
+                                <div id="numer_alert">
+                                    {{bitacora_size}}
+                                </div>
+                            </div>
+
+                            <div class="h_btn" ng-click="goTo('/ayuda')">
+                            </div>
+
+                            <div class="h_btn" id="menu_Sec">
+                            </div>
+
+                            <div class="h_btn" id="btn_search" onclick="viewSearch()">
+                            </div>
+
+                            <div class="h_txt"> 
+
+                                <p> 
+
+                                    <span class="altas_bajas" style="font-weight: bold;">{{nombreUsuario}}
+                                    </span> 
+                                    <br>
+
+                                    <span id="horayfechaactual" class="altas_bajas">
+                                    </span></p>
+                            </div>
+                            
+                    </div>
+                </div>
+            </header> 
+            <div id="bitacora_usuario">
+                <div id="bitacora_header" ng-click="goTo('/tareasbo')">
+                    <i class="fa fa-list" style="float: right"></i>
+                </div>
+                <div class="wrap_alert" ng-repeat="bit in bitacora_datos">
+                    <i class="fa fa-3x icon_bitacora " ng-class="{'fa-warning estatus_warning':bit.status=='WARNING','estatus_dead fa-frown-o':bit.status=='DEAD','estatus_ok fa-check':bit.status=='OK','estatus_ok fa-envelope-o':bit.status=='MESSAGE'}"></i>
+                    <p class="bitacora_texto" title="{{bit.texto}}">{{bit.texto}} </p>
+                   <p class="bitacora_exp" ><span style="color: red">{{bit.tmstmp |date:"dd/MM/yy" }}</span> | <span ng-click="$root.asignaExpedienteXid(bit.idexpediente)" class="resaltar1 link">Exp:{{bit.numexp}}</span></p>
+                   <!--<button ng-show="bit.idtarea!=0" class="bitacora_btn" style="background: #0084FF" ng-click="ejecutaTarea(bit.idtarea)">
+                       <i class="fa fa-check"></i>
+                   </button>-->
+                   
+                   <button class="bitacora_btn" ng-click="goTo('/tareasbo')" style="color: gray;">
+                       <i class="fa fa-eye"></i>
+                   </button> 
+                   <button class="bitacora_btn" style="background: red" ng-click="desactivaAlerta(bit.idbitusu)">
+                       <i class="fa fa-eye-slash"></i>
+                   </button>
+                </div>
+            </div>
+            <section id="busqueda_bread"> 
+
+                <div class="wrap_FullCenter"> 
+
+                    <div id="breadCrumbs"> 
+                        <ul id="wrap_actos_seleccionado" style="display:none;"> 
+                            <li>Descripci&oacute;n del acto:</li>
+                            <li id="acto_seleccionado"> </li>
+                        </ul> 
+                    </div>
+
+                    <div id="buscador"> 
+                        <input type="text" ng-model="persona.dsnombrecompleto" placeholder="Busqueda de expediente(s) por cliente:" style="width:66%"/> 
+
+                        <div class="colum colums4" style="float: right"> <button class="btn-blue" ng-click="buscarExpedientes()">Buscar</button> 
+                        </div>
+                    </div>
+                </div>
+
+                <div id="search_avanzada"> 
+
+                    <div class="wrap_FullCenter"> 
+                        <ul id="search_avanzadaLista"> 
+                            <li ng-click="goTo('/search_avanzado')" onclick="activeBtn(this)">Busqueda avanzada</li>
+                        </ul> 
+                    </div>
+                </div></section> 
+
+
+            <section id="wrap_prin" > 
+
+
+                <div class='navExpediente_wrap' style="display:none"> 
+
+
+                    <div class="navExpediente"> 
+
+
+                        <div class="navExpediente_element active" style="left: -10px" onclick='activeBtn(this)' ng-click="goTo('/asignacion_operaciones')">Generales
+                        </div>
+
+
+                        <div class="navExpediente_element" style="left:100px;" onclick='activeBtn(this)' ng-click="goTo('/escrituras')">Escritura
+                        </div>
+
+
+                        <div class="navExpediente_element expediente_acto" style="left:200px;" onclick='activeBtn(this)' ng-click="goTo('/comparecientes')">Otorgantes
+                        </div>
+
+
+                        <div class="navExpediente_element expediente_acto tarjeton_dinamic" style="left:300px;" onclick='activeBtn(this)' ng-click="goTo('/antecedentes')" id="enav0">Inmuebles
+                        </div>
+
+
+                        <div class="navExpediente_element expediente_acto" style="left:400px;" onclick='activeBtn(this)' ng-click="goTo('/documentos')">Documentos
+                        </div>
+
+
+                        <div class="navExpediente_element  tarjeton_dinamic" style="left:505px;" onclick='activeBtn(this)' ng-click="goTo('/antecedentes_documentos')" id="enav1">Antecedentes
+                        </div>
+
+
+                        <div class="navExpediente_element  tarjeton_dinamic" style="left:605px;" onclick='activeBtn(this)' ng-click="goTo('/antecedentes_operativos')" id="enav2">Operaci&oacute;n
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div id="wrap_prin_center" ng-view> 
+                </div>
+
+
+
+
+                <div id="comments_wrapp"  class="avgrund-popup avgrund-popup-animate popup-wrapp"> 
+
+                    <div class="modal_header">Comentarios del {{$root.tipoComment}}
+                    </div>
+
+                    <div class="modal_body"> 
+                        <div class="contentInputs">
+                            <div class="message_btn">
+                                <input style="background:none;" type="text" placeholder="Agregar un comentario..." ng-model="comentario_txt" />
+                                <div class="btn-rounded cerrarModal comment_btn"> 
+                                    <i class="fa fa-close"></i>
+                                </div>
+                                <div class="btn-rounded comment_btn" ng-click="guardaComentario()"> 
+                                    <i class="fa fa-comment"></i>
+                                </div>
+                            </div>
+
+                            <div class="comments">
+                                <div class="comment" ng-repeat="com in comentarios">
+                                    <div class="message_meta">
+                                        <b><span class="resaltar1">{{com.usuario.dsnombre}} {{com.usuario.dsmaterno}} {{com.usuario.dspaterno}} </span></b>&bullet; <span class="message_meta_fecha">{{fechaComment(com.tmstmp)}}</span></div>
+                                    <div class="message">
+                                        <p>{{com.dstexto}}</p>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </section> 
+
+
+            <footer> 
+
+                <div id="wrap_footer"> 
+
+                    <div class="colums2"> 
+
+                        <p> <b>98 y 24 &reg; Derechos reservados</b> </p>
+
+                        <p> Altavista 83, Col. San Ángel, Del. Alvaro Obregón, C.P.01049 </p>
+                    </div>
+
+                    <div class="colums2"> 
+
+                        <p> Lic. Ortiz Blanco Gonzalo Manuel</p>
+
+                        <p> Lic. Duarte Guerra Luis Ricardo </p>
+                    </div>
+                </div>
+            </footer> 
+
+
+
+
+        </div>
+
+        <script>var shim = "";
+        </script> 
+        <script src="lib/requirejs/require.js" data-main="js/main.js">
+        </script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js">
+        </script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/1.7.2/lang/es.min.js">
+        </script> 
+         
+        <script src="lib/momentjs/moment-precise-range.js">
+        </script> 
+        
+        
+        
+        
+        <script src="lib/jquery/jquery.min.js">
+        </script> 
+        <script src="lib/jquery-ui/ui/minified/jquery-ui.min.js">
+        </script> 
+        <script src="lib/plugins/chosen/chosen.jquery.min.js">
+        </script> 
+        <script src="js/utilesNotJs.js">
+        </script> 
+        <script src="js/modal.js">
+        </script> 
+        <script src="js/controllers/data/APP/ctrl_antecedentes_detalle.js">
+        </script> 
+        <script src="js/interprete_exp.js">
+        </script>  
+        <script src="lib/ckeditor/ckeditor.js">
+        </script> 
+        <script src="lib/ckeditor/config.js">
+        </script> 
+        <script src="js/modal.js">
+        </script> 
+        <script>
+            var modal = new Modal_Componente();
+                            modal.create();
+                            modal.show();
+                            function destroyModal() {
+                                modal.destroy();
+                            }
+                            
+               $(".cerrarModal").click(function () {
+        Avgrund.hide();
+        $("#valuador_content").fadeOut("slow");
+        $("#changeKey").fadeOut("slow");
+        $("#comments_wrapp").fadeOut("slow");
+        
+    })
+    
+    // CHAT CONFIG   
+    var queryURL = getQueryParams(document.location.hash)
+    drift.identify(queryURL.idusuario,{name:queryURL.nombreUsuario});
+
+        </script>
+
+        
+        
+    </body>
+</html>

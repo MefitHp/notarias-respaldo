@@ -1,0 +1,12 @@
+{
+    "usuario":{
+	"idusuario":"c81e728d9d4c2f636f067f89cc14862c",
+	"idsesionactual":"DA31D51F145D555C2188E4A97FFB081D"
+    },
+    "datoActoDoc":{
+	"idactodoc":"idpedorro",
+	"valuador":{
+	    "idvaluador":"un id de valuador"
+	}
+    }
+}

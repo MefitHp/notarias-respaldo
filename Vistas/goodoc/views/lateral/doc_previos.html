@@ -1,0 +1,78 @@
+<div class="allContentPanel" ng-controller="ctrl_operaciones_actos">
+    <div class='con_popUp_header con_popUp_wrapper'>
+        <div class='con_popUp_header_tit'>
+            <h2>Gesti&oacute;n de documentos </h2>
+            
+        </div>
+        <div class='con_popUp_header_cerrar' ng-click="popLateral('', 2,false)"></div>
+    </div>
+
+    <div class='con_popUp_title con_popUp_wrapper'>
+        <div>
+            <h2>Documentos previos</h2>
+        </div>
+    </div>
+
+
+    <div class='con_popUp_body con_popUp_wrapper' ng-controller="ctrl_prev_post">
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <label>Actividad</label>
+                <div class="wrap_select" >
+                <select ng-model="sel_previo" id="sel_documento_prev_post" ng-options="pr as pr.dstitulo for pr in previosListar | orderBy:'dstitulo'" name="previos">
+                    <option value="" disabled selected>--Seleccione una documento previo--</option>
+                </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="contentInputs">
+            <div class="colum colums4">
+                &nbsp;
+            </div>
+            <div class="colum colums4">
+                <div class="btn-rounded" ng-click="add_doc_prev('pre')"><p><span>+</span>Agregar</p></div>
+            </div>
+
+        </div>
+
+
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <table class="tableForm">
+                    <tr>
+
+                        <th>
+                            Nombre del documento
+                        </th>
+                        <th style="width:5%">
+
+                        </th>
+                    </tr>
+                    <tr ng-repeat="dp in documentos_previos" ng-show="dp.status != 'E'">
+                        <td>
+                             <span ng-show="dp.documento">{{dp.documento.dstitulo}}</span>
+                            <span ng-show="dp.formatopdf">{{dp.formatopdf.dstitulo}}</span>
+                        </td>
+                        <td ng-click="delete_documento($index,'pre')">x</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+
+        <div class="contentInputs">
+            <div class="colum colums4">
+                &nbsp;
+            </div>
+            <div class="colum colums4">
+                <button class="btn-blue" ng-click="guarda_total_previo()">Guardar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

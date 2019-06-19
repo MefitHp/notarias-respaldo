@@ -1,0 +1,107 @@
+<loadscript url=ctrl_usuariosgrupostrabajo.js></loadscript>
+<div ng-controller=ctrl_usuariosgrupostrabajo>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums1"> 
+            <label>Responsable de equipo:
+            </label> 
+                        <div class="wrap_select"> 
+
+            <select ng-model="usuariogrupotrabajo.grupoTrabajo" ng-options="gpo as (gpo.responsable.dsnombre + ' ' + gpo.responsable.dspaterno+' '+ gpo.responsable.dsmaterno) for gpo in gruposTrabajo | orderBy:'gpo.responsable.dspaterno'"> 
+
+                    <option value="" disabled selected>--Seleccione--</option> 
+                </select> 
+                        </div>
+        </div>
+               
+    </div>
+    <div class="contentInputs"> 
+
+        <div class="colum colums1"> 
+            <label>Asociar usuario:
+            </label> 
+            <div class="wrap_select"> 
+
+            <select ng-model="usuariogrupotrabajo.usuario"  ng-options="usr as (usr.dsnombre + ' ' + usr.dspaterno + ' ' + usr.dsmaterno + ' | ' +usr.cdusuario) for usr in user_lista | orderBy:'dsnombre'"> 
+
+                    <option value="" disabled selected>--Seleccione--</option> 
+                </select> 
+                        </div>
+        </div>               
+    </div>
+    
+    
+      <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+          <div class="colum colums4"> &nbsp;</div>
+
+        <div class="colum colums4"> 
+            <button class="btn-blue" ng-click="guardar()" ng-hide="grupo_editar">Asociar Usuario</button> 
+        </div>
+    </div>
+    
+    <div class="contentInputs"> 
+
+        <div class="colum colums1"> 
+            <label>Filtro:
+            </label> 
+            <input type="text" ng-model="filtro_grupos" placeholder="Filtro de grupos" />
+        </div>
+               
+    </div>
+    
+    <h2 class="tit_H2">Listado de usuarios asociados</h2>
+
+    <div class="contentInputs"> 
+        <table class="tableForm"> 
+            <tr> 
+                <th width="5%"> 
+
+                    <span class="tbl_icon ico_house">
+                    </span> 
+                </th> 
+                <th width="10%">C&oacute;digo
+                </th> 
+                <th width="40%">Usuario
+                </th> 
+                <th width="5%">Rol
+                </th> 
+                <th width="5%">Responsable
+                </th> 
+                <th width="5%"> 
+                </th> 
+            </tr>
+            <tr ng-repeat="gpo in gruposAsociados | orderBy:'grupoTrabajo.codigo' | filter:filtro_grupos" ng-class-even="'lista_alternate'"> 
+                <td>{{$index + 1}}
+                </td>
+                <td class="altas_bajas">
+                    {{gpo.grupoTrabajo.codigo}}
+                </td>
+                
+                
+                <td class='altas_bajas'> 
+                    {{gpo.usuario.dsnombre + ' ' + gpo.usuario.dspaterno+' '+ gpo.usuario.dsmaterno}}
+                </td>
+                <td title="{{gpo.usuario.rol.dsnombre}}"> 
+                    {{gpo.usuario.rol.dsprefijo}}
+                </td>
+                <td title="{{gpo.grupoTrabajo.responsable.dsnombre + ' ' + gpo.grupoTrabajo.responsable.dspaterno+' '+ gpo.grupoTrabajo.responsable.dsmaterno }}">
+                    {{gpo.grupoTrabajo.responsable.dsiniciales}}
+                </td>
+                <td ng-click="delete(gpo)"> 
+
+                    <span class="tbl_icon ico_delete">
+                    </span> 
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+

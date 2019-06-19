@@ -1,0 +1,2 @@
+function ctrl_antecedentes($scope,$rootScope,conexion_app,conexion,catalogos){catalogos.get_expediente_x_tramite($scope,function(){catalogos.get_formularios_x_acto_expediente($scope,"E");})
+$scope.rellenar_formulario=function(formulario,tipo){$rootScope.edit_formulario=formulario;$rootScope.tipo_edit_frm=tipo;force_redirect('index.html#/antecedentes_detalle');}}

@@ -1,0 +1,86 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+
+    <div class="contentInputs">
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            <div class="wrap_select">
+        <button class="btn-blue" ng-click="goTo('/presupuesto_registro')">Nuevo presupuesto</button>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <div class="contentInputs">
+        <table class="tableForm">
+            <tr>
+                <th width="5%">
+                     <span class="tbl_icon ico_presupuesto"></span>
+                </th>
+                <th width="20%">Importe</th>
+                <th width="15%">IVA</th>
+                <th width="20%">Total</th>
+                <th width="10%">Pagado</th>
+                <th width="30%">Acto</th>
+                <th width="5%">
+                </th>
+            </tr>
+            <tr ng-repeat="pre in preTotal.listaPresupuestosExp">  
+                <td>
+                    {{$index + 1}}
+                </td> 
+                <td>{{formatoValor(pre.importe)}}</td> 
+                <td>{{formatoValor(pre.iva)}}</td> 
+                <td>{{formatoValor(pre.total)}}</td> 
+                <td>
+                    <span ng-show="pre.pagado">S&iacute;</span>
+                    <span ng-show="!pre.pagado">No</span>
+                </td> 
+                <td>{{pre.nombreacto}}</td> 
+                
+                <td ng-click="goTo('/presupuesto_registro')">
+                     <span class="tbl_icon ico_edit"></span>
+                </td> 
+            </tr>
+        </table>
+    </div>
+    
+<div class="wra_form_data">
+
+    <div class="body_form_data">
+        <div class="contentInputs">
+            
+            <div class="colum colums4">
+                <label>Importe</label>
+                <input type="text" disabled ng-model="preTotal.sumaImporte" name="importe" />
+
+            </div>
+           <div class="colum colums4">
+                <label>IVA</label>
+                <input type="text" disabled ng-model="preTotal.sumaIva" name="iva"  />
+
+            </div>
+           <div class="colum colums4">
+                <label>Total</label>
+                <input type="text" disabled ng-model="preTotal.sumaTotal" name="importe" />
+
+            </div>
+           <div class="colum colums4">
+               <label>&nbsp;</label>
+               <button class="btn-blue" ng-click="goTo('/asignacion_operaciones')">Finalizar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+

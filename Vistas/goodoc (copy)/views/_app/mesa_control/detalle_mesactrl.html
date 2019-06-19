@@ -1,0 +1,120 @@
+<loadscript url=ctrl_mesactrl_detalle.js></loadscript>
+
+<div ng-controller=ctrl_mesactrl_detalle>
+    <div class="wrap_contentList abogadoList expediente"> 
+        <h2><b>Documento: </b>{{mesa.actodocumento.formatoPdf.dstitulo}} | 
+            <b>No. Escritura: </b>{{mesa.escritura.dsnumescritura}} | 
+            <b>No. Expediente: </b>{{mesa.pago.expediente.numexpediente}} </h2>
+        <div class="wra_content_tarea" style="display:block; border: none;"> 
+
+            <div class=" contentInput">
+                <div class="colum colums4">
+                    <img src="img/assets/icons/others/paper_exp.png"/>
+                    <p>Estatus: <b class="resaltar2">{{mesa.estatusdoc}}</b></p>
+                
+                </div>
+
+                <div class="colum colums2">
+                    <p><b>Fecha de actualizaci&oacute;n: </b>{{mesa.update| date:'medium'}}<p/>
+                    <p><b>Fecha de vencimiento: </b>{{mesa.vencimiento| date:'short'}}<p/>
+                    <p><b>Fecha de solicitud: </b>{{mesa.tmstmp| date:'medium'}}<p/>
+                    <p><b>Estatus de la solicitud: </b>{{mesa.alerta.statusalerta}}<p/>
+                    <p><b>Estatus del pago: </b>{{mesa.pago.statuspago}}</p>
+                    <p><b>Monto pagado: </b>$0,000<p/>
+                    <p><b>Monto por pagar: </b>$0,000<p/>
+                    <p><b>Saldo: </b>0<p/>
+
+                </div>
+                                <div class="colum colums4">
+                                        <button class="btn-blue" style="width:45px" ng-hide="mesa.actodocumento.formatoPdf.isonline" ng-click="verArchivo(mesa.actodocumento.idactodoc, 'doc')" title="Ver documento"><i class="fa fa-file fa-2x"></i></button> 
+                                        <button class="btn-blue" style="width:45px" ng-show="mesa.actodocumento.formatoPdf.isonline" ng-click="verOnline(mesa.actodocumento)" title="Ver en web"><i class="fa fa-globe fa-2x"></i></button> 
+
+                    <button class="btn-blue" style="width:45px" ng-click="subir_doc(mesa.actodocumento.idactodoc, 1,'evidencia_'+mesa.actodocumento.formatoPdf.dstitulo,mesa.idtarea)" title="Subir acuse recibo"><i class="fa fa-cloud-upload fa-2x"></i></button> 
+                    <button class="btn-blue" style="width:45px" ng-click="verArchivo(mesa.actodocumento.idactodoc, 'evidencia')" title="Ver acuse recibo"><i class="fa fa-cloud-download fa-2x"></i></button> 
+                    <button class="btn-blue" style="width:45px" ng-click="lanza_comentarios('d',mesa.actodocumento.idactodoc,mesa.actodocumento.formatoPdf.dstitulo,mesa.actodocumento.tienecomments)" title="Ver acuse recibo"><i class="fa fa-comments-o fa-2x"></i></button> 
+
+                                </div>
+
+            </div>
+
+
+            <div class="wra_content_tarea" style="display:block; border: none;"> 
+        <hr style="width: 660px">
+                <div class="contentInput">
+
+                    
+                    <div class="colum colums2"> 
+                        <label>
+
+                            <span>Cambiar estatus al documento</span> 
+                        </label> 
+                        <div class="wrap_select" style="width: 80%"> 
+                            <select ng-disabled="mesa.isterminado" ng-options="status as status  for status in estatusdocs" ng-model="estatusActual"> 
+
+                                <option disabled selected value="">-- Select --</option> 
+                            </select> 
+                        </div>
+                    </div>
+
+
+                    <div class="colum colums4">
+                        <label>&nbsp;</label> 
+                        <button class="btn-blue" ng-disabled="mesa.alerta.statusalerta=='FINISHED' || mesa.pago.statuspago!='PAGADO'" ng-click="ActualizaEstatusDoc(mesa)">Actualiza Estatus</button> 
+                    </div>
+                    <div class="colum colums4" style="padding-top:20px"> 
+                          <label>&nbsp;</label> 
+                        <div class="btn-rounded" ng-click="goTo('/mesa_control')">
+                            <p>Regresar</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+            <!--<div class="wra_content_tarea" style="display:block; border: none;"> 
+
+                <div class="contentInput">
+
+
+                    <div class="colum colums4"> 
+
+                        <div class="btn-rounded"  >
+
+                            <p>Subir Acuse recibo</p>
+                        </div>
+                    </div>
+
+                    <div class="colum colums4"> 
+
+                        <div class="btn-rounded" ng-click="verArchivo(mesa.actodocumento.idactodoc, 'evidencia')">
+
+                            <p>Ver acuse</p>
+                        </div>
+                    </div>
+                    <div class="colum colums4">
+                        <button class="btn-blue" ng-click="verArchivo(mesa.actodocumento.idactodoc, 'doc')">Ver documento</button> 
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="wrap_contentList abogadoList expediente" style="width: 100%"> 
+        <hr style="width: 660px">
+
+        <h2>Comentarios</h2>
+        <div class="comments" style="max-height: none">
+            <div class="comment" ng-repeat="com in comentarios">
+                <div class="message_meta">
+                    <b><span class="resaltar1">{{com.usuario.dsnombre}} {{com.usuario.dsmaterno}} {{com.usuario.dspaterno}} </span></b>&bullet; <span class="message_meta_fecha">{{fechaComment(com.tmstmp)}}</span></div>
+                <div class="message">
+                    <p>{{com.dstexto}}</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>

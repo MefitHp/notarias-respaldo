@@ -1,0 +1,125 @@
+
+<loadscript url=ctrl_operaciones.js></loadscript>
+
+<div ng-controller=ctrl_operaciones>
+
+    <div class="contentInputs"> 
+
+        <div id="tab-container" class="tab-container"> 
+            <ul class='etabs'> 
+                <li class='tab'><a href="#tb_operaciones">Operaciones</a></li>
+                <li class='tab' ng-click="obtiene_operaciones()"><a href="#tb_actos">Actos</a></li>
+            </ul> 
+
+            <div class="panel-container"> 
+
+                <div id="tb_operaciones"> 
+
+                    <form name="myForm" id="myForm" novalidate ng-submit="operacion_add()"> 
+
+                        <div class="colum colums1"> 
+                            <label>Nombre de operaci&oacute;n
+                            </label> 
+                            <input type="text" name="operacion_name" ng-model="operacion.dsnombre" required> 
+
+                            <div class="tooltip" ng-show="myForm.submitted && myForm.operacion_name.$error.required" >Campo requerido
+                            </div>
+                        </div>
+                        <table class="tableForm descTable"> 
+                            <tr> 
+                                <th>Descripci&oacute;n
+                                </th> 
+                            </tr>
+                            <tr> 
+                                <td> 
+                                    <textarea style="" name="operacion_desc" ng-model="operacion.dsdescripcion">
+                                    </textarea> 
+                                </td>
+                            </tr>
+                        </table> 
+
+                        <div class="contentInputs"> 
+
+                            <div class="colum colums4" > 
+
+                                <p>&nbsp;</p>
+                            </div>
+
+                            <div class="colum colums4"> 
+
+                                <div class="btn-rounded">
+
+                                    <p>Cancelar</p>
+                                </div>
+                            </div>
+
+                            <div class="colum colums4"> <button class="btn-blue" type="submit">Guardar</button> 
+                            </div>
+                        </div>
+                    </form> 
+                </div>
+
+                <div id="tb_actos" > 
+
+                    <div class="colum colums1"> 
+                        <label>Nombre del acto
+                        </label> 
+                        <input type="text" placeholder="Ingresar informaci&oacute;n" ng-model="suboperacion.dsnombre"/> 
+                    </div>
+
+                    <div class="contentInputs"> 
+                        <label>Operaci&oacute;n
+                        </label> 
+
+                        <div class="colum colums1" > <angucomplete id="ex1" placeholder="Buscar operaciones" pause="100" localdata="sel_operaciones" selectedobject="operacion_select" searchfields="dsnombre" titlefield="dsnombre" minlength="2" inputclass="form-control form-control-small"/> 
+
+                            <div class="tooltip" ng-show="autocomFlag" >Seleccione una operaci&oacute;n v&aacute;lida
+                            </div>
+                        </div>
+                    </div>
+                    <table class="tableForm descTable"> 
+                        <tr> 
+                            <th>Descripci&oacute;n
+                            </th> 
+                        </tr>
+                        <tr> 
+                            <td> 
+                                <textarea style="" ng-model="suboperacion.dsdescripcion">
+                                </textarea> 
+                            </td>
+                        </tr>
+                    </table> 
+
+                    <div class="contentInputs"> 
+
+                        <div class="colum colums4" > 
+
+                            <p>&nbsp;</p>
+                        </div>
+
+                        <div class="colum colums4"> 
+
+                            <div class="btn-rounded">
+
+                                <p>Cancelar</p>
+                            </div>
+                        </div>
+
+                        <div class="colum colums4"> 
+
+                            <div class="btn-rounded btn-blue" ng-click="acto_add()">
+
+                                <p>Guardar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.tab-container').easytabs();
+</script>

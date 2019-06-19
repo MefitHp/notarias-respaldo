@@ -1,0 +1,346 @@
+<loadscript url="ctrl_comparecientes.js"></loadscript>
+
+<div ng-controller="ctrl_comparecientes"><navexpediente></navexpediente><bienvenida></bienvenida><abogado></abogado>
+
+    <div class="status_tarea" > 
+
+        <div style="display: inline-block;"> 
+
+            <div class="fase grad_gray"> 
+
+                <p class="active">Fase 1 
+                    <br>
+
+                    <span>Datos Generales 
+                    </span> </p>
+            </div>
+
+            <div class="fase grad_gray"> 
+
+                <p class="">Fase 2 
+                    <br>
+
+                    <span>Captura de Domicilio
+                    </span> </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="wra_form_data" style="overflow:visible"> 
+
+        <div class="head_form_data"> 
+
+            <div class="contentInputs"> 
+
+                <div class="colum colums3" > 
+
+                    <div style="display: block"> 
+
+                        <p><b>Persona (F&iacute;sica o Moral)</b></p>
+
+                        <p>
+
+                            <span>*
+                            </span> Selecciona el tipo de persona f&iacute;sica o moral como esta registrado el otorgante ante el SAT</p>
+                    </div>
+                </div>
+
+                <div class="colum colums4" > 
+
+                    <div class="wrap_select"> 
+                        <select class="ispersonadata" ng-options="tp as tp.dselemento for tp in tipos_personas | orderBy:'tp.dselemento'" ng-change="cambiaTipoPersona()" id="tipoPersona" ng-model="compareciente.persona.tipopersona"> 
+
+                            <option value="" disabled selected>--Tipo de persona--</option> 
+                        </select> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form name="myFormFisica" novalidate ng-submit="guarda_compareciente()" id="form_persona_fisica"> 
+
+            <div class="body_form_data" id="body_fisica" style="overflow: visible"> 
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums1"> 
+                        <label>Compareciente existente
+                        </label>
+                        <!--input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="buscar_persona" name="nombre_buscar" required="false" style="background-position: 595px;background-position:595px;margin-left: 10px;"/--> <angucomplete id="persona_auto_complete1" placeholder="Buscar Personas" pause="10" url="http://192.168.15.20:8080/notarias-web/notaria/persona/buscarPersonas?nombre=" selectedobject="personaFound" searchfields="personaList.dsnombrecompleto" titlefield="dsnombrecompleto" desclabel="RFC:" descriptionfield="dsrfc" minlength="3" inputclass="form-control form-control-small datoPersonaAuto" anchomaximo="60" callback="ponDatos()"/> 
+                    </div>
+                </div>
+                <hr style="display: block;clear: left;margin-top: 91px;"> 
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums4"> 
+                        <label>Tratamiento
+                        </label> 
+
+                        <div class="wrap_select ispersonadata"> 
+                            <select ng-model="compareciente.tratamiento" ng-options='tit as tit.dselemento for tit in tratamientos | orderBy:"dselemento"'>
+
+                                <option disabled value='' selected>-Seleccione-</option>
+                            </select> 
+                        </div>
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>Nombre(s)
+                        </label> 
+                        <input type="text" class="ispersonadata" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.persona.dsnombre" ng-keyup="actualiza_nombre_completo()" name="dsnombre" maxlength="500" required="true"/> 
+
+                        <div class="tooltip" ng-show="myFormFisica.submitted && myFormFisica.dsnombre.$error.required" >Campo requerido
+                        </div>
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>Apellido paterno
+                        </label> 
+                        <input type="text" class="ispersonadata" ng-keyup="actualiza_nombre_completo()" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.persona.dsapellidopat" name="apepat" maxlength="30" required/> 
+
+                        <div class="tooltip" ng-show="myFormFisica.submitted && myFormFisica.apepat.$error.required" >Campo requerido
+                        </div>
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>Apellido materno
+                        </label> 
+                        <input type="text" class="ispersonadata" ng-keyup="actualiza_nombre_completo()" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.persona.dsapellidomat" maxlength="30"/> 
+                    </div>
+                </div>
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums4"> 
+                        <label>Estado civil
+                        </label> 
+
+                        <div class="wrap_select ispersonadata"> 
+                            <select ng-model="compareciente.estadoCivil" ng-change="mostrarRegimen()" ng-options="esta as esta.dselemento for esta in estados_civiles"> 
+
+                                <option value="" disabled selected>--Seleccione--</option> 
+                            </select> 
+                        </div>
+                    </div>
+
+                    <div class="colum colums2" style="display:none"> 
+                        <label>Nombre completo
+                        </label> 
+                        <input type="text" class="ispersonadata" placeholder="Introduzca la informaci&oacute;n" disabled ng-model="compareciente.persona.dsnombrecompleto" name="dsnombreCompleto" maxlength="800"/> 
+                    </div>
+
+                    <!--<div class="colum colums4"> 
+                        <label>Alias
+                        </label> 
+                        <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.alias" name="alias"/> 
+                        </div>
+                        
+                    </div>-->
+
+                    <div class="colum colums4"> 
+                        <label>Nacionalidad
+                        </label> 
+
+                        <div class="wrap_select"> 
+                            <select class="ispersonadata nacionalidad" ng-model="compareciente.persona.nacionalidad" ng-options="nac as nac.dselemento for nac in nacionalidad"> 
+
+                                <option value="" disabled selected>--Seleccione--</option> 
+                            </select> 
+                        </div>
+                    </div>
+
+                    <div class="colum colums2" ng-show="!$root.tipo_reg_com"> 
+                        <label>Tipo de otorgante
+                        </label> 
+
+                        <div class="wrap_select"> 
+                            <select ng-options="tc as tc.dsnombre for tc in tipo_comparecientes | orderBy:'dsnombre'" id="tipoComp_value" ng-model="compareciente.tipoCompareciente"> 
+
+                                <option value="" disabled>--Seleccione --</option> 
+                            </select> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums4"> 
+                        <label>Fecha de nacimiento
+                        </label> 
+                        <input type="text" ng-change="actualizaFecha()" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.persona.fechanacimiento" class="datepicker ispersonadata" id="fechanacimiento" name="fechanacimiento"/> 
+                    </div>
+
+                    <div class="colum colums2"> 
+                        <label>Lugar de nacimiento
+                        </label> 
+                        <input type="text" id="lugarnacimiento" class="ispersonadata" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.persona.dslugarnacimiento" name="input_estado" maxlength="90"/> 
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>Ocupaci&oacute;n
+                        </label> <angucomplete id="ocupacion" placeholder="Introduzca la informaci&oacute;n" pause="100" localdata="ocupaciones" selectedobject="selected_ocupacion" searchfields="dselemento" titlefield="dselemento" minlength="1" inputclass="form-control form-control-small" anchomaximo="60"/> 
+                    </div>
+                </div>
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums4"> 
+                        <label>R.F.C
+                        </label> 
+                        <input type="text" placeholder="Introduzca la informaci&oacute;n" class="ispersonadata rfc" ng-model="compareciente.persona.dsrfc" name="input_rfc" maxlength="13"/> 
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>CURP
+                        </label> 
+                        <input type="text" placeholder="Introduzca la informaci&oacute;n" class="ispersonadata curp" ng-model="compareciente.persona.dscurp" maxlength="18" name="input_curp"/> 
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>T&eacute;lefono
+                        </label> 
+                        <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.contacto.dstelefono" name="nombre" maxlength="30"/> 
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>Correo electr&oacute;nico
+                        </label> 
+                        <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.contacto.dscorreoelectronico" name="nombre" maxlength="60"/> 
+                    </div>
+                </div>
+            </div>
+        </form> 
+
+        <form name="myFormMoral" novalidate ng-submit="guarda_compareciente()" id="form_persona_moral"> 
+
+            <div class="body_form_data" id="body_moral" style="overflow:visible"> 
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums1"> 
+                        <label>Compareciente existente
+                        </label> <angucomplete id="persona_auto_complete" placeholder="Buscar Personas" pause="10" url="http://192.168.15.20:8080/notarias-web/notaria/persona/buscarPersonas?nombre=" selectedobject="personaFound" searchfields="personaList.dsnombrecompleto" titlefield="dsnombrecompleto" descriptionLabel="RFC:" descriptionfield="dsrfc" minlength="3" inputclass="form-control form-control-small datoPersonaAuto" anchomaximo="60" callback="ponDatos()"/> 
+                    </div>
+                </div>
+                <hr style="display: block;clear: left;margin-top: 91px;"> 
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums1"> 
+                        <label>Nombre completo
+                        </label> 
+                        <input type="text" disable placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.persona.dsnombre" name="dsnombre" maxlength="500" > 
+                    </div>
+                </div>
+                
+                
+                
+
+                <div class="contentInputs"> 
+
+                    <div class="colum colums2"> 
+                        <label>R.F.C
+                        </label> 
+                        <input type="text" placeholder="Introduzca la informaci&oacute;n" class="ispersonadata" ng-model="compareciente.persona.dsrfc" name="input_rfc" maxlength="13"/> 
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>Tel&eacute;fono
+                        </label> 
+                        <input type="text" placeholder="Introduzca la informaci&oacute;n" ng-model="compareciente.contacto.dstelefono" name="dstelefono" maxlength="30"/> 
+                    </div>
+
+                    <div class="colum colums4"> 
+                        <label>Tipo de otorgante
+                        </label> 
+
+                        <div class="wrap_select"> 
+                            <select ng-options="tc as tc.dsnombre for tc in tipo_comparecientes | orderBy:'dsnombre'" ng-model="compareciente.tipoCompareciente"> 
+
+                                <option value="" disabled selected>--Seleccione --</option> 
+                            </select> 
+                        </div>
+                    </div>
+                </div>
+                <div class="contentInputs"  style="margin-bottom: 10px;"> 
+
+                    <div class="colum colums4"> 
+                        <label>Tiene Admisión a extranjeros</label>
+                        <div class="wrap_select">
+                            <select ng-model="compareciente.persona.isextranjero" ng-init="compareciente.persona.isextranjero=null" ng-change="admisionExtranjero()">
+                                <option value="" disabled >-- Seleccione una opci&oacute;n --</option>
+                                <option value="true" >S&iacute;</option>
+                                <option value="false" selected>No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="colum colums4 hide" id="participaExtranjero"> 
+                        <label>Participa capital extranjero</label>
+                        <div class="wrap_select">
+                            <select ng-model="compareciente.persona.iscapitalextranjero" ng-init="compareciente.persona.iscapitalextranjero='false'" ng-change="capitalExtranjero()">
+                                <option value="true" >S&iacute;</option>
+                                  <option value="false" selected>No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="colum colums4 hide participacion" id="avisoExtranjero"> 
+                        <label>Exhibe aviso de participaci&oacute;n</label>
+                        <div class="wrap_select">
+                            <select ng-model="compareciente.isavisoextranjero" ng-init="compareciente.isavisoextranjero='true'" ng-change="avisoExtranjero()">
+                                <option value="true" selected>S&iacute;</option>
+                                <option value="false" >No</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums4"> 
+
+            <span ng-hide="onDuplicadoData">&nbsp
+            </span> 
+
+            <div class="btn-rounded" ng-show="onDuplicadoData" ng-click="cancel_select_persona()">
+
+                <p>Cancelar seleccion</p>
+            </div>
+        </div>
+
+        <div class="colum colums4"> 
+
+            <span ng-hide="onDuplicadoData">&nbsp
+            </span> 
+
+            <div class="btn-rounded" ng-show="onDuplicadoData" ng-click="edit_campos_persona()">
+
+                <p>Editar campos</p>
+            </div>
+        </div>
+
+        <div class="colum colums4"> 
+
+            <div class="btn-rounded" ng-click="return_lista()">
+
+                <p>Cancelar</p>
+            </div>
+        </div>
+
+        <div class="colum colums4"> <button class="btn-blue" ng-click="guarda_compareciente_p1()">Siguiente</button> 
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".datepicker").datepicker({
+        changeYear: true,
+        dateFormat: "dd-mm-yy",
+        yearRange: '1900:2050',
+        // showButtonPanel: true,
+    });
+</script>

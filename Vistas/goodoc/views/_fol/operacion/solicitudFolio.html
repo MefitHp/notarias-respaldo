@@ -1,0 +1,24 @@
+<loadscript url=FOL/ctrl_solicitud_folio.js></loadscript><div ng-controller=ctrl_fol_solicitud_folio>
+    <h1>Solicitar folios:</h1><hr>
+    <div class="contentInputs"> 
+        <div class="colum colums2"> 
+            <label>Nombre del abogado</label> 
+            <div class="wrap_select"> 
+                <select ng-options="abg as (abg.dsnombre +' '+ abg.dspaterno + ' ' + abg.dsmaterno ) for abg in abogados" name="abogados" ng-model="solicitudPrestamo.usuarioRecibe" class="altas_bajas" required> 
+                    <option value="" disabled selected>--Seleccione un abogado--</option> </select> 
+            </div>
+        </div>
+        <div class="colum colums2">
+          <label>N&uacute;mero de escritura:</label> 
+          <input type="text" placeholder="--Ingrese Datos--" ng-model="solicitudPrestamo.numeroEscritura"> 
+        
+        </div>
+    </div>
+    <div class="contentInputs ocultar_Escritura" style="display: none"> 
+        <div class="colum colums2"> &nbsp; </div><div class="colum colums4"> 
+            <div class="btn-rounded" ng-click="goTo('/folios/prestados')"><p>Regresar</p>
+            </div>
+        </div>
+        <div class="colum colums4"> <button class="btn-blue" ng-click="guarda_folio();">Solicitar</button> </div>
+    </div>
+    <div class="contentInputs ocultar_Folios" style="display: none"> <div class="colum colums2"> <label>Folio inicial</label> <input type="text" placeholder="--Ingrese Datos--" ng-model="solicitudPrestamo.infolioinicio"> </div><div class="colum colums2"> <label>Folio Final</label> <input type="text" placeholder="--Ingrese Datos--" ng-model="solicitudPrestamo.infoliofin"> </div></div><div class="contentInputs ocultar_Folios"> <div class="colum colums4"> &nbsp; </div><div class="colum colums4"> &nbsp; </div><div class="colum colums4"> <div class="btn-rounded" ng-click="goTo('/folios/prestados')"><p>Regresar</p></div></div><div class="colum colums4"> <button class="btn-blue" ng-click="guarda_folio();">Solicitar</button> </div></div></div>

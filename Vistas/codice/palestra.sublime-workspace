@@ -1,0 +1,244 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bac",
+				"background"
+			],
+			[
+				"mo",
+				"angular.module"
+			],
+			[
+				"html",
+				"html5	Simple HTML5 Boilerplate"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 52.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 132.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/yomero/public_html/palestra/Vistas/codice/js/bootstrap.js",
+		"/home/yomero/public_html/palestra/Vistas/codice/js/controllers/index.js",
+		"/home/yomero/public_html/palestra/Vistas/codice/js/main.js",
+		"/home/yomero/public_html/palestra/Vistas/codice/js/controllers/module.js",
+		"/home/yomero/public_html/palestra/Vistas/codice/js/controllers/my-ctrl-1.js",
+		"/home/yomero/public_html/palestra/Vistas/codice/js/app.js",
+		"/home/yomero/public_html/palestra/Vistas/codice/js/routes.js",
+		"/home/yomero/public_html/palestra/Vistas/codice/index.html",
+		"/home/yomero/public_html/palestra/Vistas/codice/css/app.less",
+		"/home/yomero/public_html/palestra/Vistas/codice/templates/tem2.html",
+		"/home/yomero/public_html/palestra/Vistas/codice/lib/bootstrap/dist/css/bootstrap.min.css",
+		"/home/yomero/public_html/palestra/Vistas/codice/lib/bootstrap/less/bootstrap.less",
+		"/home/yomero/public_html/palestra/Vistas/codice/bower.json",
+		"/C/xampp/htdocs/palestra/v2/css/app.css",
+		"/C/xampp/htdocs/palestra/v2/css/app.less",
+		"/C/xampp/htdocs/palestra/v2/lib/less/dist/less-1.1.3.js",
+		"/C/xampp/htdocs/palestra/v2/js/bootstrap.js",
+		"/C/xampp/htdocs/palestra/v2/js/main.js",
+		"/C/xampp/htdocs/palestra/v2/js/app.js",
+		"/C/xampp/htdocs/palestra/v1/index.html",
+		"/C/xampp/htdocs/palestra/v2/templates/tem1.html",
+		"/C/xampp/htdocs/palestra/v2/templates/tem2.html",
+		"/C/xampp/htdocs/palestra/v2/js/routes.js",
+		"/C/xampp/htdocs/palestra/v2/js/controllers/my-ctrl-1.js",
+		"/C/xampp/htdocs/palestra/v2/templates/tem.html",
+		"/C/xampp/htdocs/palestra/v2/js/controllers/my-ctrl-2.js",
+		"/C/xampp/htdocs/palestra/v2/js/controllers/index.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/index.html",
+		"/C/xampp/htdocs/palestra/v2/index.html",
+		"/C/xampp/htdocs/palestra/v1/js/controles/controllers.js",
+		"/C/xampp/htdocs/palestra/v2/templates/default.html",
+		"/C/xampp/htdocs/palestra/v2/partials/partial1.html",
+		"/C/xampp/htdocs/palestra/v2/partials/partial2.html",
+		"/C/xampp/htdocs/palestra/v2/js/services/module.js",
+		"/C/xampp/htdocs/palestra/v2/js/services/version.js",
+		"/C/xampp/htdocs/palestra/v2/js/services/index.js",
+		"/C/xampp/htdocs/palestra/v2/js/filters/module.js",
+		"/C/xampp/htdocs/palestra/v2/js/filters/index.js",
+		"/C/xampp/htdocs/palestra/v2/js/filters/interpolate.js",
+		"/C/xampp/htdocs/palestra/v2/js/directives/index.js",
+		"/C/xampp/htdocs/palestra/v2/js/directives/app-version.js",
+		"/C/xampp/htdocs/palestra/v2/js/directives/module.js",
+		"/C/xampp/htdocs/palestra/v2/js/controllers/module.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/myApp.js",
+		"/C/xampp/htdocs/palestra/v2/bower_components/bower.json",
+		"/C/xampp/htdocs/palestra/v2/bower.json",
+		"/C/xampp/htdocs/palestra/lib/angular/ngRoute.js",
+		"/C/xampp/htdocs/palestra/index.html",
+		"/C/xampp/htdocs/palestra/js/controles/controllers.js",
+		"/C/xampp/htdocs/palestra/lib/require/main.js",
+		"/C/xampp/htdocs/palestra/js/controles/index.js",
+		"/C/xampp/htdocs/palestra/js/controles/modules.js",
+		"/C/xampp/htdocs/palestra/js/myApp.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/myApp.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/controllers.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/controles/controllers.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/misDatos.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/angular/angular.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/jquery/jquery.10.2.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/angular/domReady.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/less/master.less",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/controllers/index.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/controllers/controllers.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/require/require.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/require/main.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/controllers/modules.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/modules.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/css/master.css",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/require/pruebajs1.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/less/less.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/lib/require/pruebajs.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/controller.js",
+		"/C/Documents and Settings/Administrador/Mis documentos/GitHub/palestra/Vistas/js/angular.js",
+		"/C/Documents and Settings/Administrador/Datos de programa/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"angular",
+			");\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 106.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 266.0,
+	"status_bar_visible": true
+}

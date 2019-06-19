@@ -1,0 +1,117 @@
+<loadscript url=ctrl_gruposTrabajo.js></loadscript>
+<div ng-controller=ctrl_gruposTrabajo>
+
+    <div class="contentInputs"> 
+
+        <div class="colum colums2"> 
+            <label>Nombre del grupo
+            </label> 
+            <input type="text" ng-model="grupotrabajo.dsnombre" placeholder="Nombre del grupo" maxlength="120"/>
+            
+        </div>
+        
+                <div class="colum colums4">
+                    <label>C&oacute;digo
+            </label> 
+                    <input type="text" ng-model="grupotrabajo.codigo" placeholder="c&oacute;digo" maxlength="5"/>
+                </div>
+    </div>
+    
+    <div class="contentInputs"> 
+            <div class="colum colums1"> 
+                <label>Descripci&oacute;n
+            </label>
+                <input type="text" ng-model="grupotrabajo.dsdescripcion" placeholder="Nombre del grupo" maxlength="250"/>
+
+            </div>
+        </div>
+    
+        <div class="contentInputs"> 
+            <div class="colum colums3"> 
+              <label>Responsable
+            </label>
+            <div class="wrap_select"> 
+                <select ng-model="grupotrabajo.responsable" ng-options="abog as (abog.dsnombre + ' ' + abog.dspaterno + ' ' + abog.dsmaterno) for abog in abogados | orderBy:'dsnombre'"> 
+
+                    <option value="" disabled selected>--Seleccione--</option> 
+                </select> 
+            </div>
+            </div>
+            
+        </div>
+    
+    
+      <div class="contentInputs"> 
+
+        <div class="colum colums4"> &nbsp; 
+        </div>
+
+          <div class="colum colums4"> <span ng-hide="grupo_editar">&nbsp;</span>
+        <div class="btn-rounded" ng-show="grupo_editar" ng-click="cancel()"><p>Regresar</p></div>
+        </div>
+
+        <div class="colum colums4"> 
+            <button class="btn-blue" ng-click="guardar()" ng-show="grupo_editar">Editar grupo</button> 
+            <button class="btn-blue" ng-click="guardar()" ng-hide="grupo_editar">Nuevo Grupo</button> 
+        </div>
+    </div>
+    
+    
+    
+    <h2 class="tit_H2">Listado de Grupos de trabajo</h2>
+
+    <div class="contentInputs"> 
+        <table class="tableForm"> 
+            <tr> 
+                <th width="5%"> 
+
+                    <span class="tbl_icon ico_house">
+                    </span> 
+                </th> 
+                <th width="25%">Nombre
+                </th> 
+                <th width="30%">Descripci&oacute;n
+                </th> 
+                <th width="10%">Responsable
+                </th> 
+                <th width="10%">C&oacute;digo
+                </th> 
+                <th width="5%"> 
+                </th> 
+                <th width="5%"> 
+                </th> 
+            </tr>
+            <tr ng-repeat="gpo in gruposTrabajo" ng-class-even="'lista_alternate'"> 
+                <td>{{$index + 1}}
+                </td>
+                <td class="altas_bajas">
+                    {{gpo.dsnombre}}
+                </td>
+                <td class="altas_bajas">
+                    {{gpo.dsdescripcion}}
+                </td>
+                <td class="altas_bajas" title="{{gpo.responsable.dsnombre + ' ' + gpo.responsable.dspaterno+' '+ gpo.responsable.dsmaterno }}">
+                    {{gpo.responsable.dsiniciales}}
+                </td>
+                <td> 
+                    {{gpo.codigo}}
+                    
+                </td>
+                <td ng-click="carga_datos(gpo)"> 
+
+                    <span class="tbl_icon ico_edit">
+                    </span> 
+                </td>
+                <td ng-click="delete(gpo)"> 
+
+                    <span class="tbl_icon ico_delete">
+                    </span> 
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+

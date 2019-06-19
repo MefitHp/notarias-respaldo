@@ -1,0 +1,44 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+    
+<h1>Listado de Valuadores</h1>
+
+    <div class="contentInputs">
+        <table class="tableForm">
+           <tr>
+            <th width="25%">Nombre</th>
+            <th width="15%">RFC</th>
+            <th width="20%">Correo</th>
+            <th >Telefono(s)</th>
+            <th width="20%">Precio</th>
+
+        </tr>
+        <tr ng-repeat="valuador in valuadores | orderBy:'dsnombre'" ng-class-even="'lista_alternate'">
+            <td class="altas_bajas">{{valuador.dsnombre}} {{valuador.dspaterno}} {{valuador.dsmaterno}}</td>
+            <td>{{valuador.dsrfc}}</td>
+            <td>{{valuador.dscorreo}}</td>
+            <td>{{valuador.dstelefono}}</td>
+            <td>${{valuador.inprecio}}</td>
+        </tr>
+
+        </table>
+    </div>
+
+<div class="contentInputs">
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            <div class="wrap_select">
+        <button class="btn-blue" ng-click="goTo('/')">Regresar</button>
+            </div>
+        </div>
+        
+    </div>

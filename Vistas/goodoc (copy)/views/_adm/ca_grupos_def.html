@@ -1,0 +1,56 @@
+<h1>{{gpo_def.dsgrupo}}</h1>
+<div class="contentInputs">
+    <label>Variable</label>
+    <div class="colum colums2" >
+        <angucomplete 
+            id="variables"
+            placeholder="Buscar variables"
+            pause="100"
+            localdata="variables"
+            selectedobject="var_select"
+            searchfields="dsnombre"
+            titlefield="dsnombre"
+            minlength="2"
+            inputclass="form-control form-control-small" 
+            />
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded btn-blue" ng-click="append_grupo()"><p>Agregar</p></div>
+    </div>
+
+</div>
+
+
+
+
+<table class="tableForm descTable">
+    <tr>
+        <th style="width: 5%"></th>
+        <th>Nombre de variable</th>
+        <th style="width: 5%"></th>
+    </tr>
+    <tr ng-repeat="gpo in varGrupoList">
+        <td>{{$index}}</td>
+        <td>{{gpo.variable.dsnombre}}</td>
+        <td>
+            <span class="tbl_icon ico_suspender" ng-click="del_grupo(gpo)"></span>
+        </td>
+    </tr>
+</table>
+
+
+<div class="contentInputs">
+    <div class="colum colums4" >
+        <p>&nbsp;</p>
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded" ng-click="goTo('/catalogo_grupos')"><p>Regresar</p></div>
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded btn-blue" ng-click="def_grupo_guardar()"><p>Aceptar</p></div>
+    </div>
+
+</div>
+
+
+

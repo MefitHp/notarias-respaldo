@@ -1,0 +1,184 @@
+<loadscript url=ctrl_tramite.js></loadscript>
+
+<div ng-controller=ctrl_tramite><bienvenida></bienvenida>
+
+<div class="wra_form_data" style="overflow:visible"> 
+
+<div class="head_form_data" style="padding:10px 0px;width:907px;"> 
+
+<div class="contentInputs"> 
+
+<div class="colum colums3"> 
+
+<div id="buscador" style="display: block"> 
+<label>Buscar cliente:
+</label> 
+<input type="text" ng-model="buscar_persona" placeholder="Buscar cliente..." style="background-position: 595px;background-position:595px;margin-left: 10px;"> 
+</div>
+</div>
+
+<div class="colum colums4"> 
+
+<div class="colum colums4"> <button class="btn-blue" ng-click="buscar_personas()">Buscar</button> 
+</div>
+</div>
+
+<div class="colum colums1" style="background: white;max-height:200px;overflow:auto;" ng-show="clientes_resultado.length > 0"> 
+<table class="tableForm">
+<tr> 
+<th >Nombre
+</th> 
+<th width="15%">RFC
+</th>  
+<th width="5%"> 
+</th> 
+</tr>
+<tr ng-repeat="cliente in clientes_resultado| orderBy:'dsnombre'"> 
+<td>{{cliente.dsnombre}} {{cliente.dsapellidopat}} {{cliente.dsapellidomat}}
+</td>
+<td>{{cliente.rfc}}
+</td> 
+<td> 
+
+<span class="tbl_icon ico_moreData" ng-click="add_data_persona(cliente.idpersona)">
+</span> 
+</td>
+</tr>
+</table> 
+</div>
+</div>
+</div>
+</div>
+
+<form name="myForm" novalidate ng-submit="tramite_add()"> 
+
+<div class="wra_form_data"> 
+
+<div class="body_form_data"> 
+
+<div class=" contentInputs personselect"> 
+
+<div class="wra_buscador "> 
+    <h2>Datos del cliente</h2>
+
+<div class="colum colums2" > 
+<label>Nombre(s):
+</label> 
+<input type="text" ng-model="tramite.cliente.dsnombre" name="nombre" placeholder="Insertar nombre" required/> 
+
+<div class="tooltip" ng-show="myForm.submitted && myForm.nombre.$error.required" >Campo requerido
+</div>
+</div>
+
+<div class="colum colums4" > 
+<label>Apellido paterno:
+</label> 
+<input type="text" ng-model="tramite.cliente.dsapellidopat" name="padre" /> 
+
+<div class="tooltip" ng-show="myForm.submitted && myForm.padre.$error.required" >Campo requerido
+</div>
+</div>
+
+<div class="colum colums4" > 
+<label>Apellido materno:
+</label> 
+<input type="text" ng-model="tramite.cliente.dsapellidomat"/> 
+</div>
+</div>
+</div>
+
+<div class=" contentInputs personselect"> 
+
+<div class="wra_buscador "> 
+
+<div class="colum colums2" > 
+<label>Correo electr&oacute;nico:
+</label> 
+<input type="email" ng-model="contacto.dscorreoelectronico" ng-init="contacto.dscorreoelectronico=' '" name="email"/> 
+</div>
+
+<div class="colum colums4" > 
+<label>Tel&eacute;fono:
+</label> 
+<input type="text" ng-model="contacto.dstelefono" ng-init="contacto.dstelefono=' '" maxlength="15"/> 
+</div>
+
+<div class="colum colums4" > 
+<label>Nacionalidad:
+</label> 
+
+<div class="wrap_select"> 
+<select ng-options="nac as nac.dselemento for nac in nacionalidad" name="nacionalidad" ng-model="tramite.cliente.nacionalidad" required> 
+
+<option value="" disabled selected>--Seleccione una opci&oacute;n--</option> 
+</select> 
+
+<div class="tooltip" ng-show="myForm.submitted && myForm.nacionalidad.$pristine">Selecciona un rol
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class=" contentInputs nopersonselect" style="display: none;"> 
+
+<div class="colum colums3" > <h1>El tr&aacute;mite se asignar&aacute; a: {{tramite.cliente.dsnombre}} {{tramite.cliente.dsapellidopat}} {{tramite.cliente.dsapellidomat}}</h1> <h2 ng-show="tramite.cliente.dstelefono">Tel&eacute;fono:{{tramite.cliente.dstelefono}}</h2> <h2 ng-show="tramite.cliente.dscorreoelectronico">Correo electr&oacute;nico:{{tramite.cliente.dscorreoelectronico}}</h2> 
+</div>
+
+<div class="colum colums4" > 
+
+<div class="btn-rounded" ng-click="limpia_datos()">
+
+<p>Limpiar datos</p>
+</div>
+</div>
+</div>
+
+<div class=" contentInputs"> 
+
+<div class="colum colums1"> 
+<label>Prop&oacute;sito:
+</label> 
+<textarea ng-model="tramite.txtproposito">
+</textarea> 
+</div>
+</div>
+
+<div class=" contentInputs"> 
+
+<div class="colum colums1"> 
+<label>Abogado responsable:
+</label> 
+
+<div class="wrap_select"> 
+<select ng-options="abg as (abg.dsnombre +' '+ abg.dspaterno + ' ' + abg.dsmaterno ) for abg in abogados" name="abogados" ng-model="tramite.abogado" class="altas_bajas" required> 
+
+<option value="" disabled selected>--Seleccione un abogado--</option> 
+</select> 
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contentInputs"> 
+
+<div class="colum colums4"> &nbsp; 
+</div>
+
+<div class="colum colums4"> &nbsp; 
+</div>
+
+<div class="colum colums4"> 
+
+<div class="btn-rounded" onclick="history.back()">
+
+<p>Cancelar</p>
+</div>
+</div>
+
+<div class="colum colums4"> <button class="btn-blue" type="submit">Guardar</button> 
+</div>
+</div>
+</form>
+</div>

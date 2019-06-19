@@ -1,0 +1,1 @@
+define(['../module'],function(directives){'use strict';directives.directive('comTexto',function(){return{restrict:'AE',scope:{titulo:"@",maxima:"@",regex:"@",isrequerido:"=",ayuda:"@",name:"@",idcomponente:"@"},templateUrl:urlTemplates+'componente_texto.html',link:function(scope,element){element.find("input[type='text']").attr("required",scope.isrequerido);}};});});

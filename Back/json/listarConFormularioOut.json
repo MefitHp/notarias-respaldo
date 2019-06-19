@@ -1,0 +1,96 @@
+{
+    "version": null,
+    "idsubformulario": null,
+    "listaConFormulario":[{
+      "conformulario": {
+        "id": {
+            "version": 2,
+            "idconFormulario": "form1"
+	},
+        "fechapublicacion": null,
+        "listaComponentes": null,
+        "listaSubFormularios": null,
+        "listaActoFormularios": [{
+            "conFormulario": null,
+            "idactoformulario": "07d26482e065591859cc3449237ce621",
+            "suboperacion": {
+                "dsdescripcion": "Donacion des",
+                "dsnombre": "Donación",
+                "idsuboperacion": "6974ce5ac660610b44d9b9fed0ff9548",
+                "operacion": null
+            }
+        }],
+        "listaPermisosRol": [{
+            "conFormulario": null,
+            "idpermisorol": "cb58ebbd439e69dd11a4d412a67bfe14",
+            "rol": {
+                "dsdescripcion": "descripcion",
+                "dsnombre": "Gestor",
+                "idrol": "d3d9446802a44259755d38e6d163e820"
+	    }
+        }, {
+            "conFormulario": null,
+            "idpermisorol": "fdd74c0fa2d66d7db58ba39757155b7a",
+            "rol": {
+                "dsdescripcion": "descripcion",
+                "dsnombre": "J. Mesa Control",
+                "idrol": "c9f0f895fb98ab9159f51fd0297e236d"
+            }
+        }],
+        "nombre_corto": "form1",
+        "dsdescripcion": "Fromulario especial 1",
+        "ispublicado": false,
+        "dstitulo": "Fromulario especial 1",
+      },
+      "conformulario": {
+        "id": {
+            "version": 2,
+            "idconFormulario": "form1"
+	},
+        "fechapublicacion": null,
+        "listaComponentes": null,
+        "listaSubFormularios": null,
+        "listaActoFormularios": [{
+            "conFormulario": null,
+            "idactoformulario": "07d26482e065591859cc3449237ce621",
+            "suboperacion": {
+                "dsdescripcion": "Donacion des",
+                "dsnombre": "Donación",
+                "idsuboperacion": "6974ce5ac660610b44d9b9fed0ff9548",
+                "operacion": null
+            }
+        }],
+        "listaPermisosRol": [{
+            "conFormulario": null,
+            "idpermisorol": "cb58ebbd439e69dd11a4d412a67bfe14",
+            "rol": {
+                "dsdescripcion": "descripcion",
+                "dsnombre": "Gestor",
+                "idrol": "d3d9446802a44259755d38e6d163e820"
+	    }
+        }, {
+            "conFormulario": null,
+            "idpermisorol": "fdd74c0fa2d66d7db58ba39757155b7a",
+            "rol": {
+                "dsdescripcion": "descripcion",
+                "dsnombre": "J. Mesa Control",
+                "idrol": "c9f0f895fb98ab9159f51fd0297e236d"
+            }
+        }],
+        "nombre_corto": "form1",
+        "dsdescripcion": "Fromulario especial 1",
+        "ispublicado": false,
+        "dstitulo": "Fromulario especial 1",
+      }
+    }],
+    
+    "idExpediente": null,
+    "idConformulario": null,
+    "idsuboperacion": null,
+    "conformulario": null,
+    "acto": null,
+    "usuario": null,
+    "exito": true,
+    "estatus": "Busqueda correcta",
+    "errores": null
+}

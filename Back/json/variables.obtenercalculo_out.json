@@ -1,0 +1,19 @@
+{
+    "calculo": {
+        "idsesion": "7ABBE1DAEADF9E2CA02A10CBABC6D9AD",
+        "tmstmp": 1404939197000,
+        "dsentidad": "Inmueble",
+        "dsfiltro": "acto.idacto",
+        "dspropiedad": "dsnumero",
+        "idvarest": "6371d7c6bdc95819da56028b16150726",
+        "variable": null
+    },
+    "variableList": null,
+    "validacionesList": null,
+    "varFormDinamicos": null,
+    "variable": null,
+    "usuario": null,
+    "exito": true,
+    "estatus": "Listado correcto",
+    "errores": null
+}

@@ -1,0 +1,205 @@
+<div class="wrap_contentList abogadoList expediente">
+    <div class="wrap_list" >
+
+        <a id="docUrl" liga="{{$root.expediente.numexpediente}}" target="documentos">
+            <div class="list_trigger btn" >
+                <span class="ico_abogado"></span>
+                <p>#{{$root.expediente.numexpediente}}</p>
+            </div>
+        </a>
+        <div class="list_wrap_info">
+            <div class="list_info">
+                <p><b>Cliente:</b>&nbsp;&nbsp;{{$root.expediente.tramite.cliente.dsnombre}} {{$root.expediente.tramite.cliente.dsapellidopat}} {{$root.expediente.tramite.cliente.apellidomat}} 
+                    &nbsp; &bullet; &nbsp; 
+                    <b>Referencia:</b>&nbsp;&nbsp;{{$root.expediente.dsreferencia}}
+                    &nbsp; &bullet; &nbsp;
+                    <b ng-show="$root.expediente.numerosescrituras.length>0">Escritura:</b>&nbsp;&nbsp;<esc ng-show="$root.expediente.numerosescrituras.length>0" ng-repeat="esc in $root.expediente.numerosescrituras">{{esc}}&nbsp;&bull;</esc>
+                    </p>
+            </div> 
+        </div>
+        <div class="list_btn">
+            <div class="btn_list" ng-class="{'btn_list_animate':$root.expediente.tienecomments}" ng-click="lanza_comentarios('e', $root.expediente.idexpediente)" status="0">
+                <i class="fa fa-comments"></i>
+            </div>
+          
+            <div class="btn_list comentario" status="2" ng-click="print_tarjeton($root.expediente.tramite.idtramite)">
+                <i class="fa fa-file"></i>
+            </div>
+
+        </div>
+        <div class="list_more" title="Ver detalle">
+            <span></span>
+        </div>
+    </div>
+
+
+    <div class="wra_content_tarea content_generic_cordeon">
+
+        <div class=" contentInputs body_form_data">
+
+            <div id="tab-container" class="tab-container"> 
+                <ul class='etabs'> 
+                    <li class='tab'><a href="#tb_generales">Datos generales</a></li>
+                    <li class='tab'><a href="#tb_comparecientes">Comparecientes</a></li>
+                </ul> 
+
+
+                <div class="panel-container"> 
+
+                    <div id="tb_generales"> 
+                        <p>Abogado: 
+                            <b class="altas_bajas">
+                                {{$root.expediente.abogado.dsnombre}} {{$root.expediente.abogado.dspaterno}} {{$root.expediente.abogado.dsmaterno}}
+                            </b>            
+
+                            &nbsp; <b>&bullet;</b>&nbsp;Cliente:
+                            <b class="altas_bajas">
+                                {{$root.expediente.tramite.cliente.dsnombre}} {{$root.expediente.tramite.cliente.dsapellidopat}} {{$root.expediente.tramite.cliente.apellidomat}}
+                            </b>
+                            &nbsp; <b>&bullet;</b>&nbsp;Localidad: 
+                            <b class="altas_bajas">
+                                {{$root.expediente.tramite.locacion.dselemento}}
+                            </b>
+
+                            <br>
+                        <inm ng-show="$root.valoresTarjeton['inmueble']">
+                            Inmueble: 
+                            <b class="altas_bajas">
+                                {{$root.valoresTarjeton["inmueble"]}}
+                            </b>
+                            <br>
+                        </inm>
+                        <folrel ng-show="$root.valoresTarjeton['folio']">
+                            Folio real: 
+                            <b class="altas_bajas">
+                                {{$root.valoresTarjeton["folio"]}}
+                            </b>  
+                        </folrel>
+
+                        <br>
+                        Referencia: <b>{{$root.expediente.dsreferencia}}</b>
+                        </p>
+                        <hr>
+                        Actos:
+                         <b ng-repeat="opt in $root.operaciones">{{opt.dsnombre}} &nbsp;</b>
+                        <hr>
+                        <h2>COMENTARIOS DEL EXPEDIENTE</h2>
+                        <hr>
+                        <div class="comments">
+                            <h2 ng-show="!$root.comentariosExpediente || $root.comentariosExpediente.length < 1">Aún no existen comentarios registrados</h2>
+                                <div class="comment" ng-repeat="com in $root.comentariosExpediente">
+                                    
+                                    <div class="message_meta">
+                                        <b><span class="resaltar1">{{com.usuario.dsnombre}} {{com.usuario.dsmaterno}} {{com.usuario.dspaterno}} </span></b>&bullet; <span class="message_meta_fecha">{{fechaComment(com.tmstmp)}}</span></div>
+                                    <div class="message">
+                                        <p>{{com.dstexto}}</p>
+                                    </div>
+                                </div>
+                        <button class="btn-blue" ng-click="lanza_comentarios('e', $root.expediente.idexpediente)" style="margin-top:20px;">Agregar Comentario</button> 
+
+                        </div>
+                    </div>
+                    <div id="tb_comparecientes"> 
+                        <b ng-repeat="opt in $root.operaciones">{{opt.dsnombre}} &nbsp;</b>
+                        <hr>            
+                        <div ng-repeat="comp in $root.comparecientesActo| orderBy:'tipoCompareciente.dsnombre'" ng-show="comp.compareciente.tipoCompareciente.dsnombre != 'Autorizante'">
+                            <p>
+                                <b class="resaltar1">{{comp.compareciente.tipoCompareciente.dsnombre}}</b><br>
+                                Nombre: 
+                                <b class="altas_bajas">
+                                    {{comp.compareciente.persona.dsnombrecompleto}}
+                                </b>
+                                <br>
+                                Estado civil: 
+                                <b class="altas_bajas">
+                                    {{comp.compareciente.estadoCivil.dselemento}}
+                                </b>
+                                <br>
+                                Ocupación: 
+                                <b class="altas_bajas">
+                                    {{comp.compareciente.dsocupacion}}
+                                </b>
+                                <br>
+                                Domicilio: 
+                                <b class="altas_bajas">
+                                    {{comp.compareciente.domicilio.dsdircompleta}}
+                                </b>
+                                <br>
+                                Tel&eacute;fono: 
+                                <b class="altas_bajas">
+                                    {{comp.compareciente.contacto.dstelefono}}
+                                </b>
+                                <br>
+                                Correo electr&oacute;nico 
+                                <b class="altas_bajas">
+                                    {{comp.compareciente.contacto.dscorreoelectronico}}
+                                </b>
+                                <br>
+
+
+                            <rep ng-show="comp.representantes.length > 0">
+                                Representantes:&nbsp;
+                                <div ng-repeat="rep in comp.representantes">
+                                    <b >{{rep.persona.dsnombrecompleto}}</b><br>
+                                    <br>
+                                    Tel&eacute;fono: 
+                                    <b class="altas_bajas">
+                                        {{rep.contacto.dstelefono}}
+                                    </b>
+                                    <br>
+                                    Correo electr&oacute;nico 
+                                    <b class="altas_bajas">
+                                        {{rep.contacto.dscorreoelectronico}}
+                                    </b>
+                                    <br>
+                                </div>
+                            </rep>
+                            <hr>
+                            <aut ng-show="comp.conyuge.conyugeCompra">
+                                Autorizante:&nbsp;
+                                <b> {{comp.conyuge.conyugeCompra.persona.dsnombrecompleto}}<b>
+                                <br>
+                                Tel&eacute;fono: 
+                                <b class="altas_bajas">
+                                    {{comp.conyuge.conyugeCompra.contacto.dstelefono}}
+                                </b>
+                                <br>
+                                Correo electr&oacute;nico 
+                                <b class="altas_bajas">
+                                    {{comp.conyuge.conyugeCompra.contacto.dscorreoelectronico}}
+                                </b>
+                                <br>
+                                        </aut>
+                                        </p>
+
+
+                                        </div>
+                                        </div>
+
+                                        </div>
+
+                                        </div>
+
+
+
+                                        </div>
+
+                                        </div>
+
+                                        </div>
+
+                                        <script>
+
+                                            var f_limite = moment().add('days', 1).format("DD/MM/YYYY");
+                                            setTimeout(function () {
+                                                $(".fecha_limite").text(f_limite);
+                                            }, 1500)
+
+                                            setTimeout(function () {
+                                                var urlServer = "192.168.15.20";
+                                                var liga = "localexplorer:\\\\" + urlServer + "\\notaria\\" + $("#docUrl").attr("liga");
+                                                $("#docUrl").attr("href", liga);
+                                            }, 2000);
+
+                                            $('.tab-container').easytabs();
+                                        </script>

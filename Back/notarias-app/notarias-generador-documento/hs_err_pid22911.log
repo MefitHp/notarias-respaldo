@@ -1,0 +1,782 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGBUS (0x7) at pc=0x00007f3b08305982, pid=22911, tid=139891565258496
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_79-b15) (build 1.7.0_79-b15)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (24.79-b02 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  [libzip.so+0x4982]  newEntry+0x62
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f3b0400e000):  JavaThread "main" [_thread_in_native, id=22917, stack(0x00007f3b0afde000,0x00007f3b0b0df000)]
+
+siginfo:si_signo=SIGBUS: si_errno=0, si_code=2 (BUS_ADRERR), si_addr=0x00007f3afc9eb09c
+
+Registers:
+RAX=0x00007f3b0463e670, RBX=0x00007f3b042f8b60, RCX=0x00007f3b04000020, RDX=0x00007f3b0463e670
+RSP=0x00007f3b0b0dd070, RBP=0x00007f3b0b0dd0c0, RSI=0x00007f3b04000038, RDI=0x0000000000000000
+R8 =0x0000000000000003, R9 =0x0000000000000010, R10=0x00007f3b0107e9f8, R11=0x00007f3b0a67d150
+R12=0x00007f3afc9eb07f, R13=0x00007f3b0463e670, R14=0x000000004eecb6d3, R15=0x00007f3b04350a30
+RIP=0x00007f3b08305982, EFLAGS=0x0000000000010202, CSGSFS=0x0000000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f3b0b0dd070)
+0x00007f3b0b0dd070:   0000000700e00c90 00007f3b00000000
+0x00007f3b0b0dd080:   00007f3b0b0dd100 00007f3b09e7738c
+0x00007f3b0b0dd090:   00007f3b0463e670 00007f3b042f8b60
+0x00007f3b0b0dd0a0:   00007f3b04350a30 00007f3b0461e9b0
+0x00007f3b0b0dd0b0:   000000004eecb6d3 00007f3b0b0dd120
+0x00007f3b0b0dd0c0:   00007f3b0b0dd100 00007f3b083060b0
+0x00007f3b0b0dd0d0:   000000000b0dd100 00007f3b0b0dd120
+0x00007f3b0b0dd0e0:   0000000000000010 00007f3b0400e1e8
+0x00007f3b0b0dd0f0:   00007f3b0b0dd120 00007f3b0b0dd578
+0x00007f3b0b0dd100:   00007f3b0b0dd560 00007f3b08304f31
+0x00007f3b0b0dd110:   00007f3b0400ecb8 00007f3b04350a30
+0x00007f3b0b0dd120:   73706f7250636f64 6c6d782e7070612f
+0x00007f3b0b0dd130:   00007f3b0400ec00 00007f3b08010cd0
+0x00007f3b0b0dd140:   00007f3b0804a630 00007f3b0b0dd4b0
+0x00007f3b0b0dd150:   00007f3b0b0dd330 00007f3b09dd9e8a
+0x00007f3b0b0dd160:   00000007b0549b88 00000007b0549bb0
+0x00007f3b0b0dd170:   00007f3b0b0dd170 00000007010fc55a
+0x00007f3b0b0dd180:   00007f3b0b0dd1c8 00000007012a53a0
+0x00007f3b0b0dd190:   0000000000000000 00007f3b0b0dd198
+0x00007f3b0b0dd1a0:   00007f3b0400ecc0 0000000000000000
+0x00007f3b0b0dd1b0:   000000000000006c 00007f3b0b0dd1b8
+0x00007f3b0b0dd1c0:   0000000700e900f0 00007f3b0b0dd208
+0x00007f3b0b0dd1d0:   00007f3b0400b720 00007f3b0400e860
+0x00007f3b0b0dd1e0:   00007f3b0400e870 00007f3b0400ec48
+0x00007f3b0b0dd1f0:   00000000000003d8 00007f3b0b0dd250
+0x00007f3b0b0dd200:   0000000000000001 00000007b0549c20
+0x00007f3b0b0dd210:   00007f3b0b0dd210 00000007010f2320
+0x00007f3b0b0dd220:   00007f3b0b0dd278 00000007010f2950
+0x00007f3b0b0dd230:   0000000000000000 00007f3b09ba63e2
+0x00007f3b0b0dd240:   00007f3b0b0dd2b0 0000000000000004
+0x00007f3b0b0dd250:   0000000000000030 00007f3b0463a020
+0x00007f3b0b0dd260:   00007f3b0400ec90 0000000000000004 
+
+Instructions: (pc=0x00007f3b08305982)
+0x00007f3b08305962:   00 48 c7 40 28 00 00 00 00 41 80 7f 30 00 0f 84
+0x00007f3b08305972:   8a 02 00 00 4c 8b 63 08 4d 2b 67 28 4d 03 67 18
+0x00007f3b08305982:   41 0f b6 5c 24 1d 41 0f b6 44 24 1c c1 e3 08 09
+0x00007f3b08305992:   c3 41 0f b6 44 24 1e 88 45 bd 41 0f b6 54 24 20 
+
+Register to memory mapping:
+
+RAX=0x00007f3b0463e670 is an unknown value
+RBX=0x00007f3b042f8b60 is an unknown value
+RCX=0x00007f3b04000020 is an unknown value
+RDX=0x00007f3b0463e670 is an unknown value
+RSP=0x00007f3b0b0dd070 is pointing into the stack for thread: 0x00007f3b0400e000
+RBP=0x00007f3b0b0dd0c0 is pointing into the stack for thread: 0x00007f3b0400e000
+RSI=0x00007f3b04000038 is an unknown value
+RDI=0x0000000000000000 is an unknown value
+R8 =0x0000000000000003 is an unknown value
+R9 =0x0000000000000010 is an unknown value
+R10=0x00007f3b0107e9f8 is at entry_point+88 in (nmethod*)0x00007f3b0107e810
+R11=0x00007f3b0a67d150: <offset 0x16e150> in /lib/x86_64-linux-gnu/libc.so.6 at 0x00007f3b0a50f000
+R12=0x00007f3afc9eb07f is an unknown value
+R13=0x00007f3b0463e670 is an unknown value
+R14=0x000000004eecb6d3 is an unknown value
+R15=0x00007f3b04350a30 is an unknown value
+
+
+Stack: [0x00007f3b0afde000,0x00007f3b0b0df000],  sp=0x00007f3b0b0dd070,  free space=1020k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libzip.so+0x4982]  newEntry+0x62
+C  [libzip.so+0x50b0]  ZIP_GetEntry+0xd0
+C  [libzip.so+0x3f31]  Java_java_util_zip_ZipFile_getEntry+0xf1
+J 56  java.util.zip.ZipFile.getEntry(J[BZ)J (0 bytes) @ 0x00007f3b0107ea6e [0x00007f3b0107e9a0+0xce]
+j  java.util.zip.ZipFile.getInputStream(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;+88
+j  org.apache.poi.openxml4j.util.ZipFileZipEntrySource.getInputStream(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;+5
+j  org.apache.poi.openxml4j.opc.ZipPackagePart.getInputStreamImpl()Ljava/io/InputStream;+14
+j  org.apache.poi.openxml4j.opc.PackagePart.getInputStream()Ljava/io/InputStream;+1
+j  org.apache.poi.POIXMLProperties.<init>(Lorg/apache/poi/openxml4j/opc/OPCPackage;)V+70
+j  org.apache.poi.POIXMLDocument.getProperties()Lorg/apache/poi/POIXMLProperties;+16
+j  org.apache.poi.POIXMLDocument.write(Ljava/io/OutputStream;)V+20
+j  com.palestra.notarias.escritura.FormatosWordXWPFGenerator.replaceText(Lorg/apache/poi/xwpf/usermodel/XWPFDocument;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V+130
+j  com.palestra.notarias.escritura.FormatosWordXWPFGenerator.main([Ljava/lang/String;)V+21
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x600e95]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x365
+V  [libjvm.so+0x5ff8f8]  JavaCalls::call(JavaValue*, methodHandle, JavaCallArguments*, Thread*)+0x28
+V  [libjvm.so+0x6398b9]  jni_invoke_static(JNIEnv_*, JavaValue*, _jobject*, JNICallType, _jmethodID*, JNI_ArgumentPusher*, Thread*)+0x219
+V  [libjvm.so+0x6424d2]  jni_CallStaticVoidMethod+0x162
+C  [libjli.so+0x36d9]  JavaMain+0x7e9
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J 56  java.util.zip.ZipFile.getEntry(J[BZ)J (0 bytes) @ 0x00007f3b0107e9f8 [0x00007f3b0107e9a0+0x58]
+j  java.util.zip.ZipFile.getInputStream(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;+88
+j  org.apache.poi.openxml4j.util.ZipFileZipEntrySource.getInputStream(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;+5
+j  org.apache.poi.openxml4j.opc.ZipPackagePart.getInputStreamImpl()Ljava/io/InputStream;+14
+j  org.apache.poi.openxml4j.opc.PackagePart.getInputStream()Ljava/io/InputStream;+1
+j  org.apache.poi.POIXMLProperties.<init>(Lorg/apache/poi/openxml4j/opc/OPCPackage;)V+70
+j  org.apache.poi.POIXMLDocument.getProperties()Lorg/apache/poi/POIXMLProperties;+16
+j  org.apache.poi.POIXMLDocument.write(Ljava/io/OutputStream;)V+20
+j  com.palestra.notarias.escritura.FormatosWordXWPFGenerator.replaceText(Lorg/apache/poi/xwpf/usermodel/XWPFDocument;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V+130
+j  com.palestra.notarias.escritura.FormatosWordXWPFGenerator.main([Ljava/lang/String;)V+21
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f3b040a3800 JavaThread "Service Thread" daemon [_thread_blocked, id=22933, stack(0x00007f3afcd9d000,0x00007f3afce9e000)]
+  0x00007f3b040a1000 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=22932, stack(0x00007f3afce9e000,0x00007f3afcf9f000)]
+  0x00007f3b0409e000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=22931, stack(0x00007f3afcf9f000,0x00007f3afd0a0000)]
+  0x00007f3b0409c000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=22930, stack(0x00007f3afd0a0000,0x00007f3afd1a1000)]
+  0x00007f3b0407d000 JavaThread "Finalizer" daemon [_thread_blocked, id=22928, stack(0x00007f3afd32a000,0x00007f3afd42b000)]
+  0x00007f3b0407b000 JavaThread "Reference Handler" daemon [_thread_blocked, id=22927, stack(0x00007f3afd42b000,0x00007f3afd52c000)]
+=>0x00007f3b0400e000 JavaThread "main" [_thread_in_native, id=22917, stack(0x00007f3b0afde000,0x00007f3b0b0df000)]
+
+Other Threads:
+  0x00007f3b04076800 VMThread [stack: 0x00007f3afd52c000,0x00007f3afd62d000] [id=22926]
+  0x00007f3b040b6800 WatcherThread [stack: 0x00007f3afcc9c000,0x00007f3afcd9d000] [id=22934]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 75264K, used 61204K [0x00000007aca80000, 0x00000007b1e00000, 0x0000000800000000)
+  eden space 65024K, 94% used [0x00000007aca80000,0x00000007b06452b0,0x00000007b0a00000)
+  from space 10240K, 0% used [0x00000007b1400000,0x00000007b1400000,0x00000007b1e00000)
+  to   space 10240K, 0% used [0x00000007b0a00000,0x00000007b0a00000,0x00000007b1400000)
+ ParOldGen       total 170496K, used 0K [0x0000000706000000, 0x0000000710680000, 0x00000007aca80000)
+  object space 170496K, 0% used [0x0000000706000000,0x0000000706000000,0x0000000710680000)
+ PSPermGen       total 21504K, used 10898K [0x0000000700e00000, 0x0000000702300000, 0x0000000706000000)
+  object space 21504K, 50% used [0x0000000700e00000,0x00000007018a4a98,0x0000000702300000)
+
+Card table byte_map: [0x00007f3b00806000,0x00007f3b01000000] byte_map_base: 0x00007f3afcfff000
+
+Polling page: 0x00007f3b0b10f000
+
+Code Cache  [0x00007f3b01000000, 0x00007f3b01270000, 0x00007f3b04000000)
+ total_blobs=409 nmethods=148 adapters=214 free_code_cache=48398Kb largest_free_block=49536128
+
+Compilation events (10 events):
+Event: 0.840 Thread 0x00007f3b0409e000  145             javax.xml.namespace.QName::getLocalPart (5 bytes)
+Event: 0.840 Thread 0x00007f3b0409e000 nmethod 145 0x00007f3b010bc3d0 code [0x00007f3b010bc500, 0x00007f3b010bc578]
+Event: 0.843 Thread 0x00007f3b040a1000  146             org.apache.xmlbeans.impl.store.Cur::next (297 bytes)
+Event: 0.848 Thread 0x00007f3b0409e000  147             org.apache.xmlbeans.impl.store.Saver$TextSaver::emit (33 bytes)
+Event: 0.849 Thread 0x00007f3b0409e000 nmethod 147 0x00007f3b010bd950 code [0x00007f3b010bdaa0, 0x00007f3b010bdbe8]
+Event: 0.849 Thread 0x00007f3b0409e000  148             org.apache.xmlbeans.impl.store.Saver::processElement (389 bytes)
+Event: 0.851 Thread 0x00007f3b040a1000 nmethod 146 0x00007f3b010bcd90 code [0x00007f3b010bcf20, 0x00007f3b010bd480]
+Event: 0.851 Thread 0x00007f3b040a1000  149             org.apache.xmlbeans.impl.store.Saver$TextSaver::emit (118 bytes)
+Event: 0.854 Thread 0x00007f3b040a1000 nmethod 149 0x00007f3b010bc5d0 code [0x00007f3b010bc760, 0x00007f3b010bca88]
+Event: 0.862 Thread 0x00007f3b040a1000  150             java.net.URLStreamHandler::parseURL (1158 bytes)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (3 events):
+Event: 0.192 Thread 0x00007f3b0400e000 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00007f3b01062d68 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 0.447 Thread 0x00007f3b0400e000 Uncommon trap: reason=unreached action=reinterpret pc=0x00007f3b010933b8 method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 7
+Event: 0.531 Thread 0x00007f3b0400e000 Uncommon trap: reason=unreached action=reinterpret pc=0x00007f3b01096d98 method=java.net.URL.<init>(Ljava/net/URL;Ljava/lang/String;Ljava/net/URLStreamHandler;)V @ 233
+
+Internal exceptions (10 events):
+Event: 0.853 Thread 0x00007f3b0400e000 Threw 0x00000007b0290878 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.854 Thread 0x00007f3b0400e000 Threw 0x00000007b02c0898 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.857 Thread 0x00007f3b0400e000 Threw 0x00000007b0303918 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.857 Thread 0x00007f3b0400e000 Threw 0x00000007b032b8d0 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.860 Thread 0x00007f3b0400e000 Threw 0x00000007b0344bc8 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.861 Thread 0x00007f3b0400e000 Threw 0x00000007b0360380 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.862 Thread 0x00007f3b0400e000 Threw 0x00000007b038ff70 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.863 Thread 0x00007f3b0400e000 Threw 0x00000007b05066c0 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.863 Thread 0x00007f3b0400e000 Threw 0x00000007b051f660 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.864 Thread 0x00007f3b0400e000 Threw 0x00000007b0535608 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+
+Events (10 events):
+Event: 0.861 loading class 0x00007f3b04639e30
+Event: 0.861 loading class 0x00007f3b04639e30 done
+Event: 0.862 loading class 0x00007f3b0463c2f0
+Event: 0.862 loading class 0x00007f3b0463c2f0 done
+Event: 0.863 loading class 0x00007f3b0463af10
+Event: 0.863 loading class 0x00007f3b0463af10 done
+Event: 0.863 loading class 0x00007f3b04638e80
+Event: 0.863 loading class 0x00007f3b04638e80 done
+Event: 0.864 loading class 0x00007f3b04639c40
+Event: 0.864 loading class 0x00007f3b04639c40 done
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 fe:02 52297980                           /home/yomero/developer/jdk/jre1.7.0_79/bin/java
+00600000-00601000 rw-p 00000000 fe:02 52297980                           /home/yomero/developer/jdk/jre1.7.0_79/bin/java
+02001000-02022000 rw-p 00000000 00:00 0                                  [heap]
+700e00000-702300000 rw-p 00000000 00:00 0 
+702300000-706000000 rw-p 00000000 00:00 0 
+706000000-710680000 rw-p 00000000 00:00 0 
+710680000-7aca80000 rw-p 00000000 00:00 0 
+7aca80000-7b1e00000 rw-p 00000000 00:00 0 
+7b1e00000-800000000 rw-p 00000000 00:00 0 
+7f3aac000000-7f3aac021000 rw-p 00000000 00:00 0 
+7f3aac021000-7f3ab0000000 ---p 00000000 00:00 0 
+7f3ab4000000-7f3ab444e000 rw-p 00000000 00:00 0 
+7f3ab444e000-7f3ab8000000 ---p 00000000 00:00 0 
+7f3ab8000000-7f3ab8021000 rw-p 00000000 00:00 0 
+7f3ab8021000-7f3abc000000 ---p 00000000 00:00 0 
+7f3abc000000-7f3abc021000 rw-p 00000000 00:00 0 
+7f3abc021000-7f3ac0000000 ---p 00000000 00:00 0 
+7f3ac0000000-7f3ac05c1000 rw-p 00000000 00:00 0 
+7f3ac05c1000-7f3ac4000000 ---p 00000000 00:00 0 
+7f3ac4000000-7f3ac4021000 rw-p 00000000 00:00 0 
+7f3ac4021000-7f3ac8000000 ---p 00000000 00:00 0 
+7f3ac8000000-7f3ac8021000 rw-p 00000000 00:00 0 
+7f3ac8021000-7f3acc000000 ---p 00000000 00:00 0 
+7f3acc000000-7f3acc021000 rw-p 00000000 00:00 0 
+7f3acc021000-7f3ad0000000 ---p 00000000 00:00 0 
+7f3ad0070000-7f3ad8000000 rw-p 00000000 00:00 0 
+7f3ad8000000-7f3ad8021000 rw-p 00000000 00:00 0 
+7f3ad8021000-7f3adc000000 ---p 00000000 00:00 0 
+7f3adfe93000-7f3ae0000000 rw-p 00000000 00:00 0 
+7f3ae0000000-7f3ae0021000 rw-p 00000000 00:00 0 
+7f3ae0021000-7f3ae4000000 ---p 00000000 00:00 0 
+7f3ae4000000-7f3ae4021000 rw-p 00000000 00:00 0 
+7f3ae4021000-7f3ae8000000 ---p 00000000 00:00 0 
+7f3ae8000000-7f3ae8021000 rw-p 00000000 00:00 0 
+7f3ae8021000-7f3aec000000 ---p 00000000 00:00 0 
+7f3aec000000-7f3aec021000 rw-p 00000000 00:00 0 
+7f3aec021000-7f3af0000000 ---p 00000000 00:00 0 
+7f3af0000000-7f3af0021000 rw-p 00000000 00:00 0 
+7f3af0021000-7f3af4000000 ---p 00000000 00:00 0 
+7f3af4000000-7f3af4021000 rw-p 00000000 00:00 0 
+7f3af4021000-7f3af8000000 ---p 00000000 00:00 0 
+7f3af8000000-7f3af8021000 rw-p 00000000 00:00 0 
+7f3af8021000-7f3afc000000 ---p 00000000 00:00 0 
+7f3afc049000-7f3afc04a000 rw-p 00000000 00:00 0 
+7f3afc18d000-7f3afc18f000 rw-p 00000000 00:00 0 
+7f3afc18f000-7f3afc193000 r--s 0007e000 fe:02 52174284                   /home/yomero/developer/jdk/jre1.7.0_79/lib/jsse.jar
+7f3afc193000-7f3afc494000 rw-p 00000000 00:00 0 
+7f3afc494000-7f3afc4aa000 r-xp 00000000 fe:02 52173864                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libnet.so
+7f3afc4aa000-7f3afc6aa000 ---p 00016000 fe:02 52173864                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libnet.so
+7f3afc6aa000-7f3afc6ab000 rw-p 00016000 fe:02 52173864                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libnet.so
+7f3afc6ab000-7f3afc6bb000 r-xp 00000000 fe:02 52173832                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libnio.so
+7f3afc6bb000-7f3afc8bb000 ---p 00010000 fe:02 52173832                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libnio.so
+7f3afc8bb000-7f3afc8bc000 rw-p 00010000 fe:02 52173832                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libnio.so
+7f3afc8bc000-7f3afc8c6000 r--s 00253000 fe:02 52173907                   /home/yomero/developer/jdk/jre1.7.0_79/lib/resources.jar
+7f3afc8c6000-7f3afc8c9000 r--s 00018000 fe:02 42337174                   /home/yomero/.m2/repository/commons-io/commons-io/1.4/commons-io-1.4.jar
+7f3afc8c9000-7f3afc8cd000 r--s 00038000 fe:02 42337172                   /home/yomero/.m2/repository/commons-lang/commons-lang/2.3/commons-lang-2.3.jar
+7f3afc8cd000-7f3afc8cf000 r--s 00009000 fe:02 42337170                   /home/yomero/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+7f3afc8cf000-7f3afc8d5000 r--s 00036000 fe:02 42337168                   /home/yomero/.m2/repository/junit/junit/4.11/junit-4.11.jar
+7f3afc8d5000-7f3afc8de000 r--s 0006d000 fe:02 42337166                   /home/yomero/.m2/repository/log4j/log4j/1.2.16/log4j-1.2.16.jar
+7f3afc8de000-7f3afc8e3000 r--s 00068000 fe:02 38537592                   /home/yomero/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar
+7f3afc8e3000-7f3afc8e6000 r--s 00022000 fe:02 47055211                   /home/yomero/.m2/repository/org/antlr/stringtemplate/3.2.1/stringtemplate-3.2.1.jar
+7f3afc8e6000-7f3afc8e9000 r--s 00025000 fe:02 47055209                   /home/yomero/.m2/repository/org/antlr/antlr-runtime/3.3/antlr-runtime-3.3.jar
+7f3afc8e9000-7f3afc8eb000 r--s 0000c000 fe:02 40241979                   /home/yomero/.m2/repository/net/arnx/wmf2svg/0.9.0/wmf2svg-0.9.0.jar
+7f3afc8eb000-7f3afc8f3000 r--s 00028000 fe:02 47055207                   /home/yomero/.m2/repository/xml-apis/xml-apis/1.3.04/xml-apis-1.3.04.jar
+7f3afc8f3000-7f3afc8f6000 r--s 00041000 fe:02 47055205                   /home/yomero/.m2/repository/xalan/serializer/2.7.1/serializer-2.7.1.jar
+7f3afc8f6000-7f3afc91b000 r--s 002e3000 fe:02 47055203                   /home/yomero/.m2/repository/xalan/xalan/2.7.1/xalan-2.7.1.jar
+7f3afc91b000-7f3afc91d000 r--s 0000d000 fe:02 47055201                   /home/yomero/.m2/repository/org/apache/avalon/framework/avalon-framework-impl/4.3.1/avalon-framework-impl-4.3.1.jar
+7f3afc91d000-7f3afc920000 r--s 00006000 fe:02 47055199                   /home/yomero/.m2/repository/org/apache/avalon/framework/avalon-framework-api/4.3.1/avalon-framework-api-4.3.1.jar
+7f3afc920000-7f3afc94f000 r--s 002c1000 fe:02 47055195                   /home/yomero/.m2/repository/org/apache/xmlgraphics/fop/1.0/fop-1.0.jar
+7f3afc94f000-7f3afc959000 r--s 00081000 fe:02 47055193                   /home/yomero/.m2/repository/org/apache/xmlgraphics/xmlgraphics-commons/1.4/xmlgraphics-commons-1.4.jar
+7f3afc959000-7f3afc95b000 r--s 0000d000 fe:02 42336424                   /home/yomero/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar
+7f3afc95b000-7f3afc95c000 r--s 00006000 fe:02 47055197                   /home/yomero/.m2/repository/org/plutext/jaxb-xmldsig-core/1.0.0/jaxb-xmldsig-core-1.0.0.jar
+7f3afc95c000-7f3afc960000 r--s 000a4000 fe:02 45351831                   /home/yomero/.m2/repository/org/plutext/jaxb-xslfo/1.0.1/jaxb-xslfo-1.0.1.jar
+7f3afc960000-7f3afc965000 r--s 00040000 fe:02 45351828                   /home/yomero/.m2/repository/org/plutext/jaxb-svg11/1.0.2/jaxb-svg11-1.0.2.jar
+7f3afc965000-7f3afc971000 r--s 00108000 fe:02 45220730                   /home/yomero/.m2/repository/com/lowagie/itext/2.1.7/itext-2.1.7.jar
+7f3afc971000-7f3afc984000 r--s 000e7000 fe:02 45220728                   /home/yomero/.m2/repository/org/docx4j/xhtmlrenderer/1.0.0/xhtmlrenderer-1.0.0.jar
+7f3afc984000-7f3afc9c3000 r--s 00367000 fe:02 45220726                   /home/yomero/.m2/repository/org/docx4j/docx4j/2.8.0/docx4j-2.8.0.jar
+7f3afc9c3000-7f3afc9c7000 r--s 00025000 fe:02 45220753                   /home/yomero/.m2/repository/uk/org/simonsite/log4j-rolling-appender/20131024-2017/log4j-rolling-appender-20131024-2017.jar
+7f3afc9c7000-7f3afc9c9000 r--s 0000a000 fe:02 44436733                   /home/yomero/.m2/repository/org/gagravarr/vorbis-java-core/0.1/vorbis-java-core-0.1.jar
+7f3afc9c9000-7f3afc9cd000 r--s 0002f000 fe:02 45220724                   /home/yomero/.m2/repository/rome/rome/0.9/rome-0.9.jar
+7f3afc9cd000-7f3afc9d0000 r--s 00014000 fe:02 45220722                   /home/yomero/.m2/repository/de/l3s/boilerpipe/boilerpipe/1.1.0/boilerpipe-1.1.0.jar
+7f3afc9d0000-7f3afc9d3000 r--s 00014000 fe:02 45220720                   /home/yomero/.m2/repository/com/drewnoakes/metadata-extractor/2.4.0-beta-1/metadata-extractor-2.4.0-beta-1.jar
+7f3afc9d3000-7f3afc9db000 r--s 0007d000 fe:02 45220718                   /home/yomero/.m2/repository/javassist/javassist/3.6.0.GA/javassist-3.6.0.GA.jar
+7f3afc9db000-7f3afc9dc000 r--s 00004000 fe:02 39848203                   /home/yomero/.m2/repository/net/sf/scannotation/scannotation/1.0.2/scannotation-1.0.2.jar
+7f3afc9dc000-7f3afc9e5000 r--s 0005f000 fe:02 45220716                   /home/yomero/.m2/repository/com/googlecode/mp4parser/isoparser/1.0-beta-5/isoparser-1.0-beta-5.jar
+7f3afc9e5000-7f3afc9e6000 r--s 0000a000 fe:02 45220714                   /home/yomero/.m2/repository/asm/asm/3.1/asm-3.1.jar
+7f3afc9e6000-7f3afc9e8000 r--s 00015000 fe:02 45220712                   /home/yomero/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar
+7f3afc9e8000-7f3afc9ea000 r--s 00006000 fe:02 45220704                   /home/yomero/.m2/repository/org/apache/geronimo/specs/geronimo-stax-api_1.0_spec/1.0.1/geronimo-stax-api_1.0_spec-1.0.1.jar
+7f3afc9ea000-7f3afc9ec000 r--s 00002000 fe:00 912571                     /devpal/notaria/.config/prev/prueba word2.docx
+7f3afc9ec000-7f3afc9f1000 r--s 00048000 fe:02 38537596                   /home/yomero/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar
+7f3afc9f1000-7f3afca2e000 r--s 0024f000 fe:02 45220710                   /home/yomero/.m2/repository/org/apache/xmlbeans/xmlbeans/2.3.0/xmlbeans-2.3.0.jar
+7f3afca2e000-7f3afcabe000 r--s 003e3000 fe:02 45220702                   /home/yomero/.m2/repository/org/apache/poi/poi-ooxml-schemas/3.8-beta5/poi-ooxml-schemas-3.8-beta5.jar
+7f3afcabe000-7f3afcacb000 r--s 000d1000 fe:02 45220700                   /home/yomero/.m2/repository/org/apache/poi/poi-ooxml/3.8-beta5/poi-ooxml-3.8-beta5.jar
+7f3afcacb000-7f3afcadb000 r--s 00112000 fe:02 45220698                   /home/yomero/.m2/repository/org/apache/poi/poi-scratchpad/3.8-beta5/poi-scratchpad-3.8-beta5.jar
+7f3afcadb000-7f3afcafa000 r--s 00197000 fe:02 45220696                   /home/yomero/.m2/repository/org/apache/poi/poi/3.8-beta5/poi-3.8-beta5.jar
+7f3afcafa000-7f3afcb1f000 r--s 00172000 fe:02 45220708                   /home/yomero/.m2/repository/org/bouncycastle/bcprov-jdk15/1.45/bcprov-jdk15-1.45.jar
+7f3afcb1f000-7f3afcb24000 r--s 00033000 fe:02 45220706                   /home/yomero/.m2/repository/org/bouncycastle/bcmail-jdk15/1.45/bcmail-jdk15-1.45.jar
+7f3afcb24000-7f3afcb26000 r--s 0000b000 fe:02 45220694                   /home/yomero/.m2/repository/org/apache/pdfbox/jempbox/1.6.0/jempbox-1.6.0.jar
+7f3afcb26000-7f3afcb29000 r--s 00028000 fe:02 45220692                   /home/yomero/.m2/repository/org/apache/pdfbox/fontbox/1.6.0/fontbox-1.6.0.jar
+7f3afcb29000-7f3afcb3d000 r--s 00392000 fe:02 45220690                   /home/yomero/.m2/repository/org/apache/pdfbox/pdfbox/1.6.0/pdfbox-1.6.0.jar
+7f3afcb3d000-7f3afcb3f000 r--s 00010000 fe:02 45094600                   /home/yomero/.m2/repository/commons-codec/commons-codec/1.5/commons-codec-1.5.jar
+7f3afcb3f000-7f3afcb44000 r--s 00032000 fe:02 41816530                   /home/yomero/.m2/repository/org/apache/commons/commons-compress/1.3/commons-compress-1.3.jar
+7f3afcb44000-7f3afcb4b000 r--s 00043000 fe:02 45094598                   /home/yomero/.m2/repository/org/apache/james/apache-mime4j-dom/0.7/apache-mime4j-dom-0.7.jar
+7f3afcb4b000-7f3afcb4e000 r--s 00015000 fe:02 45094594                   /home/yomero/.m2/repository/org/apache/james/apache-mime4j-core/0.7/apache-mime4j-core-0.7.jar
+7f3afcb4e000-7f3afcb7f000 r--s 003f0000 fe:02 45094602                   /home/yomero/.m2/repository/edu/ucar/netcdf/4.2-min/netcdf-4.2-min.jar
+7f3afcb7f000-7f3afcb81000 r--s 00006000 fe:02 44436711                   /home/yomero/.m2/repository/org/gagravarr/vorbis-java-core/0.1/vorbis-java-core-0.1-tests.jar
+7f3afcb81000-7f3afcb82000 r--s 00003000 fe:02 44436707                   /home/yomero/.m2/repository/org/gagravarr/vorbis-java-tika/0.1/vorbis-java-tika-0.1.jar
+7f3afcb82000-7f3afcb89000 r--s 00066000 fe:02 44436680                   /home/yomero/.m2/repository/org/apache/tika/tika-core/1.1/tika-core-1.1.jar
+7f3afcb89000-7f3afcb91000 r--s 00064000 fe:02 44436439                   /home/yomero/.m2/repository/org/apache/tika/tika-parsers/1.1/tika-parsers-1.1.jar
+7f3afcb91000-7f3afcb93000 r--s 00007000 fe:02 44436435                   /home/yomero/.m2/repository/org/alfresco/cmis/client/alfresco-opencmis-extension/0.2/alfresco-opencmis-extension-0.2.jar
+7f3afcb93000-7f3afcb95000 r--s 00005000 fe:02 38538196                   /home/yomero/.m2/repository/org/slf4j/slf4j-api/1.6.6/slf4j-api-1.6.6.jar
+7f3afcb95000-7f3afcb97000 r--s 0000d000 fe:02 44436437                   /home/yomero/.m2/repository/org/apache/felix/org.osgi.core/1.0.0/org.osgi.core-1.0.0.jar
+7f3afcb97000-7f3afcb9d000 r--s 0003d000 fe:02 44304596                   /home/yomero/.m2/repository/org/apache/chemistry/opencmis/chemistry-opencmis-client-bindings/0.8.0/chemistry-opencmis-client-bindings-0.8.0.jar
+7f3afcb9d000-7f3afcb9f000 r--s 00008000 fe:02 44305256                   /home/yomero/.m2/repository/org/jvnet/mimepull/1.3/mimepull-1.3.jar
+7f3afcb9f000-7f3afcba1000 r--s 0000f000 fe:02 44304602                   /home/yomero/.m2/repository/com/sun/org/apache/xml/internal/resolver/20050927/resolver-20050927.jar
+7f3afcba1000-7f3afcba2000 r--s 00002000 fe:02 44304598                   /home/yomero/.m2/repository/org/jvnet/staxex/stax-ex/1.2/stax-ex-1.2.jar
+7f3afcba2000-7f3afcba8000 r--s 00079000 fe:02 42211172                   /home/yomero/.m2/repository/org/codehaus/woodstox/wstx-asl/3.2.3/wstx-asl-3.2.3.jar
+7f3afcba8000-7f3afcbaa000 r--s 0001e000 fe:02 44041997                   /home/yomero/.m2/repository/com/sun/xml/stream/buffer/streambuffer/0.9/streambuffer-0.9.jar
+7f3afcbaa000-7f3afcbac000 r--s 00003000 fe:02 44041995                   /home/yomero/.m2/repository/javax/xml/soap/saaj-api/1.3/saaj-api-1.3.jar
+7f3afcbac000-7f3afcbb2000 r--s 00040000 fe:02 44041993                   /home/yomero/.m2/repository/com/sun/xml/messaging/saaj/saaj-impl/1.3.3/saaj-impl-1.3.3.jar
+7f3afcbb2000-7f3afcbc4000 r--s 000c2000 fe:02 44041991                   /home/yomero/.m2/repository/com/sun/xml/bind/jaxb-impl/2.1.11/jaxb-impl-2.1.11.jar
+7f3afcbc4000-7f3afcbc7000 r--s 00013000 fe:02 44041989                   /home/yomero/.m2/repository/javax/xml/bind/jaxb-api/2.1/jaxb-api-2.1.jar
+7f3afcbc7000-7f3afcbca000 r--s 00006000 fe:02 44041987                   /home/yomero/.m2/repository/javax/xml/ws/jaxws-api/2.1/jaxws-api-2.1.jar
+7f3afcbca000-7f3afcbe3000 r--s 00129000 fe:02 44041985                   /home/yomero/.m2/repository/com/sun/xml/ws/jaxws-rt/2.1.7/jaxws-rt-2.1.7.jar
+7f3afcbe3000-7f3afcbe5000 r--s 00004000 fe:02 44041983                   /home/yomero/.m2/repository/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar
+7f3afcbe5000-7f3afcbef000 r--s 00067000 fe:02 44041973                   /home/yomero/.m2/repository/org/apache/chemistry/opencmis/chemistry-opencmis-commons-impl/0.8.0/chemistry-opencmis-commons-impl-0.8.0.jar
+7f3afcbef000-7f3afcbf3000 r--s 00013000 fe:02 44041971                   /home/yomero/.m2/repository/org/apache/chemistry/opencmis/chemistry-opencmis-commons-api/0.8.0/chemistry-opencmis-commons-api-0.8.0.jar
+7f3afcbf3000-7f3afcbf5000 r--s 00006000 fe:02 44041969                   /home/yomero/.m2/repository/org/apache/chemistry/opencmis/chemistry-opencmis-client-api/0.8.0/chemistry-opencmis-client-api-0.8.0.jar
+7f3afcbf5000-7f3afcbf8000 r--s 00020000 fe:02 44041967                   /home/yomero/.m2/repository/org/apache/chemistry/opencmis/chemistry-opencmis-client-impl/0.8.0/chemistry-opencmis-client-impl-0.8.0.jar
+7f3afcbf8000-7f3afcbfa000 r--s 0000e000 fe:02 42604369                   /home/yomero/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar
+7f3afcbfa000-7f3afcc01000 r--s 00072000 fe:02 42472381                   /home/yomero/.m2/repository/javax/mail/mail/1.4.4/mail-1.4.4.jar
+7f3afcc01000-7f3afcc1b000 r--s 000b4000 fe:02 44041233                   /home/yomero/.m2/repository/org/bonitasoft/engine/bonita-common/7.0.0/bonita-common-7.0.0.jar
+7f3afcc1b000-7f3afcc21000 r--s 00048000 fe:02 44041225                   /home/yomero/.m2/repository/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar
+7f3afcc21000-7f3afcc23000 r--s 00005000 fe:02 44041221                   /home/yomero/.m2/repository/org/apache/httpcomponents/httpmime/4.2.5/httpmime-4.2.5.jar
+7f3afcc23000-7f3afcc25000 r--s 00005000 fe:02 42075974                   /home/yomero/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar
+7f3afcc25000-7f3afcc31000 r--s 0006a000 fe:02 44041219                   /home/yomero/.m2/repository/com/thoughtworks/xstream/xstream/1.4.2/xstream-1.4.2.jar
+7f3afcc31000-7f3afcc37000 r--s 00032000 fe:02 44041217                   /home/yomero/.m2/repository/org/apache/httpcomponents/httpcore/4.2.4/httpcore-4.2.4.jar
+7f3afcc37000-7f3afcc40000 r--s 00061000 fe:02 44041215                   /home/yomero/.m2/repository/org/apache/httpcomponents/httpclient/4.2.5/httpclient-4.2.5.jar
+7f3afcc40000-7f3afcc44000 r--s 0002c000 fe:02 44041231                   /home/yomero/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.2.3/jackson-core-2.2.3.jar
+7f3afcc44000-7f3afcc47000 r--s 00006000 fe:02 44041229                   /home/yomero/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.2.3/jackson-annotations-2.2.3.jar
+7f3afcc47000-7f3afcc58000 r--s 000c3000 fe:02 44041227                   /home/yomero/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.2.3/jackson-databind-2.2.3.jar
+7f3afcc58000-7f3afcc91000 r--s 00121000 fe:02 44041981                   /home/yomero/.m2/repository/org/openoffice/unoil/3.2.1/unoil-3.2.1.jar
+7f3afcc91000-7f3afcc9c000 r--s 00034000 fe:02 44041979                   /home/yomero/.m2/repository/org/openoffice/ridl/3.2.1/ridl-3.2.1.jar
+7f3afcc9c000-7f3afcc9d000 ---p 00000000 00:00 0 
+7f3afcc9d000-7f3afcd9d000 rw-p 00000000 00:00 0                          [stack:22934]
+7f3afcd9d000-7f3afcda0000 ---p 00000000 00:00 0 
+7f3afcda0000-7f3afce9e000 rw-p 00000000 00:00 0                          [stack:22933]
+7f3afce9e000-7f3afcea1000 ---p 00000000 00:00 0 
+7f3afcea1000-7f3afcf9f000 rw-p 00000000 00:00 0                          [stack:22932]
+7f3afcf9f000-7f3afcfa2000 ---p 00000000 00:00 0 
+7f3afcfa2000-7f3afd0a0000 rw-p 00000000 00:00 0                          [stack:22931]
+7f3afd0a0000-7f3afd0a3000 ---p 00000000 00:00 0 
+7f3afd0a3000-7f3afd1a1000 rw-p 00000000 00:00 0                          [stack:22930]
+7f3afd1a1000-7f3afd32a000 r--p 00000000 fe:00 138934                     /usr/lib/locale/locale-archive
+7f3afd32a000-7f3afd32d000 ---p 00000000 00:00 0 
+7f3afd32d000-7f3afd42b000 rw-p 00000000 00:00 0                          [stack:22928]
+7f3afd42b000-7f3afd42e000 ---p 00000000 00:00 0 
+7f3afd42e000-7f3afd52c000 rw-p 00000000 00:00 0                          [stack:22927]
+7f3afd52c000-7f3afd52d000 ---p 00000000 00:00 0 
+7f3afd52d000-7f3aff29b000 rw-p 00000000 00:00 0                          [stack:22926]
+7f3aff29b000-7f3aff45b000 r--s 031d4000 fe:02 52174289                   /home/yomero/developer/jdk/jre1.7.0_79/lib/rt.jar
+7f3aff45b000-7f3affcca000 rw-p 00000000 00:00 0 
+7f3affcca000-7f3affccb000 ---p 00000000 00:00 0 
+7f3affccb000-7f3affdcb000 rw-p 00000000 00:00 0                          [stack:22925]
+7f3affdcb000-7f3affdcc000 ---p 00000000 00:00 0 
+7f3affdcc000-7f3affecc000 rw-p 00000000 00:00 0                          [stack:22924]
+7f3affecc000-7f3affecd000 ---p 00000000 00:00 0 
+7f3affecd000-7f3afffcd000 rw-p 00000000 00:00 0                          [stack:22923]
+7f3afffcd000-7f3afffce000 ---p 00000000 00:00 0 
+7f3afffce000-7f3b000ce000 rw-p 00000000 00:00 0                          [stack:22922]
+7f3b000ce000-7f3b000cf000 ---p 00000000 00:00 0 
+7f3b000cf000-7f3b001cf000 rw-p 00000000 00:00 0                          [stack:22921]
+7f3b001cf000-7f3b001d0000 ---p 00000000 00:00 0 
+7f3b001d0000-7f3b00324000 rw-p 00000000 00:00 0                          [stack:22920]
+7f3b00324000-7f3b00806000 rw-p 00000000 00:00 0 
+7f3b00806000-7f3b00811000 rw-p 00000000 00:00 0 
+7f3b00811000-7f3b0082f000 rw-p 00000000 00:00 0 
+7f3b0082f000-7f3b00883000 rw-p 00000000 00:00 0 
+7f3b00883000-7f3b00d64000 rw-p 00000000 00:00 0 
+7f3b00d64000-7f3b00d8e000 rw-p 00000000 00:00 0 
+7f3b00d8e000-7f3b00fff000 rw-p 00000000 00:00 0 
+7f3b00fff000-7f3b01000000 rw-p 00000000 00:00 0 
+7f3b01000000-7f3b01270000 rwxp 00000000 00:00 0 
+7f3b01270000-7f3b04753000 rw-p 00000000 00:00 0 
+7f3b04753000-7f3b08000000 ---p 00000000 00:00 0 
+7f3b08000000-7f3b08003000 r--s 00023000 fe:02 44041411                   /home/yomero/.m2/repository/jdom/jdom/1.0/jdom-1.0.jar
+7f3b08003000-7f3b080d6000 rw-p 00000000 00:00 0 
+7f3b080d6000-7f3b080d7000 ---p 00000000 00:00 0 
+7f3b080d7000-7f3b081d7000 rw-p 00000000 00:00 0                          [stack:22919]
+7f3b081d7000-7f3b081d8000 ---p 00000000 00:00 0 
+7f3b081d8000-7f3b082e3000 rw-p 00000000 00:00 0                          [stack:22918]
+7f3b082e3000-7f3b08301000 rw-p 00000000 00:00 0 
+7f3b08301000-7f3b0831b000 r-xp 00000000 fe:02 52173859                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libzip.so
+7f3b0831b000-7f3b0851b000 ---p 0001a000 fe:02 52173859                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libzip.so
+7f3b0851b000-7f3b0851c000 rw-p 0001a000 fe:02 52173859                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libzip.so
+7f3b0851c000-7f3b08527000 r-xp 00000000 fe:00 395762                     /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f3b08527000-7f3b08726000 ---p 0000b000 fe:00 395762                     /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f3b08726000-7f3b08727000 r--p 0000a000 fe:00 395762                     /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f3b08727000-7f3b08728000 rw-p 0000b000 fe:00 395762                     /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f3b08728000-7f3b08732000 r-xp 00000000 fe:00 395764                     /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f3b08732000-7f3b08931000 ---p 0000a000 fe:00 395764                     /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f3b08931000-7f3b08932000 r--p 00009000 fe:00 395764                     /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f3b08932000-7f3b08933000 rw-p 0000a000 fe:00 395764                     /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f3b08933000-7f3b08948000 r-xp 00000000 fe:00 395759                     /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f3b08948000-7f3b08b47000 ---p 00015000 fe:00 395759                     /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f3b08b47000-7f3b08b48000 r--p 00014000 fe:00 395759                     /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f3b08b48000-7f3b08b49000 rw-p 00015000 fe:00 395759                     /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f3b08b49000-7f3b08b4b000 rw-p 00000000 00:00 0 
+7f3b08b4b000-7f3b08b52000 r-xp 00000000 fe:00 395760                     /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f3b08b52000-7f3b08d51000 ---p 00007000 fe:00 395760                     /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f3b08d51000-7f3b08d52000 r--p 00006000 fe:00 395760                     /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f3b08d52000-7f3b08d53000 rw-p 00007000 fe:00 395760                     /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f3b08d53000-7f3b08d7c000 r-xp 00000000 fe:02 52173827                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libjava.so
+7f3b08d7c000-7f3b08f7c000 ---p 00029000 fe:02 52173827                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libjava.so
+7f3b08f7c000-7f3b08f7e000 rw-p 00029000 fe:02 52173827                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libjava.so
+7f3b08f7e000-7f3b08f8b000 r-xp 00000000 fe:02 52173852                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libverify.so
+7f3b08f8b000-7f3b0918a000 ---p 0000d000 fe:02 52173852                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libverify.so
+7f3b0918a000-7f3b0918c000 rw-p 0000c000 fe:02 52173852                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/libverify.so
+7f3b0918c000-7f3b09193000 r-xp 00000000 fe:00 395768                     /lib/x86_64-linux-gnu/librt-2.19.so
+7f3b09193000-7f3b09392000 ---p 00007000 fe:00 395768                     /lib/x86_64-linux-gnu/librt-2.19.so
+7f3b09392000-7f3b09393000 r--p 00006000 fe:00 395768                     /lib/x86_64-linux-gnu/librt-2.19.so
+7f3b09393000-7f3b09394000 rw-p 00007000 fe:00 395768                     /lib/x86_64-linux-gnu/librt-2.19.so
+7f3b09394000-7f3b09494000 r-xp 00000000 fe:00 395757                     /lib/x86_64-linux-gnu/libm-2.19.so
+7f3b09494000-7f3b09693000 ---p 00100000 fe:00 395757                     /lib/x86_64-linux-gnu/libm-2.19.so
+7f3b09693000-7f3b09694000 r--p 000ff000 fe:00 395757                     /lib/x86_64-linux-gnu/libm-2.19.so
+7f3b09694000-7f3b09695000 rw-p 00100000 fe:00 395757                     /lib/x86_64-linux-gnu/libm-2.19.so
+7f3b09695000-7f3b0a20a000 r-xp 00000000 fe:02 52173879                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/server/libjvm.so
+7f3b0a20a000-7f3b0a40a000 ---p 00b75000 fe:02 52173879                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/server/libjvm.so
+7f3b0a40a000-7f3b0a4ce000 rw-p 00b75000 fe:02 52173879                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/server/libjvm.so
+7f3b0a4ce000-7f3b0a50f000 rw-p 00000000 00:00 0 
+7f3b0a50f000-7f3b0a6b0000 r-xp 00000000 fe:00 395752                     /lib/x86_64-linux-gnu/libc-2.19.so
+7f3b0a6b0000-7f3b0a8b0000 ---p 001a1000 fe:00 395752                     /lib/x86_64-linux-gnu/libc-2.19.so
+7f3b0a8b0000-7f3b0a8b4000 r--p 001a1000 fe:00 395752                     /lib/x86_64-linux-gnu/libc-2.19.so
+7f3b0a8b4000-7f3b0a8b6000 rw-p 001a5000 fe:00 395752                     /lib/x86_64-linux-gnu/libc-2.19.so
+7f3b0a8b6000-7f3b0a8ba000 rw-p 00000000 00:00 0 
+7f3b0a8ba000-7f3b0a8bd000 r-xp 00000000 fe:00 395756                     /lib/x86_64-linux-gnu/libdl-2.19.so
+7f3b0a8bd000-7f3b0aabc000 ---p 00003000 fe:00 395756                     /lib/x86_64-linux-gnu/libdl-2.19.so
+7f3b0aabc000-7f3b0aabd000 r--p 00002000 fe:00 395756                     /lib/x86_64-linux-gnu/libdl-2.19.so
+7f3b0aabd000-7f3b0aabe000 rw-p 00003000 fe:00 395756                     /lib/x86_64-linux-gnu/libdl-2.19.so
+7f3b0aabe000-7f3b0aad4000 r-xp 00000000 fe:02 52173871                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/jli/libjli.so
+7f3b0aad4000-7f3b0acd4000 ---p 00016000 fe:02 52173871                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/jli/libjli.so
+7f3b0acd4000-7f3b0acd5000 rw-p 00016000 fe:02 52173871                   /home/yomero/developer/jdk/jre1.7.0_79/lib/amd64/jli/libjli.so
+7f3b0acd5000-7f3b0aced000 r-xp 00000000 fe:00 395692                     /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f3b0aced000-7f3b0aeec000 ---p 00018000 fe:00 395692                     /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f3b0aeec000-7f3b0aeed000 r--p 00017000 fe:00 395692                     /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f3b0aeed000-7f3b0aeee000 rw-p 00018000 fe:00 395692                     /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f3b0aeee000-7f3b0aef2000 rw-p 00000000 00:00 0 
+7f3b0aef2000-7f3b0af12000 r-xp 00000000 fe:00 395693                     /lib/x86_64-linux-gnu/ld-2.19.so
+7f3b0af12000-7f3b0af14000 r--s 00007000 fe:02 43909842                   /home/yomero/.m2/repository/org/bonitasoft/engine/bonita-client/7.0.0/bonita-client-7.0.0.jar
+7f3b0af14000-7f3b0af17000 r--s 00018000 fe:02 44041977                   /home/yomero/.m2/repository/org/openoffice/jurt/3.2.1/jurt-3.2.1.jar
+7f3b0af17000-7f3b0af19000 r--s 0000c000 fe:02 44041975                   /home/yomero/.m2/repository/org/openoffice/juh/3.2.1/juh-3.2.1.jar
+7f3b0af19000-7f3b0af1b000 r--s 0000a000 fe:02 43129751                   /home/yomero/.m2/repository/org/json/json/20090211/json-20090211.jar
+7f3b0af1b000-7f3b0af1e000 r--s 0000f000 fe:02 42735684                   /home/yomero/.m2/repository/com/artofsolving/jodconverter-core/3.0-beta-4/jodconverter-core-3.0-beta-4.jar
+7f3b0af1e000-7f3b0af28000 rw-p 00000000 00:00 0 
+7f3b0af28000-7f3b0afde000 rw-p 00000000 00:00 0 
+7f3b0afde000-7f3b0afe1000 ---p 00000000 00:00 0 
+7f3b0afe1000-7f3b0b0e3000 rw-p 00000000 00:00 0                          [stack:22917]
+7f3b0b0e3000-7f3b0b0e4000 r--s 00001000 fe:02 42075972                   /home/yomero/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar
+7f3b0b0e4000-7f3b0b0e5000 r--s 00008000 fe:02 41291753                   /home/yomero/.m2/repository/commons-cli/commons-cli/1.1/commons-cli-1.1.jar
+7f3b0b0e5000-7f3b0b106000 rw-p 00000000 00:00 0 
+7f3b0b106000-7f3b0b10e000 rw-s 00000000 fe:00 1437690                    /tmp/hsperfdata_yomero/22911
+7f3b0b10e000-7f3b0b10f000 rw-p 00000000 00:00 0 
+7f3b0b10f000-7f3b0b110000 r--p 00000000 00:00 0 
+7f3b0b110000-7f3b0b112000 rw-p 00000000 00:00 0 
+7f3b0b112000-7f3b0b113000 r--p 00020000 fe:00 395693                     /lib/x86_64-linux-gnu/ld-2.19.so
+7f3b0b113000-7f3b0b114000 rw-p 00021000 fe:00 395693                     /lib/x86_64-linux-gnu/ld-2.19.so
+7f3b0b114000-7f3b0b115000 rw-p 00000000 00:00 0 
+7ffe345d5000-7ffe345f8000 rw-p 00000000 00:00 0                          [stack]
+7ffe345fc000-7ffe345fe000 r-xp 00000000 00:00 0                          [vdso]
+7ffe345fe000-7ffe34600000 r--p 00000000 00:00 0                          [vvar]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 
+java_command: com.palestra.notarias.escritura.FormatosWordXWPFGenerator
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x9a3bf0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x9a3bf0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x81cb60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x81cb60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x81cb60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x81cb60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x81e360], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x81f480], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x81f480], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x81f480], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x81f480], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:8.7
+
+uname:Linux 3.16.0-4-amd64 #1 SMP Debian 3.16.39-1 (2016-12-30) x86_64
+libc:glibc 2.19 NPTL 2.19 
+rlimit: STACK 8192k, CORE 0k, NPROC 63901, NOFILE 65536, AS infinity
+load average:0.37 0.36 0.36
+
+/proc/meminfo:
+MemTotal:       16383936 kB
+MemFree:         1277984 kB
+MemAvailable:    5438784 kB
+Buffers:          816700 kB
+Cached:          4678056 kB
+SwapCached:            0 kB
+Active:         11083952 kB
+Inactive:        3284732 kB
+Active(anon):    8880032 kB
+Inactive(anon):  1512396 kB
+Active(file):    2203920 kB
+Inactive(file):  1772336 kB
+Unevictable:        1200 kB
+Mlocked:            1200 kB
+SwapTotal:      16605180 kB
+SwapFree:       16605180 kB
+Dirty:               696 kB
+Writeback:             0 kB
+AnonPages:       8875340 kB
+Mapped:          1543952 kB
+Shmem:           1518508 kB
+Slab:             507896 kB
+SReclaimable:     437960 kB
+SUnreclaim:        69936 kB
+KernelStack:       21136 kB
+PageTables:       107328 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    24797148 kB
+Committed_AS:   21839088 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      572716 kB
+VmallocChunk:   34359084624 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       80640 kB
+DirectMap2M:     4028416 kB
+DirectMap1G:    12582912 kB
+
+
+CPU:total 8 (4 cores per cpu, 2 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, erms, ht, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz
+stepping	: 3
+microcode	: 0x1a
+cpu MHz		: 3317.089
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid
+bogomips	: 4988.27
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz
+stepping	: 3
+microcode	: 0x1a
+cpu MHz		: 3318.261
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid
+bogomips	: 4988.27
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz
+stepping	: 3
+microcode	: 0x1a
+cpu MHz		: 3330.468
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid
+bogomips	: 4988.27
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz
+stepping	: 3
+microcode	: 0x1a
+cpu MHz		: 3323.925
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid
+bogomips	: 4988.27
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz
+stepping	: 3
+microcode	: 0x1a
+cpu MHz		: 3346.289
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid
+bogomips	: 4988.27
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz
+stepping	: 3
+microcode	: 0x1a
+cpu MHz		: 3345.312
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid
+bogomips	: 4988.27
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz
+stepping	: 3
+microcode	: 0x1a
+cpu MHz		: 3346.093
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid
+bogomips	: 4988.27
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 60
+model name	: Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz
+stepping	: 3
+microcode	: 0x1a
+cpu MHz		: 3415.625
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 7
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid
+bogomips	: 4988.27
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 16383936k(1277984k free), swap 16605180k(16605180k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (24.79-b02) for linux-amd64 JRE (1.7.0_79-b15), built on Apr 10 2015 11:34:48 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Wed Mar 21 17:41:13 2018
+elapsed time: 0 seconds
+

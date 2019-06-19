@@ -1,0 +1,141 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<!--<div class="status_tarea" >
+    <div style="display: inline-block;">
+        <div class="fase grad_gray">
+            <p class="active">Fase 1 <br>
+                <span>Adjuntar Doc.</span>
+            </p>
+        </div>
+        <div class="fase grad_gray">
+            <p class="">Fase 2 <br>
+                <span>Validaci&oacute;n Doc.</span>
+            </p>
+        </div>
+
+    </div>
+</div>-->
+
+<abogado></abogado>
+
+<br>
+
+<h2 class="tit_H2">Lorem ipsum dolorem</h2>
+<form id="testimonios" action="http://192.168.0.129:8081/notarias-web/notaria/testimonio/guardarTestimonioConArchivos" method="post" enctype="multipart/form-data">
+
+    <div class="wra_form_data">
+        <div class="head_form_data">
+            <div class="contentInputs">
+
+
+                
+                <div class="colum colums3" >
+                    <p><b>El documento ha sido generado</b></p>
+                    <p><span>*</span> Lorem upsum dolorem engfisfdj</p>
+                </div>
+                <div class="colum colums4" >
+                    <div style="float:right;">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="isgenerado" class="onoffswitch-checkbox" id="isgenerado" checked >
+                            <label class="onoffswitch-label" for="isgenerado">
+                                <div class="onoffswitch-inner"></div>
+                                <div class="onoffswitch-switch"></div>
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="body_form_data">
+            
+            
+            <div class="contentInputs">
+    
+                <div class="colum colums2">
+                    <div class="inputFile btn-form" style="border: 1px solid #ccc;border-top: 0;border-bottom: 0;">
+                        <p class="ng-binding" id="txt_fileRutaEscritura"></p>
+                        <input type="file" onchange="pon_valor(this)" placeholder="Ingresar información" id="fileRutaEscritura" name="fileRutaEscritura">
+                    </div>
+                </div>
+                <div class="colum colums4">
+                </div>
+                <div class="colum colums4">
+                </div>
+    
+            </div>
+            
+            <div class="contentInputs">
+    
+                <div class="colum colums2">
+                    <div class="inputFile btn-form" style="border: 1px solid #ccc;border-top: 0;border-bottom: 0;">
+                        <p class="ng-binding" id="txt_fileRutaCaratula"></p>
+                        <input type="file" onchange="pon_valor(this)" placeholder="Ingresar información" id="fileRutaCaratula" name="fileRutaCaratula">
+                    </div>
+                </div>
+                <div class="colum colums4">
+                </div>
+                <div class="colum colums4">
+                </div>
+    
+            </div>
+            
+            <div class="contentInputs">
+    
+                <div class="colum colums2">
+                    <div class="inputFile btn-form" style="border: 1px solid #ccc;border-top: 0;border-bottom: 0;">
+                        <p class="ng-binding" id="txt_fileCodigoBarras"></p>
+                        <input type="file" placeholder="Ingresar información" onchange="pon_valor(this)"  id="fileCodigoBarras" name="fileCodigoBarras">
+                    </div>
+                </div>
+                <div class="colum colums4">
+                </div>
+                <div class="colum colums4">
+                </div>
+    
+            </div>
+            
+            
+            
+            
+            
+            <p><input type="hidden" name="idsesionactual" id="idsesionactual" value= "46B72E199258D6017C6D1FF386B4B15A"/></p>
+            <p><input type="hidden" name="idusuario" id="idusuario" value= "eccbc87e4b5ce2fe28308fd9f2a7baf3"/></p>
+            <p><input type="hidden" name="idexpediente"  id="idexpediente" value="3631e5805f66789771223b44db602ab3"/></p>
+            <p><input type="hidden" name="idescritura"  id="idescritura" value= "4ba6dc46bbd4f338b968d2c85e729eb2"/></p>
+            
+
+        </div>
+
+
+    </div>
+    <div class="contentInputs">
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            &nbsp;
+        </div>
+        <div class="colum colums4">
+            <div class="btn-rounded"><p>Cancelar</p></div>
+        </div>
+        <div class="colum colums4">
+            <button class="btn-blue" type="submit">Guardar</button>
+        </div>
+
+    </div>
+</form>
+<script>
+    $('#testimonios').ajaxForm(function() {
+        alert("El archivo se subió correctamente");
+    });
+    
+    
+    
+</script>

@@ -1,0 +1,139 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.palestra.notaria</groupId>
+		<artifactId>notarias-app</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>notarias-generador-documento</artifactId>
+
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>google-releases</id>
+			<name>Google Releases</name>
+			<url>https://oss.sonatype.org/content/repositories/google-releases</url>
+		</repository>
+		<repository>
+			<id>artifacts.alfresco.com</id>
+			<name>Alfresco Maven Repository</name>
+			<url>https://artifacts.alfresco.com/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>repository.apache.org</id>
+			<name>Apache Maven Repository</name>
+			<url>https://repository.apache.org/content/groups/public/</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!-- librerias necesarias para jodconverter3 -->
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>commons-io</groupId> -->
+<!-- 			<artifactId>commons-io</artifactId> -->
+<!-- 			<version>1.4</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>com.artofsolving</groupId>
+			<artifactId>jodconverter-core</artifactId>
+			<version>3.0-beta-4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openoffice</groupId>
+			<artifactId>juh</artifactId>
+			<version>3.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openoffice</groupId>
+			<artifactId>jurt</artifactId>
+			<version>3.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openoffice</groupId>
+			<artifactId>ridl</artifactId>
+			<version>3.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openoffice</groupId>
+			<artifactId>unoil</artifactId>
+			<version>3.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Librerias para manejo de archivos y strings -->
+
+
+		<!-- Dependencias de notarias -->
+		<dependency>
+			<groupId>com.palestra.notaria</groupId>
+			<artifactId>notarias-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.palestra.notaria</groupId>
+			<artifactId>notarias-modelo</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Librerias cmis para colocar archivo en alfresco -->
+		<dependency>
+			<groupId>org.apache.chemistry.opencmis</groupId>
+			<artifactId>chemistry-opencmis-client-impl</artifactId>
+			<version>0.8.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.alfresco.cmis.client</groupId>
+			<artifactId>alfresco-opencmis-extension</artifactId>
+			<version>0.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-parsers</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Generar archivo log diario -->
+		<!-- <dependency>
+			<groupId>uk.org.simonsite</groupId>
+			<artifactId>log4j-rolling-appender</artifactId>
+			<version>20131024-2017</version>
+			<scope>provided</scope>
+		</dependency> -->
+		<dependency>
+		    <groupId>org.docx4j</groupId>
+		    <artifactId>docx4j</artifactId>
+		    <version>2.8.0</version>
+		</dependency>
+	</dependencies>
+</project>

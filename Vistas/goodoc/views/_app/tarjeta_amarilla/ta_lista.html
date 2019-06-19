@@ -1,0 +1,49 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" ng-click="goTo('/tarjeta_amarilla_agregar')">Nueva tarjeta amarilla</button>
+    </div>
+
+</div>
+
+
+    <div class="contentInputs">
+        <table class="tableForm">
+            <tr>
+                <th width="5%">
+                         <span class="tbl_icon ico_tarjeta_amarilla"></span>
+                </th>
+                <th width="25%">Nombre</th>
+                <th width="25%">Acto</th>
+                <th width="20%">Usuario</th>
+                <th width="20%">Fecha</th>
+                <th width="5%">
+                         <span class="tbl_icon ico_edit"></span>
+                </th>
+            </tr>
+            <tr ng-repeat="ta in lista_ta | orderBy:'nombreCliente'">
+                <td>{{$index+1}}</td> 
+                <td>{{ta.nombreCliente}}</td> 
+                <td>{{ta.actoNombre}}</td> 
+                <td>{{ta.usuarioElaboro}}</td> 
+                <td>{{$root.parseFecha(ta.fecha)}}</td> 
+                <td ng-click="edita_tar_am(ta.idtrjamarilla)">
+                    <span class="tbl_icon ico_edit"></span>
+                </td> 
+
+
+            </tr>
+
+        </table>
+    </div>

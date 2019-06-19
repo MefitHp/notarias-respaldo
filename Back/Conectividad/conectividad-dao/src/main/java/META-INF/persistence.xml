@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="conexion">
+	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.connect.modelo.VistaExpediente</class>
+		<class>com.connect.modelo.VistaComparecientes</class>
+		<class>com.connect.modelo.VistaEscritura</class>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://192.168.15.10/racoo84t_not09009?autoReconnect=true" />
+			<property name="hibernate.connection.username" value="gonzalo" />
+			<property name="hibernate.connection.password" value="gonzalo" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,257 @@
+<navexpediente></navexpediente>
+
+<bienvenida></bienvenida>
+<div class="status_tarea" >
+    <div style="display: inline-block;">
+        <div class="fase fase_ok grad_gray">
+            <p class="">Fase 1 <br>
+                <span>Datos del pago</span>
+            </p>
+        </div>
+        <div class="fase grad_gray">
+            <p class="active">Fase 2 <br>
+                <span>Datos del pagador</span>
+            </p>
+        </div>
+
+        <div class="fase grad_gray">
+            <p class="">Fase 3 <br>
+                <span>Evidencia del pago</span>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+<br>
+<h2 class="tit_H2">Datos generales</h2>
+<form name="myForm" id="myForm" novalidate ng-submit="guardarDatosPagador()">
+<div class="wra_form_data" style="overflow: visible">
+<!--    <div class="head_form_data">
+        <div class="colum colums3" >
+            <p><b>Pago anticipado</b></p>
+            <p><span>*</span> Lorem upsum dolorem engfisfdj</p>
+        </div>
+        <div class="colum colums4" >
+            <div style="float:right;">
+                <switchflip></switchflip>
+            </div>
+
+
+        </div>
+
+    </div>-->
+    <div class="body_form_data" style="overflow: visible">
+        <div class="contentInputs">
+
+            <div class="colum colums3">
+                <label>Nombre completo</label>
+                <angucomplete 
+                        id="comp"
+                        placeholder="Buscar personas"
+                        pause="100"
+                        localdata="comparecientes_filtrados"
+                        selectedobject="sel_comp"
+                        searchfields="nombrecompleto,alias"
+                        titlefield="nombrecompleto"
+                        minlength="2"
+                        inputclass="form-control form-control-small" 
+                        />
+                <div class="tooltip"  ng-show="sinNombre" >Este es un campo requerido</div>
+            
+                
+                <!--<input type='text' name="nombrecompleto" ng-model="nombrecompletopagador" required>
+                
+                
+                
+                <div class="tooltip"  ng-show="myForm.submitted && myForm.nombrecompleto.$error.required" >Este es un campo requerido</div>-->
+            </div>
+            <div class="colum colums4">
+                <label>RFC</label>
+                <input type="text" placeholder="Ingresar la informaci&oacute;n" ng-model="rfc" name="rfc"/>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<br>
+<h2 class='tit_H2'>Datos domicilio</h2>
+<div class="wra_form_data" style='overflow: visible;' ng-controller="ctrl_utilidades">
+    <div class="head_form_data">
+        <div class="contentInputs">
+
+            <div class="colum colums3" >
+                <p><b>Captura asistida de datos</b></p>
+                <p><span>*</span> La captura asistida de datos te permite hacer busquedas r&aacute;pidas en algunos campos.</p>
+            </div>
+            <div class="colum colums4" >
+                <div style="float:right;">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" ng-init="domicilio.isasistido = true" ng-model="domicilio.isasistido" onclick="is_asist(this.checked)" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                        <label class="onoffswitch-label" for="myonoffswitch">
+                            <div class="onoffswitch-inner"></div>
+                            <div class="onoffswitch-switch"></div>
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+        <div class="body_form_data" id="content_asist" style="overflow: visible">
+            <div class="contentInputs">
+
+                <div class="colum colums2">
+                    <label>Calle</label>
+                    <input type="text" placeholder="Nombre de la calle" ng-keyup="actualiza_completo()" ng-model="domicilio.dscalle" name="calle" maxlength="60"  />
+
+                </div>
+                <div class="colum colums4">
+                    <label>N° Exterior</label>
+                    <input type="text" name="numext" placeholder="N&uacute;mero exterior" ng-keyup="actualiza_completo()"  ng-pattern="/([0-9])$/" ng-model="domicilio.dsnumext" maxlength="6"/>
+                    <div class="tooltip"  ng-show="myForm.numext.$error.pattern" >No es un n&uacute;mero</div>
+                </div>
+                <div class="colum colums4">
+                    <label>N° Interior</label>
+                    <input type="text" name="numint" placeholder="N&uacute;mero interior" ng-keyup="actualiza_completo()" ng-pattern="/([0-9])$/" ng-model="domicilio.dsnumint" maxlength="30"/>
+                    <div class="tooltip"  ng-show="myForm.numint.$error.pattern" >No es un n&uacute;mero</div>
+                </div>
+
+            </div>
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <label>Manzana</label>
+                    <input type="text" placeholder="N&uacute;mero de manzana" ng-keyup="actualiza_completo()" ng-model="domicilio.dsmanzana" maxlength="255"/>
+
+                </div>
+                <div class="colum colums4">
+                    <label>Lote</label>
+                    <input type="text" placeholder="N&uacute;mero de lote" ng-keyup="actualiza_completo()" ng-model="domicilio.dslote" maxlength="255"/>
+
+
+                </div>
+
+                <div class="colum colums2">
+                    <label>Colonia</label>
+                    <input type="text" placeholder="Colonia" ng-keyup="actualiza_completo()" ng-model="domicilio.dscolonia" maxlength="60"/>
+                </div>
+
+
+            </div>
+
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <label>Estado</label>
+                    <angucomplete 
+                        id="estado"
+                        placeholder="Seleccione un estado"
+                        pause="100"
+                        localdata="estados"
+                        selectedobject="selected_estado"
+                        searchfields="dsnombre"
+                        titlefield="dsnombre"
+                        minlength="1"
+                        inputclass="form-control form-control-small"
+                        anchomaximo="60"
+                        />
+
+
+                </div>
+                <div class="colum colums4">
+                    <label>Ciudad / Localidad</label>
+                    <angucomplete 
+                        id="localidad"
+                        placeholder="Seleccione localidad"
+                        pause="100"
+                        localdata="localidades"
+                        selectedobject="selected_localidad"
+                        searchfields="dsnombre"
+                        titlefield="dsnombre"
+                        minlength="2"
+                        inputclass="form-control form-control-small"
+                        anchomaximo="60"
+                        />
+
+
+
+                </div>
+                <div class="colum colums4">
+
+                    <label>Delegaci&oacute;n / Municipio</label>
+                    <angucomplete 
+                        id="municipio"
+                        placeholder="Seleccione un municipio"
+                        pause="100"
+                        localdata="municipios"
+                        selectedobject="selected_municipio"
+                        searchfields="dsnombre"
+                        titlefield="dsnombre"
+                        minlength="2"
+                        inputclass="form-control form-control-small"
+                        anchomaximo="60"
+                        />
+
+
+                </div>
+
+
+
+                <div class="colum colums4">
+                    <label>C.P</label>
+                    <input type="text" name="codpos" placeholder="C&oacute;digo postal" ng-model="domicilio.dscodpos"  ng-pattern="/([0-9])$/" ng-keyup="actualiza_completo()" maxlength="5"/>
+                    <div class="tooltip"  ng-show="myForm.codpos.$error.pattern" >No es un n&uacute;mero</div>
+                </div>
+            </div>
+
+            <div class="contentInputs">
+                <div class="colum colums1">
+
+                    <label>Referencia</label>
+                    <input type="text" placeholder="Referencia"/>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="body_form_data" >
+        <div class="contentInputs">
+            <div class="colum colums1">
+
+                <label>Domicilio Completo</label>
+
+                <input type="text" ng-keyup="actualiza_completo()" nombre ="dsdomcompleto" placeholder="Domicilio completo del inmueble" id="d_completo" ng-model="domicilio.dsdircompleta" disabled/>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="contentInputs">
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        &nbsp;
+    </div>
+    <div class="colum colums4">
+        <div class="btn-rounded"><p>Cancelar</p></div>
+    </div>
+    <div class="colum colums4">
+        <button class="btn-blue" type="submit">Guardar</button>
+    </div>
+
+</div>
+</form>

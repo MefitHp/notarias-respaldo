@@ -1,0 +1,68 @@
+<loadscript url=ctrl_escritura_doc_obj.js></loadscript>
+<div class="allContentPanel" ng-controller="ctrl_escritura_doc_obj">
+    <div class='con_popUp_header con_popUp_wrapper'>
+        <div class='con_popUp_header_tit'>
+                    <h2>Plantilla</h2>
+                    <p class="mifecha">dd/mm/yyyy 12:00Hrs.
+                </div>
+        <div class='con_popUp_header_cerrar' ng-click="popLateral('', 2,false)"></div>
+    </div>
+
+    <div class='con_popUp_title con_popUp_wrapper'>
+        <div>
+           <h2>Incrustar modelo objeto</h2>
+        </div>
+    </div>
+
+
+    <div class='con_popUp_body con_popUp_wrapper'>
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <label>Actos</label>
+                <div class="wrap_select" >
+                <select ng-model="sel_acto" id="sel_acto" ng-options="act as act.nombreActo for act in actos" name="actos">
+                    <option value="" disabled selected>--Seleccione un acto--</option>
+                </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <label>Documento objeto</label>
+                <div class="wrap_select" >
+                <select ng-model="sel_doc_obj" ng-change="obten_doc_obj_completo()" id="sel_documento_obj" ng-options="do as do.dsnombre for do in lista_doc_obj" name="doc_obj">
+                    <option value="" disabled selected>--Seleccione un documento--</option>
+                </select>
+                </div>
+            </div>
+
+        </div>
+            
+        <div class="contentInputs">
+            <div class="colum colums2">
+                <label>Vista previa</label>
+                <div class="visor_dark" id="visor_previa"></div>
+            </div>
+
+        </div>
+
+
+
+        <div class="contentInputs">
+            <div class="colum colums4">
+                <div class="btn-rounded" ng-click="popLateral('', 2,false)">
+                    <p>Cancelar</p>
+                </div>
+            </div>
+            <div class="colum colums4">
+                <button class="btn-blue" ng-click="transforma_txt()">Insertar</button>
+            </div>
+
+        </div>
+
+</div>
+    
+<script>
+      pon_fecha('.mifecha');
+</script>

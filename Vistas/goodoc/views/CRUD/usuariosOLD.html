@@ -1,0 +1,82 @@
+<h1>USUARIOS</h1>
+
+<form name="frm_usuario" novalidate ng-submit="lanzaForm()">
+    <table>
+        <tr>
+            <td>{{user.rol}}</td>
+            <td>
+                
+            <span  class="nullable">ads
+                  <select ng-model="user.rol" ng-options="rol.dsnombre for rol in roles">
+                    <option value="">-- choose color --</option>
+                  </select>
+                </span>
+                
+                
+            </td>
+        </tr>
+     
+        <tr>
+            <td>Nombre</td>
+            <td>
+            
+                <input type="text" name="nombre" ng-model="user.dsnombre" ng-pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$" ng-maxlength="10">
+                <span class="error" ng-show="myForm.nombre.$error.pattern">No coincide el nombre!</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Paterno</td>
+            <td><input type="text" name="paterno" ng-model="user.dspaterno"></td>
+        </tr>
+        <tr>
+            <td>Materno</td>
+            <td><input type="text" name="dsa" ng-model="user.dsmaterno"></td>
+        </tr>
+        <tr>
+            <td>Usuario</td>
+            <td><input type="text" name="dsadsa" ng-model="user.cdusuario"></td>
+        </tr>
+        <tr>
+            <td>Contrasena</td>
+            <td><input type="text" name="asdsadasdsa" ng-model="user.dsvalenc"></td>
+        </tr>
+        <tr>
+             <td>Correo</td>
+            <td><input type="email" name="correo" ng-model="user.dscorreo"></td>
+        </tr>
+        <tr>
+            <td>RFC</td>
+            <td><input type="text" name="rfc" ng-model="user.dsrfc"></td>
+        </tr>
+        <tr>
+            <td>Referencia</td>
+            <td><input type="text" name="nombdasre" ng-model="user.dsreferencia"></td>
+        </tr>
+        <tr>
+             <td>INSTATUS</td>
+            <td><input type="text" ng-model="user.inestatus" ng-init="user.inestatus=true"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <input type="hidden" name="idsession" id="idsession" value="{{idsession}}">
+</form>
+
+<input type="submit" value="NUEVO USUARIO">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<ul>
+    <li ng-repeat="usr in user_lista">
+        {{usr.cdusuario}}
+    </li>
+</ul>

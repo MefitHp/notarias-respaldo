@@ -1,0 +1,69 @@
+<p>Libro: ${var:numero_libro(funcion=texto)}</p>
+<p>Fecha hoy: ${var:fecha_hoy(funcion=texto)}</p>
+<p>Notario: ${var:notaria_notario}</p>
+<p>Notaria: ${var:notaria_numero(funcion=texto)}</p>
+<p>Tramite Operacion: ${var:tramite_operacion}</p>
+<p>Compareciente COMPRADOR: ${var:compareciente_nombre(tipo=COMPRADOR)}</p>
+<p>Compareciente VENDEDOR: ${var:compareciente_nombre(tipo=VENDEDOR)}</p>
+<p>Escritura numero: ${var:numero_escritura(funcion=texto)}</p>
+<p>Fecha creacion escritura: ${var:fecha_escritura(funcion=texto)}</p>
+<p>Antecedente notario: ${frm:antecedente_notaria[notario]}</p>
+<p>Antecedente notaria numero: ${frm:antecedente_notaria[numero(funcion=texto)]}</p>
+<p>Gravamen libre: ${frm:antecedente_compraventa[gravamen_libre(contenido=se encuentra libre de  gravámenes, lo que justifica con el certificado de libertad de gravámenes, presentado en el Registro Público de la Propiedad de esta capital,)]}</p>
+<p>Gravamen cancelado inscrito:  ${frm:antecedente_compraventa[gravemen_cancelado_inscrito(contenido=Es de advertir que la hipoteca que reporta dicho certificado no tiene razón de ser en virtud de haber sido cancelada )]}</p>
+<p>Estado civil compareciente VENDEDOR con texto: ${var:compareciente_estado_civil_texto(tipo=VENDEDOR)}</p>
+<p>Inmueble precio: ${frm:antecedente_compraventa[inmueble_precio]}</p>
+<p>Inmueble precio moneda: ${frm:antecedente_compraventa[inmueble_precio_moneda]}</p>
+<p>Inmueble direccion: ${frm:antecedente_compraventa[inmueble_direccion]}</p>
+<p>Inmueble superficie: ${frm:antecedente_compraventa[inmueble_superficie]}</p>
+<p>Inmueble lindero norte: ${frm:antecedente_compraventa[inmueble_lindero_norte]}</p>
+<p>Inmueble lindero sur: ${frm:antecedente_compraventa[inmueble_lindero_sur]}</p>
+<p>Inmueble lindero este: ${frm:antecedente_compraventa[inmueble_lindero_este]}</p>
+<p>Inmueble lindero compraventa: ${frm:antecedente_compraventa[inmueble_lindero_oeste]}</p>
+<p>Gravamen numero escritura: ${frm:antecedente_compraventa[gravamen_numero_escritura(funcion=texto)]}</p>
+<p>Gravamen inscrito folio real:  ${frm:antecedente_compraventa[gravamen_inscrito_folio_real(contenido=cuyo primer testimonio está pendiente de ser inscrito en el Registro Público de la Propiedad de esta Capital | cuyo primer testimonio quedó inscrito en el Registro Público de la Propiedad de esta Capital en el folio real número #VALOR)]}</p>
+<p>Gravamen folio real: ${frm:antecedente_compraventa[gravamen_inscrito_folio_real(contenido=cuyo primer testimonio está pendiente de ser inscrito en el Registro Público de la Propiedad de esta Capital | cuyo primer testimonio quedó inscrito en el Registro Público de la Propiedad de esta Capital en el folio real número #VALOR)]}</p>
+<p>Gravemen cancelador mismo instrumento : ${frm:antecedente_compraventa[gravemen_cancelado_mismoinstrumento(contenido=Es de advertir que la hipoteca que reporta dicho certificado fue cancelada y se encuentra libre de gravámenes, lo que justifica con el certificado de gravámenes, presentado en el Registro Público de la Propiedad de esta capital. Es de advertir que la hipoteca que reporta dicho certificado será cancelada más adelante, en este mismo instrumento)]}</p>
+<p>Gravamen cancelado separado: ${frm:antecedente_compraventa[gravamen_cancelado_separado(contenido=Es de advertir que la hipoteca que reporta dicho certificado será cancelada en instrumento por separado.)]}</p>
+<p>Gravamen fecha escritura: ${frm:antecedente_compraventa[gravamen_fecha_escritura(funcion=texto)]}</p>
+<p>Inmueble predial : ${frm:antecedente_compravente[inmueble_predial]}</p>
+<p>Inmueble predial : ${frm:antecedente_compravente[inmueble_predial(funcion=texto)]}</p>
+<p>Inmuegle agua: ${frm:antecedente_compraventa[inmueble_agua(funcion=texto)]}</p>
+<p>Inmueble valor catastral: ${frm:antecedente_compraventa[inmueble_valor_catastral]}</p>
+<p>Inmueble valor catastral moneda: ${frm:antecedente_compraventa[inmueble_valor_catastral_moneda]}</p>
+<p>Inmueble avaluo valor: ${frm:antecedente_compraventa[inmueble_avaluo_valor]}</p>
+<p>Inmueble avaluo moneda: ${frm:antecedente_compraventa[inmueble_avaluo_moneda]}</p>
+<p>Inmuevle avaluo valuadr: ${frm:antecedente_compraventa[inmueble_avaluo_valuador]}</p>
+<p>Inmueble avaluo fecha: ${frm:antecedente_compraventa[inmueble_avaluo_fecha]}</p>
+<p>Compareciente VENDEDOR nombre: ${var:compareciente_nombre(tipo=VENDEDOR)}</p>
+<p>Compareciente COMPRADOR nombre: ${var:compareciente_nombre(tipo=COMPRADOR)}</p>
+<p>Inmueble direccion: ${frm:antecedente_compraventa[inmueble_direccion]}</p>
+<p>Inmueble avaluo valor: ${frm:antecedente_compraventa[inmueble_avaluo_valor]}</p>
+<p>Inmueble avaluo moneda: ${frm:antecedente_compraventa[inmueble_avaluo_moneda]}</p>
+<p>Inmueble uso: ${frm:antecedente_compraventa[uso_inmueble]}</p>
+<p>Impuesto excento: ${frm:antecedente_compraventa[impuesto_excento(contenido=Demuestra ante el suscrito notario haber ocupado el inmueble objeto de esta escritura para su casa habitación durante los cinco años anteriores a la fecha de firma del presente instrumento, conforme a los documentos que agrego al apéndice de esta escritura con la letra)]}</p>
+<p>Primera enajenacion: ${frm:antecedente_compraventa[primera_enajenacion(contenido= falta texto cuando no es primera enajenacion | Declara que la presente, es la primera enajenación de casa habitación que efectúa en este año calendario)]}</p>
+<p>Arrendamiento: ${frm:antecedente_compraventa[arrendamiento(contenido=no se encuentra sujeto a contrato de arrendamiento alguno | falta texto de cuando se encuentra en arrendamiento)]}</p>
+<p>Compareciente COMPRADOR nombre: ${var:compareciente_nombre(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR nacionalidad: ${var:compareciente_nacionalidad(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR originario : ${var:compareciente_originario(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR fecha nacimiento: ${var:compareciente_fecha_nacimiento(tipo=COMPRADOR)}</p>
+<p>Compareciente estado civil: ${var:compareciente_estado_civil(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR domicilio: ${var:compareciente_domicilio(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR ocupacion: ${var:compareciente_ocupacion(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR rfc: ${var:compareciente_rfc(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR curp: ${var:compareciente_curp(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR ri tipo documento: ${var:compareciente_ri_tipodocumento(tipo=COMPRADOR)}</p>
+<p>Compareciente COMPRADOR ri valor documento: ${var:compareciente_ri_valordocumento(tipo=COMPRADOR)}</p>
+<p>Compareciente VENDEDOR nombre: ${var:compareciente_nombre(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR nacionalidad: ${var:compareciente_nacionalidad(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR originario: ${var:compareciente_originario(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR fecha nacimiento : ${var:compareciente_fecha_nacimiento(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR estado civil: ${var:compareciente_estado_civil(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR domiclio: ${var:compareciente_domicilio(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR ocupacion: ${var:compareciente_ocupacion(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR rfc: ${var:compareciente_rfc(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR curp: ${var:compareciente_curp(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR ri tipo documento: ${var:compareciente_ri_tipodocumento(tipo=VENDEDOR)}</p>
+<p>Compareciente VENDEDOR ri valor documento: ${var:compareciente_ri_valordocumento(tipo=vendedor)}</p>
+<p>Compareciente VENDEDOR conyugue:  ${var:compareciente_conyugue(tipo=VENDEDOR)} </p>

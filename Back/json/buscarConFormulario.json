@@ -1,0 +1,54 @@
+{  
+   "usuario":{  
+      "idsesionactual":"3143686247F17069D57F14107DF20560",
+      "idusuario":"eccbc87e4b5ce2fe28308fd9f2a7baf3",
+      "dsvalenc":"5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "fchinicio":"2014-06-12 22:16:27.0",
+      "rol":{  
+         "idrol":"eccbc87e4b5ce2fe28308fd9f2a7baf3",
+         "dsnombre":"Abogado",
+         "idsesion":"sesion",
+         "dsdescripcion":"descripcion",
+         "tmstmp":1402629383000,
+         "dsprefijo":"abog"
+      },
+      "dsnombre":"Jose",
+      "dsiniciales":"JPP",
+      "dscorreo":"im.vicoy@gmail.com",
+      "idsesion":"sesion 1",
+      "cdusuario":"abogado",
+      "tmstmp":1402629387000,
+      "isactivo":true,
+      "dsrfc":"JEPA7804038J9",
+      "dsmaterno":"Paz",
+      "dspaterno":"Perez",
+      "dsreferencia":"ref",
+      "dsultimoacceso":"23.23.23.23",
+      "inestatus":true,
+      "isactualizapwd":false,
+      "acceso":null,
+      "fchfin":"2014-06-12 22:16:27.0",
+      "dscurp":null
+   },
+   "conformulario":{  
+      "idsesion":"0A9C2D49F06407FEEF03BD57A8705E10",
+      "ispublicado":true,
+      "dstitulo":"Subformulario prueba",
+      "dsdescripcion":"Este es un formulario de prueba",
+      "tmstmp":1409344327000,
+      "listaComponentes":null,
+      "listaSubFormularios":null,
+      "listaActoFormularios":null,
+      "listaPermisosRol":null,
+      "dsnombrecorto":"subfrm",
+      "tipoform":"O",
+      "fechapublicacion":"2014-08-29",
+      "id":{  
+         "idconFormulario":"2934e7e4228b917d5b3af5a352b3726d",
+         "version":1
+      }
+   },
+   "acto":{
+      "idacto":"1e788b7e4b03fed1ad25f3431a9aca34"
+   }
+}

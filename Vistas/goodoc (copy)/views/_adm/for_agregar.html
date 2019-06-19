@@ -1,0 +1,109 @@
+    
+
+    <div id="tab-container" class="tab-container">
+    <ul class='etabs'>
+        <li class='tab'><a href="#tb_data">Datos del formato</a></li>
+        <li class='tab'><a href="#tb_content" onclick="creaCK('#tb_content');">Configuraci&oacute;n del formato</a></li>
+    </ul>
+    <div class="panel-container">   
+        <div id="tb_data">
+            <div class="contentInputs">
+                <div class="colum colums1">
+                    <label>Nombre del formato</label>
+                    <input type="text" name="operacion_name" ng-model="documento.dstitulo" required>
+                    <div class="tooltip" ng-show="myForm.submitted && myForm.operacion_name.$error.required" >Campo requerido</div>
+                </div>
+
+            </div>
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <label>Tipo del formato</label>
+                    <div class="wrap_select">
+                        <select ng-model="documento.tipodoc" ng-options="f as f.dselemento for f in tipos_formato">   
+                            <option value="" disabled selected>--Seleccione una opci&oacute;n --</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="colum colums4">
+                    <label>N&uacute;mero de dias de gesti&oacute;n</label>
+                    <div class="wrap_select">
+                        <input type="text" ng-model="documento.numdiasgestion" maxlength="3" />
+                    </div>
+                </div>
+                 <div class="colum colums4">
+                     <div style="width:80px;float:right">
+                     <label>Es requerido</label>
+                    <div class="onoffswitch" style='float: left'>
+                        <input type="checkbox" name="esrequerido" class="onoffswitch-checkbox" ng-init="documento.isrequerido=false" id="myonoffswitch" ng-model="documento.isrequerido">
+                            <label class="onoffswitch-label" for="myonoffswitch">
+                                <div class="onoffswitch-inner"></div>
+                                <div class="onoffswitch-switch"></div>
+                            </label>
+                    </div>
+                     </div>
+                </div>
+
+            </div>
+
+            <table class="tableForm descTable">
+                <tr>
+                    <th>Descripci&oacute;n</th>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea style="" name="operacion_desc" ng-model="documento.dsdescripcion"></textarea>
+                    </td>
+                </tr>
+            </table>
+
+
+            <div class="contentInputs">
+                <div class="colum colums4" >
+                    <p>&nbsp;</p>
+                </div>
+                <div class="colum colums4">
+                    <p>&nbsp;</p>
+                </div>
+                <div class="colum colums4">
+                    <button class="btn-blue" onclick="$('.tab-container').easytabs('select','tb_content');creaCK('#tb_content');">Siguiente</button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEGUNDO TAB -->
+
+        <div id="tb_content" class="pla_for_content">
+
+                <div class="contentInputs pla_for_ck_content">
+                        
+                </div>
+
+            <div class="contentInputs">
+                <div class="colum colums4">
+                    <div class="btn-rounded" onclick="$('.tab-container').easytabs('select','tb_data')"><p>Regresar</p></div>
+                </div>
+                <div class="colum colums4">
+                    <div class="btn-rounded" ng-click="formato_add(false)"><p>Guardar</p></div>
+                </div>
+                <div class="colum colums4">
+                    <button class="btn-blue"ng-click="formato_add(true)" >Guardar y publicar</button>
+                </div>
+
+            </div>
+            
+            
+        </div>
+
+    </div>
+</div>
+<script>
+            $('.tab-container').easytabs();
+
+</script>
+
+
+

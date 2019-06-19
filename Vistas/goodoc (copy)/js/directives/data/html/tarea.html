@@ -1,0 +1,27 @@
+<div class="wrap_contentList">
+
+    <div class="wrap_list" style="width: 875px">
+        <div class="list_trigger btn" ng-click="ejecuta_tarea(tarea.nombre,tarea.id,tarea.escritura.idexpediente,tarea.escritura.escritura,tarea.escritura.idescritura)" style="width: 200px">
+            <span class="ico_lista"></span>
+            <p ng-show="tarea.escritura!=null" style="max-width:170px">Esc: {{tarea.escritura.escritura}} | Exp: {{tarea.escritura.expediente}}</p>
+            <p ng-show="tarea.impuesto!=null" style="max-width:170px">Esc: {{tarea.impuesto.escritura}} | Exp: {{tarea.impuesto.expediente}}</p>
+        </div>
+        <div class="list_wrap_info" style="width:670px">
+            <div class="list_info">
+                <p>
+                    <b>{{tarea.nombre}}</b>
+                </p>    
+            </div> 
+            <div class="fecha" style="width: 220px">
+                <p >
+                    Solicitud: <b class="fecha_limite">{{tarea.solicidada | date:"dd/MM/yy"}}</b> |
+                    L&iacute;mite: <b class="fecha_limite" style="color: red">{{tarea.vencimiento | date:"dd/MM/yy"}}</b>
+                </p>    
+            </div> 
+
+        </div>
+        
+    </div>
+   
+</div>
+

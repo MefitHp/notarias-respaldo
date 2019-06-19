@@ -1,0 +1,146 @@
+<loadscript url=ctrl_listapagos.js></loadscript>
+
+<div ng-controller=ctrl_listapagos>
+
+    <br><h2 class="tit_H2">Lista de pagos pendientes</h2>
+    
+    <div class=contentInputs>
+
+        <div class="colum colums3">
+            <input type="text" ng-model="documentos_filtro" class="search-field" placeholder="Filtrar documentos..." style="width: 83%; background-position: 590px;">
+        </div>
+
+        <div class="colum colums4">
+
+             <div class="wrap_select"> 
+                        <select class="ispersonadata"> 
+                            <option value="" disabled selected>--Filtrar por estatus--</option> 
+                            <option value="?">PAGADO</option>
+                            <option value="?">PENDIENTE</option>
+                            <option value="?">ANTICIPO</option>
+                        </select> 
+                    </div>
+        </div>
+
+    </div>
+    
+    <div class="wrap_contentList abogadoList expediente"> 
+
+        <div class="wra_content_tarea" style="display:block; border: none;"> 
+
+            <div class=" contentInput"> 
+                <h2 ng-show="pagos.length<1">No existen pagos pendientes por autorizar</h2>
+                
+                <table class="tableForm" ng-show="pagos.length>0"> 
+                    <tr> 
+                        <th width="5%"> 
+
+                            <span class="tbl_icon ico_documento">
+                            </span> 
+                        </th> 
+                        <th >Escritura</th> 
+                        <th >Expediente</th> 
+                        <th >Abogado</th> 
+                        <th >Documento</th> 
+                        <th width="5%">Pago</th> 
+                        <th width="15%">Fecha de Solicitud</th> 
+                        
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                        <th width="5%"> 
+                        </th> 
+                         
+                    </tr>
+                    <tr ng-repeat="pago in pagos | orderBy:['tmstmp']:true |filter:documentos_filtro">
+                        <td>{{$index}}</td>
+                        <td>{{pago.escritura.dsnumescritura}}</td>
+                        <td>{{pago.pago.expediente.numexpediente}}</td>
+                        <td>{{pago.pago.expediente.abogado.dsnombre}} {{pago.pago.expediente.abogado.dspaterno}} {{pago.pago.expediente.abogado.dsmaterno}}</td>
+                        <td>{{pago.actodocumento.formatoPdf.dstitulo}}</td>
+                        <td>{{pago.pago.statuspago}}</td>
+                        <td>{{pago.tmstmp | date}}</td>
+                        <td>
+                            <i class="fa fa-2x fa-eye icon_gray" ng-click="lanza_detalle(pago.pago)"></i>
+                        </td>
+                        <td>
+                            <i class="fa fa-2x fa-comments-o icon_gray" ng-class="{'btn_list_animate_text':pago.actodocumento.tienecomments}" ng-click="lanza_comentarios('d',pago.actodocumento.idactodoc,pago.actodocumento.formatoPdf.dstitulo,pago.actodocumento.tienecomments,pago.pago.expediente)""></i>
+                        </td>
+                        <td>
+                            <i class="fa fa-2x fa-check-square-o icon_gray" ng-click="actualiza_status(pago,pago.idtarea)"></i>
+                        </td>
+                       
+                    </tr>
+                </table> 
+            </div>
+        </div>
+    </div>
+    
+    <div id="pago" style="display:none;" class="avgrund-popup avgrund-popup-animate popup-wrapp"> 
+
+        <div class="modal_header">Detalle del pago
+        </div>
+
+        <div class="modal_body"> 
+
+            <div class="contentInputs"> 
+
+                <div class="colum" > 
+                    <label>Monto por pagar:
+                    </label> 
+                    <input type="text" value="{{pagoselect.montoporpagar}}" disabled>
+                </div>
+                </div>
+                            <div class="contentInputs"> 
+
+                <div class="colum" > 
+                    <label>Monto pagado:
+                    </label> 
+                    <input type="text" value="{{pagoselect.montopagado}}" disabled>
+                </div>
+                                </div>
+                                            <div class="contentInputs"> 
+                                            
+                <div class="colum" > 
+                    <label>Monto por ingresar: 
+                    </label> 
+                    <input type="text" ng-value="monto">
+                </div>
+            </div>
+            </div>
+            <div class="contentInputs"> 
+
+                <div class="colum" style="width:40%">  
+                    <div class="btn-rounded cerrarModal"style="width: 100%">
+
+                        <p>Cerrar</p>
+                    </div>
+                </div>
+
+                <div class="colum" style="width:40%"> 
+
+                    <div class="btn-rounded"style="width: 100%">
+
+                        <p>Ingresar monto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+<script>
+    $(".cerrarModal").click(function () {
+        Avgrund.hide(function(){
+              $("#comments_wrapp").fadeOut("slow");
+              $("#pago").fadeOut("slow");
+        });
+      
+        
+    })
+</script>
+
+

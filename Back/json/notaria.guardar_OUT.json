@@ -1,0 +1,45 @@
+{
+    "usuario":{
+	"idusuario":"c81e728d9d4c2f636f067f89cc14862c",
+	"idsesionactual":"C92918FE7969E52FA8450D622D00B494"
+    },
+    "notaria": {
+	"idnotaria":"eliddelanotaria",
+	"innumnot":"98",
+	"asociada":true,
+	"domicilio":{
+	    "iddomicilio":"eliddeldomicilio",
+	    "dscalle":"calle 25",
+	    "dsciudad":"victoria",
+	    "dscodpos":"90876",
+	    "dscolonia":"aguilas",
+	    "dsestado":"veracruz",
+	    "dslocalidad":"boca del rio",
+	    "dslote":"baldio",
+	    "dsmanzana":"1",
+	    "dsmunicipio":"veracha",
+	    "dsnumext":"345",
+	    "dsnumint":null,
+	    "dsdircompleta":"",
+	    "isasistido":true
+	},
+	"usuario":{
+	    "idusuario":"eliddelusuario",
+	    "idusuario":"",
+	    "dsnombre": "omarete",
+	    "dsvalenc": "pass",
+	    "dscurp":"curp23820",
+	    "cdusuario": "omarete",
+	    "rol": {
+		"idrol": "c4ca4238a0b923820dcc509a6f75849b"
+	    },
+	    "dsiniciales": "ofc",
+	    "dsmaterno": "cruz",
+	    "isactualizapwd":false,
+	    "fchfin": "2014-03-04 12:12:12",
+	    "dspaterno": "flores",
+	    "dsrfc": "rfc",
+	    "dscorreo": "chingon@asdf.com"
+	}
+    }
+}
